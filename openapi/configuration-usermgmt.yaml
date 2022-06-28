@@ -52,7 +52,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqEmailTemplate'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /sms-templates:
@@ -82,7 +82,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqSmsTemplate'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /endusers:
@@ -140,7 +140,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqEndUser'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -167,7 +167,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqEndUser'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/endusers/{id}/:regenerate-password':
@@ -196,7 +196,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqRegenerateEndUserPasswordResponse'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/endusers/{id}':
@@ -232,7 +232,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqEndUser'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -256,7 +256,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/pcgs/key-based/network-policy-{policyId}/users':
@@ -287,7 +287,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqKeyBasedPcgUser'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -318,7 +318,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -349,7 +349,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -380,7 +380,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /pcgs/key-based:
@@ -403,7 +403,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqKeyBasedPcg'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -426,7 +426,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/pcgs/key-based/network-policy-{policyId}/port-assignments':
@@ -455,7 +455,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqGetPortAssignmentDetailsResponse'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -490,7 +490,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqPcgAssignPortsResponse'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/pcgs/key-based/network-policy-{policyId}/keys/:generate':
@@ -524,7 +524,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/pcgs/key-based/network-policy-{policyId}/keys/:email':
@@ -558,7 +558,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/pcgs/key-based/network-policy-{policyId}/:onboard':
@@ -589,7 +589,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /usergroups:
@@ -642,7 +642,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqUserGroup'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -669,7 +669,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqUserGroup'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/usergroups/{id}':
@@ -705,7 +705,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqUserGroup'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -729,7 +729,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

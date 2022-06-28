@@ -67,7 +67,7 @@ paths:
                     token_type: Bearer
                     expires_in: 86400
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
   /logout:
     post:
       tags:
@@ -82,7 +82,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

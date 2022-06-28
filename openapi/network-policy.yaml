@@ -51,7 +51,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqNetworkPolicy'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -86,7 +86,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqNetworkPolicy'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -110,7 +110,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

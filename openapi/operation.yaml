@@ -51,7 +51,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqOperationObject'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -73,7 +73,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/operations/{operationId}/:cancel':
@@ -98,7 +98,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:
@@ -172,7 +172,7 @@ components:
           type: object
           description: The API response of the operation if the status is SUCCEEDED
         error:
-          $ref: 'common/common.yaml#/components/schemas/XiqError'
+          $ref: 'common/components.yaml#/components/schemas/XiqError'
       description: Long Running Operation (LRO) model
     XiqOperationStatus:
       type: string

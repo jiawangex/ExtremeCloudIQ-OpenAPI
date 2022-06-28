@@ -45,7 +45,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqWebhookSubscription'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -70,7 +70,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/subscriptions/webhook/{id}':
@@ -95,7 +95,7 @@ paths:
         '202':
           description: Accepted
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

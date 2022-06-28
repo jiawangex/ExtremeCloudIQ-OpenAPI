@@ -63,7 +63,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqVlanProfile'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -90,7 +90,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqVlanProfile'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/vlan-profiles/{id}':
@@ -119,7 +119,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqVlanProfile'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -143,7 +143,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     patch:
@@ -178,7 +178,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqVlanProfile'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

@@ -67,7 +67,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqClient'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /clients/usage:
@@ -114,7 +114,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqClientUsage'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /clients/summary:
@@ -179,7 +179,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqClientSummary'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /clients/active:
@@ -279,7 +279,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqClient'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

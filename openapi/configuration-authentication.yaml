@@ -63,7 +63,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqActiveDirectoryServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /cwps:
@@ -104,7 +104,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqCwp'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /ldap-servers:
@@ -145,7 +145,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqLdapServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -192,7 +192,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqLdapServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/ldap-servers/{id}':
@@ -221,7 +221,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqLdapServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -275,7 +275,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqLdapServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -299,7 +299,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /radius-servers/internal:
@@ -340,7 +340,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqInternalRadiusServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -367,7 +367,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqInternalRadiusServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /radius-servers/external:
@@ -408,7 +408,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqExternalRadiusServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -435,7 +435,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqExternalRadiusServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /radius-proxies:
@@ -476,7 +476,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqRadiusProxy'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -528,7 +528,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqRadiusProxy'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /radius-client-objects:
@@ -569,7 +569,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqRadiusClientObject'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     post:
@@ -596,7 +596,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqRadiusClientObject'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/radius-servers/internal/{id}':
@@ -625,7 +625,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqInternalRadiusServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -660,7 +660,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqInternalRadiusServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -684,7 +684,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/radius-servers/external/{id}':
@@ -713,7 +713,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqExternalRadiusServer'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -744,7 +744,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -768,7 +768,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/radius-proxies/{id}':
@@ -797,7 +797,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqRadiusProxy'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -855,7 +855,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqRadiusProxy'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -879,7 +879,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/radius-client-objects/{id}':
@@ -908,7 +908,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqRadiusClientObject'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -939,7 +939,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     delete:
@@ -963,7 +963,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /radius-servers/internal/devices:
@@ -1004,7 +1004,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /radius-proxies/devices:
@@ -1042,7 +1042,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

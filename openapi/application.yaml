@@ -91,7 +91,7 @@ paths:
           description: The sort order (ascending by default)
           required: false
           schema:
-            $ref: 'common/common.yaml#/components/schemas/XiqSortOrder'
+            $ref: 'common/components.yaml#/components/schemas/XiqSortOrder'
       responses:
         '200':
           description: OK
@@ -100,7 +100,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedXiqApplication'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/applications/{id}/clients/top{n}':
@@ -154,7 +154,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqApplicationTopClientsUsage'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/applications/top{n}':
@@ -201,7 +201,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqTopApplicationsUsage'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:

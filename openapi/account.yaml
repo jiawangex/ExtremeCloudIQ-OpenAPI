@@ -43,7 +43,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqDefaultDevicePassword'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
     put:
@@ -67,7 +67,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/account/viq/:backup':
@@ -84,7 +84,7 @@ paths:
         '200':
           description: OK
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   '/account/:switch':
@@ -113,7 +113,7 @@ paths:
               schema:
                 $ref: 'authentication.yaml#/components/schemas/XiqLoginResponse'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /account/viq:
@@ -134,7 +134,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqViq'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /account/home:
@@ -155,7 +155,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XiqAccount'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
   /account/external:
@@ -178,7 +178,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XiqExternalAccount'
         default:
-          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
 components:
