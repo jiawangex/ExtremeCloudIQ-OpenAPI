@@ -112,7 +112,7 @@ paths:
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_top_n_clients_usage_for_one_application'
-      operationId: listApplicationTopNClientsUsage
+      operationId: listApplicationTopClientsUsage
       parameters:
         - name: id
           in: path
@@ -152,7 +152,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/XiqApplicationTopNClientsUsage'
+                  $ref: '#/components/schemas/XiqApplicationTopClientsUsage'
         default:
           $ref: 'common/common.yaml#/components/responses/ErrorResponse'
       security:
@@ -166,7 +166,7 @@ paths:
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_top_n_applications_usage'
-      operationId: listTopNApplicationsUsage
+      operationId: listTopApplicationsUsage
       parameters:
         - name: 'n'
           in: path
@@ -199,7 +199,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/XiqTopNApplicationsUsage'
+                  $ref: '#/components/schemas/XiqTopApplicationsUsage'
         default:
           $ref: 'common/common.yaml#/components/responses/ErrorResponse'
       security:
@@ -313,7 +313,7 @@ components:
         type:
           $ref: '#/components/schemas/XiqApplicationDetectionType'
       description: The Application Detection Rule
-    XiqApplicationTopNClientsUsage:
+    XiqApplicationTopClientsUsage:
       type: object
       properties:
         application_id:
@@ -335,7 +335,7 @@ components:
           description: The TOP N client usage
           format: int64
       description: The Top N Clients Usage per Application
-    XiqTopNApplicationsUsage:
+    XiqTopApplicationsUsage:
       type: object
       properties:
         id:
