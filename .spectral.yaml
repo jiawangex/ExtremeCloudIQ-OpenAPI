@@ -9,7 +9,7 @@ rules:
       - field: summary
         function: pattern
         functionOptions:
-          notMatch: "\\."
+          notMatch: "\\.$"
       - field: summary
         function: length
         functionOptions:
