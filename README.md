@@ -1,8 +1,8 @@
 ExtremeCloud IQ™ API allows customers and partners to create solutions for the management, monitoring, and 
 provisioning of any ExtremeCloud IQ™ environment.
 
-To deliver high quality REST API, we need to make sure all API designers and developers fully understand our API 
-design principles and strictly follow our API design guideline.
+To deliver high-quality REST API, we need to make sure all API designers and developers fully understand our API 
+design principles and strictly follow our API design guidelines.
 
 # API Design Guidelines
 
@@ -13,11 +13,12 @@ Please check [the details of ExtremeCloud IQ API guidelines](api-guideline.md).
 
 # Tools
 
-We recommended some useful OpenAPI tools to work with our OpenAPI definition and validation. 
+We recommend some useful OpenAPI tools to work with OpenAPI definition and validation.
 
 ## OpenAPI Editor
 
-Both of the below Editor are free, please choose any or both of them to use when changing OpenAPI definitions.
+Both of the below editor tools are free, please choose any or both of them to use when adding new OpenAPI or 
+changing existing OpenAPI.
 
 ### IntelliJ IDEA
 
@@ -25,31 +26,40 @@ Install [OpenAPI Editor plugin](https://plugins.jetbrains.com/plugin/14837-opena
 
 ### Stoplight Studio
 
-You can install desktop version (recommended) or use online version from [official site](https://stoplight.io/studio).
+You can install desktop version (recommended) or use online version from [Stoplight official site](https://stoplight.io/studio).
 
 ## OpenAPI Linter
 
 To make sure every API definition change meets [ExtremeCloud IQ API Guidelines](api-guideline.md), we recommend using 
-both **Spectral** and **Redocly** to validate/lint any API definition changes.
+both **Spectral** and **Redocly** to validate/lint new OpenAPI before creating pull request.
 
 ### Spectral
 
-Check here for [official installation guide](https://github.com/stoplightio/spectral#-installation-and-Usage).
+Please check [official installation guide](https://github.com/stoplightio/spectral#-installation-and-Usage).
 
-Install Spectral CLI:
+* Install Spectral CLI via `npm`:
 ```bash
 npm install -g @stoplight/spectral-cli
 ```
+* Check Spectral CLI installation:
+```bash
+redocly --version
+```
 
-Install IntelliJ IDEA plugin: [Spectral](https://plugins.jetbrains.com/plugin/18520-spectral)
+When working with IntelliJ IDEA, please also install [Spectral plugin](https://plugins.jetbrains.com/plugin/18520-spectral).
 
 ### Redocly CLI
 
-Check here for [official installation guide](https://redocly.com/docs/cli/installation/).
+Please check [official installation guide](https://redocly.com/docs/cli/installation/).
 
-Install Redocly CLI:
+* Install Redocly CLI via `npm`:
 ```bash
 npm i -g @redocly/cli@latest
+```
+
+* Check Redocly CLI installation:
+```bash
+redocly --version
 ```
 
 # OpenAPI Linting
@@ -62,7 +72,7 @@ spectral lint openapi/*.yaml
 
 We have defined custom Spectral ruleset in `.spectral.yaml`.
 
-Check [the Spectral ruleset customization guide](https://meta.stoplight.io/docs/spectral/e5b9616d6d50c-custom-rulesets) if needed.
+Check [Spectral ruleset customization guide](https://meta.stoplight.io/docs/spectral/e5b9616d6d50c-custom-rulesets) if needed.
 
 ## Linting with Redocly
 
@@ -72,7 +82,7 @@ redocly lint openapi/*.yaml
 
 We have defined custom Redocly ruleset in `redocly.yaml`.
 
-Check [the Redocly ruleset customization guide](https://redocly.com/docs/cli/resources/custom-rules/) if needed.
+Check [Redocly ruleset customization guide](https://redocly.com/docs/cli/resources/custom-rules/) if needed.
 
 # Bundle
 
