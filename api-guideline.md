@@ -1,3 +1,4 @@
+# ExtremeCloud IQ API Design Guidelines
 
 ## Use nouns instead of verbs in endpoint paths
 We shouldn’t use verbs in our endpoint paths. Instead, we should use the nouns which represent the resource that the endpoint that we’re retrieving or manipulating as the pathname.

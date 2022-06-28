@@ -9,7 +9,7 @@ design principles and strictly follow our API design guideline.
 We adopted **Design First** (i.e. API First or Contract First) approach for the REST API definition.
 Our API follows [OpenAPI 3.0.x specification](https://spec.openapis.org/oas/latest.html).
 
-Please check [the ExtremeCloud IQ API guidelines](api-guideline.md).
+Please check [the details of ExtremeCloud IQ API guidelines](api-guideline.md).
 
 # Tools
 
@@ -29,7 +29,7 @@ You can install desktop version (recommended) or use online version from [offici
 
 ## OpenAPI Linter
 
-To make sure every API definition meet [our API Guidelines standard](api-guideline.md), we recommend using 
+To make sure every API definition change meets [ExtremeCloud IQ API Guidelines](api-guideline.md), we recommend using 
 both **Spectral** and **Redocly** to validate/lint any API definition changes.
 
 ### Spectral
