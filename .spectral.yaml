@@ -1,7 +1,7 @@
 extends: [[spectral:oas, recommended]]
 rules:
   operation-short-summary:
-    description: "Operation summary should be short, no full stops and less than 50 characters"
+    description: Operation summary should be short, no full stops and less than 50 characters
     recommended: true
     type: style
     given: "$.paths.*[?( @property === 'get' || @property === 'put' || @property === 'post' || @property === 'delete' || @property === 'options' || @property === 'head' || @property === 'patch' || @property === 'trace' )]"
@@ -38,10 +38,10 @@ rules:
       functionOptions:
         type: camel
 
-  http-get-no-body-oas3:
+  http-get-no-body:
     description: The HTTP `GET` request MUST NOT have a request body
+    recommended: true
     severity: error
-    formats: [oas3]
     given: $.paths..get.requestBody
     then:
       function: undefined
