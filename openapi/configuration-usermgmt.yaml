@@ -147,7 +147,7 @@ paths:
       tags:
         - Configuration - User Management
       summary: Create an end user
-      description: Create a new user.
+      description: Create a new end user.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_end_user'
@@ -175,7 +175,7 @@ paths:
       tags:
         - Configuration - User Management
       summary: Regenerate a new password for the end user
-      description: Update the user's password with a system generated password
+      description: Update the end user's password with a system generated password.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_regenerate_end_user_password'

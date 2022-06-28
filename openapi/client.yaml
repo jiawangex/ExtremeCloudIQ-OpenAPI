@@ -34,7 +34,7 @@ paths:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_details_for_one_client'
       operationId: getClient
-      description: Get client detailed information
+      description: Get client detailed information.
       parameters:
         - name: id
           in: path
@@ -79,7 +79,7 @@ paths:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_usage'
       operationId: getClientUsage
-      description: Get client usage
+      description: Get the client usage.
       parameters:
         - name: clientIds
           in: query
@@ -187,7 +187,7 @@ paths:
       tags:
         - Client
       summary: List active clients
-      description: List active clients with filters and pagination
+      description: List active clients with filters and pagination.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_list'

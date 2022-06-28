@@ -30,7 +30,7 @@ paths:
       tags:
         - Account
       summary: Get the default device password in the account
-      description: Get the default device password in the account
+      description: Get the default device password in the account.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_default_device_password'
@@ -50,7 +50,8 @@ paths:
       tags:
         - Account
       summary: Update the default device password in the account
-      description: Update the default device password in the global setting for accessing the console/shell of the devices
+      description: >-
+        Update the default device password in the global setting for accessing the console/shell of the devices.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_default_device_password'

@@ -70,7 +70,7 @@ paths:
       tags:
         - User
       summary: Create new user
-      description: Create a new user.
+      description: Create a new user to access.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_new_user'

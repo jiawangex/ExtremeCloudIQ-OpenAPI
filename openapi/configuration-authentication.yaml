@@ -282,7 +282,7 @@ paths:
       tags:
         - Configuration - Authentication
       summary: Delete a LDAP server
-      description: Delete a specific LDAP server by ID
+      description: Delete a specific LDAP server by ID.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_ldap_server'
@@ -692,7 +692,7 @@ paths:
       tags:
         - Configuration - Authentication
       summary: Get external RADIUS server by ID
-      description: Get detailed configuration for a specific external RADIUS server
+      description: Get detailed configuration for a specific external RADIUS server.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_server_by_id'
@@ -946,7 +946,7 @@ paths:
       tags:
         - Configuration - Authentication
       summary: Delete a RADIUS client object configuration
-      description: Delete an existing RADIUS client object configuration by ID
+      description: Delete an existing RADIUS client object configuration by ID.
       externalDocs:
         description: API Reference
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_radius_client_object_configuration'
@@ -1013,7 +1013,7 @@ paths:
         - Configuration - Authentication
       summary: List Radius proxy devices
       operationId: listRadiusProxyDevices
-      description: List devices for Radius Proxy
+      description: List devices for Radius Proxy.
       parameters:
         - name: page
           in: query
