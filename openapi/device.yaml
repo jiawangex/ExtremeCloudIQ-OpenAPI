@@ -767,7 +767,7 @@ paths:
     post:
       tags:
         - Device
-      summary: '[LRO] Reset a device to factory default.'
+      summary: '[LRO] Reset a device to factory default'
       description: Reset a device to factory default settings
       externalDocs:
         description: API Reference

@@ -72,7 +72,7 @@ paths:
     post:
       tags:
         - Authentication
-      summary: 'User logout, a.k.a. Revoke the current access token'
+      summary: 'User logout (Revoke the current access token)'
       description: 'User logout, the current access token will be revoked and the following access with the same token will be immediately denied.'
       operationId: logout
       externalDocs:

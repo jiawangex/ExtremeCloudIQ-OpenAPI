@@ -433,7 +433,7 @@ paths:
     get:
       tags:
         - Configuration - User Management
-      summary: Get port assignments for devices (only support AP150W now) in a network policy
+      summary: Get device port assignments in network policy
       description: Get port assignments for devices (only support AP150W now) in a network policy.
       externalDocs:
         description: API Reference
@@ -461,7 +461,7 @@ paths:
     post:
       tags:
         - Configuration - User Management
-      summary: Assign ports for devices (only support AP150W now) in a network policy
+      summary: Assign ports to devices in network policy
       description: Assign ports for devices (only support AP150W now) in a network policy.
       externalDocs:
         description: API Reference
@@ -497,7 +497,7 @@ paths:
     post:
       tags:
         - Configuration - User Management
-      summary: Generate/regenerate shared keys for specified users in a PCG-enable network policy
+      summary: Generate shared keys for users in network policy
       description: Generate/regenerate shared keys for specified users in a specific PCG-enable network policy.
       externalDocs:
         description: API Reference
@@ -531,7 +531,7 @@ paths:
     post:
       tags:
         - Configuration - User Management
-      summary: Send keys to specified users in PCG-enabled network policy via Email
+      summary: Send keys to users in network policy via Email
       description: Send keys to specified users in PCG-enabled network policy via Email.
       externalDocs:
         description: API Reference
@@ -565,7 +565,7 @@ paths:
     post:
       tags:
         - Configuration - User Management
-      summary: Create a Key-based Private Client Group for a network policy
+      summary: Create Key-based PCG in network policy
       description: Create a Key-based Private Client Group for a specific network policy.
       externalDocs:
         description: API Reference

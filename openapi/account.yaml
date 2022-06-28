@@ -161,7 +161,7 @@ paths:
     get:
       tags:
         - Account
-      summary: List accessible external guest ExtremeCloud IQ accounts
+      summary: List accessible external guest accounts
       description: List accessible external ExtremeCloud IQ accounts.
       externalDocs:
         description: API Reference
