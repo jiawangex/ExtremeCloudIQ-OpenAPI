@@ -84,7 +84,7 @@ Check [Spectral ruleset customization guide](https://meta.stoplight.io/docs/spec
 redocly lint openapi/*.yaml
 ```
 
-We have defined custom Redocly ruleset in [redocly.yaml](redocly.yaml).
+We have defined custom Redocly ruleset in [.redocly.yaml](.redocly.yaml).
 
 Check [Redocly ruleset customization guide](https://redocly.com/docs/cli/resources/custom-rules/) and 
 [Redocly assertion configuration guide](https://redocly.com/docs/cli/resources/rules/assertions/#assertions) if needed.

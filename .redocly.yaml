@@ -1,15 +1,19 @@
 # See https://redocly.com/docs/cli/configuration/
 
-apis:
-  xiq@v1:
-    root: ./openapi/*
-
 lint:
   extends:
     - recommended
   rules:
     operation-4xx-response: off
     no-ambiguous-paths: off
+    assert/info-description:
+      subject: Info
+      property: description
+      message: Info description must be at least 30 characters and end with a full stop.
+      severity: error
+      defined: true
+      minLength: 30
+      pattern: /\.$/
     assert/operation-summary:
       subject: Operation
       property: summary
@@ -26,14 +30,6 @@ lint:
       severity: error
       defined: true
       minLength: 20
-      pattern: /\.$/
-    assert/info-description:
-      subject: Info
-      property: description
-      message: Info description must be at least 30 characters and end with a full stop.
-      severity: error
-      defined: true
-      minLength: 30
       pattern: /\.$/
 
 features.openapi:
