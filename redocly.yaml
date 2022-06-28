@@ -10,6 +10,31 @@ lint:
   rules:
     operation-4xx-response: off
     no-ambiguous-paths: off
+    assert/operation-summary:
+      subject: Operation
+      property: summary
+      message: Operation summary must be between 10 and 50 characters and NOT end with a full stop.
+      severity: error
+      defined: true
+      minLength: 10
+      maxLength: 50
+      pattern: /[^\.]$/
+    assert/operation-description:
+      subject: Operation
+      property: description
+      message: Operation description must be at least 20 characters and end with a full stop.
+      severity: error
+      defined: true
+      minLength: 20
+      pattern: /\.$/
+    assert/info-description:
+      subject: Info
+      property: description
+      message: Info description must be at least 30 characters and end with a full stop.
+      severity: error
+      defined: true
+      minLength: 30
+      pattern: /\.$/
 
 features.openapi:
   generateCodeSamples:
