@@ -1,0 +1,215 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: 'https://api.extremecloudiq.com'
+tags:
+  - name: Configuration - Deployment
+    description: Push configuration to devices
+paths:
+  /deployments:
+    post:
+      tags:
+        - Configuration - Deployment
+      summary: Push configuration and upgrade firmware
+      description: Push configuration and upgrade firmware to the target devices.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_push_configuration_and_upgrade_firmware_to_devices'
+      operationId: deployConfig
+      requestBody:
+        description: The device deploy configuration
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeploymentRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDeploymentResponse'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /deployments/status:
+    get:
+      tags:
+        - Configuration - Deployment
+      summary: Get configuration deployment status
+      description: Get configuration deployment status for the target devices.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_configuration_deployment_status'
+      operationId: getDeployStatus
+      parameters:
+        - name: deviceIds
+          in: query
+          description: The target device IDs
+          required: true
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              type: integer
+              format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/XiqDeploymentStatus'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /deployments/overview:
+    get:
+      tags:
+        - Configuration - Deployment
+      summary: Get configuration deployment overview
+      description: Get configuration deployment status overview.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_configuration_deployment_overview'
+      operationId: getDeployOverview
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDeploymentOverview'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqDeploymentPolicy:
+      required:
+        - enable_complete_configuration_update
+      type: object
+      properties:
+        enable_complete_configuration_update:
+          type: boolean
+          description: 'true if update complete configuration, otherwise update delta configuration'
+        firmware_upgrade_policy:
+          $ref: '#/components/schemas/XiqFirmwareUpgradePolicy'
+        firmware_activate_option:
+          $ref: '#/components/schemas/XiqFirmwareActivateOption'
+      description: Push configuration and upgrade firmware policy
+    XiqDeploymentRequest:
+      required:
+        - devices
+        - policy
+      type: object
+      properties:
+        devices:
+          $ref: 'device.yaml#/components/schemas/XiqDeviceFilter'
+        policy:
+          $ref: '#/components/schemas/XiqDeploymentPolicy'
+      description: The configuration deployment request to devices
+    XiqFirmwareActivateOption:
+      type: object
+      properties:
+        enable_activate_at_next_reboot:
+          type: boolean
+          description: Activate at next reboot (requires rebooting manually)
+        activation_delay_seconds:
+          type: integer
+          description: Activate after the given seconds
+          format: int64
+        activation_time:
+          type: integer
+          description: Activate at the following time according to the system clock on the updated device
+          format: int64
+      description: The firmware activate option (Only one of them can be enabled)
+    XiqFirmwareUpgradePolicy:
+      required:
+        - enable_distributed_upgrade
+        - enable_enforce_upgrade
+      type: object
+      properties:
+        enable_enforce_upgrade:
+          type: boolean
+          description: Whether enforce firmware upgrade even if the versions are the same
+        enable_distributed_upgrade:
+          type: boolean
+          description: Whether enable distributed firmware upgrade (Only applicable to APs)
+      description: The firmware upgrade policy
+    XiqDeploymentResponse:
+      type: object
+      properties:
+        request_id:
+          type: integer
+          format: int64
+      description: The configuration deployment response
+    XiqDeploymentStatus:
+      type: object
+      properties:
+        current_progress:
+          type: integer
+          description: 'The current deploy progress if not finished, range from 0 to 100'
+          format: int32
+        current_step_code:
+          type: string
+          description: The code of the current deploy step if not finished
+        current_step_message:
+          type: string
+          description: The readable message of the current deploy step if not finished
+        is_finished_successful:
+          type: boolean
+          description: Indicates whether the last deployment is successful if finished
+        last_deploy_time:
+          type: integer
+          description: The last deployed time (Only valid when in_progress = false)
+          format: int64
+        finished:
+          type: boolean
+      description: The configuration deployment status
+    XiqDeploymentOverview:
+      required:
+        - in_progress_devices
+        - total_progress
+      type: object
+      properties:
+        in_progress_devices:
+          type: integer
+          description: The device count with in progress deployment
+          format: int32
+        total_progress:
+          type: integer
+          description: 'The total progress, range from 0 to 100'
+          format: int32
+      description: The configuration deployment overview

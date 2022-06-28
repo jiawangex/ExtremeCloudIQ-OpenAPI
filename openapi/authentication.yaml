@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: 'https://api.extremecloudiq.com'
+tags:
+  - name: Authentication
+    description: User login & logout
+paths:
+  /login:
+    post:
+      tags:
+        - Authentication
+      summary: User login with username and password
+      description: |-
+        Get access token via username and password authentication.
+        The client must present Bearer token to access the protected API endpoints.The Bearer token should be present in the "Authorization" request header field and use the "Bearer" HTTP authentication scheme to transmit the access token.
+      operationId: login
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_login'
+      requestBody:
+        description: Login request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqLoginRequest'
+            examples:
+              Normal login:
+                summary: Login with username and password
+                description: User login with username/email and password
+                value:
+                  username: username@company.com
+                  password: ChangeMe
+        required: true
+      responses:
+        '200':
+          description: Successfully login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqLoginResponse'
+              examples:
+                200 example:
+                  summary: Login successful
+                  description: Login successful response example.
+                  value:
+                    access_token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBjdXN0MDAxLmNvbSIsInVzZXJfaWQiOjEsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwiY3VzdG9tZXJfaWQiOjEsImN1c3RvbWVyX21vZGUiOjAsImhpcV9lbmFibGVkIjpmYWxzZSwib3duZXJfaWQiOjEwMiwib3JnX2lkIjowLCJkYXRhX2NlbnRlciI6IlVTX1dlc3QiLCJxdW90YSI6Ijc1MDA7dz0zNjAwIiwianRpIjoiMTcyZTExMWMwNDMzNDBkODkyYmViYTkyNmZlOTM0NmYiLCJpc3MiOiJleHRyZW1lY2xvdWRpcS5jb20iLCJpYXQiOjE2NDQ4NzcwNDgsImV4cCI6MTY0NDk2MzQ0OH0.kFRSUXLhg9800gSU2BQ4Gf7l_8eEhgpd0D90Ia6w0kw
+                    token_type: Bearer
+                    expires_in: 86400
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+  /logout:
+    post:
+      tags:
+        - Authentication
+      summary: 'User logout, a.k.a. Revoke the current access token'
+      description: 'User logout, the current access token will be revoked and the following access with the same token will be immediately denied.'
+      operationId: logout
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_logout'
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqLoginRequest:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          type: string
+          description: The login username
+        password:
+          type: string
+          description: The login password
+      x-tags:
+        - Authentication
+    XiqLoginResponse:
+      required:
+        - access_token
+        - expires_in
+        - token_type
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: The access token with JWT format issued by ExtremeCloud IQ
+        token_type:
+          type: string
+          description: 'The type of token, only supports "Bearer" currently'
+        expires_in:
+          type: integer
+          format: int32
+          description: The lifetime in seconds of the access token
+      x-tags:
+        - Authentication

@@ -1,0 +1,1833 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: 'https://api.extremecloudiq.com'
+tags:
+  - name: Configuration - User Management
+    description: User Group/End User/PCG/PPSK Classification
+paths:
+  /email-templates:
+    get:
+      tags:
+        - Configuration - User Management
+      summary: List Email templates
+      description: List all Email notification templates.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_email_templates'
+      operationId: listEmailTemplates
+      parameters:
+        - name: passwordType
+          in: query
+          description: The password type
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqPasswordType'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqEmailTemplate'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /sms-templates:
+    get:
+      tags:
+        - Configuration - User Management
+      summary: List SMS templates
+      description: List all SMS notification templates.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_sms_templates'
+      operationId: listSmsTemplates
+      parameters:
+        - name: passwordType
+          in: query
+          description: The password type
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqPasswordType'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqSmsTemplate'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /endusers:
+    get:
+      tags:
+        - Configuration - User Management
+      summary: List end users
+      description: List a page of end users.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_end_users'
+      operationId: listEndUsers
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+        - name: user_group_ids
+          in: query
+          description: The user group IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        - name: usernames
+          in: query
+          description: The list of username
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqEndUser'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Create an end user
+      description: Create a new user.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_end_user'
+      operationId: createEndUser
+      requestBody:
+        description: Create end user request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateEndUserRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqEndUser'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/endusers/{id}/:regenerate-password':
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Regenerate a new password for the end user
+      description: Update the user's password with a system generated password
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_regenerate_end_user_password'
+      operationId: regenerateEndUserPassword
+      parameters:
+        - name: id
+          in: path
+          description: The enduser's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqRegenerateEndUserPasswordResponse'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/endusers/{id}':
+    put:
+      tags:
+        - Configuration - User Management
+      summary: Update an end user
+      description: Update a specific end user.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_end_user'
+      operationId: updateEndUser
+      parameters:
+        - name: id
+          in: path
+          description: The end user ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update end user request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateEndUserRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqEndUser'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - User Management
+      summary: Delete end user by ID
+      description: Delete a specific end user.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_end_user'
+      operationId: deleteSsidUser
+      parameters:
+        - name: id
+          in: path
+          description: The end user ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/pcgs/key-based/network-policy-{policyId}/users':
+    get:
+      tags:
+        - Configuration - User Management
+      summary: Get users for a PCG-enabled network policy
+      description: Get users for a specific PCG-enabled network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_key_based_pcg_users_from_given_network_policy_id'
+      operationId: getKeyBasedPcgUsers
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqKeyBasedPcgUser'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Configuration - User Management
+      summary: Replace all users in a PCG-enabled network policy
+      description: Replace all users in a specific PCG-enabled network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_replace_all_key_based_pcg_users'
+      operationId: updateKeyBasedPcgUsers
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload of update Key-based PCG users request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateKeyBasedPcgUsersRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Add users to a PCG-enabled network policy
+      description: Add users to a PCG-enabled network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_add_key_based_pcg_users_to_an_exists_key_based_pcg'
+      operationId: addKeyBasedPcgUsers
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload of add users to PCG-enabled network policy
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateKeyBasedPcgUsersRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - User Management
+      summary: Delete users from a PCG-enabled network policy
+      description: Delete users from a PCG-enabled network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_key_based_pcg_users'
+      operationId: deleteKeyBasedPcgUsers
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload of delete Key-based PCG users request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeleteKeyBasedPcgUsersRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /pcgs/key-based:
+    get:
+      tags:
+        - Configuration - User Management
+      summary: List Key-based Private Client Groups
+      description: List all Key-based Private Client Groups.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_all_key_based_pcg_entries'
+      operationId: listKeyBasedPrivateClientGroups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqKeyBasedPcg'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Setup a Key-based Private Client Group
+      description: 'Setup a Key-based Private Client Group, including network policy, user, user group, SSID, etc.'
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_initiate_key_based_pcg'
+      operationId: setupKeyBasedPrivateClientGroupNetworkPolicy
+      requestBody:
+        description: The request to setup Key-based PCG network policy
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqInitKeyBasedPcgNetworkPolicyRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/pcgs/key-based/network-policy-{policyId}/port-assignments':
+    get:
+      tags:
+        - Configuration - User Management
+      summary: Get port assignments for devices (only support AP150W now) in a network policy
+      description: Get port assignments for devices (only support AP150W now) in a network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_port_assignment_details_of_ap150w'
+      operationId: getPortAssignments
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqGetPortAssignmentDetailsResponse'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Assign ports for devices (only support AP150W now) in a network policy
+      description: Assign ports for devices (only support AP150W now) in a network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_assign_ports_for_ap150w'
+      operationId: assignPorts
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload of assign ports for devices
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqPcgAssignPortsRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqPcgAssignPortsResponse'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/pcgs/key-based/network-policy-{policyId}/keys/:generate':
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Generate/regenerate shared keys for specified users in a PCG-enable network policy
+      description: Generate/regenerate shared keys for specified users in a specific PCG-enable network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_generate_keys'
+      operationId: generateKeys
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: userIds
+          in: query
+          description: The user IDs
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/pcgs/key-based/network-policy-{policyId}/keys/:email':
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Send keys to specified users in PCG-enabled network policy via Email
+      description: Send keys to specified users in PCG-enabled network policy via Email.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_email_keys'
+      operationId: emailKeys
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: userIds
+          in: query
+          description: The user IDs
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/pcgs/key-based/network-policy-{policyId}/:onboard':
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Create a Key-based Private Client Group for a network policy
+      description: Create a Key-based Private Client Group for a specific network policy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_key_based_pcg_data'
+      operationId: onboardKeyBasedPrivateClientGroup
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqOnboardKeyBasedPcgRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /usergroups:
+    get:
+      tags:
+        - Configuration - User Management
+      summary: List user groups
+      description: List a page of user groups.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_user_groups'
+      operationId: listUserGroups
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+        - name: password_db_location
+          in: query
+          description: The password DB location
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqPasswordDbLocation'
+        - name: password_type
+          in: query
+          description: The password type
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqPasswordType'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqUserGroup'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - User Management
+      summary: Create user group
+      description: Create a new user group.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_user_group'
+      operationId: createUserGroup
+      requestBody:
+        description: Create user group request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateUserGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqUserGroup'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/usergroups/{id}':
+    put:
+      tags:
+        - Configuration - User Management
+      summary: Update user group
+      description: Update existing user group information.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_user_group'
+      operationId: updateUserGroup
+      parameters:
+        - name: id
+          in: path
+          description: The user group ID.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update user-group request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateUserGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqUserGroup'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - User Management
+      summary: Delete user group by ID
+      description: Delete the user-group for the specified ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_user_group'
+      operationId: deleteUserGroup
+      parameters:
+        - name: id
+          in: path
+          description: The user group ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqEmailTemplate:
+      required:
+        - create_time
+        - id
+        - name
+        - password_type
+        - predefined
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The email template name
+        description:
+          type: string
+          description: The email template description
+        predefined:
+          type: boolean
+          description: Wheter or not it is a system prefined template
+        content:
+          type: string
+          description: The email template form.
+        enable_preview:
+          type: boolean
+          description: The setting to enable preview
+        logo_url:
+          type: string
+          description: The logo url
+        icon_url:
+          type: string
+          description: The icon url
+        password_type:
+          $ref: '#/components/schemas/XiqPasswordType'
+      description: The password or ppsk notification template for user groups.
+    XiqSmsTemplate:
+      required:
+        - create_time
+        - id
+        - name
+        - password_type
+        - predefined
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The SMS template name
+        description:
+          type: string
+          description: The SMS template description
+        predefined:
+          type: boolean
+          description: Wheter or not it is a system prefined template
+        content:
+          type: string
+          description: The SMS template content
+        password_type:
+          $ref: '#/components/schemas/XiqPasswordType'
+      description: The password or PPSK notification template for user groups.
+    PagedXiqEndUser:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqEndUser'
+    XiqEndUser:
+      required:
+        - create_time
+        - email_address
+        - expired_time
+        - id
+        - name
+        - phone_number
+        - update_time
+        - user_group_id
+        - user_name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The user common name
+        description:
+          type: string
+          description: The user description
+        email_address:
+          type: string
+          description: The user email address
+        phone_number:
+          type: string
+          description: The user phone number
+        password:
+          type: string
+          description: The user password
+        user_name:
+          type: string
+          description: 'The user identifiable name or the same one from common name, emailAddress or phoneNumber'
+        organization:
+          type: string
+          description: The organization name
+        visit_purpose:
+          type: string
+          description: The purpose of visit
+        email_password_delivery:
+          type: string
+          description: The email address for password delivery
+        sms_password_delivery:
+          type: string
+          description: The sms number for password delivery
+        user_group_id:
+          type: integer
+          description: The user group ID
+          format: int64
+        expired_time:
+          type: integer
+          description: The password expired time
+          format: int64
+    XiqCreateEndUserRequest:
+      required:
+        - user_group_id
+        - user_name
+      type: object
+      properties:
+        user_group_id:
+          type: integer
+          description: The user group ID
+          format: int64
+        name:
+          type: string
+          description: The user common name
+        user_name:
+          type: string
+          description: 'The designated username, must match either the user''s name, emailAddress, or phoneNumber'
+        organization:
+          type: string
+          description: The organization name
+        visit_purpose:
+          type: string
+          description: The purpose of visit
+        description:
+          type: string
+          description: The user description
+        email_address:
+          type: string
+          description: The user email
+        phone_number:
+          type: string
+          description: The user phone number
+        password:
+          type: string
+          description: 'The user password, if null a random password will be generated base on the user group rule'
+        email_password_delivery:
+          type: string
+          description: The password delivery Email
+        sms_password_delivery:
+          type: string
+          description: The password delivery SMS
+    XiqRegenerateEndUserPasswordResponse:
+      required:
+        - password
+      type: object
+      properties:
+        password:
+          type: string
+          description: The new password of the end user
+      description: The newly generated password for the end user
+    XiqUpdateEndUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user common name
+        organization:
+          type: string
+          description: The organization name
+        visit_purpose:
+          type: string
+          description: The purpose of visit
+        description:
+          type: string
+          description: The user description
+        email_address:
+          type: string
+          description: The user email
+        phone_number:
+          type: string
+          description: The user phone number
+        password:
+          type: string
+          description: The user password
+        email_password_delivery:
+          type: string
+          description: The password delivery Email
+        sms_password_delivery:
+          type: string
+          description: The password delivery SMS
+    XiqInitKeyBasedPcgNetworkPolicyRequest:
+      required:
+        - policy_name
+        - ssid_name
+        - users
+      type: object
+      properties:
+        policy_name:
+          type: string
+          description: The network policy name
+        ssid_name:
+          type: string
+          description: The SSID name
+        users:
+          type: array
+          description: The Key-based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
+      description: The request to initiate Key-based Private Client Group
+    XiqCreateKeyBasedPcgUsersRequest:
+      required:
+        - users
+      type: object
+      properties:
+        users:
+          type: array
+          description: The key based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
+      description: The payload of add Key-based Private Client Group users request
+    XiqPcgAssignPortsRequest:
+      required:
+        - port_assignments
+      type: object
+      properties:
+        port_assignments:
+          type: array
+          description: The port assignment list
+          items:
+            $ref: '#/components/schemas/XiqPcgPortAssignment'
+      description: The payload to assign ports for AP150W)
+    XiqPcgPortAssignment:
+      required:
+        - device_id
+      type: object
+      properties:
+        device_id:
+          type: integer
+          description: The device ID of AP150W
+          format: int64
+        eth1_user_id:
+          type: integer
+          description: 'The eth1 user ID, get available users from "/pcgs/key-based/network-policy-{policyId}/users"'
+          format: int64
+        eth2_user_id:
+          type: integer
+          description: 'The eth2 user ID, get available users from "/pcgs/key-based/network-policy-{policyId}/users"'
+          format: int64
+        eth3_user_id:
+          type: integer
+          description: 'The eth3 user ID, get available users from "/pcgs/key-based/network-policy-{policyId}/users"'
+          format: int64
+      description: The PCG port assignment entry
+    XiqPcgAssignPortsResponse:
+      required:
+        - pcg_port_assignment_entries
+        - policy_id
+        - policy_name
+      type: object
+      properties:
+        policy_id:
+          type: integer
+          description: The network policy ID
+          format: int64
+        policy_name:
+          type: string
+          description: The network policy name
+        pcg_port_assignment_entries:
+          type: array
+          description: The port assignment entry list
+          items:
+            $ref: '#/components/schemas/XiqPcgPortAssignmentEntry'
+      description: The response of assign ports for AP150W
+    XiqPcgPortAssignmentEntry:
+      required:
+        - create_time
+        - device_id
+        - id
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        device_id:
+          type: integer
+          description: The device ID of AP150W
+          format: int64
+        eth1_user_id:
+          type: integer
+          description: 'The eth1 user ID, get available users from "/pcgs/key-based/network-policy-{policyId}/users"'
+          format: int64
+        eth2_user_id:
+          type: integer
+          description: 'The eth2 user ID, get available users from "/pcgs/key-based/network-policy-{policyId}/users"'
+          format: int64
+        eth3_user_id:
+          type: integer
+          description: 'The eth3 user ID, get available users from "/pcgs/key-based/network-policy-{policyId}/users"'
+          format: int64
+      description: The PCG port assignment entry
+    XiqOnboardKeyBasedPcgRequest:
+      required:
+        - enabled
+        - ssid_name
+        - user_ids
+      type: object
+      properties:
+        ssid_name:
+          type: string
+        enabled:
+          type: boolean
+          description: Enable the key based PCG
+        user_ids:
+          type: array
+          description: The request user IDs
+          items:
+            type: integer
+            description: The request user IDs
+            format: int64
+      description: The payload to create Key Based PCG data(from exist network policy and SSID)
+    XiqKeyBasedPcgUserBaseInfo:
+      required:
+        - email
+        - name
+        - user_group_name
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'The user name of key based PCG, which could not share with other exist key based PCG'
+        email:
+          type: string
+          description: The email for deliver key based PCG user password
+        user_group_name:
+          type: string
+          description: The user group name
+      description: The user's base info
+    XiqUpdateKeyBasedPcgUsersRequest:
+      required:
+        - users
+      type: object
+      properties:
+        users:
+          type: array
+          description: The Key-based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
+      description: The payload of replace Key-based Private Client Group users request
+    XiqKeyBasedPcg:
+      required:
+        - create_time
+        - enabled
+        - id
+        - policy_id
+        - policy_name
+        - ssid_name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        policy_id:
+          type: integer
+          description: The network policy ID
+          format: int64
+        policy_name:
+          type: string
+          description: The network policy name
+        ssid_name:
+          type: string
+          description: The SSID name
+        enabled:
+          type: boolean
+          description: Enabled Key Based PCG
+        users:
+          type: array
+          description: The XIQ key based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUser'
+      description: The response of key based PCG data
+    XiqKeyBasedPcgUser:
+      required:
+        - create_time
+        - email
+        - id
+        - name
+        - update_time
+        - user_group_name
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'The user name of key based PCG, which could not share with other exist key based PCG'
+        email:
+          type: string
+          description: The email for deliver key based PCG user password
+        user_group_name:
+          type: string
+          description: The user group name
+        id:
+          type: integer
+          description: The user ID
+          format: int64
+        create_time:
+          type: string
+          description: The create timestamp
+          format: date-time
+        update_time:
+          type: string
+          description: The create timestamp
+          format: date-time
+        org_id:
+          type: integer
+          description: The organization ID
+          format: int64
+      description: The key based PCG user detailed info
+    XiqGetPortAssignmentDetailsResponse:
+      required:
+        - policy_id
+        - policy_name
+      type: object
+      properties:
+        policy_id:
+          type: integer
+          description: The network policy ID
+          format: int64
+        policy_name:
+          type: string
+          description: The network policy name
+        pcg_port_assignment_entry_details:
+          type: array
+          description: The PCG port assignment entry details
+          items:
+            $ref: '#/components/schemas/XiqPcgPortAssignmentEntryDetail'
+      description: The response of port assignment details for AP150W
+    XiqPcgPortAssignmentEntryDetail:
+      required:
+        - create_time
+        - id
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        device:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryDeviceMeta'
+        eth1:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
+        eth2:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
+        eth3:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
+      description: The PCG port assignment entry detail
+    XiqPcgPortAssignmentEntryDeviceMeta:
+      required:
+        - create_time
+        - id
+        - mac_address
+        - product_type
+        - serial_number
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        mac_address:
+          type: string
+          description: The mac address
+        serial_number:
+          type: string
+          description: The serial number
+        product_type:
+          type: string
+          description: The product type
+      description: The PCG port assignment entry device info
+    XiqPcgPortAssignmentEntryEthUserMeta:
+      required:
+        - create_time
+        - id
+        - name
+        - password
+        - ssids
+        - update_time
+        - user_group_name
+        - user_type
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The user name
+        password:
+          type: string
+          description: The user password
+        user_type:
+          type: string
+          description: The user type
+        user_group_name:
+          type: string
+          description: The user group name
+        ssids:
+          type: array
+          description: The SSIDs
+          items:
+            type: string
+            description: The SSIDs
+      description: The PCG port assignment entry of eth user info
+    XiqDeleteKeyBasedPcgUsersRequest:
+      required:
+        - user_ids
+      type: object
+      properties:
+        user_ids:
+          type: array
+          description: The user ID list
+          items:
+            type: integer
+            description: The user ID list
+            format: int64
+      description: The payload of delete Key Based Private Client Group users request
+    XiqPasswordCharacterType:
+      type: string
+      description: 'Password generation using letters, numbers, and/or special characters'
+      enum:
+        - INCLUDE_ALL_CHARACTER_TYPE_ENABLED
+        - INCLUDE_ANY_CHARACTER_TYPES_ENABLED
+        - INCLUDE_ONLY_ONE_CHARACTER_TYPE_ENABLED
+    XiqPasswordDbLocation:
+      type: string
+      description: The access key storage location
+      enum:
+        - CLOUD
+        - LOCAL
+    XiqPasswordSettings:
+      required:
+        - password_character_types
+        - password_length
+        - psk_generation_method
+      type: object
+      properties:
+        enable_letters:
+          type: boolean
+          description: Enable use of letters
+        enable_numbers:
+          type: boolean
+          description: Enable use of numbers
+        enable_special_characters:
+          type: boolean
+          description: Enable use of special characters
+        password_concat_string:
+          type: string
+          description: The password concatenated string
+        psk_generation_method:
+          $ref: '#/components/schemas/XiqPskGenerationMethod'
+        password_character_types:
+          $ref: '#/components/schemas/XiqPasswordCharacterType'
+        password_length:
+          type: integer
+          description: The maximun password string length
+          format: int32
+      description: The password settings ID
+    XiqPasswordType:
+      type: string
+      description: The access key type
+      enum:
+        - PPSK
+        - RADIUS
+    XiqPcgType:
+      type: string
+      description: The private client group type for pcgUseOnly
+      enum:
+        - AP_BASED
+        - KEY_BASED
+    XiqPostExpirationAction:
+      type: object
+      properties:
+        enable_credentials_renewal:
+          type: boolean
+          description: The renew user credentials option or null for other option.
+        enable_delete_immediately:
+          type: boolean
+          description: The immediate delete option or null to schedule the delete.
+        delete_after_value:
+          type: integer
+          description: The after expiration scheduled time to delete or null to not delete..
+          format: int32
+        delete_after_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+      description: The type of action to take after the account expiration.
+    XiqPskGenerationMethod:
+      type: string
+      description: The psk generation method
+      enum:
+        - PASSWORD_ONLY
+        - USER_STRING_PASSWORD
+    PagedXiqUserGroup:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqUserGroup'
+    XiqUserGroup:
+      required:
+        - create_time
+        - delivery_settings
+        - expiration_settings
+        - id
+        - name
+        - password_db_location
+        - password_settings
+        - password_type
+        - predefined
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The user group name
+        description:
+          type: string
+          description: The user group description
+        predefined:
+          type: boolean
+          description: Whether it is predefined
+        password_db_location:
+          $ref: '#/components/schemas/XiqPasswordDbLocation'
+        password_type:
+          $ref: '#/components/schemas/XiqPasswordType'
+        pcg_use_only:
+          type: boolean
+          description: ' Whether it''s for PCG use only'
+        pcg_type:
+          $ref: '#/components/schemas/XiqPcgType'
+        ppsk_use_only:
+          type: boolean
+          description: Whether it's for PPSK use only
+        enable_cwp_reg:
+          type: boolean
+          description: Whether to enable CWP registration setting
+        password_settings:
+          $ref: '#/components/schemas/XiqPasswordSettings'
+        expiration_settings:
+          $ref: '#/components/schemas/XiqExpirationSettings'
+        delivery_settings:
+          $ref: '#/components/schemas/XiqDeliverySettings'
+    XiqDateTimeType:
+      required:
+        - day_of_month
+        - hour_of_day
+        - minute_of_hour
+        - month
+        - year
+      type: object
+      properties:
+        day_of_month:
+          type: integer
+          description: The day of month
+          format: int32
+        month:
+          type: integer
+          description: The month
+          format: int32
+        year:
+          type: integer
+          description: The year
+          format: int32
+        hour_of_day:
+          type: integer
+          description: The 24-hour format hour of day
+          format: int32
+        minute_of_hour:
+          type: integer
+          description: The minute of the hour
+          format: int32
+      description: The end date and time
+    XiqDateTimeUnitType:
+      type: string
+      description: The after expiration scheduled time unit.
+      enum:
+        - MINUTE
+        - HOUR
+        - DAY
+        - WEEK
+    XiqDeliverySettings:
+      type: object
+      properties:
+        email_template_id:
+          type: integer
+          description: The Email Template ID
+          format: int64
+        sms_template_id:
+          type: integer
+          description: 'The SMS Template ID '
+          format: int64
+      description: The password delivery settings
+    XiqExpirationActionType:
+      type: string
+      description: 'The Expiration Action to take, null if the account is never expired.'
+      enum:
+        - SHOW_MESSAGE
+        - REJECT_ACCESS
+    XiqExpirationSettings:
+      type: object
+      properties:
+        expiration_type:
+          $ref: '#/components/schemas/XiqExpirationType'
+        valid_during_dates:
+          $ref: '#/components/schemas/XiqValidDuringDateSettings'
+        valid_for_time_period:
+          $ref: '#/components/schemas/XiqValidForTimePeriodSettings'
+        valid_daily:
+          $ref: '#/components/schemas/XiqValidDailySettings'
+        expiration_action:
+          $ref: '#/components/schemas/XiqExpirationActionType'
+        post_expiration_action:
+          $ref: '#/components/schemas/XiqPostExpirationAction'
+      description: The password expiration settings
+    XiqExpirationType:
+      type: string
+      description: The for one of the account experation types.
+      enum:
+        - NEVER_EXPIRE
+        - VALID_DURING_DATES
+        - VALID_FOR_TIME_PERIOD
+        - DAILY
+    XiqUpdateUserGroupRequest:
+      required:
+        - delivery_settings
+        - expiration_settings
+        - name
+        - password_db_location
+        - password_settings
+        - password_type
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user group name
+        description:
+          type: string
+          description: The user group description
+        password_db_location:
+          $ref: '#/components/schemas/XiqPasswordDbLocation'
+        ppsk_use_only:
+          type: boolean
+          description: Whether it's for PPSK use only
+        password_type:
+          $ref: '#/components/schemas/XiqPasswordType'
+        enable_max_clients_per_ppsk:
+          type: boolean
+          description: The enablement for the maximum number of clients per private PSK
+        max_clients_per_ppsk:
+          type: integer
+          description: The maximum number of clients per private PSK
+          format: int32
+        pcg_use_only:
+          type: boolean
+          description: Whether it's for PCG use only
+        pcg_type:
+          $ref: '#/components/schemas/XiqPcgType'
+        enable_cwp_reg:
+          type: boolean
+          description: Whether to enable CWP registration setting
+        password_settings:
+          $ref: '#/components/schemas/XiqPasswordSettings'
+        expiration_settings:
+          $ref: '#/components/schemas/XiqExpirationSettings'
+        delivery_settings:
+          $ref: '#/components/schemas/XiqDeliverySettings'
+    XiqValidDailySettings:
+      required:
+        - daily_end_hour
+        - daily_end_minute
+        - daily_start_hour
+        - daily_start_minute
+      type: object
+      properties:
+        daily_start_hour:
+          type: integer
+          description: The 24-hour format start hour of the day
+          format: int32
+        daily_start_minute:
+          type: integer
+          description: The minute of the hour
+          format: int32
+        daily_end_hour:
+          type: integer
+          description: The 24-hour format end hour of day the end
+          format: int32
+        daily_end_minute:
+          type: integer
+          description: The minute of the hour
+          format: int32
+      description: The settings for Valid Daily option or null for other settings.
+    XiqValidDuringDateSettings:
+      required:
+        - end_date_time
+        - start_date_time
+        - time_zone
+      type: object
+      properties:
+        start_date_time:
+          $ref: '#/components/schemas/XiqDateTimeType'
+        end_date_time:
+          $ref: '#/components/schemas/XiqDateTimeType'
+        time_zone:
+          type: string
+          description: The date/time timezone
+      description: The settings for Valid During Dates option or null for other settings.
+    XiqValidForTimePeriodSettings:
+      required:
+        - valid_time_period_after
+      type: object
+      properties:
+        valid_time_period_after:
+          $ref: '#/components/schemas/XiqValidTimePeriodAfterType'
+        after_id_creation_settings:
+          $ref: '#/components/schemas/XiqValidTimePeriodAfterIdCreation'
+        after_first_login_settings:
+          $ref: '#/components/schemas/XiqValidTimePeriodAfterFirstLogin'
+      description: The settings for Valid For Time Period option or null for other settings.
+    XiqValidTimePeriodAfterFirstLogin:
+      required:
+        - first_login_within
+        - first_login_within_unit
+        - valid_time_period
+        - valid_time_period_unit
+      type: object
+      properties:
+        valid_time_period:
+          type: integer
+          description: The valid time period after the first login
+          format: int32
+        valid_time_period_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+        first_login_within:
+          type: integer
+          description: The first time the access key must be used
+          format: int32
+        first_login_within_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+      description: The settings for the valid time period after First Login option or null for the other option
+    XiqValidTimePeriodAfterIdCreation:
+      required:
+        - valid_time_period
+        - valid_time_period_unit
+      type: object
+      properties:
+        valid_time_period:
+          type: integer
+          description: The valid time period after account creation
+          format: int32
+        valid_time_period_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+      description: The settings for the valid time period after ID Creation option or null for the other option
+    XiqValidTimePeriodAfterType:
+      type: string
+      description: The valid time period after Id creation or first login.
+      enum:
+        - ID_CREATION
+        - FIRST_LOGIN
+    XiqCreateUserGroupRequest:
+      required:
+        - delivery_settings
+        - expiration_settings
+        - name
+        - password_db_location
+        - password_settings
+        - password_type
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user group name
+        description:
+          type: string
+          description: The user group description
+        password_db_location:
+          $ref: '#/components/schemas/XiqPasswordDbLocation'
+        ppsk_use_only:
+          type: boolean
+          description: Whether it's for PPSK use only
+        password_type:
+          $ref: '#/components/schemas/XiqPasswordType'
+        enable_max_clients_per_ppsk:
+          type: boolean
+          description: The enablement for the maximum number of clients per private PSK
+        max_clients_per_ppsk:
+          type: integer
+          description: The maximum number of clients per private PSK
+          format: int32
+        pcg_use_only:
+          type: boolean
+          description: Whether it's for PCG use only
+        pcg_type:
+          $ref: '#/components/schemas/XiqPcgType'
+        enable_cwp_reg:
+          type: boolean
+          description: Whether to enable CWP registration setting
+        password_settings:
+          $ref: '#/components/schemas/XiqPasswordSettings'
+        expiration_settings:
+          $ref: '#/components/schemas/XiqExpirationSettings'
+        delivery_settings:
+          $ref: '#/components/schemas/XiqDeliverySettings'

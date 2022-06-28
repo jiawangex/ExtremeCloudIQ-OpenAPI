@@ -1,0 +1,183 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: 'https://api.extremecloudiq.com'
+tags:
+  - name: Network Policy
+    description: Unified configuration management for wireless and wired network devices
+paths:
+  '/network-policies/{id}':
+    get:
+      tags:
+        - Network Policy
+      summary: Get the network policy
+      description: Get an existing network policy by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_network_policy'
+      operationId: getNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqNetworkPolicy'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Network Policy
+      summary: Update the network policy
+      description: Update network policy by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_network_policy'
+      operationId: updateNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The body of update network policy API
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateNetworkPolicyRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqNetworkPolicy'
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Network Policy
+      summary: Delete the network policy
+      description: Delete an existing network policy by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_network_policy'
+      operationId: deleteNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/common.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqNetworkPolicyType:
+      type: string
+      description: The network policy type
+      enum:
+        - NETWORK_ACCESS_AND_SWITCHING
+        - BRANCH_ROUTING
+        - WIRELESS_ACCESS
+        - SWITCHING
+        - NETWORK_ACCESS_AND_SWITCHING_AND_BR
+        - NETWORK_ACCESS_AND_BRANCH_ROUTING
+        - SWITCHING_AND_BRANCH_ROUTING
+    XiqUpdateNetworkPolicyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The network policy name
+        description:
+          type: string
+          description: The network policy description
+        type:
+          $ref: '#/components/schemas/XiqNetworkPolicyType'
+    XiqNetworkPolicy:
+      required:
+        - create_time
+        - id
+        - name
+        - predefined
+        - type
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The network policy name
+        description:
+          type: string
+          description: The network policy description
+        predefined:
+          type: boolean
+          description: Whether it is a predefined network policy
+        type:
+          type: string
+          description: The network policy type
