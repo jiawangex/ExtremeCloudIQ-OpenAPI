@@ -70,7 +70,7 @@ redocly --version
 spectral lint openapi/*.yaml
 ```
 
-We have defined custom Spectral ruleset in `.spectral.yaml`.
+We have defined custom Spectral ruleset in [.spectral.yaml](.spectral.yaml).
 
 Check [Spectral ruleset customization guide](https://meta.stoplight.io/docs/spectral/e5b9616d6d50c-custom-rulesets) if needed.
 
@@ -80,19 +80,21 @@ Check [Spectral ruleset customization guide](https://meta.stoplight.io/docs/spec
 redocly lint openapi/*.yaml
 ```
 
-We have defined custom Redocly ruleset in `redocly.yaml`.
+We have defined custom Redocly ruleset in [redocly.yaml`.
 
 Check [Redocly ruleset customization guide](https://redocly.com/docs/cli/resources/custom-rules/) if needed.
 
 # Bundle
 
-We define some common definitions in `openapi/common` directory,
+We define some common components in `openapi/common` directory.
 There are a lot of API domains. We split our APIs to multiple separate files to improve the maintainability.
-For some OpenAPI tools don't support multi-file approach and require a single-file API definition, 
-you can use Redocly CLI to combine separate API definition files into one.
 
+For some OpenAPI tools don't support multi-file approach and require a single-file API definition, 
+you can use `redocly` CLI to combine separate API definition files into one.
+
+Bundle all OpenAPI yaml files in `openapi` directory to `dist` directory:
 ```bash
-redocly bundle --output dist --ext yaml openapi/*
+redocly bundle --output dist --ext yaml openapi/*.yaml
 ```
 
 The CLI usage can be found [here](https://redocly.com/docs/cli/commands/bundle/).
@@ -103,11 +105,12 @@ We need to follow the below procedure for any OpenAPI definition changes:
 1. Create feature branch from release branch
 2. Change OpenAPI definition
 3. [Validate/linting](#openapi-linting) the changed OpenAPI definition by `Spectral` and `Redocly` with our custom ruleset
-4. Create a GitHub pull request and add stakeholders (API Governance team, BE, FE, QA, PLM) to review and approve
+4. Create a GitHub pull request and add stakeholders (API Governance team, BE, FE, QA, PLM, etc.) to review and approve
 5. Make sure resolve all concerns from stakeholders
-6. Start working on the new OpenAPI parallel
+6. Start working on the new OpenAPI parallel:
    1. Backend engineer start the API implementation
    2. Frontend engineer start the UI implementation
    3. QA engineer start to write test cases
-7. Repeat step 2 to step 5 if additional OpenAPI definition change needed during step 6
+   4. PLM start to communicate the new OpenAPI proposal to customer
+7. Repeat step 2 to step 5 if additional OpenAPI definition change needed during step 6 (Anyone can initiate the process)
 8. Merge changes to release branch
