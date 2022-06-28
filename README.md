@@ -42,10 +42,8 @@ Please check [official installation guide](https://github.com/stoplightio/spectr
 npm install -g @stoplight/spectral-cli
 ```
 
-{% note %}
-**Note:** If you don't have `Node.js` and `npm` installed, please check 
+**Note:** If you don't have `Node.js` and `npm` installed, please check
 [this page](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install them.
-{% endnote %}
 
 * Verify Spectral CLI installation:
 ```bash
