@@ -1,0 +1,21 @@
+# See https://redocly.com/docs/cli/configuration/
+
+apis:
+  xiq@v1:
+    root: ./openapi/*
+
+lint:
+  extends:
+    - recommended
+  rules:
+    operation-4xx-response: off
+    no-ambiguous-paths: off
+
+features.openapi:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: Java
+      - lang: Go
+      - lang: Node.js
+      - lang: Python
