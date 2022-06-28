@@ -41,9 +41,15 @@ Please check [official installation guide](https://github.com/stoplightio/spectr
 ```bash
 npm install -g @stoplight/spectral-cli
 ```
-* Check Spectral CLI installation:
+
+{% note %}
+**Note:** If you don't have `Node.js` and `npm` installed, please check 
+[this page](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install them.
+{% endnote %}
+
+* Verify Spectral CLI installation:
 ```bash
-redocly --version
+spectral --version
 ```
 
 When working with IntelliJ IDEA, please also install [Spectral plugin](https://plugins.jetbrains.com/plugin/18520-spectral).
@@ -57,7 +63,7 @@ Please check [official installation guide](https://redocly.com/docs/cli/installa
 npm i -g @redocly/cli@latest
 ```
 
-* Check Redocly CLI installation:
+* Verify Redocly CLI installation:
 ```bash
 redocly --version
 ```
