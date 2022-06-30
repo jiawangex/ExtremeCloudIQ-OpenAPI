@@ -3,10 +3,10 @@ info:
   title: ExtremeCloud IQ API
   description: ExtremeCloud IQ provides RESTful API service for external and internal
     applications.
-  version: 22.1.20.26
+  version: 22.4.0.29
 externalDocs:
   description: API Documentation
-  url: http://localhost:8081/api-docs
+  url: http://localhost:8081/api-docs/api-reference.html
 servers:
 - url: http://localhost:8081
   description: ExtremeCloud IQ REST API Server
@@ -15,6 +15,8 @@ tags:
   description: User login & logout
 - name: Authorization
   description: API token and permissions
+- name: Operation
+  description: Long-Running Operations (LRO) management for asynchronous APIs
 - name: Account
   description: ExtremeCloud IQ Account
 - name: User
@@ -57,7 +59,7 @@ paths:
       description: Update existing user group information.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_user_group
+        url: http://localhost:8081/api-docs/api-reference.html#_update_user_group
       operationId: updateUserGroup
       parameters:
       - name: id
@@ -102,7 +104,7 @@ paths:
       description: Delete the user-group for the specified ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_user_group
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_user_group
       operationId: deleteUserGroup
       parameters:
       - name: id
@@ -137,7 +139,7 @@ paths:
       description: Get user profile details for the specified ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_user_profile_by_id
+        url: http://localhost:8081/api-docs/api-reference.html#_get_user_profile_by_id
       operationId: getUserProfile
       parameters:
       - name: id
@@ -175,7 +177,7 @@ paths:
       description: Update an existing user profile.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_user_profile_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_update_user_profile_configuration
       operationId: updateCoUserProfile
       parameters:
       - name: id
@@ -220,7 +222,7 @@ paths:
       description: Delete an existing user profile by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_user_profile_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_user_profile_configuration
       operationId: deleteCoUserProfile
       parameters:
       - name: id
@@ -255,7 +257,7 @@ paths:
       description: Change the SSID PSK password.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_the_ssid_psk_password
+        url: http://localhost:8081/api-docs/api-reference.html#_change_the_ssid_psk_password
       operationId: changePskPassword
       parameters:
       - name: id
@@ -297,7 +299,7 @@ paths:
       description: Change the SSID mode to WEP.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_ssid_mode_to_wep
+        url: http://localhost:8081/api-docs/api-reference.html#_set_ssid_mode_to_wep
       operationId: setSsidModeWep
       parameters:
       - name: id
@@ -339,7 +341,7 @@ paths:
       description: Change the SSID mode to PSK.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_ssid_mode_to_psk
+        url: http://localhost:8081/api-docs/api-reference.html#_set_ssid_mode_to_psk
       operationId: setSsidModePsk
       parameters:
       - name: id
@@ -381,7 +383,7 @@ paths:
       description: Change the SSID mode to PPSK.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_ssid_mode_to_ppsk
+        url: http://localhost:8081/api-docs/api-reference.html#_set_ssid_mode_to_ppsk
       operationId: setSsidModePpsk
       parameters:
       - name: id
@@ -423,7 +425,7 @@ paths:
       description: Change the SSID mode to open access.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_ssid_mode_to_open_access
+        url: http://localhost:8081/api-docs/api-reference.html#_set_ssid_mode_to_open_access
       operationId: setSsidModeOpen
       parameters:
       - name: id
@@ -458,7 +460,7 @@ paths:
       description: Change the SSID mode to 802.1x.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_ssid_mode_to_dot1x
+        url: http://localhost:8081/api-docs/api-reference.html#_set_ssid_mode_to_dot1x
       operationId: setSsidModeDot1x
       parameters:
       - name: id
@@ -500,7 +502,7 @@ paths:
       description: Get detailed configuration for internal RADIUS server by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_internal_radius_server_by_id
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_internal_radius_server_by_id
       operationId: getInternalRadiusServer
       parameters:
       - name: id
@@ -538,7 +540,7 @@ paths:
       description: Update internal RADIUS server configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_internal_radius_server_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_update_internal_radius_server_configuration
       operationId: updateInternalRadiusServer
       parameters:
       - name: id
@@ -583,7 +585,7 @@ paths:
       description: Delete an existing internal RADIUS server configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_internal_radius_server_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_internal_radius_server_configuration
       operationId: deleteInternalRadiusServer
       parameters:
       - name: id
@@ -618,7 +620,7 @@ paths:
       description: Get detailed configuration for a specific external RADIUS server
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_external_radius_server_by_id
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_external_radius_server_by_id
       operationId: getExternalRadiusServer
       parameters:
       - name: id
@@ -656,7 +658,7 @@ paths:
       description: Update external RADIUS server configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_external_radius_server_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_update_external_radius_server_configuration
       operationId: updateExternalRadiusServer
       parameters:
       - name: id
@@ -697,7 +699,7 @@ paths:
       description: Delete an existing external RADIUS server configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_external_radius_server_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_external_radius_server_configuration
       operationId: deleteExternalRadiusServer
       parameters:
       - name: id
@@ -732,7 +734,7 @@ paths:
       description: Get an existing RADIUS proxy configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_the_radius_proxy_configuration_by_id
+        url: http://localhost:8081/api-docs/api-reference.html#_get_the_radius_proxy_configuration_by_id
       operationId: getRadiusProxy
       parameters:
       - name: id
@@ -770,7 +772,7 @@ paths:
       description: Update RADIUS proxy configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_radius_proxy_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_update_radius_proxy_configuration
       operationId: updateRadiusProxy
       parameters:
       - name: id
@@ -838,7 +840,7 @@ paths:
       description: Delete an existing RADIUS proxy configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_radius_proxy_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_radius_proxy_configuration
       operationId: deleteRadiusProxy
       parameters:
       - name: id
@@ -873,7 +875,7 @@ paths:
       description: Get detailed configuration for a specific RADIUS client object.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_radius_client_object_configuration_by_id
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_radius_client_object_configuration_by_id
       operationId: getRadiusClientObject
       parameters:
       - name: id
@@ -911,7 +913,7 @@ paths:
       description: Update RADIUS client object configuration by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_radius_client_object_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_update_radius_client_object_configuration
       operationId: updateRadiusClientObject
       parameters:
       - name: id
@@ -952,7 +954,7 @@ paths:
       description: Delete an existing RADIUS client object configuration by ID
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_radius_client_object_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_radius_client_object_configuration
       operationId: deleteRadiusClientObject
       parameters:
       - name: id
@@ -987,7 +989,7 @@ paths:
       description: Get users for a specific PCG-enabled network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_key_based_pcg_users_from_given_network_policy_id
+        url: http://localhost:8081/api-docs/api-reference.html#_get_key_based_pcg_users_from_given_network_policy_id
       operationId: getKeyBasedPcgUsers
       parameters:
       - name: policyId
@@ -1027,7 +1029,7 @@ paths:
       description: Replace all users in a specific PCG-enabled network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_replace_all_key_based_pcg_users
+        url: http://localhost:8081/api-docs/api-reference.html#_replace_all_key_based_pcg_users
       operationId: updateKeyBasedPcgUsers
       parameters:
       - name: policyId
@@ -1068,7 +1070,7 @@ paths:
       description: Add users to a PCG-enabled network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_add_key_based_pcg_users_to_an_exists_key_based_pcg
+        url: http://localhost:8081/api-docs/api-reference.html#_add_key_based_pcg_users_to_an_exists_key_based_pcg
       operationId: addKeyBasedPcgUsers
       parameters:
       - name: policyId
@@ -1109,7 +1111,7 @@ paths:
       description: Delete users from a PCG-enabled network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_key_based_pcg_users
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_key_based_pcg_users
       operationId: deleteKeyBasedPcgUsers
       parameters:
       - name: policyId
@@ -1143,6 +1145,124 @@ paths:
           description: Accepted
       security:
       - BearerAuth: []
+  /network-policies/{id}:
+    get:
+      tags:
+      - Network Policy
+      summary: Get the network policy
+      description: Get an existing network policy by ID.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_get_network_policy
+      operationId: getNetworkPolicy
+      parameters:
+      - name: id
+        in: path
+        description: The network policy ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqNetworkPolicy'
+      security:
+      - BearerAuth: []
+    put:
+      tags:
+      - Network Policy
+      summary: Update the network policy
+      description: Update network policy by ID.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_update_network_policy
+      operationId: updateNetworkPolicy
+      parameters:
+      - name: id
+        in: path
+        description: The network policy ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: The body of update network policy API
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateNetworkPolicyRequest'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqNetworkPolicy'
+      security:
+      - BearerAuth: []
+    delete:
+      tags:
+      - Network Policy
+      summary: Delete the network policy
+      description: Delete an existing network policy by ID.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_network_policy
+      operationId: deleteNetworkPolicy
+      parameters:
+      - name: id
+        in: path
+        description: The network policy ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
   /locations/{id}:
     put:
       tags:
@@ -1151,7 +1271,7 @@ paths:
       description: Update the location information with the specified location ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_location
+        url: http://localhost:8081/api-docs/api-reference.html#_update_location
       operationId: updateLocation
       parameters:
       - name: id
@@ -1196,7 +1316,7 @@ paths:
       description: Delete the location for the specified ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_location
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_location
       operationId: deleteLocation
       parameters:
       - name: id
@@ -1242,7 +1362,7 @@ paths:
       description: Update floor information with the floor ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_floor
+        url: http://localhost:8081/api-docs/api-reference.html#_update_floor
       operationId: updateFloor
       parameters:
       - name: id
@@ -1302,7 +1422,7 @@ paths:
       description: Delete the floor for the specified ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_floor
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_floor
       operationId: deleteFloor
       parameters:
       - name: id
@@ -1337,7 +1457,7 @@ paths:
       description: Update the building information with the building ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_building
+        url: http://localhost:8081/api-docs/api-reference.html#_update_building
       operationId: updateBuilding
       parameters:
       - name: id
@@ -1391,7 +1511,7 @@ paths:
       description: Delete the building for the specified ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_building
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_building
       operationId: deleteBuilding
       parameters:
       - name: id
@@ -1433,7 +1553,7 @@ paths:
       description: Get a specific LDAP server by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_ldap_server
+        url: http://localhost:8081/api-docs/api-reference.html#_get_ldap_server
       operationId: getLdapServer
       parameters:
       - name: id
@@ -1471,7 +1591,7 @@ paths:
       description: Update configuration for a specific LDAP server.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_ldap_server
+        url: http://localhost:8081/api-docs/api-reference.html#_update_ldap_server
       operationId: updateLdapServer
       parameters:
       - name: id
@@ -1536,7 +1656,7 @@ paths:
       description: Delete a specific LDAP server by ID
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_ldap_server
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_ldap_server
       operationId: deleteLdapServer
       parameters:
       - name: id
@@ -1573,7 +1693,7 @@ paths:
         Appliable when HIQ is enabled.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_hiq_context
+        url: http://localhost:8081/api-docs/api-reference.html#_get_hiq_context
       operationId: getHiqContext
       responses:
         "400":
@@ -1605,7 +1725,7 @@ paths:
         Only HIQ Admin can performance this operation when HIQ is enabled.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_hiq_context
+        url: http://localhost:8081/api-docs/api-reference.html#_set_hiq_context
       operationId: setHiqContext
       requestBody:
         description: The new HIQ context
@@ -1641,7 +1761,7 @@ paths:
         Appliable when HIQ is enabled.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_reading_context
+        url: http://localhost:8081/api-docs/api-reference.html#_get_reading_context
       operationId: getReadingOrgIds
       responses:
         "400":
@@ -1676,7 +1796,7 @@ paths:
         Only HIQ Admin can performance this operation.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_reading_context
+        url: http://localhost:8081/api-docs/api-reference.html#_set_reading_context
       operationId: setReadingOrgIds
       requestBody:
         description: The organization IDs used for reading data
@@ -1715,7 +1835,7 @@ paths:
         Appliable when HIQ is enabled.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_creating_context
+        url: http://localhost:8081/api-docs/api-reference.html#_get_creating_context
       operationId: getCreatingOrgId
       responses:
         "400":
@@ -1748,7 +1868,7 @@ paths:
         Only HIQ Admin can performance this operation when HIQ is enabled.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_set_creating_context
+        url: http://localhost:8081/api-docs/api-reference.html#_set_creating_context
       operationId: setCreatingOrgId
       requestBody:
         description: The organization ID used for creating new data
@@ -1783,7 +1903,7 @@ paths:
       description: Update a specific end user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_end_user
+        url: http://localhost:8081/api-docs/api-reference.html#_update_end_user
       operationId: updateEndUser
       parameters:
       - name: id
@@ -1828,7 +1948,7 @@ paths:
       description: Delete a specific end user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_end_user
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_end_user
       operationId: deleteSsidUser
       parameters:
       - name: id
@@ -1863,7 +1983,7 @@ paths:
       description: Get the network policy for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_network_policy_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_get_network_policy_for_one_device
       operationId: getDeviceNetworkPolicy
       parameters:
       - name: id
@@ -1901,7 +2021,7 @@ paths:
       description: Assign a network policy to a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_assign_network_policy_to_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_assign_network_policy_to_one_device
       operationId: assignDeviceNetworkPolicy
       parameters:
       - name: id
@@ -1942,7 +2062,7 @@ paths:
       description: Revoke the assigned network policy for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_revoke_network_policy_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_revoke_network_policy_for_one_device
       operationId: revokeDeviceNetworkPolicy
       parameters:
       - name: id
@@ -1977,7 +2097,7 @@ paths:
       description: Get the location info for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_location_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_get_location_for_one_device
       operationId: getDeviceLocation
       parameters:
       - name: id
@@ -2016,7 +2136,7 @@ paths:
         properties.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_assign_location_to_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_assign_location_to_one_device
       operationId: assignDeviceLocation
       parameters:
       - name: id
@@ -2056,7 +2176,7 @@ paths:
       description: Revoke the assigned location for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_revoke_location_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_revoke_location_for_one_device
       operationId: revokeDeviceLocation
       parameters:
       - name: id
@@ -2091,7 +2211,7 @@ paths:
       description: Change hostname for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_hostname_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_change_hostname_for_one_device
       operationId: changeHostname
       parameters:
       - name: id
@@ -2124,6 +2244,50 @@ paths:
           description: OK
       security:
       - BearerAuth: []
+  /devices/{id}/description:
+    put:
+      tags:
+      - Device
+      summary: Change description for a device
+      description: Change description for a specific device.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_change_description_for_one_device
+      operationId: changeDeviceDescription
+      parameters:
+      - name: id
+        in: path
+        description: The device ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: The device description
+        content:
+          text/plain:
+            schema:
+              maxLength: 64
+              minLength: 1
+              type: string
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
   /devices/radius-proxy/:assign:
     put:
       tags:
@@ -2132,7 +2296,7 @@ paths:
       description: Assign a RADIUS proxy to multiple devices
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_assign_radius_proxy_to_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_assign_radius_proxy_to_multiple_devices
       operationId: assignDevicesRadiusProxy
       parameters:
       - name: ids
@@ -2176,7 +2340,7 @@ paths:
       description: Get a specific classification rule.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_classification_rule_by_id
+        url: http://localhost:8081/api-docs/api-reference.html#_get_classification_rule_by_id
       operationId: getClassificationRule
       parameters:
       - name: id
@@ -2214,7 +2378,7 @@ paths:
       description: Update the exist classification rule.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_classification_rule_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_update_classification_rule_configuration
       operationId: updateClassificationRule
       parameters:
       - name: id
@@ -2259,7 +2423,7 @@ paths:
       description: Delete an existing classification rule by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_classification_rule_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_classification_rule_configuration
       operationId: deleteClassificationRule
       parameters:
       - name: id
@@ -2294,7 +2458,7 @@ paths:
       description: Get cloud config group info for the specified ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_cloud_config_group
+        url: http://localhost:8081/api-docs/api-reference.html#_get_cloud_config_group
       operationId: getCloudConfigGroup
       parameters:
       - name: id
@@ -2332,7 +2496,7 @@ paths:
       description: Update the cloud config group details having the specified ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_cloud_config_group
+        url: http://localhost:8081/api-docs/api-reference.html#_update_cloud_config_group
       operationId: updateCloudConfigGroup
       parameters:
       - name: id
@@ -2377,7 +2541,7 @@ paths:
       description: Delete a specific cloud config group by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_cloud_config_group
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_cloud_config_group
       operationId: deleteCloudConfigGroup
       parameters:
       - name: id
@@ -2404,6 +2568,71 @@ paths:
           description: OK
       security:
       - BearerAuth: []
+  /account/viq/default-device-password:
+    get:
+      tags:
+      - Account
+      summary: Get the default device password in the account
+      description: Get the default device password in the account
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_get_default_device_password
+      operationId: getDefaultDevicePassword
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDefaultDevicePassword'
+      security:
+      - BearerAuth: []
+    put:
+      tags:
+      - Account
+      summary: Update the default device password in the account
+      description: Update the default device password in the global setting for accessing
+        the console/shell of the devices
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_update_default_device_password
+      operationId: updateDefaultDevicePassword
+      requestBody:
+        description: The new default device password
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
   /vlan-profiles:
     get:
       tags:
@@ -2412,7 +2641,7 @@ paths:
       description: Get a page of VLAN profiles.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_vlan_profiles
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_vlan_profiles
       operationId: listVlanProfiles
       parameters:
       - name: page
@@ -2462,7 +2691,7 @@ paths:
       description: Create a new VLAN profile.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_vlan_profile_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_create_vlan_profile_configuration
       operationId: createVlanProfile
       requestBody:
         description: The payload to create new VLAN profile
@@ -2500,7 +2729,7 @@ paths:
       description: List users with pagination.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_user_list
+        url: http://localhost:8081/api-docs/api-reference.html#_get_user_list
       operationId: listUsers
       parameters:
       - name: page
@@ -2550,7 +2779,7 @@ paths:
       description: Create a new user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_new_user
+        url: http://localhost:8081/api-docs/api-reference.html#_create_new_user
       operationId: createUser
       requestBody:
         description: Create new user request body
@@ -2596,7 +2825,7 @@ paths:
       description: List a page of external access users.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_external_user_list
+        url: http://localhost:8081/api-docs/api-reference.html#_get_external_user_list
       operationId: listExternalUsers
       parameters:
       - name: page
@@ -2646,7 +2875,7 @@ paths:
       description: Grant external access to a specific user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_grant_external_user
+        url: http://localhost:8081/api-docs/api-reference.html#_grant_external_user
       operationId: grantExternalUser
       requestBody:
         description: Grant external user request
@@ -2691,7 +2920,7 @@ paths:
       description: List a page of user groups.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_user_groups
+        url: http://localhost:8081/api-docs/api-reference.html#_list_user_groups
       operationId: listUserGroups
       parameters:
       - name: page
@@ -2753,7 +2982,7 @@ paths:
       description: Create a new user group.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_user_group
+        url: http://localhost:8081/api-docs/api-reference.html#_create_user_group
       operationId: createUserGroup
       requestBody:
         description: Create user group request body
@@ -2791,7 +3020,7 @@ paths:
       description: List a page of user profiles.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_user_profiles
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_user_profiles
       operationId: listUserProfiles
       parameters:
       - name: page
@@ -2841,7 +3070,7 @@ paths:
       description: Create a new user profile.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_user_profile_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_create_user_profile_configuration
       operationId: createUserProfile
       requestBody:
         description: The request body to create new user profile.
@@ -2879,7 +3108,7 @@ paths:
       description: List all webhook subscriptions.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_webhook_subscriptions
+        url: http://localhost:8081/api-docs/api-reference.html#_list_webhook_subscriptions
       operationId: list
       responses:
         "400":
@@ -2911,7 +3140,7 @@ paths:
       description: Create multiple webhook subscriptions.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_webhook_subscriptions
+        url: http://localhost:8081/api-docs/api-reference.html#_create_webhook_subscriptions
       operationId: createSubscriptions
       requestBody:
         description: The payload of create multiple webhook subscriptions
@@ -2947,7 +3176,7 @@ paths:
       description: Attach user profile to an SSID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_attach_user_profile_to_an_ssid
+        url: http://localhost:8081/api-docs/api-reference.html#_attach_user_profile_to_an_ssid
       operationId: attachUserProfileToSsid
       parameters:
       - name: id
@@ -2990,7 +3219,7 @@ paths:
       description: Attach radius server group to an SSID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_attach_radius_server_group_to_an_ssid
+        url: http://localhost:8081/api-docs/api-reference.html#_attach_radius_server_group_to_an_ssid
       operationId: attachRadiusServerGroupToSsid
       parameters:
       - name: id
@@ -3033,7 +3262,7 @@ paths:
       description: Enable and attach the CWP on the SSID
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_enable_and_attach_the_cwp_on_the_ssid
+        url: http://localhost:8081/api-docs/api-reference.html#_enable_and_attach_the_cwp_on_the_ssid
       operationId: enableSsidCwp
       parameters:
       - name: id
@@ -3078,7 +3307,7 @@ paths:
       description: Disable the CWP on the SSID
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_disable_and_detach_the_cwp_on_the_ssid
+        url: http://localhost:8081/api-docs/api-reference.html#_disable_and_detach_the_cwp_on_the_ssid
       operationId: disableSsidCwp
       parameters:
       - name: id
@@ -3113,7 +3342,7 @@ paths:
       description: Attach CWP to an SSID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_attach_cwp_to_an_ssid
+        url: http://localhost:8081/api-docs/api-reference.html#_attach_cwp_to_an_ssid
       operationId: attachCwpToSsid
       parameters:
       - name: id
@@ -3158,7 +3387,7 @@ paths:
       description: Change SSID broadcast name (Wireless name).
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_rename_ssidwireless_name
+        url: http://localhost:8081/api-docs/api-reference.html#_rename_ssidwireless_name
       operationId: renameSsid
       parameters:
       - name: id
@@ -3200,7 +3429,7 @@ paths:
       description: List all internal RADIUS servers configurations.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_internal_radius_servers
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_internal_radius_servers
       operationId: listInternalRadiusServers
       parameters:
       - name: page
@@ -3250,7 +3479,7 @@ paths:
       description: Create a new internal RADIUS server configuration.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_internal_radius_server_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_create_internal_radius_server_configuration
       operationId: createInternalRadiusServer
       requestBody:
         description: Use the payload configuration to create a new internal RADIUS
@@ -3289,7 +3518,7 @@ paths:
       description: List a page of external RADIUS server configurations.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_external_radius_servers
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_external_radius_servers
       operationId: listExternalRadiusServers
       parameters:
       - name: page
@@ -3339,7 +3568,7 @@ paths:
       description: Create a new external RADIUS server configuration.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_external_radius_server_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_create_external_radius_server_configuration
       operationId: createExternalRadiusServer
       requestBody:
         description: Use the payload configuration to create a new external RADIUS
@@ -3378,7 +3607,7 @@ paths:
       description: List a page of RADIUS proxy configurations.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_radius_proxy_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_radius_proxy_configuration
       operationId: listRadiusProxies
       parameters:
       - name: page
@@ -3428,7 +3657,7 @@ paths:
       description: Create a new RADIUS proxy configuration.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_radius_proxy_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_create_radius_proxy_configuration
       operationId: createRadiusProxy
       requestBody:
         description: The body of create RADIUS proxy API
@@ -3491,7 +3720,7 @@ paths:
       description: List a page of RADIUS client object configurations.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_radius_client_objects_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_radius_client_objects_configuration
       operationId: listRadiusClientObjects
       parameters:
       - name: page
@@ -3541,7 +3770,7 @@ paths:
       description: Create a new RADIUS client object configuration.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_radius_client_object_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_create_radius_client_object_configuration
       operationId: createRadiusClientObject
       requestBody:
         description: Use the payload configuration to create a new RADIUS client object
@@ -3579,7 +3808,7 @@ paths:
       description: List all Key-based Private Client Groups.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_all_key_based_pcg_entries
+        url: http://localhost:8081/api-docs/api-reference.html#_list_all_key_based_pcg_entries
       operationId: listKeyBasedPrivateClientGroups
       responses:
         "400":
@@ -3612,7 +3841,7 @@ paths:
         user, user group, SSID, etc.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_initiate_key_based_pcg
+        url: http://localhost:8081/api-docs/api-reference.html#_initiate_key_based_pcg
       operationId: setupKeyBasedPrivateClientGroupNetworkPolicy
       requestBody:
         description: The request to setup Key-based PCG network policy
@@ -3648,7 +3877,7 @@ paths:
         network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_port_assignment_details_of_ap150w
+        url: http://localhost:8081/api-docs/api-reference.html#_get_port_assignment_details_of_ap150w
       operationId: getPortAssignments
       parameters:
       - name: policyId
@@ -3687,7 +3916,7 @@ paths:
         policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_assign_ports_for_ap150w
+        url: http://localhost:8081/api-docs/api-reference.html#_assign_ports_for_ap150w
       operationId: assignPorts
       parameters:
       - name: policyId
@@ -3735,7 +3964,7 @@ paths:
         PCG-enable network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_generate_keys
+        url: http://localhost:8081/api-docs/api-reference.html#_generate_keys
       operationId: generateKeys
       parameters:
       - name: policyId
@@ -3780,7 +4009,7 @@ paths:
         Email.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_email_keys
+        url: http://localhost:8081/api-docs/api-reference.html#_email_keys
       operationId: emailKeys
       parameters:
       - name: policyId
@@ -3825,7 +4054,7 @@ paths:
         policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_key_based_pcg_data
+        url: http://localhost:8081/api-docs/api-reference.html#_create_key_based_pcg_data
       operationId: onboardKeyBasedPrivateClientGroup
       parameters:
       - name: policyId
@@ -3858,6 +4087,129 @@ paths:
           description: Accepted
       security:
       - BearerAuth: []
+  /operations/{operationId}/:cancel:
+    post:
+      tags:
+      - Operation
+      summary: Cancel Long-Running Operation (LRO)
+      description: |-
+        When the cancelable is true in operation metadata the clients are allowed to send a cancel request to ask the backend to cancel the operation.
+        The server makes its best effort to cancel the operation, but success is not guaranteed.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_cancel_operation
+      operationId: cancelOperation
+      parameters:
+      - name: operationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
+  /network-policies:
+    get:
+      tags:
+      - Network Policy
+      summary: List network policies
+      description: List a page of network policies.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_list_network_policies
+      operationId: listNetworkPolices
+      parameters:
+      - name: page
+        in: query
+        description: Page number, min = 1
+        required: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int32
+          default: 1
+      - name: limit
+        in: query
+        description: Page Size, min = 1, max = 100
+        required: false
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqNetworkPolicy'
+      security:
+      - BearerAuth: []
+    post:
+      tags:
+      - Network Policy
+      summary: Create network policy
+      description: Create a new network policy.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_create_network_policy
+      operationId: createNetworkPolicy
+      requestBody:
+        description: The body of create network policy API
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateNetworkPolicyRequest'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqNetworkPolicy'
+      security:
+      - BearerAuth: []
   /network-policies/{id}/ssids/:remove:
     post:
       tags:
@@ -3866,7 +4218,7 @@ paths:
       description: Removing multiple SSIDs from the network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_removing_multiple_ssids_from_the_network_policy
+        url: http://localhost:8081/api-docs/api-reference.html#_removing_multiple_ssids_from_the_network_policy
       operationId: deleteSsidsFromNetworkPolicy
       parameters:
       - name: id
@@ -3911,7 +4263,7 @@ paths:
       description: Add SSIDs to a specific network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_adding_multiple_ssids_to_the_network_policy
+        url: http://localhost:8081/api-docs/api-reference.html#_adding_multiple_ssids_to_the_network_policy
       operationId: addSsidsToNetworkPolicy
       parameters:
       - name: id
@@ -3957,7 +4309,7 @@ paths:
         access with the same token will be immediately denied.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_logout
+        url: http://localhost:8081/api-docs/api-reference.html#_logout
       operationId: logout
       responses:
         "400":
@@ -3986,7 +4338,7 @@ paths:
         The client must present Bearer token to access the protected API endpoints.The Bearer token should be present in the "Authorization" request header field and use the "Bearer" HTTP authentication scheme to transmit the access token.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_login
+        url: http://localhost:8081/api-docs/api-reference.html#_login
       operationId: login
       requestBody:
         description: Login request body
@@ -4043,7 +4395,7 @@ paths:
       description: Create a new location under the parent location.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_location
+        url: http://localhost:8081/api-docs/api-reference.html#_create_location
       operationId: createLocation
       requestBody:
         description: Create location request body
@@ -4081,7 +4433,7 @@ paths:
       description: Create a new floor under the parent building.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_floor
+        url: http://localhost:8081/api-docs/api-reference.html#_create_floor
       operationId: createFloor
       requestBody:
         description: Create floor request body
@@ -4134,7 +4486,7 @@ paths:
       description: Upload the floorplan map for the VIQ.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_upload_floor_plan
+        url: http://localhost:8081/api-docs/api-reference.html#_upload_floor_plan
       operationId: uploadFloorplan
       requestBody:
         content:
@@ -4176,7 +4528,7 @@ paths:
       description: Create a new building under the parent location.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_building
+        url: http://localhost:8081/api-docs/api-reference.html#_create_building
       operationId: createBuilding
       requestBody:
         description: Create building request body
@@ -4223,7 +4575,7 @@ paths:
       description: List a page of LDAP servers.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_ldap_servers
+        url: http://localhost:8081/api-docs/api-reference.html#_list_ldap_servers
       operationId: listLdapServers
       parameters:
       - name: page
@@ -4273,7 +4625,7 @@ paths:
       description: Create a new LDAP server.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_ldap_server
+        url: http://localhost:8081/api-docs/api-reference.html#_create_ldap_server
       operationId: createLdapServer
       requestBody:
         description: The body of create LDAP server API
@@ -4331,7 +4683,7 @@ paths:
       description: List all organizations in current HIQ. (Available when HIQ is enabled)
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_all_organizations
+        url: http://localhost:8081/api-docs/api-reference.html#_get_all_organizations
       operationId: listOrganizations
       responses:
         "400":
@@ -4364,7 +4716,7 @@ paths:
         enabled)
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_organization
+        url: http://localhost:8081/api-docs/api-reference.html#_create_organization
       operationId: createOrganization
       requestBody:
         description: Create new organization request body
@@ -4402,7 +4754,7 @@ paths:
       description: Rename an existing organization. (Available when HIQ is enabled)
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_rename_organization
+        url: http://localhost:8081/api-docs/api-reference.html#_rename_organization
       operationId: renameOrganization
       parameters:
       - name: id
@@ -4444,7 +4796,7 @@ paths:
       description: List a page of end users.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_end_users
+        url: http://localhost:8081/api-docs/api-reference.html#_list_end_users
       operationId: listEndUsers
       parameters:
       - name: page
@@ -4511,7 +4863,7 @@ paths:
       description: Create a new user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_end_user
+        url: http://localhost:8081/api-docs/api-reference.html#_create_end_user
       operationId: createEndUser
       requestBody:
         description: Create end user request body
@@ -4549,7 +4901,7 @@ paths:
       description: Update the user's password with a system generated password
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_regenerate_end_user_password
+        url: http://localhost:8081/api-docs/api-reference.html#_regenerate_end_user_password
       operationId: regenerateEndUserPassword
       parameters:
       - name: id
@@ -4589,7 +4941,7 @@ paths:
         device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_the_device_level_ssid_status_on_each_wifi_interface
+        url: http://localhost:8081/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
       operationId: changeDeviceLevelSsidStatus
       parameters:
       - name: id
@@ -4630,7 +4982,7 @@ paths:
       description: Override SSID broadcast name/passphrase for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_device_level_ssid_override
+        url: http://localhost:8081/api-docs/api-reference.html#_device_level_ssid_override
       operationId: overrideDeviceLevelSsid
       parameters:
       - name: id
@@ -4671,7 +5023,7 @@ paths:
       description: Change device admin state to 'Unmanaged' for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_status_to_unmanaged_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
       operationId: changeDeviceStatusToUnmanage
       parameters:
       - name: id
@@ -4698,6 +5050,48 @@ paths:
           description: OK
       security:
       - BearerAuth: []
+  /devices/{id}/:reset:
+    post:
+      tags:
+      - Device
+      summary: '[LRO] Reset a device to factory default.'
+      description: Reset a device to factory default settings
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_reset_device_for_once_device
+      operationId: resetDevice
+      parameters:
+      - name: id
+        in: path
+        description: The device ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: async
+        in: query
+        description: Whether to enable async mode
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
   /devices/{id}/:reboot:
     post:
       tags:
@@ -4706,7 +5100,7 @@ paths:
       description: Reboot a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_reboot_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_reboot_one_device
       operationId: rebootDevice
       parameters:
       - name: id
@@ -4741,7 +5135,7 @@ paths:
       description: Change device management status to Managed for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_status_to_managed_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_change_status_to_managed_for_one_device
       operationId: changeDeviceStatusToManage
       parameters:
       - name: id
@@ -4776,7 +5170,7 @@ paths:
       description: Send CLI commands to a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_send_cli_to_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_send_cli_to_one_device
       operationId: sendCliToDevice
       parameters:
       - name: id
@@ -4813,7 +5207,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqSendCliSyncResponse'
+                $ref: '#/components/schemas/XiqSendCliResponse'
       security:
       - BearerAuth: []
   /devices/os/:change:
@@ -4824,7 +5218,7 @@ paths:
       description: 'Change OS mode for AP or Switch '
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_multiple_devices_os_mode
+        url: http://localhost:8081/api-docs/api-reference.html#_change_multiple_devices_os_mode
       operationId: changeDevicesOsMode
       requestBody:
         content:
@@ -4857,7 +5251,7 @@ paths:
       description: Revoke the network policy from the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_revoke_network_policy_for_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_revoke_network_policy_for_multiple_devices
       operationId: revokeDevicesNetworkPolicy
       requestBody:
         content:
@@ -4890,7 +5284,7 @@ paths:
       description: Query the network policy for the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_query_network_policy_for_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_query_network_policy_for_multiple_devices
       operationId: queryDevicesNetworkPolicy
       requestBody:
         content:
@@ -4929,7 +5323,7 @@ paths:
       description: Assign the network policy to the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_assign_network_policy_to_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_assign_network_policy_to_multiple_devices
       operationId: assignDevicesNetworkPolicy
       requestBody:
         content:
@@ -4962,7 +5356,7 @@ paths:
       description: Revoke the location from the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_revoke_location_for_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_revoke_location_for_multiple_devices
       operationId: revokeDevicesLocation
       requestBody:
         content:
@@ -4995,7 +5389,7 @@ paths:
       description: Query the location for the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_query_location_for_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_query_location_for_multiple_devices
       operationId: queryDevicesLocation
       requestBody:
         content:
@@ -5034,13 +5428,46 @@ paths:
       description: Assign the location to the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_assign_location_to_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_assign_location_to_multiple_devices
       operationId: assignDevicesLocation
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/XiqAssignDevicesLocationRequest'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
+  /devices/country-code/:assign:
+    post:
+      tags:
+      - Device
+      summary: Assign a country code to devices
+      description: Assign the country code to one or more devices.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_assign_country_code_to_multiple_devices
+      operationId: assignDevicesCountryCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqAssignDevicesCountryCodeRequest'
         required: true
       responses:
         "400":
@@ -5067,7 +5494,7 @@ paths:
       description: Change device management status to Unmanaged for the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_status_to_unmanaged
+        url: http://localhost:8081/api-docs/api-reference.html#_change_status_to_unmanaged
       operationId: changeStatusToUnmanage
       requestBody:
         description: The device filter
@@ -5101,7 +5528,7 @@ paths:
       description: Reboot the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_reboot_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_reboot_devices
       operationId: rebootDevices
       requestBody:
         content:
@@ -5136,7 +5563,7 @@ paths:
         This is asynchronized operation to support massive device onboarding.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_onboard_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_onboard_devices
       operationId: onboardDevices
       requestBody:
         content:
@@ -5169,7 +5596,7 @@ paths:
       description: Change device management status to Managed for the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_change_status_to_managed
+        url: http://localhost:8081/api-docs/api-reference.html#_change_status_to_managed
       operationId: changeStatusToManage
       requestBody:
         content:
@@ -5202,7 +5629,7 @@ paths:
       description: Delete devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_devices
       operationId: deleteDevices
       requestBody:
         content:
@@ -5231,17 +5658,27 @@ paths:
     post:
       tags:
       - Device
-      summary: Send CLI to devices
-      description: Send CLI commands to the target devices.
+      summary: '[LRO] Send CLI to devices'
+      description: Send CLI commands to the target devices. This API can be run at
+        async mode, please follow the Long-Running Operation (LRO) guide to track
+        the progress and the result.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_send_cli
+        url: http://localhost:8081/api-docs/api-reference.html#_send_cli
       operationId: sendCliToDevices
+      parameters:
+      - name: async
+        in: query
+        description: Whether to enable async mode
+        required: false
+        schema:
+          type: boolean
+          default: false
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/XiqSendCliSyncRequest'
+              $ref: '#/components/schemas/XiqSendCliRequest'
         required: true
       responses:
         "400":
@@ -5261,7 +5698,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqSendCliSyncResponse'
+                $ref: '#/components/schemas/XiqSendCliResponse'
       security:
       - BearerAuth: []
   /deployments:
@@ -5272,7 +5709,7 @@ paths:
       description: Push configuration and upgrade firmware to the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_push_configuration_and_upgrade_firmware_to_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_push_configuration_and_upgrade_firmware_to_devices
       operationId: deployConfig
       requestBody:
         description: The device deploy configuration
@@ -5310,7 +5747,7 @@ paths:
       description: List a page of classification rules.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_classification_rules
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_classification_rules
       operationId: listClassificationRules
       parameters:
       - name: page
@@ -5360,7 +5797,7 @@ paths:
       description: Create a new classification rule.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_classification_rule_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_create_classification_rule_configuration
       operationId: createClassificationRule
       requestBody:
         description: The payload to create a new classification rule
@@ -5398,7 +5835,7 @@ paths:
       description: List a papge of cloud config groups.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_cloud_config_groups
+        url: http://localhost:8081/api-docs/api-reference.html#_list_cloud_config_groups
       operationId: listCloudConfigGroups
       parameters:
       - name: page
@@ -5448,7 +5885,7 @@ paths:
       description: Create a new cloud config group.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_create_cloud_config_group
+        url: http://localhost:8081/api-docs/api-reference.html#_create_cloud_config_group
       operationId: createCloudConfigGroup
       requestBody:
         description: Create new cloud config group request body
@@ -5486,7 +5923,7 @@ paths:
       description: Get required permissions for given HTTP request.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_check_permissions
+        url: http://localhost:8081/api-docs/api-reference.html#_check_permissions
       operationId: checkPermissions
       requestBody:
         content:
@@ -5507,18 +5944,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqError'
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqError'
         "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqCheckPermissionResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
         "403":
           description: Access Denied
           content:
@@ -5537,7 +5974,7 @@ paths:
         \ endpoint."
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_generate_api_token
+        url: http://localhost:8081/api-docs/api-reference.html#_generate_api_token
       operationId: generateApiToken
       requestBody:
         description: Generate API token request body
@@ -5585,7 +6022,7 @@ paths:
       description: Backup VIQ in ExtremeCloud IQ.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_viq_backup
+        url: http://localhost:8081/api-docs/api-reference.html#_viq_backup
       operationId: backupViq
       responses:
         "400":
@@ -5613,7 +6050,7 @@ paths:
         ExtremeCloud IQ account.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_switch_account
+        url: http://localhost:8081/api-docs/api-reference.html#_switch_account
       operationId: switchAccount
       parameters:
       - name: id
@@ -5653,7 +6090,7 @@ paths:
       description: Get a specific VLAN profile by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_vlan_profile_by_id
+        url: http://localhost:8081/api-docs/api-reference.html#_get_vlan_profile_by_id
       operationId: getVlanProfile
       parameters:
       - name: id
@@ -5691,7 +6128,7 @@ paths:
       description: Delete a specific VLAN profile by ID.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_vlan_profile_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_vlan_profile_configuration
       operationId: deleteVlanProfile
       parameters:
       - name: id
@@ -5725,7 +6162,7 @@ paths:
       description: Update a specific VLAN profile.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_vlan_profile_configuration
+        url: http://localhost:8081/api-docs/api-reference.html#_update_vlan_profile_configuration
       operationId: updateVlanProfile
       parameters:
       - name: id
@@ -5771,7 +6208,7 @@ paths:
       description: Get user info for a specific user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_user
+        url: http://localhost:8081/api-docs/api-reference.html#_get_user
       operationId: getUser
       parameters:
       - name: id
@@ -5809,7 +6246,7 @@ paths:
       description: Delete a specific user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_user
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_user
       operationId: deleteUser
       parameters:
       - name: id
@@ -5843,7 +6280,7 @@ paths:
       description: Updates user info for a specific user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_user
+        url: http://localhost:8081/api-docs/api-reference.html#_update_user
       operationId: updateUser
       parameters:
       - name: id
@@ -5897,7 +6334,7 @@ paths:
       description: Get external access info for a specific external user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_external_user
+        url: http://localhost:8081/api-docs/api-reference.html#_get_external_user
       operationId: getExternalUser
       parameters:
       - name: id
@@ -5935,7 +6372,7 @@ paths:
       description: Revoke external acccess for a specific user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_revoke_external_user
+        url: http://localhost:8081/api-docs/api-reference.html#_revoke_external_user
       operationId: revokeExternalUser
       parameters:
       - name: id
@@ -5969,7 +6406,7 @@ paths:
       description: Updates external access info for a specific user.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_update_external_user
+        url: http://localhost:8081/api-docs/api-reference.html#_update_external_user
       operationId: updateExternalUser
       parameters:
       - name: id
@@ -6016,7 +6453,7 @@ paths:
       description: Get currently login user info.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_current_user
+        url: http://localhost:8081/api-docs/api-reference.html#_get_current_user
       operationId: getCurrentUser
       responses:
         "400":
@@ -6047,7 +6484,7 @@ paths:
       description: List SSIDs with filter and pagination.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_ssids
+        url: http://localhost:8081/api-docs/api-reference.html#_list_ssids
       operationId: listSsids
       parameters:
       - name: page
@@ -6098,7 +6535,7 @@ paths:
       description: List all SMS notification templates.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_sms_templates
+        url: http://localhost:8081/api-docs/api-reference.html#_list_sms_templates
       operationId: listSmsTemplates
       parameters:
       - name: passwordType
@@ -6138,7 +6575,7 @@ paths:
       description: List all internal RADIUS devices fields.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_internal_radius_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_internal_radius_devices
       operationId: listInternalRadiusDevices
       parameters:
       - name: page
@@ -6227,36 +6664,24 @@ paths:
                 $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
       security:
       - BearerAuth: []
-  /network-policies:
+  /operations/{operationId}:
     get:
       tags:
-      - Network Policy
-      summary: List network policies
-      description: List a page of network policies.
+      - Operation
+      summary: Get Long-Running Operation (LRO) status and result
+      description: |-
+        Get the Long-Running Operation (LRO) status and result.
+        The response will include either result or error if the operation is done.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_network_policies
-      operationId: listNetworkPolices
+        url: http://localhost:8081/api-docs/api-reference.html#_get_operation
+      operationId: getOperation
       parameters:
-      - name: page
-        in: query
-        description: Page number, min = 1
-        required: false
+      - name: operationId
+        in: path
+        required: true
         schema:
-          minimum: 1
-          type: integer
-          format: int32
-          default: 1
-      - name: limit
-        in: query
-        description: Page Size, min = 1, max = 100
-        required: false
-        schema:
-          maximum: 100
-          minimum: 1
-          type: integer
-          format: int32
-          default: 10
+          type: string
       responses:
         "400":
           description: Bad Request
@@ -6275,7 +6700,40 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PagedXiqNetworkPolicy'
+                $ref: '#/components/schemas/XiqOperationObject'
+      security:
+      - BearerAuth: []
+    delete:
+      tags:
+      - Operation
+      summary: Delete Long-Running Operation (LRO)
+      description: The Long-Running Operation (LRO) can be deleted when the operation
+        is done or in PENDING status.
+      externalDocs:
+        description: API Documentation
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_operation
+      operationId: deleteOperation
+      parameters:
+      - name: operationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
+        "200":
+          description: OK
       security:
       - BearerAuth: []
   /network-policies/{id}/ssids:
@@ -6286,7 +6744,7 @@ paths:
       description: List a page of SSIDs for a specific network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_ssid_list_for_the_network_policy
+        url: http://localhost:8081/api-docs/api-reference.html#_list_ssid_list_for_the_network_policy
       operationId: listSsidsByNetworkPolicy
       parameters:
       - name: id
@@ -6344,7 +6802,7 @@ paths:
       description: List a page of SMS logs.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_sms_log
+        url: http://localhost:8081/api-docs/api-reference.html#_list_sms_log
       operationId: listSmsLogs
       parameters:
       - name: page
@@ -6417,7 +6875,7 @@ paths:
       description: List a page of Email logs.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_email_log
+        url: http://localhost:8081/api-docs/api-reference.html#_list_email_log
       operationId: listEmailLogs
       parameters:
       - name: page
@@ -6490,7 +6948,7 @@ paths:
       description: List a page of credential logs.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_credential_log
+        url: http://localhost:8081/api-docs/api-reference.html#_list_credential_log
       operationId: listCredentialLogs
       parameters:
       - name: page
@@ -6563,7 +7021,7 @@ paths:
       description: List a page of auth logs.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_authentication_log
+        url: http://localhost:8081/api-docs/api-reference.html#_list_authentication_log
       operationId: listAuthLogs
       parameters:
       - name: page
@@ -6642,7 +7100,7 @@ paths:
       description: List a page of audit logs.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_audit_log
+        url: http://localhost:8081/api-docs/api-reference.html#_list_audit_log
       operationId: listAuditLogs
       parameters:
       - name: page
@@ -6723,7 +7181,7 @@ paths:
       description: List a page of accounting logs.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_accounting_log
+        url: http://localhost:8081/api-docs/api-reference.html#_list_accounting_log
       operationId: listAccountingLogs
       parameters:
       - name: page
@@ -6802,7 +7260,7 @@ paths:
       description: Get location hierarchical tree.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_location_tree
+        url: http://localhost:8081/api-docs/api-reference.html#_get_location_tree
       operationId: getLocationTree
       parameters:
       - name: parentId
@@ -6852,7 +7310,7 @@ paths:
       description: List all L3 Address Profiles.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_l3_address_profile
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_l3_address_profile
       operationId: listL3AddressProfiles
       parameters:
       - name: addressType
@@ -6898,7 +7356,7 @@ paths:
       description: Get Hierarchical ExtremeCloud IQ (HIQ) status.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_hiq_status
+        url: http://localhost:8081/api-docs/api-reference.html#_get_hiq_status
       operationId: getHiqStatus
       responses:
         "400":
@@ -6929,7 +7387,7 @@ paths:
       description: List all Email notification templates.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_email_templates
+        url: http://localhost:8081/api-docs/api-reference.html#_list_email_templates
       operationId: listEmailTemplates
       parameters:
       - name: passwordType
@@ -6965,11 +7423,11 @@ paths:
     get:
       tags:
       - Device
-      summary: List devices
+      summary: '[LRO] List devices'
       description: List devices with filters and pagination.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_device_list
+        url: http://localhost:8081/api-docs/api-reference.html#_get_device_list
       operationId: listDevices
       parameters:
       - name: page
@@ -7065,6 +7523,13 @@ paths:
           type: array
           items:
             $ref: '#/components/schemas/XiqDeviceField'
+      - name: async
+        in: query
+        description: Whether to enable async mode
+        required: false
+        schema:
+          type: boolean
+          default: false
       responses:
         "400":
           description: Bad Request
@@ -7094,7 +7559,7 @@ paths:
       description: Get device info for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_device_details_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_get_device_details_for_one_device
       operationId: getDevice
       parameters:
       - name: id
@@ -7149,7 +7614,7 @@ paths:
       description: Delete a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_device
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_device
       operationId: deleteDevice
       parameters:
       - name: id
@@ -7184,7 +7649,7 @@ paths:
       description: Get the SSIDs status on each wifi interface for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_device_level_ssid_status_on_each_wifi_interface
+        url: http://localhost:8081/api-docs/api-reference.html#_get_device_level_ssid_status_on_each_wifi_interface
       operationId: getDeviceLevelSsidStatus
       parameters:
       - name: id
@@ -7225,7 +7690,7 @@ paths:
       description: Get average device CPU and memory usage history.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_device_cpu_and_memory_usage_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_get_device_cpu_and_memory_usage_for_one_device
       operationId: getDeviceCpuMemoryHistory
       parameters:
       - name: id
@@ -7287,7 +7752,7 @@ paths:
       description: List alarms for a specific device.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_device_alarms_for_one_device
+        url: http://localhost:8081/api-docs/api-reference.html#_get_device_alarms_for_one_device
       operationId: listDeviceAlarm
       parameters:
       - name: id
@@ -7360,7 +7825,7 @@ paths:
         connected device count, etc.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_device_status_summary
+        url: http://localhost:8081/api-docs/api-reference.html#_list_device_status_summary
       operationId: getDeviceStats
       parameters:
       - name: locationId
@@ -7399,7 +7864,7 @@ paths:
       description: List assigned devices for the network policy with pagination.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_assigned_devices_for_network_policy
+        url: http://localhost:8081/api-docs/api-reference.html#_list_assigned_devices_for_network_policy
       operationId: listDevicesByNetworkPolicy
       parameters:
       - name: policyId
@@ -7457,7 +7922,7 @@ paths:
       description: Get configuration deployment status for the target devices.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_configuration_deployment_status
+        url: http://localhost:8081/api-docs/api-reference.html#_get_configuration_deployment_status
       operationId: getDeployStatus
       parameters:
       - name: deviceIds
@@ -7501,7 +7966,7 @@ paths:
       description: Get configuration deployment status overview.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_configuration_deployment_overview
+        url: http://localhost:8081/api-docs/api-reference.html#_get_configuration_deployment_overview
       operationId: getDeployOverview
       responses:
         "400":
@@ -7532,7 +7997,7 @@ paths:
       description: List a page of Captive Web Portals.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_captive_web_portals
+        url: http://localhost:8081/api-docs/api-reference.html#_list_captive_web_portals
       operationId: listCaptiveWebPortals
       parameters:
       - name: page
@@ -7582,7 +8047,7 @@ paths:
       summary: Get client info
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_client_details_for_one_client
+        url: http://localhost:8081/api-docs/api-reference.html#_get_client_details_for_one_client
       operationId: getClient
       parameters:
       - name: id
@@ -7637,7 +8102,7 @@ paths:
       summary: Get usage per client
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_client_usage
+        url: http://localhost:8081/api-docs/api-reference.html#_get_client_usage
       operationId: getClientUsage
       parameters:
       - name: clientIds
@@ -7695,7 +8160,7 @@ paths:
         wired clients.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_client_summary
+        url: http://localhost:8081/api-docs/api-reference.html#_get_client_summary
       operationId: getClientSummary
       parameters:
       - name: locationIds
@@ -7770,7 +8235,7 @@ paths:
       description: List active clients with filters and pagination
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_client_list
+        url: http://localhost:8081/api-docs/api-reference.html#_get_client_list
       operationId: listActiveClients
       parameters:
       - name: locationIds
@@ -7881,7 +8346,7 @@ paths:
       description: List a page of certificates.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_certificates
+        url: http://localhost:8081/api-docs/api-reference.html#_list_certificates
       operationId: listCertificates
       parameters:
       - name: page
@@ -7939,7 +8404,7 @@ paths:
         new API tokens.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_user_permissions
+        url: http://localhost:8081/api-docs/api-reference.html#_get_user_permissions
       operationId: listPermissions
       responses:
         "400":
@@ -7960,18 +8425,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqError'
-        "401":
-          description: UNAUTHORIZED
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqError'
         "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 type: string
+        "401":
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqError'
       security:
       - BearerAuth: []
   /auth/apitoken/info:
@@ -7982,7 +8447,7 @@ paths:
       description: Introspect current API token and get detail information.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_api_token_details
+        url: http://localhost:8081/api-docs/api-reference.html#_get_api_token_details
       operationId: getCurrentApiTokenInfo
       responses:
         "400":
@@ -8013,7 +8478,7 @@ paths:
       description: List a page of applications by filter.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_applications
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_applications
       operationId: listApplications
       parameters:
       - name: page
@@ -8101,7 +8566,7 @@ paths:
       description: List the TopN clients by usage for a specific application.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_top_n_clients_usage_for_one_application
+        url: http://localhost:8081/api-docs/api-reference.html#_list_top_n_clients_usage_for_one_application
       operationId: listApplicationTopNClientsUsage
       parameters:
       - name: id
@@ -8165,7 +8630,7 @@ paths:
       description: List the TopN applications by usage.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_top_n_applications_usage
+        url: http://localhost:8081/api-docs/api-reference.html#_list_top_n_applications_usage
       operationId: listTopNApplicationsUsage
       parameters:
       - name: "n"
@@ -8222,7 +8687,7 @@ paths:
       description: List a page of active directory servers.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_the_active_directory_server
+        url: http://localhost:8081/api-docs/api-reference.html#_list_the_active_directory_server
       operationId: listActiveDirectoryServers
       parameters:
       - name: page
@@ -8273,7 +8738,7 @@ paths:
       description: Get account VIQ and license info.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_viq_info
+        url: http://localhost:8081/api-docs/api-reference.html#_get_viq_info
       operationId: getViqInfo
       responses:
         "400":
@@ -8304,7 +8769,7 @@ paths:
       description: Get home ExtremeCloud IQ account info.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_get_basic_info
+        url: http://localhost:8081/api-docs/api-reference.html#_get_basic_info
       operationId: getHomeAccount
       responses:
         "400":
@@ -8335,7 +8800,7 @@ paths:
       description: List accessible external ExtremeCloud IQ accounts.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_list_external_accounts
+        url: http://localhost:8081/api-docs/api-reference.html#_list_external_accounts
       operationId: listExternalAccounts
       responses:
         "400":
@@ -8368,7 +8833,7 @@ paths:
       description: Delete an exist webhook subscription.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_webhook_subscriptions
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_webhook_subscriptions
       operationId: deleteSubscription
       parameters:
       - name: id
@@ -8403,7 +8868,7 @@ paths:
       description: Delete Private Client Group settings from a network policy.
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_key_based_pcg
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_key_based_pcg
       operationId: deletePcg
       parameters:
       - name: policyId
@@ -8448,7 +8913,7 @@ paths:
       description: Delete an existing organization. (Available when HIQ is enabled)
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_delete_organization
+        url: http://localhost:8081/api-docs/api-reference.html#_delete_organization
       operationId: deleteOrganization
       parameters:
       - name: id
@@ -8483,7 +8948,7 @@ paths:
       description: Revoke the RADIUS proxy from the target devices
       externalDocs:
         description: API Documentation
-        url: http://localhost:8081/api-docs#_revoke_radius_proxy_for_multiple_devices
+        url: http://localhost:8081/api-docs/api-reference.html#_revoke_radius_proxy_for_multiple_devices
       operationId: revokeDevicesRadiusProxy
       parameters:
       - name: ids
@@ -9928,6 +10393,66 @@ components:
           items:
             $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
       description: The payload of replace Key-based Private Client Group users request
+    XiqNetworkPolicyType:
+      type: string
+      description: The network policy type
+      enum:
+      - NETWORK_ACCESS_AND_SWITCHING
+      - BRANCH_ROUTING
+      - WIRELESS_ACCESS
+      - SWITCHING
+      - NETWORK_ACCESS_AND_SWITCHING_AND_BR
+      - NETWORK_ACCESS_AND_BRANCH_ROUTING
+      - SWITCHING_AND_BRANCH_ROUTING
+    XiqUpdateNetworkPolicyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The network policy name
+        description:
+          type: string
+          description: The network policy description
+        type:
+          $ref: '#/components/schemas/XiqNetworkPolicyType'
+    XiqNetworkPolicy:
+      required:
+      - create_time
+      - id
+      - name
+      - predefined
+      - type
+      - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: The organization identifier, valid when enabling HIQ feature
+          format: int64
+        name:
+          type: string
+          description: The network policy name
+        description:
+          type: string
+          description: The network policy description
+        predefined:
+          type: boolean
+          description: Whether it is a predefined network policy
+        type:
+          type: string
+          description: The network policy type
     XiqUpdateLocationRequest:
       type: object
       properties:
@@ -11377,6 +11902,20 @@ components:
             format: int64
       description: The payload to create Key Based PCG data(from exist network policy
         and SSID)
+    XiqCreateNetworkPolicyRequest:
+      required:
+      - name
+      - type
+      type: object
+      properties:
+        name:
+          type: string
+          description: The network policy name
+        description:
+          type: string
+          description: The network policy description
+        type:
+          $ref: '#/components/schemas/XiqNetworkPolicyType'
     XiqLoginRequest:
       required:
       - password
@@ -11729,7 +12268,7 @@ components:
       - ERR_VPN_USING
       - CLI_SENT_SUCCEED
       - ERR_CLI_MAX_CLI_LIMIT_EXCEEDED
-    XiqSendCliSyncResponse:
+    XiqSendCliResponse:
       type: object
       properties:
         device_cli_outputs:
@@ -11781,44 +12320,6 @@ components:
             description: The device ID list
             format: int64
       description: The filter to get matched devices
-    XiqNetworkPolicy:
-      required:
-      - create_time
-      - id
-      - name
-      - predefined
-      - type
-      - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: The organization identifier, valid when enabling HIQ feature
-          format: int64
-        name:
-          type: string
-          description: The network policy name
-        description:
-          type: string
-          description: The network policy description
-        predefined:
-          type: boolean
-          description: Whether it is a predefined network policy
-        type:
-          type: string
-          description: The network policy type
     XiqAssignDevicesNetworkPolicyRequest:
       required:
       - devices
@@ -11901,6 +12402,148 @@ components:
         device_location:
           $ref: '#/components/schemas/XiqDeviceLocationAssignment'
       description: Device location assignment for multiple devices
+    XiqAssignDevicesCountryCodeRequest:
+      required:
+      - country_code
+      - devices
+      type: object
+      properties:
+        devices:
+          $ref: '#/components/schemas/XiqDeviceFilter'
+        country_code:
+          $ref: '#/components/schemas/XiqCountryCode'
+      description: Device country-code assignment for multiple devices
+    XiqCountryCode:
+      type: string
+      description: The country code.
+      enum:
+      - AFGHANISTAN_4
+      - ALGERIA_12
+      - ARGENTINA_32
+      - ARUBA_533
+      - AUSTRALIA_36
+      - AUSTRIA_40
+      - AZERBAIJAN_31
+      - BAHAMAS_44
+      - BAHRAIN_48
+      - BANGLADESH_50
+      - BARBADOS_52
+      - BELARUS_112
+      - BELGIUM_56
+      - BERMUDA_60
+      - BHUTAN_64
+      - BOLIVIA_68
+      - BRAZIL_76
+      - BULGARIA_100
+      - CAMBODIA_116
+      - CAMEROON_120
+      - CANADA_124
+      - CAYMAN_ISLANDS_136
+      - CHILE_152
+      - COLOMBIA_170
+      - COSTA_RICA_188
+      - CROATIA_191
+      - CYPRUS_196
+      - CZECH_REPUBLIC_203
+      - DENMARK_208
+      - DOMINICAN_REPUBLIC_214
+      - ECUADOR_218
+      - EGYPT_818
+      - EL_SALVADOR_222
+      - ESTONIA_233
+      - FINLAND_246
+      - FRANCE_250
+      - FRENCH_GUIANA_254
+      - GEORGIA_268
+      - GERMANY_276
+      - GHANA_288
+      - GREECE_300
+      - GUAM_316
+      - GUATEMALA_320
+      - GUYANA_328
+      - HAITI_332
+      - HONDURAS_340
+      - HONG_KONG_344
+      - HUNGARY_348
+      - ICELAND_352
+      - INDIA_356
+      - INDONESIA_360
+      - IRELAND_372
+      - PAKISTAN_586
+      - ISRAEL_376
+      - ITALY_380
+      - JAMAICA_388
+      - JAPAN_4014
+      - JORDAN_400
+      - KAZAKHSTAN_398
+      - KENYA_404
+      - KOREA_410
+      - KUWAIT_414
+      - KYRGYZSTAN_417
+      - LATVIA_428
+      - LEBANON_422
+      - LIECHTENSTEIN_438
+      - LITHUANIA_440
+      - LUXEMBOURG_442
+      - MACAO_446
+      - MALAWI_454
+      - MALAYSIA_458
+      - MALTA_470
+      - MAURITIUS_480
+      - MEXICO_484
+      - MOLDOVA_498
+      - MOROCCO_504
+      - MOZAMBIQUE_508
+      - NEPAL_524
+      - NETHERLANDS_528
+      - NEW_CALEDONIA_540
+      - NEW_ZEALAND_554
+      - NICARAGUA_558
+      - NIGERIA_566
+      - NORWAY_578
+      - OMAN_512
+      - PALAU_585
+      - PANAMA_591
+      - PAPUA_NEW_GUINEA_598
+      - PARAGUAY_600
+      - CHINA_156
+      - PERU_604
+      - POLAND_616
+      - PORTUGAL_620
+      - PUERTO_RICO_630
+      - QATAR_634
+      - PHILIPPINES_608
+      - ROMANIA_642
+      - RUSSIA_643
+      - SAUDI_ARABIA_682
+      - SERBIA_688
+      - SINGAPORE_702
+      - SLOVAK_REPUBLIC_703
+      - SLOVENIA_705
+      - SOUTH_AFRICA_710
+      - SPAIN_724
+      - SRI_LANKA_144
+      - SURINAME_740
+      - SWEDEN_752
+      - SWITZERLAND_756
+      - TAIWAN_158
+      - TANZANIA_834
+      - THAILAND_764
+      - REPUBLIC_OF_MACEDONIA_807
+      - TOGO_768
+      - TRINIDAD_Y_TOBAGO_780
+      - TUNISIA_788
+      - TURKEY_792
+      - TURKS_AND_CAICOS_ISLANDS_796
+      - U_A_E_784
+      - US_VIRGIN_ISLANDS_850
+      - UKRAINE_804
+      - UNITED_KINGDOM_826
+      - UNITED_STATES_840
+      - URUGUAY_858
+      - VANUATU_548
+      - VENEZUELA_862
+      - VIETNAM_704
     XiqDellDevices:
       required:
       - sn_to_st
@@ -11975,7 +12618,7 @@ components:
             description: Serial number -> MAC address
           description: Serial number -> MAC address
       description: ExtremeWireless (WiNG) devices to onboard
-    XiqSendCliSyncRequest:
+    XiqSendCliRequest:
       required:
       - clis
       - devices
@@ -12997,6 +13640,87 @@ components:
             type: string
             description: The SSIDs
       description: The PCG port assignment entry of eth user info
+    XiqOperationMetadata:
+      required:
+      - cancelable
+      - create_time
+      - expires_in
+      - status
+      - update_time
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/XiqOperationStatus'
+        cancelable:
+          type: boolean
+          description: Indicates if the operation can be canceled in the current status
+        percentage:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: The progress in percentage ranges from 0 to 100 (it's not guaranteed
+            to be accurate)
+          format: int32
+        step:
+          type: string
+          description: The optional step name for multiple steps operations when the
+            operation is running
+        create_time:
+          type: string
+          description: The operation's create time, which is the time when the operation
+            is in PENDING status
+          format: date-time
+        update_time:
+          type: string
+          description: The operation's last update time
+          format: date-time
+        start_time:
+          type: string
+          description: The operation's start time, which is the time when the operation
+            is in RUNNING status
+          format: date-time
+        end_time:
+          type: string
+          description: The operation's end time, which is the time when the operation
+            is done
+          format: date-time
+        expires_in:
+          type: integer
+          description: The number of seconds remaining until the operation expires
+            and is to be deleted.
+          format: int64
+      description: The metadata of Long Running Operation (LRO)
+    XiqOperationObject:
+      required:
+      - done
+      - id
+      - metadata
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the operation
+        metadata:
+          $ref: '#/components/schemas/XiqOperationMetadata'
+        done:
+          type: boolean
+          description: Whether the operation is done
+        response:
+          type: object
+          description: The API response of the operation if the status is SUCCEEDED
+        error:
+          $ref: '#/components/schemas/XiqError'
+      description: Long Running Operation (LRO) model
+    XiqOperationStatus:
+      type: string
+      description: The current operation status
+      enum:
+      - PENDING
+      - RUNNING
+      - CANCELING
+      - SUCCEEDED
+      - FAILED
+      - CANCELED
     PagedXiqNetworkPolicy:
       required:
       - count
@@ -13746,6 +14470,8 @@ components:
       - ACTIVE_CLIENTS
       - LOCATION_ID
       - LOCATIONS
+      - DESCRIPTION
+      - COUNTRY_CODE
     PagedXiqDevice:
       required:
       - count
@@ -13875,6 +14601,13 @@ components:
           description: The detailed location
           items:
             $ref: '#/components/schemas/XiqLocationLegend'
+        country_code:
+          type: integer
+          description: The assigned country code on the device
+          format: int32
+        description:
+          type: string
+          description: The device description
       description: Generic ExtremeCloud IQ Device model
     XiqDeviceFunction:
       type: string
@@ -14899,6 +15632,15 @@ components:
           description: The available device number
           format: int32
       description: The license list
+    XiqDefaultDevicePassword:
+      required:
+      - password
+      type: object
+      properties:
+        password:
+          type: string
+          description: The default device password
+      description: The default device password
     XiqAccount:
       required:
       - account_mode
