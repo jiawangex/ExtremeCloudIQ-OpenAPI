@@ -4,6 +4,7 @@ lint:
   extends:
     - recommended
   rules:
+    parameter-description: error
     operation-4xx-response: off
     no-ambiguous-paths: off
     assert/info-description:
