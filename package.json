@@ -1,0 +1,38 @@
+{
+  "name": "extremecloudiq-openapi",
+  "version": "1.0.0",
+  "description": "ExtremeCloud IQ OpenAPI design",
+  "author": "Shangquan Wen",
+  "license": "Apache 2.0",
+  "keywords": [
+    "Extreme Networks",
+    "ExtremeCloud",
+    "ExtremeCloud IQ",
+    "OpenAPI",
+    "REST"
+  ],
+  "devDependencies": {
+    "@redocly/cli": "^1.0.0-beta.103",
+    "@stoplight/spectral-cli": "^6.4.1",
+    "openapi-merge-cli": "^1.3.1",
+    "swagger-ui-cli": "^0.12.2"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules bundled",
+    "lint": "pnpm redocly lint openapi/*.yaml && pnpm spectral lint openapi/*.yaml",
+    "bundle": "pnpm redocly bundle --output bundled --ext yaml openapi/*.yaml",
+    "merge": "pnpm openapi-merge-cli --config .openapi-merge.yaml",
+    "test": "pnpm lint",
+    "build": "pnpm lint && pnpm bundle && pnpm merge",
+    "redoc": "pnpm redocly preview-docs --port 8888 xcloudiq-openapi.yaml",
+    "swagger": "pnpm swagger-ui --port 8899 xcloudiq-openapi.yaml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/extremenetworks/ExtremeCloudIQ-OpenAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/extremenetworks/ExtremeCloudIQ-OpenAPI/issues"
+  },
+  "homepage": "https://github.com/extremenetworks/ExtremeCloudIQ-OpenAPI#readme"
+}
