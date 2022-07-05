@@ -1,0 +1,1977 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: https://api.extremecloudiq.com
+tags:
+  - name: Device
+    description: 'Supported device platforms: Cloud Engine, IQ Engine, WiNG, VOSS, EXOS...'
+paths:
+  /devices:
+    get:
+      tags:
+        - Device
+      summary: '[LRO] List devices'
+      description: List devices with filters and pagination.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_device_list'
+      operationId: listDevices
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+        - name: locationId
+          in: query
+          description: Location Id
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: connected
+          in: query
+          description: The device connect status
+          required: false
+          schema:
+            type: boolean
+        - name: adminStates
+          in: query
+          description: The device admin states
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqDeviceAdminState'
+        - name: macAddresses
+          in: query
+          description: The device mac addresses
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: sns
+          in: query
+          description: The device serial numbers
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: hostnames
+          in: query
+          description: The device host names
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: sortField
+          in: query
+          description: The sort field
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqDeviceSortField'
+        - name: order
+          in: query
+          description: The sort order (ascending by default)
+          required: false
+          schema:
+            $ref: 'common/components.yaml#/components/schemas/XiqSortOrder'
+        - name: views
+          in: query
+          description: The views to return device fields (Check fields for each view at XiqDeviceView schema)
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqDeviceView'
+        - name: fields
+          in: query
+          description: The device fields to return
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqDeviceField'
+        - name: async
+          in: query
+          description: Whether to enable async mode
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqDevice'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}':
+    get:
+      tags:
+        - Device
+      summary: Get device info for a specific device
+      description: Get device info for a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_device_details_for_one_device'
+      operationId: getDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: views
+          in: query
+          description: The views to return device fields (Check details at XiqDeviceView schema)
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqDeviceView'
+        - name: fields
+          in: query
+          description: The device fields to return
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqDeviceField'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDevice'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Device
+      summary: Delete a device
+      description: Delete a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_device'
+      operationId: deleteDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/ssid/status':
+    get:
+      tags:
+        - Device
+      summary: Get SSID status for a device
+      description: Get the SSIDs status on each wifi interface for a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_device_level_ssid_status_on_each_wifi_interface'
+      operationId: getDeviceLevelSsidStatus
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/XiqDeviceLevelSsidStatus'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/history/cpu-mem':
+    get:
+      tags:
+        - Device
+      summary: Get device CPU/memory usage history
+      description: Get average device CPU and memory usage history.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_device_cpu_and_memory_usage_for_one_device'
+      operationId: getDeviceCpuMemoryHistory
+      parameters:
+        - name: id
+          in: path
+          description: Device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: startTime
+          in: query
+          description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: endTime
+          in: query
+          description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: interval
+          in: query
+          description: The aggregate interval in milliseconds
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqDeviceCpuMemoryUsage'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/alarms':
+    get:
+      tags:
+        - Device
+      summary: List alarms for a device
+      description: List alarms for a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_device_alarms_for_one_device'
+      operationId: listDeviceAlarm
+      parameters:
+        - name: id
+          in: path
+          description: Device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+        - name: startTime
+          in: query
+          description: The start time for query alarm
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: endTime
+          in: query
+          description: The end time for query alarm
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqDeviceAlarm'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /devices/stats:
+    get:
+      tags:
+        - Device
+      summary: Get device stats
+      description: 'Get device stats, such as total device count, managed device count, connected device count, etc.'
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_device_status_summary'
+      operationId: getDeviceStats
+      parameters:
+        - name: locationId
+          in: query
+          description: The location ID
+          required: false
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDeviceStats'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/network-policy/{policyId}':
+    get:
+      tags:
+        - Device
+      summary: List assigned devices for network policy
+      description: List assigned devices for the network policy with pagination.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_assigned_devices_for_network_policy'
+      operationId: listDevicesByNetworkPolicy
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqDevice'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/network-policy':
+    get:
+      tags:
+        - Device
+      summary: Get network policy for a device
+      description: Get the network policy for a specific device.
+      operationId: getDeviceNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'network-policy.yaml#/components/schemas/XiqNetworkPolicy'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Device
+      summary: Assign network policy to a device
+      description: Assign a network policy to a specific device.
+      operationId: assignDeviceNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: networkPolicyId
+          in: query
+          description: The network policy ID to assign
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Device
+      summary: Revoke network policy for a device
+      description: Revoke the assigned network policy for a specific device.
+      operationId: revokeDeviceNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/location':
+    get:
+      tags:
+        - Device
+      summary: Get location for a device
+      description: Get the location info for a specific device.
+      operationId: getDeviceLocation
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDeviceLocation'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Device
+      summary: Assign location to a device
+      description: Assign a location to a specific device with extra map and geographical properties.
+      operationId: assignDeviceLocation
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceLocationAssignment'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Device
+      summary: Revoke location for a device
+      description: Revoke the assigned location for a specific device.
+      operationId: revokeDeviceLocation
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/hostname':
+    put:
+      tags:
+        - Device
+      summary: Change hostname for a device
+      description: Change hostname for a specific device.
+      operationId: changeHostname
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: hostname
+          in: query
+          description: The new hostname
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/description':
+    put:
+      tags:
+        - Device
+      summary: Change description for a device
+      description: Change description for a specific device.
+      operationId: changeDeviceDescription
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The device description
+        content:
+          text/plain:
+            schema:
+              maxLength: 64
+              minLength: 1
+              type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/radius-proxy/:assign':
+    put:
+      tags:
+        - Device
+      summary: Assign RADIUS proxy to devices
+      description: Assign a RADIUS proxy to multiple devices.
+      operationId: assignDevicesRadiusProxy
+      parameters:
+        - name: ids
+          in: query
+          description: The device IDs
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        - name: radiusProxyId
+          in: query
+          description: The RADIUS proxy ID to assign
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/ssid/status/:change':
+    post:
+      tags:
+        - Device
+      summary: Enable or disable SSID for a device
+      description: Enable or disable SSIDs on the given wifi interfaces for a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'http://localhost:8081/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface'
+      operationId: changeDeviceLevelSsidStatus
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateDeviceLevelSsidStatus'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/ssid/:override':
+    post:
+      tags:
+        - Device
+      summary: Override SSID for a device
+      description: Override SSID broadcast name/passphrase for a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'http://localhost:8081/api-docs/api-reference.html#_device_level_ssid_override'
+      operationId: overrideDeviceLevelSsid
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceLevelSsid'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:unmanage':
+    post:
+      tags:
+        - Device
+      summary: Change admin state to 'Unmanaged' for a device
+      description: Change device admin state to 'Unmanaged' for a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'http://localhost:8081/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device'
+      operationId: changeDeviceStatusToUnmanage
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:reset':
+    post:
+      tags:
+        - Device
+      summary: '[LRO] Reset a device to factory default'
+      description: Reset a device to factory default settings.
+      externalDocs:
+        description: API Reference
+        url: 'http://localhost:8081/api-docs/api-reference.html#_reset_device_for_once_device'
+      operationId: resetDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: async
+          in: query
+          description: Whether to enable async mode
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:reboot':
+    post:
+      tags:
+        - Device
+      summary: Reboot a device
+      description: Reboot a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'http://localhost:8081/api-docs/api-reference.html#_reboot_one_device'
+      operationId: rebootDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:manage':
+    post:
+      tags:
+        - Device
+      summary: Change admin state to 'Managed' for a device
+      description: Change device management status to Managed for a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'http://localhost:8081/api-docs/api-reference.html#_change_status_to_managed_for_one_device'
+      operationId: changeDeviceStatusToManage
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:cli':
+    post:
+      tags:
+        - Device
+      summary: Send CLI to a device
+      description: Send CLI commands to a specific device.
+      externalDocs:
+        description: API Reference
+        url: 'http://localhost:8081/api-docs/api-reference.html#_send_cli_to_one_device'
+      operationId: sendCliToDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The one or multiple CLIs to send
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqSendCliResponse'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/os/:change':
+    post:
+      tags:
+        - Device
+      summary: Change device OS mode
+      description: Change OS mode for AP or Switch.
+      operationId: changeDevicesOsMode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqChangeDevicesOsModeRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/network-policy/:revoke':
+    post:
+      tags:
+        - Device
+      summary: Revoke network policy for multiple devices
+      description: Revoke the network policy from the target devices.
+      operationId: revokeDevicesNetworkPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/network-policy/:query':
+    post:
+      tags:
+        - Device
+      summary: Query network policy for multiple devices
+      description: Query the network policy for the target devices.
+      operationId: queryDevicesNetworkPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: 'network-policy.yaml#/components/schemas/XiqNetworkPolicy'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/network-policy/:assign':
+    post:
+      tags:
+        - Device
+      summary: Assign network policy to multiple devices
+      description: Assign the network policy to the target devices.
+      operationId: assignDevicesNetworkPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqAssignDevicesNetworkPolicyRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/location/:revoke':
+    post:
+      tags:
+        - Device
+      summary: Revoke location for multiple devices
+      description: Revoke the location from the target devices.
+      operationId: revokeDevicesLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/location/:query':
+    post:
+      tags:
+        - Device
+      summary: Query location for multiple devices
+      description: Query the location for the target devices.
+      operationId: queryDevicesLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/XiqDeviceLocation'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/location/:assign':
+    post:
+      tags:
+        - Device
+      summary: Assign location to multiple devices
+      description: Assign the location to the target devices.
+      operationId: assignDevicesLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqAssignDevicesLocationRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/country-code/:assign':
+    post:
+      tags:
+        - Device
+      summary: Assign a country code to devices
+      description: Assign the country code to one or more devices.
+      operationId: assignDevicesCountryCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqAssignDevicesCountryCodeRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:unmanage':
+    post:
+      tags:
+        - Device
+      summary: Change status to Unmanaged
+      description: Change device management status to Unmanaged for the target devices.
+      operationId: changeStatusToUnmanage
+      requestBody:
+        description: The device filter
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:reboot':
+    post:
+      tags:
+        - Device
+      summary: Reboot devices
+      description: Reboot the target devices.
+      operationId: rebootDevices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:onboard':
+    post:
+      tags:
+        - Device
+      summary: Onboard Devices
+      description: |-
+        Onboard devices for all devices, such as Extreme/Aerohive, EXOS, VOSS, WiNG, and Dell.
+        This is asynchronized operation to support massive device onboarding.
+      operationId: onboardDevices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqOnboardDeviceRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:manage':
+    post:
+      tags:
+        - Device
+      summary: Change status to Managed
+      description: Change device management status to Managed for the target devices.
+      operationId: changeStatusToManage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:delete':
+    post:
+      tags:
+        - Device
+      summary: Delete devices
+      description: Bulk delete the devices matching the filter criteria.
+      operationId: deleteDevices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:cli':
+    post:
+      tags:
+        - Device
+      summary: '[LRO] Send CLI to devices'
+      description: 'Send CLI commands to the target devices. This API can be run at async mode, please follow the Long-Running Operation (LRO) guide to track the progress and the result.'
+      operationId: sendCliToDevices
+      parameters:
+        - name: async
+          in: query
+          description: Whether to enable async mode
+          required: false
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqSendCliRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqSendCliResponse'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqDeviceAdminState:
+      type: string
+      enum:
+        - NEW
+        - BOOTSTRAP
+        - STAGED
+        - MANAGED
+        - UNMANAGED
+    XiqDeviceSortField:
+      type: string
+      description: All available device sort fields<br/><br/>MAC = Device MAC Address<br/>SN = Device Serial Number
+      enum:
+        - MAC
+        - SN
+    XiqDeviceView:
+      type: string
+      description: 'The logic collections of device fields<br/><br/>BASIC: ID, ORG_ID, SERIAL_NUMBER, SERVICE_TAG, MAC_ADDRESS, SIMULATED, DEVICE_FUNCTION, PRODUCT_TYPE, HOSTNAME, IP_ADDRESS, SOFTWARE_VERSION, DEVICE_ADMIN_STATE, CONNECTED<br>FULL: All fields<br/>STATUS: ID, DEVICE_ADMIN_STATE, CONNECTED<br/>LOCATION: ID, LOCATION_ID, LOCATIONS<br>CLIENT: ID, ACTIVE_CLIENTS<br/>DETAIL: ID, ORG_ID, CREATE_TIME, UPDATE_TIME, SERIAL_NUMBER, SERVICE_TAG, MAC_ADDRESS,SIMULATED, DEVICE_FUNCTION, PRODUCT_TYPE, HOSTNAME, IP_ADDRESS, SOFTWARE_VERSION, DEVICE_ADMIN_STATE, CONNECTED, LAST_CONNECT_TIME, DNS_SERVER_ADDRESS, SUBNET_MASK, DEFAULT_GATEWAY, IPV6_ADDRESS, IPV6_NETMASK, DISPLAY_VERSION'
+      enum:
+        - BASIC
+        - FULL
+        - STATUS
+        - LOCATION
+        - CLIENT
+        - DETAIL
+    XiqDeviceField:
+      type: string
+      enum:
+        - ID
+        - CREATE_TIME
+        - UPDATE_TIME
+        - ORG_ID
+        - SERIAL_NUMBER
+        - SERVICE_TAG
+        - MAC_ADDRESS
+        - DEVICE_FUNCTION
+        - PRODUCT_TYPE
+        - HOSTNAME
+        - IP_ADDRESS
+        - SOFTWARE_VERSION
+        - DEVICE_ADMIN_STATE
+        - CONNECTED
+        - LAST_CONNECT_TIME
+        - NETWORK_POLICY_NAME
+        - NETWORK_POLICY_ID
+        - NTP_SERVER_ADDRESS
+        - DNS_SERVER_ADDRESS
+        - SUBNET_MASK
+        - DEFAULT_GATEWAY
+        - IPV6_ADDRESS
+        - IPV6_NETMASK
+        - SIMULATED
+        - DISPLAY_VERSION
+        - ACTIVE_CLIENTS
+        - LOCATION_ID
+        - LOCATIONS
+        - DESCRIPTION
+        - COUNTRY_CODE
+    PagedXiqDevice:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqDevice'
+    XiqDevice:
+      required:
+        - create_time
+        - id
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        serial_number:
+          type: string
+          description: 'The device serial number, valid for all non-HAC devices'
+        service_tag:
+          type: string
+          description: 'The device service tag, valid for all HAC devices'
+        mac_address:
+          type: string
+          description: The device MAC address
+        device_function:
+          $ref: '#/components/schemas/XiqDeviceFunction'
+        product_type:
+          type: string
+          description: 'The product type, such as: AP_230, BR_100, NX9600, etc.'
+        hostname:
+          type: string
+          description: The device hostname
+        ip_address:
+          type: string
+          description: The device IPv4 address
+        software_version:
+          type: string
+          description: The device OS software version
+        device_admin_state:
+          $ref: '#/components/schemas/XiqDeviceAdminState'
+        connected:
+          type: boolean
+          description: The device connection status
+        last_connect_time:
+          type: string
+          description: The device last connect time
+          format: date-time
+        network_policy_name:
+          type: string
+          description: The network policy name for the device
+        network_policy_id:
+          type: integer
+          description: The network policy ID for the device
+          format: int64
+        primary_ntp_server_address:
+          type: string
+          description: The primary NTP server address for the device
+        primary_dns_server_address:
+          type: string
+          description: The primary DNS server address for the device
+        subnet_mask:
+          type: string
+          description: The subnet mask for the device
+        default_gateway:
+          type: string
+          description: The default gateway for the device
+        ipv6_address:
+          type: string
+          description: The ipv6 address for the device
+        ipv6_netmask:
+          type: integer
+          description: The ipv6 netmask for the device
+          format: int32
+        simulated:
+          type: boolean
+          description: The device is simulated or not
+        display_version:
+          type: string
+          description: The display version for the device
+        active_clients:
+          type: integer
+          description: The active client count for the device
+          format: int32
+        location_id:
+          type: integer
+          description: The location ID for the device
+          format: int64
+        locations:
+          type: array
+          description: The detailed location
+          items:
+            $ref: '#/components/schemas/XiqLocationLegend'
+        country_code:
+          type: integer
+          description: The assigned country code on the device
+          format: int32
+        description:
+          type: string
+          description: The device description
+      description: Generic ExtremeCloud IQ Device model
+    XiqDeviceFunction:
+      type: string
+      description: 'The device function, such as AP, Router, Switch, etc.'
+      enum:
+        - AP
+        - ROUTER
+        - ROUTER_AS_L2_VPN_GATEWAY
+        - ROUTER_AS_L3_VPN_GATEWAY
+        - SWITCH
+        - SWITCH_HAC
+        - SWITCH_DELL
+        - L2_VPN_GATEWAY
+        - L3_VPN_GATEWAY
+    XiqLocationLegend:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The location ID
+          format: int64
+        name:
+          type: string
+          description: The location name
+      description: The simple location information
+    XiqDeviceLevelSsidStatus:
+      required:
+        - wifi0_enabled
+        - wifi1_enabled
+      type: object
+      properties:
+        wifi0_enabled:
+          type: boolean
+          description: The SSID is enabled or not on wifi0 interface
+        wifi1_enabled:
+          type: boolean
+          description: The SSID is enabled or not on wifi1 interface
+      description: The SSID status
+    XiqDeviceCpuMemoryUsage:
+      type: object
+      properties:
+        average_cpu:
+          type: integer
+          description: The device average cpu usage
+          format: int32
+        average_memory:
+          type: integer
+          description: The device average memory usage
+          format: int32
+        timestamp:
+          type: integer
+          description: The timestamp for data aggregate
+          format: int64
+      description: Get time series of the average device cpu and memory usage
+    PagedXiqDeviceAlarm:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqDeviceAlarm'
+    XiqDeviceAlarm:
+      type: object
+      properties:
+        entity_id:
+          type: integer
+          description: The device ID
+          format: int64
+        timestamp:
+          type: integer
+          description: The timestamp for alarm created
+          format: int64
+        severity:
+          type: string
+          description: The severity of the alarm
+        category:
+          type: string
+          description: The category of the alarm
+        device_mac:
+          type: string
+          description: The device MAC of the alarm
+        client_mac:
+          type: string
+          description: The client MAC of the alarm
+        description:
+          type: string
+          description: The alarm description
+      description: The device alarm view
+    XiqDeviceStats:
+      type: object
+      properties:
+        total_device_count:
+          type: integer
+          format: int32
+        managed_device_count:
+          type: integer
+          format: int32
+        connected_device_count:
+          type: integer
+          format: int32
+    XiqDeviceLocationAssignment:
+      required:
+        - location_id
+      type: object
+      properties:
+        location_id:
+          type: integer
+          description: 'The assigned location ID, it must be FLOOR type'
+          format: int64
+        x:
+          type: number
+          description: The horizontal value in the floor map
+          format: double
+        'y':
+          type: number
+          description: The vertical value in the floor map
+          format: double
+        latitude:
+          type: number
+          description: The latitude in the geography
+          format: double
+        longitude:
+          type: number
+          description: The longitude in the geography
+          format: double
+      description: Device location assignment
+    XiqDeviceLocation:
+      required:
+        - create_time
+        - location_name
+        - location_type
+        - location_unique_name
+        - update_time
+      type: object
+      properties:
+        location_id:
+          type: integer
+          description: 'The assigned location ID, it must NOT be BUILDING type'
+          format: int64
+        create_time:
+          type: string
+          description: The timestamp when the device assigned to the location
+          format: date-time
+        update_time:
+          type: string
+          description: The timestamp when the location info was last updated
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        parent_id:
+          type: integer
+          description: The parent location ID
+          format: int64
+        location_name:
+          type: string
+          description: The location name
+        location_unique_name:
+          type: string
+          description: The unique location name
+        location_type:
+          type: string
+          description: The location type
+        location_address:
+          type: string
+          description: The address for the location
+        x:
+          type: number
+          description: The horizontal value in the floor map
+          format: double
+        'y':
+          type: number
+          description: The vertical value in the floor map
+          format: double
+        latitude:
+          type: number
+          description: The latitude in the geography
+          format: double
+        longitude:
+          type: number
+          description: The longitude in the geography
+          format: double
+      description: Device location info
+    XiqAssignDevicesLocationRequest:
+      required:
+        - device_location
+        - devices
+      type: object
+      properties:
+        devices:
+          $ref: '#/components/schemas/XiqDeviceFilter'
+        device_location:
+          $ref: '#/components/schemas/XiqDeviceLocationAssignment'
+      description: Device location assignment for multiple devices
+    XiqAssignDevicesCountryCodeRequest:
+      required:
+        - country_code
+        - devices
+      type: object
+      properties:
+        devices:
+          $ref: '#/components/schemas/XiqDeviceFilter'
+        country_code:
+          $ref: '#/components/schemas/XiqCountryCode'
+      description: Device country-code assignment for multiple devices
+    XiqCountryCode:
+      type: string
+      description: The country code.
+      enum:
+        - AFGHANISTAN_4
+        - ALGERIA_12
+        - ARGENTINA_32
+        - ARUBA_533
+        - AUSTRALIA_36
+        - AUSTRIA_40
+        - AZERBAIJAN_31
+        - BAHAMAS_44
+        - BAHRAIN_48
+        - BANGLADESH_50
+        - BARBADOS_52
+        - BELARUS_112
+        - BELGIUM_56
+        - BERMUDA_60
+        - BHUTAN_64
+        - BOLIVIA_68
+        - BRAZIL_76
+        - BULGARIA_100
+        - CAMBODIA_116
+        - CAMEROON_120
+        - CANADA_124
+        - CAYMAN_ISLANDS_136
+        - CHILE_152
+        - COLOMBIA_170
+        - COSTA_RICA_188
+        - CROATIA_191
+        - CYPRUS_196
+        - CZECH_REPUBLIC_203
+        - DENMARK_208
+        - DOMINICAN_REPUBLIC_214
+        - ECUADOR_218
+        - EGYPT_818
+        - EL_SALVADOR_222
+        - ESTONIA_233
+        - FINLAND_246
+        - FRANCE_250
+        - FRENCH_GUIANA_254
+        - GEORGIA_268
+        - GERMANY_276
+        - GHANA_288
+        - GREECE_300
+        - GUAM_316
+        - GUATEMALA_320
+        - GUYANA_328
+        - HAITI_332
+        - HONDURAS_340
+        - HONG_KONG_344
+        - HUNGARY_348
+        - ICELAND_352
+        - INDIA_356
+        - INDONESIA_360
+        - IRELAND_372
+        - PAKISTAN_586
+        - ISRAEL_376
+        - ITALY_380
+        - JAMAICA_388
+        - JAPAN_4014
+        - JORDAN_400
+        - KAZAKHSTAN_398
+        - KENYA_404
+        - KOREA_410
+        - KUWAIT_414
+        - KYRGYZSTAN_417
+        - LATVIA_428
+        - LEBANON_422
+        - LIECHTENSTEIN_438
+        - LITHUANIA_440
+        - LUXEMBOURG_442
+        - MACAO_446
+        - MALAWI_454
+        - MALAYSIA_458
+        - MALTA_470
+        - MAURITIUS_480
+        - MEXICO_484
+        - MOLDOVA_498
+        - MOROCCO_504
+        - MOZAMBIQUE_508
+        - NEPAL_524
+        - NETHERLANDS_528
+        - NEW_CALEDONIA_540
+        - NEW_ZEALAND_554
+        - NICARAGUA_558
+        - NIGERIA_566
+        - NORWAY_578
+        - OMAN_512
+        - PALAU_585
+        - PANAMA_591
+        - PAPUA_NEW_GUINEA_598
+        - PARAGUAY_600
+        - CHINA_156
+        - PERU_604
+        - POLAND_616
+        - PORTUGAL_620
+        - PUERTO_RICO_630
+        - QATAR_634
+        - PHILIPPINES_608
+        - ROMANIA_642
+        - RUSSIA_643
+        - SAUDI_ARABIA_682
+        - SERBIA_688
+        - SINGAPORE_702
+        - SLOVAK_REPUBLIC_703
+        - SLOVENIA_705
+        - SOUTH_AFRICA_710
+        - SPAIN_724
+        - SRI_LANKA_144
+        - SURINAME_740
+        - SWEDEN_752
+        - SWITZERLAND_756
+        - TAIWAN_158
+        - TANZANIA_834
+        - THAILAND_764
+        - REPUBLIC_OF_MACEDONIA_807
+        - TOGO_768
+        - TRINIDAD_Y_TOBAGO_780
+        - TUNISIA_788
+        - TURKEY_792
+        - TURKS_AND_CAICOS_ISLANDS_796
+        - U_A_E_784
+        - US_VIRGIN_ISLANDS_850
+        - UKRAINE_804
+        - UNITED_KINGDOM_826
+        - UNITED_STATES_840
+        - URUGUAY_858
+        - VANUATU_548
+        - VENEZUELA_862
+        - VIETNAM_704
+    XiqDellDevices:
+      required:
+        - sn_to_st
+      type: object
+      properties:
+        sn_to_st:
+          type: object
+          additionalProperties:
+            type: string
+            description: Serial number -> Service tag
+          description: Serial number -> Service tag
+      description: Dell devices to onboard
+    XiqExosDevices:
+      required:
+        - sns
+      type: object
+      properties:
+        sns:
+          type: array
+          description: The serial numbers
+          items:
+            type: string
+            description: The serial numbers
+      description: ExtremeXOS (EXOS) devices to onboard
+    XiqExtremeDevices:
+      required:
+        - sns
+      type: object
+      properties:
+        sns:
+          type: array
+          description: The serial numbers
+          items:
+            type: string
+            description: The serial numbers
+      description: Extreme/Aerohive devices to onboard
+    XiqOnboardDeviceRequest:
+      type: object
+      properties:
+        extreme:
+          $ref: '#/components/schemas/XiqExtremeDevices'
+        exos:
+          $ref: '#/components/schemas/XiqExosDevices'
+        voss:
+          $ref: '#/components/schemas/XiqVossDevices'
+        wing:
+          $ref: '#/components/schemas/XiqWingDevices'
+        dell:
+          $ref: '#/components/schemas/XiqDellDevices'
+      description: The payload to onboard devices
+    XiqVossDevices:
+      required:
+        - sns
+      type: object
+      properties:
+        sns:
+          type: array
+          description: The serial numbers
+          items:
+            type: string
+            description: The serial numbers
+      description: VSP Operating System Software (VOSS) devices to onboard
+    XiqWingDevices:
+      required:
+        - sn_to_mac
+      type: object
+      properties:
+        sn_to_mac:
+          type: object
+          additionalProperties:
+            type: string
+            description: Serial number -> MAC address
+          description: Serial number -> MAC address
+      description: ExtremeWireless (WiNG) devices to onboard
+    XiqSendCliRequest:
+      required:
+        - clis
+        - devices
+      type: object
+      properties:
+        devices:
+          $ref: '#/components/schemas/XiqDeviceFilter'
+        clis:
+          type: array
+          description: The one or multiple CLIs to send
+          items:
+            type: string
+            description: The one or multiple CLIs to send
+      description: The request for sending CLIs to devices
+    XiqUpdateDeviceLevelSsidStatus:
+      required:
+        - enabled
+        - if_names
+        - ssid_ids
+      type: object
+      properties:
+        ssid_ids:
+          type: array
+          description: 'The one or multiple SSID to be disabled/enabled, cannot be empty or no action will be triggered.'
+          items:
+            type: integer
+            description: 'The one or multiple SSID to be disabled/enabled, cannot be empty or no action will be triggered.'
+            format: int64
+        if_names:
+          type: array
+          description: 'The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1) to be disabled/enabled, cannot be empty or no SSID will be disabled or enabled.'
+          items:
+            $ref: '#/components/schemas/XiqWirelessIfName'
+        enabled:
+          type: boolean
+          description: To disable or enable the given device level SSIDs on the wifi interfaces.
+      description: The request for disable/enable device level ssid.
+    XiqWirelessIfName:
+      type: string
+      description: 'The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1) to be disabled/enabled, cannot be empty or no SSID will be disabled or enabled.'
+      enum:
+        - WIFI0
+        - WIFI1
+    XiqDeviceLevelSsid:
+      required:
+        - ssid_id
+      type: object
+      properties:
+        ssid_id:
+          type: integer
+          description: 'The SSID ID to override, cannot be null.'
+          format: int64
+        ssid:
+          type: string
+          description: The broadcast ssid name to override. Can only override if the SSID profile is OPEN or PSK mode.
+        passphrase:
+          type: string
+          description: The ssid passphrase to override. Can only override if the SSID profile is in PSK mode.
+      description: The ssid/passphrase for device level ssid to override
+    XiqCliOutput:
+      required:
+        - cli
+        - response_code
+      type: object
+      properties:
+        cli:
+          type: string
+          description: The CLI sent to the device
+        response_code:
+          $ref: '#/components/schemas/XiqCliResponseCode'
+        output:
+          type: string
+          description: The CLI output
+      description: The CLI output
+    XiqCliResponseCode:
+      type: string
+      description: The CLI response code
+      enum:
+        - UNSPECIFIED
+        - SUCCEED
+        - ERR_DEVICE_NOT_EXIST
+        - ERR_DEVICE_NOT_ACTIVE
+        - ERR_SEND_MESSAGE
+        - ERR_CLI_EXECUTED
+        - ERR_DEVICE_NOT_SUPPORTED
+        - ERR_SIMULATE_NOT_SUPPORTED
+        - ERR_VERSION_NOT_SUPPORTED
+        - ERR_PARSE_FILE
+        - ERR_UNMANAGED_DEVICE
+        - ERR_CLI_NOT_SENT
+        - ERR_TIMEOUT
+        - ERR_VPN_USING
+        - CLI_SENT_SUCCEED
+        - ERR_CLI_MAX_CLI_LIMIT_EXCEEDED
+    XiqSendCliResponse:
+      type: object
+      properties:
+        device_cli_outputs:
+          type: object
+          additionalProperties:
+            type: array
+            description: device ID -> CLI outputs
+            items:
+              $ref: '#/components/schemas/XiqCliOutput'
+          description: device ID -> CLI outputs
+      description: The response for sending CLIs to devices
+    XiqChangeDevicesOsModeRequest:
+      required:
+        - device_ids
+        - target_os
+      type: object
+      properties:
+        device_ids:
+          maxItems: 2147483647
+          minItems: 1
+          type: array
+          description: 'The one or multiple device IDs to change the OS mode. Must be all AP or Switches in the same list. For AP only "AP_410C", "AP_460C", "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are allowed change to WiNG OS. For Switch: only "5520", "5420F", "5420M" are allowed to change its OS type.'
+          items:
+            type: integer
+            description: 'The one or multiple device IDs to change the OS mode. Must be all AP or Switches in the same list. For AP only "AP_410C", "AP_460C", "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are allowed change to WiNG OS. For Switch: only "5520", "5420F", "5420M" are allowed to change its OS type.'
+            format: int64
+        target_os:
+          type: string
+          description: 'The target OS mode to change to, for AP: only WiNG is supported, for Switch: EXOS or VOSS'
+          example: WiNG
+      description: The request for change the device(s) OS mode.
+    XiqDeviceFilter:
+      type: object
+      properties:
+        ids:
+          type: array
+          description: The device ID list
+          items:
+            type: integer
+            description: The device ID list
+            format: int64
+      description: The filter to get matched devices
+    XiqAssignDevicesNetworkPolicyRequest:
+      required:
+        - devices
+        - network_policy_id
+      type: object
+      properties:
+        devices:
+          $ref: '#/components/schemas/XiqDeviceFilter'
+        network_policy_id:
+          type: integer
+          description: The assigned network policy
+          format: int64
+      description: Device network policy assignment for multiple devices

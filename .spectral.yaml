@@ -1,0 +1,32 @@
+extends: [[spectral:oas, recommended]]
+rules:
+  schema-name-pascal-case:
+    description: Schema name MUST be written in PascalCase
+    message: '{{property}} is not PascalCase: {{error}}'
+    recommended: true
+    type: style
+    given: '$.components.schemas.*~'
+    then:
+      function: casing
+      functionOptions:
+        type: pascal
+
+  operation-id-camel-case:
+    description: The operationId MUST be written in camelCase (will be mapped to method name)
+    message: '{{property}} is not camelCase: {{error}}'
+    recommended: true
+    type: style
+    given: "$.paths.*[?( @property === 'get' || @property === 'put' || @property === 'post' || @property === 'delete' || @property === 'options' || @property === 'head' || @property === 'patch' || @property === 'trace' )]"
+    then:
+      field: operationId
+      function: casing
+      functionOptions:
+        type: camel
+
+  http-get-no-body:
+    description: The HTTP `GET` request MUST NOT have a request body
+    recommended: true
+    severity: error
+    given: $.paths..get.requestBody
+    then:
+      function: undefined

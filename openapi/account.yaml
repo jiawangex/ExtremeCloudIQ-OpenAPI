@@ -1,0 +1,408 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: 'https://api.extremecloudiq.com'
+tags:
+  - name: Account
+    description: ExtremeCloud IQ Account
+paths:
+  /account/viq/default-device-password:
+    get:
+      tags:
+        - Account
+      summary: Get the default device password in the account
+      description: Get the default device password in the account.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_default_device_password'
+      operationId: getDefaultDevicePassword
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDefaultDevicePassword'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Account
+      summary: Update the default device password in the account
+      description: >-
+        Update the default device password in the global setting for accessing the console/shell of the devices.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_default_device_password'
+      operationId: updateDefaultDevicePassword
+      requestBody:
+        description: The new default device password
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/account/viq/:backup':
+    post:
+      tags:
+        - Account
+      summary: Backup VIQ
+      description: Backup VIQ in ExtremeCloud IQ.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_viq_backup'
+      operationId: backupViq
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/account/:switch':
+    post:
+      tags:
+        - Account
+      summary: Switch to another ExtremeCloud IQ account
+      description: Switch to external ExtremeCloud IQ account or switch back to home ExtremeCloud IQ account.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_switch_account'
+      operationId: switchAccount
+      parameters:
+        - name: id
+          in: query
+          description: 'The account ID to switch, switch back to home ExtremeCloud IQ account if not provide'
+          required: false
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'authentication.yaml#/components/schemas/XiqLoginResponse'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /account/viq:
+    get:
+      tags:
+        - Account
+      summary: Get VIQ Info
+      description: Get account VIQ and license info.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_viq_info'
+      operationId: getViqInfo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqViq'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /account/home:
+    get:
+      tags:
+        - Account
+      summary: Get home ExtremeCloud IQ account info
+      description: Get home ExtremeCloud IQ account info.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_basic_info'
+      operationId: getHomeAccount
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqAccount'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /account/external:
+    get:
+      tags:
+        - Account
+      summary: List accessible external guest accounts
+      description: List accessible external ExtremeCloud IQ accounts.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_external_accounts'
+      operationId: listExternalAccounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqExternalAccount'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqEntitlementType:
+      type: string
+      description: The entitlement key type
+      enum:
+        - EVALUATION
+        - PERMANENT
+        - RENEW
+        - UNKNOWN
+    XiqLicenseMode:
+      type: string
+      description: The license mode
+      enum:
+        - BUY
+        - PLANNER
+        - EVAL
+        - MSP
+        - UNKNOWN
+    XiqLicenseStatus:
+      type: string
+      description: The VIQ license status
+      enum:
+        - BUY
+        - PLAN
+        - EVAL
+        - EXPIRED
+        - INVALID
+        - MIGRATED
+    XiqViq:
+      type: object
+      properties:
+        devices:
+          type: integer
+          description: 'Total # of all licensed devices'
+          format: int32
+        standalone:
+          type: boolean
+          description: 'Returns true if HIQ is not enabled, otherwise returns false'
+        expired:
+          type: boolean
+          description: Whether VIQ is expired
+        customer_id:
+          type: string
+          description: 'The customer ID, also known as Salesforce customer ID'
+        vhm_id:
+          type: string
+          description: The VIQ ID
+        owner_id:
+          type: integer
+          description: The owner account ID
+          format: int64
+        licenses:
+          type: array
+          description: The license list
+          items:
+            $ref: '#/components/schemas/XiqViqLicense'
+    XiqViqLicense:
+      required:
+        - create_time
+        - id
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        status:
+          $ref: '#/components/schemas/XiqLicenseStatus'
+        active_date:
+          type: string
+          description: The active date
+          format: date-time
+        expire_date:
+          type: string
+          description: The expire date
+          format: date-time
+        entitlement_key:
+          type: string
+          description: The entitlement key
+        entitlement_type:
+          $ref: '#/components/schemas/XiqEntitlementType'
+        mode:
+          $ref: '#/components/schemas/XiqLicenseMode'
+        devices:
+          type: integer
+          description: The device number
+          format: int32
+        activated:
+          type: integer
+          description: The activated device number
+          format: int32
+        available:
+          type: integer
+          description: The available device number
+          format: int32
+      description: The license list
+    XiqDefaultDevicePassword:
+      required:
+        - password
+      type: object
+      properties:
+        password:
+          type: string
+          description: The default device password
+      description: The default device password
+    XiqAccount:
+      required:
+        - account_mode
+        - account_type
+        - create_time
+        - data_center
+        - id
+        - name
+        - quota
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        name:
+          type: string
+          description: Account name
+        account_type:
+          $ref: '#/components/schemas/XiqAccountType'
+        account_mode:
+          $ref: '#/components/schemas/XiqAccountMode'
+        quota:
+          type: string
+          description: The API quota policy
+        data_center:
+          type: string
+          description: The default Regional Data Center (RDC) to hold data from customer network
+        industry:
+          type: string
+          description: The industry of the account belongs to
+        country:
+          type: string
+          description: The country for the account
+        state:
+          type: string
+          description: The state for the account (if any)
+        city:
+          type: string
+          description: The city for the account
+        address:
+          type: string
+          description: The address for the account
+        zipcode:
+          type: string
+          description: The zipcode of the address
+    XiqAccountMode:
+      type: string
+      description: Account mode
+      enum:
+        - COPILOT
+        - CONNECT
+    XiqAccountType:
+      type: string
+      description: Account type
+      enum:
+        - INTERNAL
+        - CUSTOMER
+        - HIQ
+        - PARTNER
+    XiqExternalAccount:
+      required:
+        - active
+        - alias
+        - create_time
+        - data_center
+        - id
+        - name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        name:
+          type: string
+          description: The external account name
+        alias:
+          type: string
+          description: The external account alias
+        active:
+          type: boolean
+          description: Enable or not
+        data_center:
+          type: string
+          description: The data center to store the VIQ data

@@ -1,0 +1,20 @@
+inputs:
+  - inputFile: bundled/authentication.yaml
+  - inputFile: bundled/authorization.yaml
+  - inputFile: bundled/account.yaml
+  - inputFile: bundled/user.yaml
+  - inputFile: bundled/hiq.yaml
+  - inputFile: bundled/location.yaml
+  - inputFile: bundled/device.yaml
+  - inputFile: bundled/network-policy.yaml
+  - inputFile: bundled/client.yaml
+  - inputFile: bundled/application.yaml
+  - inputFile: bundled/log.yaml
+  - inputFile: bundled/notification.yaml
+  - inputFile: bundled/configuration-deployment.yaml
+  - inputFile: bundled/configuration-basic.yaml
+  - inputFile: bundled/configuration-usermgmt.yaml
+  - inputFile: bundled/configuration-policy.yaml
+  - inputFile: bundled/configuration-authentication.yaml
+  - inputFile: bundled/configuration-certificate.yaml
+output: xcloudiq-openapi.yaml

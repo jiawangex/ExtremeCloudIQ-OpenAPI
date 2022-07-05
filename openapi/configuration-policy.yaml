@@ -1,0 +1,1481 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: 'https://api.extremecloudiq.com'
+tags:
+  - name: Configuration - Policy
+    description: SSID/User Profile/Classification Rule/CCG/Radio Profile/...
+paths:
+  '/ccgs/{id}':
+    get:
+      tags:
+        - Configuration - Policy
+      summary: Get a cloud config group
+      description: Get cloud config group info for the specified ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_cloud_config_group'
+      operationId: getCloudConfigGroup
+      parameters:
+        - name: id
+          in: path
+          description: The cloud config group ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCloudConfigGroup'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Update cloud config group information
+      description: Update the cloud config group details having the specified ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_cloud_config_group'
+      operationId: updateCloudConfigGroup
+      parameters:
+        - name: id
+          in: path
+          description: The cloud config group ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update cloud config group request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateCloudConfigGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCloudConfigGroup'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - Policy
+      summary: Delete a cloud config group
+      description: Delete a specific cloud config group by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_cloud_config_group'
+      operationId: deleteCloudConfigGroup
+      parameters:
+        - name: id
+          in: path
+          description: The cloud config group ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /ccgs:
+    get:
+      tags:
+        - Configuration - Policy
+      summary: List clould config groups
+      description: List a papge of cloud config groups.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_cloud_config_groups'
+      operationId: listCloudConfigGroups
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqCloudConfigGroup'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - Policy
+      summary: Create new cloud config group
+      description: Create a new cloud config group.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_cloud_config_group'
+      operationId: createCloudConfigGroup
+      requestBody:
+        description: Create new cloud config group request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateCloudConfigGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCloudConfigGroup'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /classification-rules:
+    get:
+      tags:
+        - Configuration - Policy
+      summary: List classification rules
+      description: List a page of classification rules.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_classification_rules'
+      operationId: listClassificationRules
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqClassificationRule'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - Policy
+      summary: Create classification rule
+      description: Create a new classification rule.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_classification_rule_configuration'
+      operationId: createClassificationRule
+      requestBody:
+        description: The payload to create a new classification rule
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateClassificationRuleRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqClassificationRule'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/classification-rules/{id}':
+    get:
+      tags:
+        - Configuration - Policy
+      summary: Get a classification rule by ID
+      description: Get a specific classification rule.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_classification_rule_by_id'
+      operationId: getClassificationRule
+      parameters:
+        - name: id
+          in: path
+          description: The classification Rule ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqClassificationRule'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Update classification rule
+      description: Update the exist classification rule.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_classification_rule_configuration'
+      operationId: updateClassificationRule
+      parameters:
+        - name: id
+          in: path
+          description: The classification rule ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload to update exist classification rule
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateClassificationRuleRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqClassificationRule'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - Policy
+      summary: Delete classification rule by ID
+      description: Delete an existing classification rule by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_classification_rule_configuration'
+      operationId: deleteClassificationRule
+      parameters:
+        - name: id
+          in: path
+          description: The classification rule ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /l3-address-profiles:
+    get:
+      tags:
+        - Configuration - Policy
+      summary: List L3 address profiles
+      description: List all L3 Address Profiles.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_l3_address_profile'
+      operationId: listL3AddressProfiles
+      parameters:
+        - name: addressType
+          in: query
+          description: The address type
+          required: true
+          schema:
+            type: string
+            enum:
+              - L3_ADDRESS_TYPE_UNSPECIFIED
+              - L3_ADDRESS_TYPE_IP_ADDRESS
+              - L3_ADDRESS_TYPE_IP_SUBNET
+              - L3_ADDRESS_TYPE_IP_RANGE
+              - UNRECOGNIZED
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqL3AddressProfile'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /ssids:
+    get:
+      tags:
+        - Configuration - Policy
+      summary: List SSIDs
+      description: List SSIDs with filter and pagination.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_ssids'
+      operationId: listSsids
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqSsid'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/ssids/{id}/psk/password':
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Change the SSID PSK password
+      description: Change the SSID PSK password.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_change_the_ssid_psk_password'
+      operationId: changePskPassword
+      parameters:
+        - name: id
+          in: path
+          description: The SSID ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The new SSID PSK password
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/ssids/{id}/mode/wep':
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Change the SSID mode to WEP
+      description: Change the SSID mode to WEP.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_wep'
+      operationId: setSsidModeWep
+      parameters:
+        - name: id
+          in: path
+          description: The SSID ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload to change the SSID mode to WEP
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqSetSsidModeWepRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/ssids/{id}/mode/psk':
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Change the SSID mode to PSK
+      description: Change the SSID mode to PSK.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_psk'
+      operationId: setSsidModePsk
+      parameters:
+        - name: id
+          in: path
+          description: The SSID ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload to change the SSID mode to PSK
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqSetSsidModePskRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/ssids/{id}/mode/ppsk':
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Change the SSID mode to PPSK
+      description: Change the SSID mode to PPSK.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_ppsk'
+      operationId: setSsidModePpsk
+      parameters:
+        - name: id
+          in: path
+          description: The SSID ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload to change the SSID mode to PPSK
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqSetSsidModePpskRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/ssids/{id}/mode/open':
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Change the SSID mode to open access
+      description: Change the SSID mode to open access.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_open_access'
+      operationId: setSsidModeOpen
+      parameters:
+        - name: id
+          in: path
+          description: The SSID ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/ssids/{id}/mode/dot1x':
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Change the SSID mode to 802.1x
+      description: Change the SSID mode to 802.1x.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_dot1x'
+      operationId: setSsidModeDot1x
+      parameters:
+        - name: id
+          in: path
+          description: The SSID ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload to change the SSID mode to 802.1x
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqSetSsidModeDot1xRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /user-profiles:
+    get:
+      tags:
+        - Configuration - Policy
+      summary: List user profiles
+      description: List a page of user profiles.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_user_profiles'
+      operationId: listUserProfiles
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqUserProfile'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - Policy
+      summary: Create a user profile
+      description: Create a new user profile.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_user_profile_configuration'
+      operationId: createUserProfile
+      requestBody:
+        description: The request body to create new user profile.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateUserProfileRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqUserProfile'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/user-profiles/{id}':
+    get:
+      tags:
+        - Configuration - Policy
+      summary: Get user profile by ID
+      description: Get user profile details for the specified ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_user_profile_by_id'
+      operationId: getUserProfile
+      parameters:
+        - name: id
+          in: path
+          description: The user profile ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqUserProfile'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Configuration - Policy
+      summary: Update user profile
+      description: Update an existing user profile.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_user_profile_configuration'
+      operationId: updateCoUserProfile
+      parameters:
+        - name: id
+          in: path
+          description: The user profile ID.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload of user profile.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateUserProfileRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqUserProfile'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - Policy
+      summary: Delete an user profile by ID
+      description: Delete an existing user profile by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_user_profile_configuration'
+      operationId: deleteCoUserProfile
+      parameters:
+        - name: id
+          in: path
+          description: The user profile ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqUpdateCloudConfigGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The CCG name
+        description:
+          type: string
+          description: The CCG description
+        device_ids:
+          type: array
+          description: The device ID list.
+          items:
+            type: integer
+            description: The device ID list.
+            format: int64
+    XiqCloudConfigGroup:
+      required:
+        - create_time
+        - id
+        - name
+        - predefined
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The CCG name
+        description:
+          type: string
+          description: The CCG description
+        predefined:
+          type: boolean
+          description: Whether it is predefined
+        read_only:
+          type: boolean
+          description: Whether it is read-only
+        zone_name:
+          type: string
+          description: The zone name.
+        zone_id:
+          type: integer
+          description: The zone ID
+          format: int64
+        zone_location_id:
+          type: integer
+          description: The zone location ID
+          format: int64
+        device_ids:
+          type: array
+          description: The device IDs selected for this Ccg.
+          items:
+            type: integer
+            description: The device IDs selected for this Ccg.
+            format: int64
+      description: The CCG
+    PagedXiqClassificationRule:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqClassificationRule'
+    PagedXiqCloudConfigGroup:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqCloudConfigGroup'
+    XiqCreateClassificationRequest:
+      required:
+        - classification_type
+        - classification_type_id
+        - match
+      type: object
+      properties:
+        classification_type:
+          type: string
+          description: Classification type
+          enum:
+            - CLASSIFICATION_TYPE_UNSPECIFIED
+            - CLASSIFICATION_TYPE_LOCATION
+            - CLASSIFICATION_TYPE_CLOUD_CONFIG_GROUP
+            - CLASSIFICATION_TYPE_IP_ADDRESS
+            - CLASSIFICATION_TYPE_IP_SUBNET
+            - CLASSIFICATION_TYPE_IP_RANGE
+            - UNRECOGNIZED
+        match:
+          type: boolean
+          description: Contains or not contains
+        classification_type_id:
+          type: integer
+          description: 'The ID of location, cloud config group, IP address, IP subnet or IP range.'
+          format: int64
+      description: The details of rule assignments
+    XiqCreateClassificationRuleRequest:
+      required:
+        - classifications
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of classification rule
+        description:
+          type: string
+          description: The description of classification rule
+        classifications:
+          type: array
+          description: The details of rule assignments
+          items:
+            $ref: '#/components/schemas/XiqCreateClassificationRequest'
+    XiqCreateCloudConfigGroupRequest:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The CCG name
+        description:
+          type: string
+          description: The CCG description
+        device_ids:
+          type: array
+          description: The device ID list.
+          items:
+            type: integer
+            description: The device ID list.
+            format: int64
+    XiqL3AddressProfile:
+      required:
+        - address_type
+        - create_time
+        - id
+        - name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        address_type:
+          $ref: '#/components/schemas/XiqL3AddressType'
+        name:
+          type: string
+          description: Address profile name
+    XiqL3AddressType:
+      type: string
+      description: Address type
+      enum:
+        - IP_ADDRESS
+        - IP_SUBNET
+        - IP_RANGE
+    XiqSetSsidModeWepRequest:
+      required:
+        - encryption_method
+        - key_management
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidWepKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidWepEncryptionMethod'
+        authentication_method:
+          $ref: '#/components/schemas/XiqSsidWepAuthenticationMethod'
+        default_key:
+          $ref: '#/components/schemas/XiqSsidWepDefaultKey'
+        key_type:
+          $ref: '#/components/schemas/XiqSsidKeyType'
+        key_value:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: 'The first key value, must be 13 characters long for WEP104, and 5 characters long for WEP40, cannot be null if it is the default key'
+          example: abcd123456789
+        key_value2:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: 'The second key value, must be 13 characters long for WEP104, and 5 characters long for WEP40, cannot be null if it is the default key'
+        key_value3:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: 'The third key value, must be 13 characters long for WEP104, and 5 characters long for WEP40, cannot be null if it is the default key'
+        key_value4:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: 'The fourth key value, must be 13 characters long for WEP104, and 5 characters long for WEP40, cannot be null if it is the default key'
+        radius_server_group_id:
+          type: integer
+          description: The RADIUS server group ID if using WEP_8021x as the key management
+          format: int64
+      description: The request for setting the SSID to be WEP mode.
+    XiqSsidKeyType:
+      type: string
+      description: 'The key type, ASCII or HEX'
+      example: ASCII
+      enum:
+        - ASCII
+        - HEX
+    XiqSsidWepAuthenticationMethod:
+      type: string
+      description: 'The authentication method type, OPEN or SHARED'
+      enum:
+        - OPEN
+        - SHARED
+    XiqSsidWepDefaultKey:
+      type: string
+      description: 'The default key, FIRST, SECOND,THIRD, OR FOURTH'
+      example: FIRST
+      enum:
+        - FIRST
+        - SECOND
+        - THIRD
+        - FOURTH
+    XiqSsidWepEncryptionMethod:
+      type: string
+      description: 'The encryption method type, WEP104 or WEP40'
+      example: WEP104
+      enum:
+        - WEP40
+        - WEP104
+    XiqSsidWepKeyManagement:
+      type: string
+      description: 'The key management type, WEP or WEP_8021X'
+      example: WEP_8021X
+      enum:
+        - WEP
+        - WEP_8021X
+    XiqSetSsidModePskRequest:
+      required:
+        - encryption_method
+        - key_management
+        - key_type
+        - key_value
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidPskKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidPskEncryptionMethod'
+        anti_logging_threshold:
+          type: integer
+          description: The anti logging threshold
+          format: int32
+        key_type:
+          $ref: '#/components/schemas/XiqSsidKeyType'
+        key_value:
+          maxLength: 2147483647
+          minLength: 8
+          type: string
+          description: 'The PSK key value, minimum 8 characters long'
+        sae_group:
+          $ref: '#/components/schemas/XiqSsidSaeGroup'
+        transition_mode:
+          type: boolean
+          description: Indicates the transition mode if key management is WPA3
+      description: The request for setting the SSID to be PSK mode.
+    XiqSsidPskEncryptionMethod:
+      type: string
+      description: 'The encryption method: for WPA3_PSK please use CCMP, for WPA2_PSK or WPA_PSK, please use CCMP or TKIP, for AUTO_PSK, please use AUTO_TKIP_CCMP'
+      enum:
+        - CCMP
+        - TKIP
+        - AUTO_TKIP_CCMP
+    XiqSsidPskKeyManagement:
+      type: string
+      description: 'The key management: WPA3_PSK, WPA2_PSK, WPA_PSK,AUTO_PSK'
+      enum:
+        - WPA_PSK
+        - WPA2_PSK
+        - WPA3_PSK
+        - AUTO_PSK
+    XiqSsidSaeGroup:
+      type: string
+      description: 'The SAE group: ALL, ECC, or FFC, must be selected when the key management is WPA3'
+      enum:
+        - ALL
+        - ECC
+        - FFC
+    XiqSetSsidModePpskRequest:
+      required:
+        - enable_mac_bind
+        - enable_max_clients_per_ppsk
+        - encryption_method
+        - key_management
+        - user_group_ids
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidPpskKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidPskEncryptionMethod'
+        user_group_ids:
+          type: array
+          description: 'The user group IDs to be attached to the SSID, cannot be empty'
+          items:
+            type: integer
+            description: 'The user group IDs to be attached to the SSID, cannot be empty'
+            format: int64
+        enable_max_clients_per_ppsk:
+          type: boolean
+          description: Flag for enabling the max clients per PPSK
+        max_clients_per_ppsk:
+          maximum: 15
+          minimum: 0
+          type: integer
+          description: 'The max clients (0-15) per PPSK if enabled enable_max_clients_per_ppsk flag, 0 means unlimited'
+          format: int32
+        enable_mac_bind:
+          type: boolean
+          description: Flag for enabling mac binding or not. This setting is only supported with local PPSK.
+        max_macs_per_ppsk:
+          maximum: 5
+          minimum: 1
+          type: integer
+          description: 'Set the max MAC binding numbers per private PSK, Min:1, Max:5'
+          format: int32
+        ppsk_server_id:
+          type: integer
+          description: The PPSK server device ID
+          format: int64
+      description: The request for setting the SSID to be PPSK mode.
+    XiqSsidPpskKeyManagement:
+      type: string
+      description: 'The key management: WPA2_PSK, WPA_PSK,AUTO_PSK'
+      enum:
+        - WPA_PSK
+        - WPA2_PSK
+        - AUTO_PSK
+    XiqSetSsidModeDot1xRequest:
+      required:
+        - enable_idm
+        - encryption_method
+        - key_management
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidDot1xKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidDot1xEncryptionMethod'
+        enable_idm:
+          type: boolean
+          description: Flag for using ExtremeCloud IQ Authentication Service or not
+        transition_mode:
+          type: boolean
+          description: Flag for enabling transition mode if using WPA3 as the key management type
+        radius_server_group_id:
+          type: integer
+          description: The RADIUS server group ID if not using ExtremeCloud IQ Authentication Service
+          format: int64
+        user_group_ids:
+          type: array
+          description: The user group IDs if using ExtremeCloud IQ Authentication Service
+          items:
+            type: integer
+            description: The user group IDs if using ExtremeCloud IQ Authentication Service
+            format: int64
+      description: The request for setting the SSID to be 802.1x mode.
+    XiqSsidDot1xEncryptionMethod:
+      type: string
+      description: 'The encryption method: for WPA_8021X, WPA2_8021X, please use CCMP or TKIP, for AUTO_8021X, please use AUTO_TKIP_CCMP, for WPA3_8021X, please use AES192'
+      example: CCMP
+      enum:
+        - CCMP
+        - TKIP
+        - AUTO_TKIP_CCMP
+        - AES192
+    XiqSsidDot1xKeyManagement:
+      type: string
+      description: 'The key management: WPA_8021X, WPA2_8021X, WPA3_8021X or AUTO_8021X'
+      example: WPA3_8021X
+      enum:
+        - WPA_8021X
+        - WPA2_8021X
+        - WPA3_8021X
+        - AUTO_8021X
+    XiqClassification:
+      required:
+        - classification_id
+        - classification_type
+        - create_time
+        - id
+        - match
+        - update_time
+        - value
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        classification_type:
+          $ref: '#/components/schemas/XiqClassificationType'
+        match:
+          type: boolean
+          description: Contains or not contains)
+        classification_id:
+          type: integer
+          description: 'The ID of location, cloud config group, IP address, IP subnet or IP range.'
+          format: int64
+        value:
+          type: string
+          description: The value of classification
+      description: The payload of common object - classification
+    XiqClassificationRule:
+      required:
+        - create_time
+        - id
+        - name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        name:
+          type: string
+          description: The classification assignment name
+        description:
+          type: string
+          description: The classification assignment description
+        classifications:
+          type: array
+          description: The details of rule assignments
+          items:
+            $ref: '#/components/schemas/XiqClassification'
+      description: The payload of common object - classification assignment
+    XiqClassificationType:
+      type: string
+      description: Classification type
+      enum:
+        - LOCATION
+        - CLOUD_CONFIG_GROUP
+        - IP_ADDRESS
+        - IP_SUBNET
+        - IP_RANGE
+    XiqUpdateClassificationRequest:
+      required:
+        - classification_type
+        - classification_type_id
+        - match
+      type: object
+      properties:
+        classification_type:
+          type: string
+          description: Classification type
+          enum:
+            - CLASSIFICATION_TYPE_UNSPECIFIED
+            - CLASSIFICATION_TYPE_LOCATION
+            - CLASSIFICATION_TYPE_CLOUD_CONFIG_GROUP
+            - CLASSIFICATION_TYPE_IP_ADDRESS
+            - CLASSIFICATION_TYPE_IP_SUBNET
+            - CLASSIFICATION_TYPE_IP_RANGE
+            - UNRECOGNIZED
+        match:
+          type: boolean
+          description: Contains or not contains)
+        classification_type_id:
+          type: integer
+          description: 'The ID of location, cloud config group, IP address, IP subnet or IP range.'
+          format: int64
+      description: The details of rule Rules
+    XiqUpdateClassificationRuleRequest:
+      required:
+        - classifications
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of classification assignment
+        description:
+          type: string
+          description: The description of classification assignment
+        classifications:
+          type: array
+          description: The details of rule Rules
+          items:
+            $ref: '#/components/schemas/XiqUpdateClassificationRequest'
+    PagedXiqSsid:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqSsid'
+    XiqSsid:
+      required:
+        - broadcast_name
+        - create_time
+        - id
+        - name
+        - predefined
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The SSID profile name
+        broadcast_name:
+          type: string
+          description: The SSID broadcast name
+        description:
+          type: string
+          description: The SSID description
+        predefined:
+          type: boolean
+          description: Whether it is predefined
+      description: The SSID
+    PagedXiqUserProfile:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqUserProfile'
+    XiqUserProfile:
+      required:
+        - create_time
+        - id
+        - name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        name:
+          type: string
+          description: The user profile name
+        vlan_profile:
+          $ref: 'configuration-basic.yaml#/components/schemas/XiqVlanProfile'
+      description: The payload of User Profile
+    XiqCreateUserProfileRequest:
+      required:
+        - name
+        - vlan_profile_id
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user profile name
+        vlan_profile_id:
+          type: integer
+          description: The VLAN profile id
+          format: int64
+    XiqUpdateUserProfileRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The user profile name
+        vlan_profile_id:
+          type: integer
+          description: The VLAN profile id
+          format: int64

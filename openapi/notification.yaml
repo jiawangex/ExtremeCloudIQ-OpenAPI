@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
+  contact:
+    name: Extreme Networks Support
+    url: 'https://www.extremenetworks.com/support'
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: 'https://extremecloudiq.com/api-docs/api-reference.html'
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: 'https://api.extremecloudiq.com'
+tags:
+  - name: Notification
+    description: 'Push events/logs to users via Webhook, Email, SMS, etc.'
+paths:
+  /subscriptions/webhook:
+    get:
+      tags:
+        - Notification
+      summary: List webhook subscriptions
+      description: List all webhook subscriptions.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_webhook_subscriptions'
+      operationId: list
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqWebhookSubscription'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Notification
+      summary: Create webhook subscriptions
+      description: Create multiple webhook subscriptions.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_webhook_subscriptions'
+      operationId: createSubscriptions
+      requestBody:
+        description: The payload of create multiple webhook subscriptions
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/XiqCreateWebhookSubscriptionRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/subscriptions/webhook/{id}':
+    delete:
+      tags:
+        - Notification
+      summary: Delete webhook subscription
+      description: Delete an exist webhook subscription.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_webhook_subscriptions'
+      operationId: deleteSubscription
+      parameters:
+        - name: id
+          in: path
+          description: The webhook subscription ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    XiqSubscriptionDataType:
+      type: string
+      description: The webhook subscription data type.
+      enum:
+        - LOCATION
+        - AUDIT_LOG
+        - GDPR_LOG
+        - CREDENTIAL_LOG
+        - ACCOUNTING_LOG
+        - AUTHENTICATION_LOG
+        - EMAIL_LOG
+        - SMS_LOG
+    XiqSubscriptionStatus:
+      type: string
+      description: The webhook subscription status.
+      enum:
+        - ENABLED
+        - DISABLED
+    XiqWebhookSubscription:
+      required:
+        - application
+        - create_time
+        - data_type
+        - id
+        - message_type
+        - secret
+        - status
+        - update_time
+        - url
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        application:
+          type: string
+          description: The external application name.
+        url:
+          type: string
+          description: The webhook endpoint URL.
+        secret:
+          type: string
+          description: The basic auth secret for the webhook endpoint.
+        data_type:
+          $ref: '#/components/schemas/XiqSubscriptionDataType'
+        message_type:
+          $ref: '#/components/schemas/XiqSubscriptionMessageType'
+        status:
+          $ref: '#/components/schemas/XiqSubscriptionStatus'
+      description: The webhook subscription data model
+    XiqCreateWebhookSubscriptionRequest:
+      required:
+        - application
+        - message_type
+        - url
+      type: object
+      properties:
+        application:
+          type: string
+          description: The external application name.
+          example: example-app
+        url:
+          type: string
+          description: The webhook endpoint URL.
+          example: 'https://webhook_endpoint-example-123'
+        secret:
+          type: string
+          description: The basic auth secret for the webhook endpoint.
+          example: erw3245cq3dasbjtyj
+        message_type:
+          $ref: '#/components/schemas/XiqSubscriptionMessageType'
+      description: The payload to create webhook subscription
+    XiqSubscriptionMessageType:
+      type: string
+      description: The subscription message type.
+      example: LOCATION_AP_CENTRIC
+      enum:
+        - LOCATION_AP_CENTRIC
+        - LOCATION_CLIENT_CENTRIC
+        - AUDIT_LOG_ALL
+        - GDPR_LOG_ALL
+        - CREDENTIAL_LOG_ALL
+        - ACCOUNTING_LOG_ALL
+        - AUTHENTICATION_LOG_ALL
+        - EMAIL_LOG_ALL
+        - SMS_LOG_ALL
