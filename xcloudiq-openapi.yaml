@@ -11635,7 +11635,7 @@ components:
             The default external user directory server id, could be active
             directory server id(get the id list from endpoint: '/ad-servers') or
             LDAP server id(get the id list from endpoint: '/ldap-servers')
-            depends on the 'external_user_directory_type' 
+            depends on the 'external_user_directory_type'
           format: int64
         server_role:
           $ref: '#/components/schemas/XiqServerRole'
