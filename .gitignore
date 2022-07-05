@@ -1,3 +1,6 @@
+# Bundled OpenAPI files temp folder
+bundled
+
 ### VisualStudioCode template
 .vscode/*
 !.vscode/settings.json
