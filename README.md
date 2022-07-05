@@ -127,7 +127,7 @@ To do this, we need to run `merge` command:
 ```bash
 pnpm merge
 ```
-> 1. The above command will merge all specified OpenAPI definitions under `dist` directory into a single-file
+> 1. The above command will merge all specified OpenAPI definitions under `bundled` directory into a single-file
      [xcloudiq-openapi.yaml](xcloudiq-openapi.yaml) under project root directory.
 > 2. The merge configuration is [.openapi-merge.yaml](.openapi-merge.yaml).
 
