@@ -35,6 +35,10 @@ lint:
       pattern: /\.$/
 
 features.openapi:
+  hideDownloadButton: true
+  pathInMiddlePanel: true
+  requiredPropsFirst: true
+  sideNavStyle: path-first
   generateCodeSamples:
     languages:
       - lang: curl
