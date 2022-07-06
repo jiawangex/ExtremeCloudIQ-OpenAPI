@@ -223,6 +223,46 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  "/locations/tree":
+    get:
+      tags:
+        - Location
+      summary: Get location tree
+      description: Get location hierarchical tree.
+      externalDocs:
+        description: API Reference
+        url: http://localhost:8081/api-docs/api-reference.html#_get_location_tree
+      operationId: getLocationTree
+      parameters:
+        - name: parentId
+          in: query
+          description: The parent location ID, return root locations if parent is null
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: expandChildren
+          in: query
+          description: |-
+            Whether to return the child locations recursively, default is true.
+            Set it to false to improve performance when there are a lot of child locations.
+          required: false
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/XiqLocation"
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
 components:
   securitySchemes:
     BearerAuth:
