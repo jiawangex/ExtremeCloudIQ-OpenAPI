@@ -177,6 +177,88 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  "/hiq/organizations":
+    get:
+      tags:
+        - HIQ
+      summary: List all organizations
+      description: List all organizations in current HIQ (Available when HIQ is enabled).
+      externalDocs:
+        description: API Reference
+        url: http://localhost:8081/api-docs/api-reference.html#_get_all_organizations
+      operationId: listOrganizations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/XiqOrganization"
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - HIQ
+      summary: Create a new organization
+      description: Create a new organization in current HIQ (Available when HIQ is enabled).
+      externalDocs:
+        description: API Reference
+        url: http://localhost:8081/api-docs/api-reference.html#_create_organization
+      operationId: createOrganization
+      requestBody:
+        description: Create new organization request body
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/XiqCreateOrganizationRequest"
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/XiqOrganization"
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  "/hiq/organizations/{id}/:rename":
+    post:
+      tags:
+        - HIQ
+      summary: Rename an existing organization
+      description: Rename an existing organization (Available when HIQ is enabled).
+      externalDocs:
+        description: API Reference
+        url: http://localhost:8081/api-docs/api-reference.html#_rename_organization
+      operationId: renameOrganization
+      parameters:
+        - name: id
+          in: path
+          description: Organization ID to rename
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The new organization name
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        '204':
+          description: No Content
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
 components:
   securitySchemes:
     BearerAuth:
@@ -202,3 +284,53 @@ components:
           type: integer
           description: The organization ID for creating new data
           format: int64
+    XiqOrganizationType:
+      type: string
+      description: The organization type
+      enum:
+        - REGULAR
+        - PRIVATE
+    XiqOrganization:
+      required:
+        - create_time
+        - id
+        - name
+        - type
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: The organization identifier, valid when enabling HIQ feature
+          format: int64
+        name:
+          type: string
+          description: The organization name
+        type:
+          "$ref": "#/components/schemas/XiqOrganizationType"
+        color:
+          type: string
+          description: The tagged color for the organization
+    XiqCreateOrganizationRequest:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The organization name, must be unique in VIQ
+        color:
+          type: string
+          description: The tagged color for the organization

@@ -124,6 +124,20 @@ components:
       enum:
         - ENABLED
         - DISABLED
+    XiqSubscriptionMessageType:
+      type: string
+      description: The subscription message type.
+      example: LOCATION_AP_CENTRIC
+      enum:
+        - LOCATION_AP_CENTRIC
+        - LOCATION_CLIENT_CENTRIC
+        - AUDIT_LOG_ALL
+        - GDPR_LOG_ALL
+        - CREDENTIAL_LOG_ALL
+        - ACCOUNTING_LOG_ALL
+        - AUTHENTICATION_LOG_ALL
+        - EMAIL_LOG_ALL
+        - SMS_LOG_ALL
     XiqWebhookSubscription:
       required:
         - application
@@ -187,17 +201,3 @@ components:
         message_type:
           $ref: '#/components/schemas/XiqSubscriptionMessageType'
       description: The payload to create webhook subscription
-    XiqSubscriptionMessageType:
-      type: string
-      description: The subscription message type.
-      example: LOCATION_AP_CENTRIC
-      enum:
-        - LOCATION_AP_CENTRIC
-        - LOCATION_CLIENT_CENTRIC
-        - AUDIT_LOG_ALL
-        - GDPR_LOG_ALL
-        - CREDENTIAL_LOG_ALL
-        - ACCOUNTING_LOG_ALL
-        - AUTHENTICATION_LOG_ALL
-        - EMAIL_LOG_ALL
-        - SMS_LOG_ALL

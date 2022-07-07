@@ -370,6 +370,135 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  '/radius-servers/internal/{id}':
+    get:
+      tags:
+        - Configuration - Authentication
+      summary: Get internal RADIUS server by ID
+      description: Get detailed configuration for internal RADIUS server by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_server_by_id'
+      operationId: getInternalRadiusServer
+      parameters:
+        - name: id
+          in: path
+          description: The ID for internal RADIUS server
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqInternalRadiusServer'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Configuration - Authentication
+      summary: Update internal RADIUS server configuration
+      description: Update internal RADIUS server configuration by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_internal_radius_server_configuration'
+      operationId: updateInternalRadiusServer
+      parameters:
+        - name: id
+          in: path
+          description: The internal RADIUS server ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload to update the internal RADIUS server
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateInternalRadiusServerRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqInternalRadiusServer'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - Authentication
+      summary: Delete internal RADIUS server configuration
+      description: Delete an existing internal RADIUS server configuration by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_internal_radius_server_configuration'
+      operationId: deleteInternalRadiusServer
+      parameters:
+        - name: id
+          in: path
+          description: The internal RADIUS server ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /radius-servers/internal/devices:
+    get:
+      tags:
+        - Configuration - Authentication
+      summary: List all internal RADIUS devices
+      description: List all internal RADIUS devices fields.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_devices'
+      operationId: listInternalRadiusDevices
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /radius-servers/external:
     get:
       tags:
@@ -434,6 +563,90 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqExternalRadiusServer'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/radius-servers/external/{id}':
+    get:
+      tags:
+        - Configuration - Authentication
+      summary: Get external RADIUS server by ID
+      description: Get detailed configuration for a specific external RADIUS server.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_server_by_id'
+      operationId: getExternalRadiusServer
+      parameters:
+        - name: id
+          in: path
+          description: The ID for external RADIUS server
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqExternalRadiusServer'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Configuration - Authentication
+      summary: Update external RADIUS server configuration
+      description: Update external RADIUS server configuration by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_external_radius_server_configuration'
+      operationId: updateExternalRadiusServer
+      parameters:
+        - name: id
+          in: path
+          description: The external RADIUS server ID.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload to update the external RADIUS server
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateExternalRadiusServerRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - Authentication
+      summary: Delete external RADIUS server configuration
+      description: Delete an existing external RADIUS server configuration by ID.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_external_radius_server_configuration'
+      operationId: deleteExternalRadiusServer
+      parameters:
+        - name: id
+          in: path
+          description: The external RADIUS server ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
         default:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
@@ -527,246 +740,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqRadiusProxy'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  /radius-client-objects:
-    get:
-      tags:
-        - Configuration - Authentication
-      summary: List RADIUS client objects
-      description: List a page of RADIUS client object configurations.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_client_objects_configuration'
-      operationId: listRadiusClientObjects
-      parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedXiqRadiusClientObject'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-    post:
-      tags:
-        - Configuration - Authentication
-      summary: Create RADIUS client object configuration
-      description: Create a new RADIUS client object configuration.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_radius_client_object_configuration'
-      operationId: createRadiusClientObject
-      requestBody:
-        description: Use the payload configuration to create a new RADIUS client object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqCreateRadiusClientObjectRequest'
-        required: true
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqRadiusClientObject'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/radius-servers/internal/{id}':
-    get:
-      tags:
-        - Configuration - Authentication
-      summary: Get internal RADIUS server by ID
-      description: Get detailed configuration for internal RADIUS server by ID.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_server_by_id'
-      operationId: getInternalRadiusServer
-      parameters:
-        - name: id
-          in: path
-          description: The ID for internal RADIUS server
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqInternalRadiusServer'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-    put:
-      tags:
-        - Configuration - Authentication
-      summary: Update internal RADIUS server configuration
-      description: Update internal RADIUS server configuration by ID.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_internal_radius_server_configuration'
-      operationId: updateInternalRadiusServer
-      parameters:
-        - name: id
-          in: path
-          description: The internal RADIUS server ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        description: The payload to update the internal RADIUS server
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqUpdateInternalRadiusServerRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqInternalRadiusServer'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-    delete:
-      tags:
-        - Configuration - Authentication
-      summary: Delete internal RADIUS server configuration
-      description: Delete an existing internal RADIUS server configuration by ID.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_internal_radius_server_configuration'
-      operationId: deleteInternalRadiusServer
-      parameters:
-        - name: id
-          in: path
-          description: The internal RADIUS server ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/radius-servers/external/{id}':
-    get:
-      tags:
-        - Configuration - Authentication
-      summary: Get external RADIUS server by ID
-      description: Get detailed configuration for a specific external RADIUS server.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_server_by_id'
-      operationId: getExternalRadiusServer
-      parameters:
-        - name: id
-          in: path
-          description: The ID for external RADIUS server
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqExternalRadiusServer'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-    put:
-      tags:
-        - Configuration - Authentication
-      summary: Update external RADIUS server configuration
-      description: Update external RADIUS server configuration by ID.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_external_radius_server_configuration'
-      operationId: updateExternalRadiusServer
-      parameters:
-        - name: id
-          in: path
-          description: The external RADIUS server ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        description: The payload to update the external RADIUS server
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqUpdateExternalRadiusServerRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-    delete:
-      tags:
-        - Configuration - Authentication
-      summary: Delete external RADIUS server configuration
-      description: Delete an existing external RADIUS server configuration by ID.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_external_radius_server_configuration'
-      operationId: deleteExternalRadiusServer
-      parameters:
-        - name: id
-          in: path
-          description: The external RADIUS server ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
         default:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
@@ -882,6 +855,115 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /radius-proxies/devices:
+    get:
+      tags:
+        - Configuration - Authentication
+      summary: List Radius proxy devices
+      operationId: listRadiusProxyDevices
+      description: List devices for Radius Proxy.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_radius_proxy_devices'
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /radius-client-objects:
+    get:
+      tags:
+        - Configuration - Authentication
+      summary: List RADIUS client objects
+      description: List a page of RADIUS client object configurations.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_client_objects_configuration'
+      operationId: listRadiusClientObjects
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqRadiusClientObject'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Configuration - Authentication
+      summary: Create RADIUS client object configuration
+      description: Create a new RADIUS client object configuration.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_radius_client_object_configuration'
+      operationId: createRadiusClientObject
+      requestBody:
+        description: Use the payload configuration to create a new RADIUS client object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateRadiusClientObjectRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqRadiusClientObject'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/radius-client-objects/{id}':
     get:
       tags:
@@ -966,85 +1048,6 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /radius-servers/internal/devices:
-    get:
-      tags:
-        - Configuration - Authentication
-      summary: List all internal RADIUS devices
-      description: List all internal RADIUS devices fields.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_devices'
-      operationId: listInternalRadiusDevices
-      parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  /radius-proxies/devices:
-    get:
-      tags:
-        - Configuration - Authentication
-      summary: List Radius proxy devices
-      operationId: listRadiusProxyDevices
-      description: List devices for Radius Proxy.
-      parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
 components:
   securitySchemes:
     BearerAuth:
@@ -1053,35 +1056,12 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    PagedXiqActiveDirectoryServer:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqActiveDirectoryServer'
+    XiqActiveDirectoryServerBaseDnFetchMode:
+      type: string
+      description: The base DN fetch mode of active directory server
+      enum:
+        - AUTO
+        - MANUAL
     XiqActiveDirectoryServer:
       required:
         - create_time
@@ -1155,12 +1135,62 @@ components:
           description: The associate L3 address profile ID for active directory server
           format: int64
       description: The configuration of Active Directory Server
-    XiqActiveDirectoryServerBaseDnFetchMode:
-      type: string
-      description: The base DN fetch mode of active directory server
-      enum:
-        - AUTO
-        - MANUAL
+    PagedXiqActiveDirectoryServer:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqActiveDirectoryServer'
+    XiqCwp:
+      required:
+        - create_time
+        - id
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The CWP name
+      description: The Captive Web Portal Entity.
     PagedXiqCwp:
       required:
         - count
@@ -1190,33 +1220,6 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqCwp'
-    XiqCwp:
-      required:
-        - create_time
-        - id
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: 'The organization identifier, valid when enabling HIQ feature'
-          format: int64
-        name:
-          type: string
-          description: The CWP name
-      description: The Captive Web Portal Entity.
     XiqLdapProtocolType:
       type: string
       description: LDAP server protocol type
@@ -1230,55 +1233,6 @@ components:
         - TRY
         - NEVER
         - DEMAND
-    XiqUpdateLdapServerRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The LDAP server name
-        description:
-          type: string
-          description: The LDAP server description
-        enable_tls:
-          type: boolean
-          description: 'enable TLS or not, if ture, caCertificateId, clientCertificateId and clientKeyId must be specified'
-        bind_dn:
-          type: string
-          description: The LDAP server bind DN name
-        bind_dn_password:
-          type: string
-          description: The LDAP server bind DN password
-        base_dn:
-          type: string
-          description: The RADIUS user base DN
-        l3_address_profile_id:
-          type: integer
-          description: The L3 address profile ID
-          format: int64
-        protocol_type:
-          $ref: '#/components/schemas/XiqLdapProtocolType'
-        enable_strip_realm_name:
-          type: boolean
-          description: enable strip realm name or not
-        destination_port:
-          minimum: 1
-          type: integer
-          description: The LDAP server destination port (1 ~ 65535)
-          format: int32
-        verification_mode:
-          $ref: '#/components/schemas/XiqLdapServerVerificationMode'
-        ca_certificate_id:
-          type: integer
-          description: 'The CA certificate ID, refer to XiqCertificate'
-          format: int64
-        client_certificate_id:
-          type: integer
-          description: 'The client certificate ID, refer to XiqCertificate'
-          format: int64
-        client_key_id:
-          type: integer
-          description: 'The client key ID, refer to XiqCertificate'
-          format: int64
     XiqLdapServer:
       required:
         - create_time
@@ -1348,25 +1302,147 @@ components:
           type: string
           description: The LDAP server client key password
       description: The common object - LDAP server
-    XiqInternalRadiusServerAuthenticationMethod:
-      type: string
-      description: The default authentication method
-      enum:
-        - TLS
-        - PEAP
-        - TTLS
-        - LEAP
-        - MD5
-    XiqInternalRadiusServerAuthenticationMethodGroup:
-      type: string
-      description: The authentication group
-      enum:
-        - TLS_PEAP_TTLS_LEAP_MD5
-        - TLS_PEAP_TTLS_LEAP
-        - TLS_PEAP
-        - TLS_TTLS
-        - TLS
-        - LEAP
+    PagedXiqLdapServer:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqLdapServer'
+    XiqCreateLdapServerRequest:
+      required:
+        - base_dn
+        - bind_dn
+        - bind_dn_password
+        - destination_port
+        - enable_strip_realm_name
+        - enable_tls
+        - l3_address_profile_id
+        - name
+        - protocol_type
+        - verification_mode
+      type: object
+      properties:
+        name:
+          type: string
+          description: The LDAP server name
+        description:
+          type: string
+          description: The LDAP server description(optional)
+        enable_tls:
+          type: boolean
+          description: 'To enable TLS or not, if ture, caCertificateId, clientCertificateId and clientKeyId must be specified'
+        bind_dn:
+          type: string
+          description: The LDAP server bind DN name
+        bind_dn_password:
+          type: string
+          description: The LDAP server bind DN password
+        base_dn:
+          type: string
+          description: The RADIUS user base DN
+        l3_address_profile_id:
+          type: integer
+          description: The L3 address profile ID
+          format: int64
+        protocol_type:
+          $ref: '#/components/schemas/XiqLdapProtocolType'
+        enable_strip_realm_name:
+          type: boolean
+          description: enable strip realm name or not
+        destination_port:
+          minimum: 1
+          type: integer
+          description: The LDAP server destination port (1 ~ 65535)
+          format: int32
+        verification_mode:
+          $ref: '#/components/schemas/XiqLdapServerVerificationMode'
+        ca_certificate_id:
+          type: integer
+          description: 'The CA certificate ID, refer to XiqCertificate'
+          format: int64
+        client_certificate_id:
+          type: integer
+          description: 'The client certificate ID, refer to XiqCertificate'
+          format: int64
+        client_key_id:
+          type: integer
+          description: 'The client key ID, refer to XiqCertificate'
+          format: int64
+        client_key_password:
+          type: string
+          description: The LDAP server client key password
+    XiqUpdateLdapServerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The LDAP server name
+        description:
+          type: string
+          description: The LDAP server description
+        enable_tls:
+          type: boolean
+          description: 'enable TLS or not, if ture, caCertificateId, clientCertificateId and clientKeyId must be specified'
+        bind_dn:
+          type: string
+          description: The LDAP server bind DN name
+        bind_dn_password:
+          type: string
+          description: The LDAP server bind DN password
+        base_dn:
+          type: string
+          description: The RADIUS user base DN
+        l3_address_profile_id:
+          type: integer
+          description: The L3 address profile ID
+          format: int64
+        protocol_type:
+          $ref: '#/components/schemas/XiqLdapProtocolType'
+        enable_strip_realm_name:
+          type: boolean
+          description: enable strip realm name or not
+        destination_port:
+          minimum: 1
+          type: integer
+          description: The LDAP server destination port (1 ~ 65535)
+          format: int32
+        verification_mode:
+          $ref: '#/components/schemas/XiqLdapServerVerificationMode'
+        ca_certificate_id:
+          type: integer
+          description: 'The CA certificate ID, refer to XiqCertificate'
+          format: int64
+        client_certificate_id:
+          type: integer
+          description: 'The client certificate ID, refer to XiqCertificate'
+          format: int64
+        client_key_id:
+          type: integer
+          description: 'The client key ID, refer to XiqCertificate'
+          format: int64
     XiqRadiusClient:
       type: object
       properties:
@@ -1385,93 +1461,57 @@ components:
           description: The associate L3 address profile ID
           format: int64
       description: The associate RADIUS client for RADIUS proxy
-    XiqUpdateInternalRadiusServerRequest:
-      required:
-        - authentication_method_group
-        - ca_certificate_id
-        - default_authentication_method
-        - enable_authentication_server
-        - enable_check_cert_common_name
-        - enable_check_user_for_tls_auth
-        - enable_radius_accounting_settings
-        - enable_verify_server_cert
-        - name
-        - server_certificate_id
-        - server_key_id
+    XiqCreateRadiusClient:
       type: object
       properties:
-        name:
+        shared_secret:
           type: string
-          description: The internal RADIUS server name
+          description: The shared secret of RADIUS client
         description:
           type: string
-          description: The internal RADIUS server description
-        authentication_method_group:
-          $ref: '#/components/schemas/XiqInternalRadiusServerAuthenticationMethodGroup'
-        default_authentication_method:
-          $ref: '#/components/schemas/XiqInternalRadiusServerAuthenticationMethod'
-        enable_verify_server_cert:
-          type: boolean
-          description: Enable verify server cert or not
-        server_key_password:
+          description: The RADIUS client description
+        l3_address_profile_id:
+          type: integer
+          description: The associate L3 address profile ID
+          format: int64
+      description: The associate RADIUS client for RADIUS proxy
+    XiqUpdateRadiusClient:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 'The RADIUS client ID, using an existing ID or leave empty to create a new one'
+          format: int64
+        shared_secret:
           type: string
-          description: password for server key
-        enable_check_cert_common_name:
-          type: boolean
-          description: Enable check cert common name or not
-        enable_check_user_for_tls_auth:
-          type: boolean
-          description: Enable check user for TLS auth or not
-        enable_check_user_for_peap_auth:
-          type: boolean
-          description: 'Enable check user for PEAP auth or not, for Active Directory as the external user directory only'
-        enable_check_user_for_ttls_auth:
-          type: boolean
-          description: 'Enable check user for TTLS auth or not, for Active Directory as the external user directory only'
-        enable_authentication_server:
-          type: boolean
-          description: Enable the RADIUS server as authentication or not
-        enable_radius_accounting_settings:
-          type: boolean
-          description: 'Enable the RADIUS server as accounting or not, must enable authentication server if want to enable accounting settings'
-        authentication_server_port:
-          maximum: 65535
-          minimum: 1
+          description: The shared secret of RADIUS client
+        description:
+          type: string
+          description: The RADIUS client description
+        l3_address_profile_id:
           type: integer
-          description: 'Port for the authentication, must enable authentication. Max:65535, Min:1'
-          format: int32
-          default: 1812
-        active_session_limit:
-          maximum: 15
-          minimum: 0
-          type: integer
-          description: 'Active session limit, must enable accounting setting. Max:15, Min:0'
-          format: int32
-          default: 0
-        active_session_age_timeout:
-          maximum: 300000000
-          minimum: 30
-          type: integer
-          description: 'Active session age timeout in seconds, must enable accounting setting. Max:300000000, Min:30'
-          format: int32
-          default: 30
-        ca_certificate_id:
-          type: integer
-          description: 'The CA certificate ID, which could be fetched from endpoint: ''/certificates'' and pick up with type ''CA'''
+          description: The associate L3 address profile ID
           format: int64
-        server_certificate_id:
+      description: The associate RADIUS client for RADIUS proxy
+    XiqExternalUserDirectoryType:
+      type: string
+      description: The external user directory type
+      enum:
+        - OPEN_LDAP
+        - ACTIVE_DIRECTORY
+    XiqExternalUserDirectoryEntry:
+      required:
+        - default_server_id
+        - server_role
+      type: object
+      properties:
+        default_server_id:
           type: integer
-          description: 'The Server certificate ID, which could be fetched from endpoint: ''/certificates'' and pick up with type ''CERT'''
+          description: 'The default external user directory server id, could be active directory server id(get the id list from endpoint: ''/ad-servers'') or LDAP server id(get the id list from endpoint: ''/ldap-servers'') depends on the ''external_user_directory_type'' '
           format: int64
-        server_key_id:
-          type: integer
-          description: 'The Server key ID, which could be fetched from endpoint: ''/certificates and pick up with type ''KEY'''
-          format: int64
-        clients:
-          type: array
-          description: 'The RADIUS clients of RADIUS proxy, which could be fetched form endpoint: ''/radius-proxy'''
-          items:
-            $ref: '#/components/schemas/XiqRadiusClient'
+        server_role:
+          $ref: '#/components/schemas/XiqServerRole'
+      description: The payload of common object - External User Directory Entry
     XiqExternalUserDirectory:
       required:
         - cache_lifetime
@@ -1528,25 +1568,25 @@ components:
           items:
             $ref: '#/components/schemas/XiqExternalUserDirectoryEntry'
       description: 'The setting for external user directory, AD or LDAP'
-    XiqExternalUserDirectoryEntry:
-      required:
-        - default_server_id
-        - server_role
-      type: object
-      properties:
-        default_server_id:
-          type: integer
-          description: 'The default external user directory server id, could be active directory server id(get the id list from endpoint: ''/ad-servers'') or LDAP server id(get the id list from endpoint: ''/ldap-servers'') depends on the ''external_user_directory_type'' '
-          format: int64
-        server_role:
-          $ref: '#/components/schemas/XiqServerRole'
-      description: The payload of common object - External User Directory Entry
-    XiqExternalUserDirectoryType:
+    XiqInternalRadiusServerAuthenticationMethod:
       type: string
-      description: CO_EXTERNAL_USER_DIRECTORY_TYPE_OPEN_LDAP or CO_EXTERNAL_USER_DIRECTORY_TYPE_ACTIVE_DIRECTORY
+      description: The default authentication method
       enum:
-        - OPEN_LDAP
-        - ACTIVE_DIRECTORY
+        - TLS
+        - PEAP
+        - TTLS
+        - LEAP
+        - MD5
+    XiqInternalRadiusServerAuthenticationMethodGroup:
+      type: string
+      description: The authentication group
+      enum:
+        - TLS_PEAP_TTLS_LEAP_MD5
+        - TLS_PEAP_TTLS_LEAP
+        - TLS_PEAP
+        - TLS_TTLS
+        - TLS
+        - LEAP
     XiqInternalRadiusServer:
       required:
         - authentication_method_group
@@ -1666,344 +1706,6 @@ components:
           items:
             $ref: '#/components/schemas/XiqRadiusClient'
       description: The configuration of internal RADIUS server object
-    XiqServerRole:
-      type: string
-      description: 'The server role, Primary or Backup'
-      example: PRIMARY
-      enum:
-        - PRIMARY
-        - BACKUP1
-        - BACKUP2
-        - BACKUP3
-    XiqRadiusServerType:
-      type: string
-      description: 'The port type of the RADIUS server, can only be either ACCOUNTING, AUTHENTICATION, or BOTH'
-      example: BOTH
-      enum:
-        - ACCOUNTING
-        - AUTHENTICATION
-        - BOTH
-    XiqUpdateExternalRadiusServerRequest:
-      required:
-        - accounting_port
-        - authentication_port
-        - ip_addr
-        - name
-        - server_type
-      type: object
-      properties:
-        name:
-          type: string
-          description: The external RADIUS server name
-        shared_secret:
-          type: string
-          description: The shared secret for the external RADIUS server (optional)
-        authentication_port:
-          maximum: 65535
-          minimum: 1
-          type: integer
-          description: The authentication port for the external RADIUS server (1 ~ 65535)
-          format: int32
-          default: 1812
-        accounting_port:
-          maximum: 65535
-          minimum: 1
-          type: integer
-          description: The accounting port for the external RADIUS server (1 ~ 65535)
-          format: int32
-          default: 1813
-        server_type:
-          $ref: '#/components/schemas/XiqRadiusServerType'
-        ip_addr:
-          type: string
-          description: The IP address or hostname of the RADIUS server
-    XiqRadiusProxyFormatType:
-      type: string
-      description: The format type of RADIUS proxy
-      enum:
-        - NAI
-        - NT
-        - SPN
-        - AUTO
-    XiqUpdateRadiusClient:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: 'The RADIUS client ID, using an existing ID or leave empty to create a new one'
-          format: int64
-        shared_secret:
-          type: string
-          description: The shared secret of RADIUS client
-        description:
-          type: string
-          description: The RADIUS client description
-        l3_address_profile_id:
-          type: integer
-          description: The associate L3 address profile ID
-          format: int64
-      description: The associate RADIUS client for RADIUS proxy
-    XiqUpdateRadiusProxyRealm:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: 'The RADIUS proxy realm ID, using an existing ID or leave empty to create a new one'
-          format: int64
-        name:
-          type: string
-          description: The RADIUS proxy realm name
-        enable_strip_realm_name:
-          type: boolean
-          description: The flag for enable strip realm name
-        radius_client_object_id:
-          type: integer
-          description: The associate RADIUS client object ID
-          format: int64
-      description: The associate RADIUS proxy realm for RADIUS proxy
-    XiqUpdateRadiusProxyRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The RADIUS proxy name
-        description:
-          type: string
-          description: The RADIUS proxy description
-        format_type:
-          $ref: '#/components/schemas/XiqRadiusProxyFormatType'
-        retry_count:
-          type: integer
-          description: The retry count of RADIUS proxy
-          format: int32
-        retry_delay:
-          type: integer
-          description: The retry delay of RADIUS proxy
-          format: int32
-        dead_time:
-          type: integer
-          description: The dead time of RADIUS proxy
-          format: int32
-        enable_inject_operator_name_attribute:
-          type: boolean
-          description: The flag for enable inject operator name attribute
-        clients:
-          type: array
-          description: The RADIUS clients of RADIUS proxy
-          items:
-            $ref: '#/components/schemas/XiqUpdateRadiusClient'
-        realms:
-          maxItems: 2147483647
-          minItems: 2
-          type: array
-          description: 'The RADIUS realms of RADIUS proxy, provide at least two default RADIUS realms with name ''DEFAULT'' and ''NULL'''
-          items:
-            $ref: '#/components/schemas/XiqUpdateRadiusProxyRealm'
-      description: The payload to update RADIUS proxy
-    XiqRadiusProxy:
-      required:
-        - create_time
-        - id
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: 'The organization identifier, valid when enabling HIQ feature'
-          format: int64
-        name:
-          type: string
-          description: The RADIUS proxy name
-        description:
-          type: string
-          description: The RADIUS proxy description
-        format_type:
-          $ref: '#/components/schemas/XiqRadiusProxyFormatType'
-        retry_count:
-          type: integer
-          description: The retry count of RADIUS proxy
-          format: int32
-        retry_delay:
-          type: integer
-          description: The retry delay of RADIUS proxy
-          format: int32
-        dead_time:
-          type: integer
-          description: The dead time of RADIUS proxy
-          format: int32
-        enable_inject_operator_name_attribute:
-          type: boolean
-          description: The flag for enable inject operator name attribute
-        clients:
-          type: array
-          description: The RADIUS clients of RADIUS proxy
-          items:
-            $ref: '#/components/schemas/XiqRadiusClient'
-        realms:
-          type: array
-          description: The RADIUS realms of RADIUS proxy
-          items:
-            $ref: '#/components/schemas/XiqRadiusProxyRealm'
-      description: The configuration of RADIUS proxy
-    XiqRadiusProxyRealm:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The RADIUS proxy realm ID
-          format: int64
-        name:
-          type: string
-          description: The RADIUS proxy realm name
-        enable_strip_realm_name:
-          type: boolean
-          description: The flag for enable strip realm name
-        radius_client_object_id:
-          type: integer
-          description: The associate RADIUS client object ID
-          format: int64
-      description: The associate RADIUS proxy realm for RADIUS proxy
-    XiqUpdateRadiusClientObjectRequest:
-      required:
-        - accounting_interim_update_interval
-        - enable_inject_operator_name_attribute
-        - enable_message_authenticator_attribute
-        - enable_permit_dynamic_authorization_message_change
-        - name
-        - retry_interval
-      type: object
-      properties:
-        name:
-          type: string
-          description: The RADIUS client object name.
-        description:
-          type: string
-          description: The RADIUS client object description.
-        enable_inject_operator_name_attribute:
-          type: boolean
-          description: The flag for enable Inject Operator Name Attribute
-        enable_message_authenticator_attribute:
-          type: boolean
-          description: The flag for enable message authenticator attribute
-        enable_permit_dynamic_authorization_message_change:
-          type: boolean
-          description: The flag for enable permit dynamic authorization message change
-        retry_interval:
-          maximum: 100000000
-          minimum: 60
-          type: integer
-          description: 'The retry interval, 60 - 100000000 seconds'
-          format: int32
-        accounting_interim_update_interval:
-          maximum: 100000000
-          minimum: 60
-          type: integer
-          description: 'The accounting interim update interval, 60 - 100000000 seconds'
-          format: int32
-    PagedXiqLdapServer:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqLdapServer'
-    XiqCreateLdapServerRequest:
-      required:
-        - base_dn
-        - bind_dn
-        - bind_dn_password
-        - destination_port
-        - enable_strip_realm_name
-        - enable_tls
-        - l3_address_profile_id
-        - name
-        - protocol_type
-        - verification_mode
-      type: object
-      properties:
-        name:
-          type: string
-          description: The LDAP server name
-        description:
-          type: string
-          description: The LDAP server description(optional)
-        enable_tls:
-          type: boolean
-          description: 'To enable TLS or not, if ture, caCertificateId, clientCertificateId and clientKeyId must be specified'
-        bind_dn:
-          type: string
-          description: The LDAP server bind DN name
-        bind_dn_password:
-          type: string
-          description: The LDAP server bind DN password
-        base_dn:
-          type: string
-          description: The RADIUS user base DN
-        l3_address_profile_id:
-          type: integer
-          description: The L3 address profile ID
-          format: int64
-        protocol_type:
-          $ref: '#/components/schemas/XiqLdapProtocolType'
-        enable_strip_realm_name:
-          type: boolean
-          description: enable strip realm name or not
-        destination_port:
-          minimum: 1
-          type: integer
-          description: The LDAP server destination port (1 ~ 65535)
-          format: int32
-        verification_mode:
-          $ref: '#/components/schemas/XiqLdapServerVerificationMode'
-        ca_certificate_id:
-          type: integer
-          description: 'The CA certificate ID, refer to XiqCertificate'
-          format: int64
-        client_certificate_id:
-          type: integer
-          description: 'The client certificate ID, refer to XiqCertificate'
-          format: int64
-        client_key_id:
-          type: integer
-          description: 'The client key ID, refer to XiqCertificate'
-          format: int64
-        client_key_password:
-          type: string
-          description: The LDAP server client key password
     PagedXiqInternalRadiusServer:
       required:
         - count
@@ -2033,159 +1735,6 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqInternalRadiusServer'
-    PagedXiqInternalRadiusDevice:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqInternalRadiusDevice'
-    XiqInternalRadiusDevice:
-      required:
-        - create_time
-        - host_name
-        - id
-        - radius_server_id
-        - radius_server_name
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: 'The organization identifier, valid when enabling HIQ feature'
-          format: int64
-        radius_server_id:
-          type: integer
-          description: The RADIUS server id
-          format: int64
-        radius_server_name:
-          type: string
-          description: The RADIUS server name
-        host_name:
-          type: string
-          description: The RADIUS server device hostname
-      description: The configuration of internal RADIUS device object
-    PagedXiqExternalRadiusServer:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqExternalRadiusServer'
-    PagedXiqRadiusProxy:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqRadiusProxy'
-    PagedXiqRadiusClientObject:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqRadiusClientObject'
     XiqCreateInternalRadiusServerRequest:
       required:
         - authentication_method_group
@@ -2284,44 +1833,110 @@ components:
           description: 'The RADIUS clients of RADIUS proxy, which could be fetched from endpoint: ''/radius-proxy'''
           items:
             $ref: '#/components/schemas/XiqRadiusClient'
-    XiqCreateExternalRadiusServerRequest:
+    XiqUpdateInternalRadiusServerRequest:
       required:
-        - accounting_port
-        - authentication_port
-        - enable_a3
-        - ip_addr
+        - authentication_method_group
+        - ca_certificate_id
+        - default_authentication_method
+        - enable_authentication_server
+        - enable_check_cert_common_name
+        - enable_check_user_for_tls_auth
+        - enable_radius_accounting_settings
+        - enable_verify_server_cert
         - name
-        - server_type
+        - server_certificate_id
+        - server_key_id
       type: object
       properties:
         name:
           type: string
-          description: The external RADIUS server name
-        shared_secret:
+          description: The internal RADIUS server name
+        description:
           type: string
-          description: The shared secret for the external RADIUS server (optional)
-        authentication_port:
+          description: The internal RADIUS server description
+        authentication_method_group:
+          $ref: '#/components/schemas/XiqInternalRadiusServerAuthenticationMethodGroup'
+        default_authentication_method:
+          $ref: '#/components/schemas/XiqInternalRadiusServerAuthenticationMethod'
+        enable_verify_server_cert:
+          type: boolean
+          description: Enable verify server cert or not
+        server_key_password:
+          type: string
+          description: password for server key
+        enable_check_cert_common_name:
+          type: boolean
+          description: Enable check cert common name or not
+        enable_check_user_for_tls_auth:
+          type: boolean
+          description: Enable check user for TLS auth or not
+        enable_check_user_for_peap_auth:
+          type: boolean
+          description: 'Enable check user for PEAP auth or not, for Active Directory as the external user directory only'
+        enable_check_user_for_ttls_auth:
+          type: boolean
+          description: 'Enable check user for TTLS auth or not, for Active Directory as the external user directory only'
+        enable_authentication_server:
+          type: boolean
+          description: Enable the RADIUS server as authentication or not
+        enable_radius_accounting_settings:
+          type: boolean
+          description: 'Enable the RADIUS server as accounting or not, must enable authentication server if want to enable accounting settings'
+        authentication_server_port:
           maximum: 65535
           minimum: 1
           type: integer
-          description: The authentication port for the external RADIUS server (1 ~ 65535)
+          description: 'Port for the authentication, must enable authentication. Max:65535, Min:1'
           format: int32
           default: 1812
-        accounting_port:
-          maximum: 65535
-          minimum: 1
+        active_session_limit:
+          maximum: 15
+          minimum: 0
           type: integer
-          description: The accounting port for the external RADIUS server (1 ~ 65535)
+          description: 'Active session limit, must enable accounting setting. Max:15, Min:0'
           format: int32
-          default: 1813
-        server_type:
-          $ref: '#/components/schemas/XiqRadiusServerType'
-        ip_addr:
-          type: string
-          description: The IP address or hostname of the RADIUS server
-        enable_a3:
-          type: boolean
-          description: 'Indicates whether this is an Extreme A3 RADIUS server or not, cannot be updated after creation. Please set it to false if it is not an Extreme A3 RADIUS server.'
+          default: 0
+        active_session_age_timeout:
+          maximum: 300000000
+          minimum: 30
+          type: integer
+          description: 'Active session age timeout in seconds, must enable accounting setting. Max:300000000, Min:30'
+          format: int32
+          default: 30
+        ca_certificate_id:
+          type: integer
+          description: 'The CA certificate ID, which could be fetched from endpoint: ''/certificates'' and pick up with type ''CA'''
+          format: int64
+        server_certificate_id:
+          type: integer
+          description: 'The Server certificate ID, which could be fetched from endpoint: ''/certificates'' and pick up with type ''CERT'''
+          format: int64
+        server_key_id:
+          type: integer
+          description: 'The Server key ID, which could be fetched from endpoint: ''/certificates and pick up with type ''KEY'''
+          format: int64
+        clients:
+          type: array
+          description: 'The RADIUS clients of RADIUS proxy, which could be fetched form endpoint: ''/radius-proxy'''
+          items:
+            $ref: '#/components/schemas/XiqRadiusClient'
+    XiqServerRole:
+      type: string
+      description: 'The server role, PRIMARY or BACKUP'
+      example: PRIMARY
+      enum:
+        - PRIMARY
+        - BACKUP1
+        - BACKUP2
+        - BACKUP3
+    XiqRadiusServerType:
+      type: string
+      description: 'The port type of the RADIUS server, can only be either ACCOUNTING, AUTHENTICATION, or BOTH'
+      example: BOTH
+      enum:
+        - ACCOUNTING
+        - AUTHENTICATION
+        - BOTH
     XiqExternalRadiusServer:
       required:
         - accounting_port
@@ -2374,20 +1989,125 @@ components:
           type: boolean
           description: 'Indicates whether this is an Extreme A3 RADIUS server or not, cannot be updated after creation. Please set it to false if it is not an Extreme A3 RADIUS server.'
       description: The configuration of external RADIUS server object
-    XiqCreateRadiusClient:
+    PagedXiqExternalRadiusServer:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
       type: object
       properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqExternalRadiusServer'
+    XiqCreateExternalRadiusServerRequest:
+      required:
+        - accounting_port
+        - authentication_port
+        - enable_a3
+        - ip_addr
+        - name
+        - server_type
+      type: object
+      properties:
+        name:
+          type: string
+          description: The external RADIUS server name
         shared_secret:
           type: string
-          description: The shared secret of RADIUS client
-        description:
-          type: string
-          description: The RADIUS client description
-        l3_address_profile_id:
+          description: The shared secret for the external RADIUS server (optional)
+        authentication_port:
+          maximum: 65535
+          minimum: 1
           type: integer
-          description: The associate L3 address profile ID
+          description: The authentication port for the external RADIUS server (1 ~ 65535)
+          format: int32
+          default: 1812
+        accounting_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+          description: The accounting port for the external RADIUS server (1 ~ 65535)
+          format: int32
+          default: 1813
+        server_type:
+          $ref: '#/components/schemas/XiqRadiusServerType'
+        ip_addr:
+          type: string
+          description: The IP address or hostname of the RADIUS server
+        enable_a3:
+          type: boolean
+          description: 'Indicates whether this is an Extreme A3 RADIUS server or not, cannot be updated after creation. Please set it to false if it is not an Extreme A3 RADIUS server.'
+    XiqUpdateExternalRadiusServerRequest:
+      required:
+        - accounting_port
+        - authentication_port
+        - ip_addr
+        - name
+        - server_type
+      type: object
+      properties:
+        name:
+          type: string
+          description: The external RADIUS server name
+        shared_secret:
+          type: string
+          description: The shared secret for the external RADIUS server (optional)
+        authentication_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+          description: The authentication port for the external RADIUS server (1 ~ 65535)
+          format: int32
+          default: 1812
+        accounting_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+          description: The accounting port for the external RADIUS server (1 ~ 65535)
+          format: int32
+          default: 1813
+        server_type:
+          $ref: '#/components/schemas/XiqRadiusServerType'
+        ip_addr:
+          type: string
+          description: The IP address or hostname of the RADIUS server
+    XiqRadiusProxyRealm:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The RADIUS proxy realm ID
           format: int64
-      description: The associate RADIUS client for RADIUS proxy
+        name:
+          type: string
+          description: The RADIUS proxy realm name
+        enable_strip_realm_name:
+          type: boolean
+          description: The flag for enable strip realm name
+        radius_client_object_id:
+          type: integer
+          description: The associate RADIUS client object ID
+          format: int64
+      description: The associate RADIUS proxy realm for RADIUS proxy
     XiqCreateRadiusProxyRealm:
       type: object
       properties:
@@ -2402,6 +2122,118 @@ components:
           description: The associate RADIUS client object ID
           format: int64
       description: The associate RADIUS proxy realm for RADIUS proxy
+    XiqUpdateRadiusProxyRealm:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 'The RADIUS proxy realm ID, using an existing ID or leave empty to create a new one'
+          format: int64
+        name:
+          type: string
+          description: The RADIUS proxy realm name
+        enable_strip_realm_name:
+          type: boolean
+          description: The flag for enable strip realm name
+        radius_client_object_id:
+          type: integer
+          description: The associate RADIUS client object ID
+          format: int64
+      description: The associate RADIUS proxy realm for RADIUS proxy
+    XiqRadiusProxyFormatType:
+      type: string
+      description: The format type of RADIUS proxy
+      enum:
+        - NAI
+        - NT
+        - SPN
+        - AUTO
+    XiqRadiusProxy:
+      required:
+        - create_time
+        - id
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The RADIUS proxy name
+        description:
+          type: string
+          description: The RADIUS proxy description
+        format_type:
+          $ref: '#/components/schemas/XiqRadiusProxyFormatType'
+        retry_count:
+          type: integer
+          description: The retry count of RADIUS proxy
+          format: int32
+        retry_delay:
+          type: integer
+          description: The retry delay of RADIUS proxy
+          format: int32
+        dead_time:
+          type: integer
+          description: The dead time of RADIUS proxy
+          format: int32
+        enable_inject_operator_name_attribute:
+          type: boolean
+          description: The flag for enable inject operator name attribute
+        clients:
+          type: array
+          description: The RADIUS clients of RADIUS proxy
+          items:
+            $ref: '#/components/schemas/XiqRadiusClient'
+        realms:
+          type: array
+          description: The RADIUS realms of RADIUS proxy
+          items:
+            $ref: '#/components/schemas/XiqRadiusProxyRealm'
+      description: The configuration of RADIUS proxy
+    PagedXiqRadiusProxy:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqRadiusProxy'
     XiqCreateRadiusProxyRequest:
       required:
         - dead_time
@@ -2456,51 +2288,52 @@ components:
             description: The device IDS to assign RADIUS proxy
             format: int64
       description: The payload to create a new RADIUS proxy
-    XiqCreateRadiusClientObjectRequest:
-      required:
-        - accounting_interim_update_interval
-        - enable_inject_operator_name_attribute
-        - enable_message_authenticator_attribute
-        - enable_permit_dynamic_authorization_message_change
-        - entries
-        - name
-        - retry_interval
+    XiqUpdateRadiusProxyRequest:
       type: object
       properties:
         name:
           type: string
-          description: The RADIUS client object name.
+          description: The RADIUS proxy name
         description:
           type: string
-          description: The RADIUS client object description.
+          description: The RADIUS proxy description
+        format_type:
+          $ref: '#/components/schemas/XiqRadiusProxyFormatType'
+        retry_count:
+          type: integer
+          description: The retry count of RADIUS proxy
+          format: int32
+        retry_delay:
+          type: integer
+          description: The retry delay of RADIUS proxy
+          format: int32
+        dead_time:
+          type: integer
+          description: The dead time of RADIUS proxy
+          format: int32
         enable_inject_operator_name_attribute:
           type: boolean
-          description: The flag for enable Inject Operator Name Attribute
-        enable_message_authenticator_attribute:
-          type: boolean
-          description: The flag for enable message authenticator attribute
-        enable_permit_dynamic_authorization_message_change:
-          type: boolean
-          description: The flag for enable permit dynamic authorization message change
-        retry_interval:
-          maximum: 100000000
-          minimum: 60
-          type: integer
-          description: 'The retry interval, 60 - 100000000 seconds'
-          format: int32
-        accounting_interim_update_interval:
-          maximum: 100000000
-          minimum: 60
-          type: integer
-          description: 'The accounting interim update interval, 60 - 100000000 seconds'
-          format: int32
-        entries:
-          maxItems: 2147483647
-          minItems: 1
+          description: The flag for enable inject operator name attribute
+        clients:
           type: array
-          description: The list of RADIUS client object entries
+          description: The RADIUS clients of RADIUS proxy
           items:
-            $ref: '#/components/schemas/XiqRadiusClientObjectEntry'
+            $ref: '#/components/schemas/XiqUpdateRadiusClient'
+        realms:
+          maxItems: 2147483647
+          minItems: 2
+          type: array
+          description: 'The RADIUS realms of RADIUS proxy, provide at least two default RADIUS realms with name ''DEFAULT'' and ''NULL'''
+          items:
+            $ref: '#/components/schemas/XiqUpdateRadiusProxyRealm'
+      description: The payload to update RADIUS proxy
+    XiqRadiusClientObjectType:
+      type: string
+      description: 'The entry server type: INTERNAL_RADIUS_SERVER, EXTERNAL_RADIUS_SERVER, INTERNAL_RADIUS_PROXY'
+      enum:
+        - EXTERNAL_RADIUS_SERVER
+        - INTERNAL_RADIUS_SERVER
+        - INTERNAL_RADIUS_PROXY
     XiqRadiusClientObjectEntry:
       required:
         - radius_server_id
@@ -2517,13 +2350,6 @@ components:
           description: 'The ID of the RADIUS server object, for EXTERNAL_RADIUS_SERVER please use the ID of external RADIUS server object. For INTERNAL_RADIUS_SERVER, please use the RADIUS device ID'
           format: int64
       description: The entry of RADIUS client object
-    XiqRadiusClientObjectType:
-      type: string
-      description: 'The entry server type: INTERNAL_RADIUS_SERVER, EXTERNAL_RADIUS_SERVER, INTERNAL_RADIUS_PROXY'
-      enum:
-        - EXTERNAL_RADIUS_SERVER
-        - INTERNAL_RADIUS_SERVER
-        - INTERNAL_RADIUS_PROXY
     XiqRadiusClientObject:
       required:
         - accounting_interim_update_interval
@@ -2585,3 +2411,180 @@ components:
           items:
             $ref: '#/components/schemas/XiqRadiusClientObjectEntry'
       description: The RADIUS client object configuration
+    PagedXiqRadiusClientObject:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqRadiusClientObject'
+    XiqCreateRadiusClientObjectRequest:
+      required:
+        - accounting_interim_update_interval
+        - enable_inject_operator_name_attribute
+        - enable_message_authenticator_attribute
+        - enable_permit_dynamic_authorization_message_change
+        - entries
+        - name
+        - retry_interval
+      type: object
+      properties:
+        name:
+          type: string
+          description: The RADIUS client object name.
+        description:
+          type: string
+          description: The RADIUS client object description.
+        enable_inject_operator_name_attribute:
+          type: boolean
+          description: The flag for enable Inject Operator Name Attribute
+        enable_message_authenticator_attribute:
+          type: boolean
+          description: The flag for enable message authenticator attribute
+        enable_permit_dynamic_authorization_message_change:
+          type: boolean
+          description: The flag for enable permit dynamic authorization message change
+        retry_interval:
+          maximum: 100000000
+          minimum: 60
+          type: integer
+          description: 'The retry interval, 60 - 100000000 seconds'
+          format: int32
+        accounting_interim_update_interval:
+          maximum: 100000000
+          minimum: 60
+          type: integer
+          description: 'The accounting interim update interval, 60 - 100000000 seconds'
+          format: int32
+        entries:
+          maxItems: 2147483647
+          minItems: 1
+          type: array
+          description: The list of RADIUS client object entries
+          items:
+            $ref: '#/components/schemas/XiqRadiusClientObjectEntry'
+    XiqUpdateRadiusClientObjectRequest:
+      required:
+        - accounting_interim_update_interval
+        - enable_inject_operator_name_attribute
+        - enable_message_authenticator_attribute
+        - enable_permit_dynamic_authorization_message_change
+        - name
+        - retry_interval
+      type: object
+      properties:
+        name:
+          type: string
+          description: The RADIUS client object name.
+        description:
+          type: string
+          description: The RADIUS client object description.
+        enable_inject_operator_name_attribute:
+          type: boolean
+          description: The flag for enable Inject Operator Name Attribute
+        enable_message_authenticator_attribute:
+          type: boolean
+          description: The flag for enable message authenticator attribute
+        enable_permit_dynamic_authorization_message_change:
+          type: boolean
+          description: The flag for enable permit dynamic authorization message change
+        retry_interval:
+          maximum: 100000000
+          minimum: 60
+          type: integer
+          description: 'The retry interval, 60 - 100000000 seconds'
+          format: int32
+        accounting_interim_update_interval:
+          maximum: 100000000
+          minimum: 60
+          type: integer
+          description: 'The accounting interim update interval, 60 - 100000000 seconds'
+          format: int32
+    XiqInternalRadiusDevice:
+      required:
+        - create_time
+        - host_name
+        - id
+        - radius_server_id
+        - radius_server_name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        radius_server_id:
+          type: integer
+          description: The RADIUS server id
+          format: int64
+        radius_server_name:
+          type: string
+          description: The RADIUS server name
+        host_name:
+          type: string
+          description: The RADIUS server device hostname
+      description: The configuration of internal RADIUS device object
+    PagedXiqInternalRadiusDevice:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqInternalRadiusDevice'

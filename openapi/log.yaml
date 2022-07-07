@@ -419,35 +419,14 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    PagedXiqSmsLog:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqSmsLog'
+    XiqSmsLogStatus:
+      type: string
+      description: The SMS status
+      enum:
+        - SEND_OUT
+        - COMPLETE
+        - SUCCESS
+        - FAIL
     XiqSmsLog:
       required:
         - id
@@ -490,15 +469,7 @@ components:
           description: The audit log timestamp
           format: int64
       description: ExtremeCloud IQ SMS Log
-    XiqSmsLogStatus:
-      type: string
-      description: The SMS status
-      enum:
-        - SEND_OUT
-        - COMPLETE
-        - SUCCESS
-        - FAIL
-    PagedXiqEmailLog:
+    PagedXiqSmsLog:
       required:
         - count
         - page
@@ -526,7 +497,7 @@ components:
           type: array
           description: The data in the current page
           items:
-            $ref: '#/components/schemas/XiqEmailLog'
+            $ref: '#/components/schemas/XiqSmsLog'
     XiqEmailLog:
       required:
         - id
@@ -561,6 +532,59 @@ components:
           type: string
           description: The email log status
       description: ExtremeCloud IQ Email Log
+    PagedXiqEmailLog:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqEmailLog'
+    XiqCredentialLog:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The Credential log id
+          format: int64
+        username:
+          type: string
+          description: The username
+        vhm_id:
+          type: string
+          description: The vhm id
+        org_id:
+          type: integer
+          description: The org id
+          format: int64
+        timestamp:
+          type: integer
+          description: The credential log timestamp
+          format: int64
+      description: ExtremeCloud IQ Credential Log
     PagedXiqCredentialLog:
       required:
         - count
@@ -590,59 +614,6 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqCredentialLog'
-    XiqCredentialLog:
-      required:
-        - id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The Credential log id
-          format: int64
-        username:
-          type: string
-          description: The username
-        vhm_id:
-          type: string
-          description: The vhm id
-        org_id:
-          type: integer
-          description: The org id
-          format: int64
-        timestamp:
-          type: integer
-          description: The credential log timestamp
-          format: int64
-      description: ExtremeCloud IQ Credential Log
-    PagedXiqAuthLog:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqAuthLog'
     XiqAuthLog:
       required:
         - id
@@ -703,16 +674,7 @@ components:
           description: The audit log timestamp
           format: int64
       description: ExtremeCloud IQ Auth Log
-    XiqAuditLogCategory:
-      type: string
-      enum:
-        - ADMIN
-        - SYSTEM
-        - DEPLOYMENT
-        - CONFIG
-        - MONITOR
-        - ALARM
-    PagedXiqAuditLog:
+    PagedXiqAuthLog:
       required:
         - count
         - page
@@ -740,7 +702,16 @@ components:
           type: array
           description: The data in the current page
           items:
-            $ref: '#/components/schemas/XiqAuditLog'
+            $ref: '#/components/schemas/XiqAuthLog'
+    XiqAuditLogCategory:
+      type: string
+      enum:
+        - ADMIN
+        - SYSTEM
+        - DEPLOYMENT
+        - CONFIG
+        - MONITOR
+        - ALARM
     XiqAuditLog:
       required:
         - id
@@ -778,7 +749,7 @@ components:
           description: The audit log timestamp
           format: int64
       description: ExtremeCloud IQ Audit Log
-    PagedXiqAccountingLog:
+    PagedXiqAuditLog:
       required:
         - count
         - page
@@ -806,7 +777,7 @@ components:
           type: array
           description: The data in the current page
           items:
-            $ref: '#/components/schemas/XiqAccountingLog'
+            $ref: '#/components/schemas/XiqAuditLog'
     XiqAccountingLog:
       required:
         - id
@@ -921,3 +892,32 @@ components:
           description: The event time
           format: int64
       description: ExtremeCloud IQ Accounting Log
+    PagedXiqAccountingLog:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqAccountingLog'
