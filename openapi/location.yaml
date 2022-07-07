@@ -25,6 +25,46 @@ tags:
   - name: Location
     description: Hierarchical locations and floor plan
 paths:
+  "/locations/tree":
+    get:
+      tags:
+        - Location
+      summary: Get location tree
+      description: Get location hierarchical tree.
+      externalDocs:
+        description: API Reference
+        url: http://localhost:8081/api-docs/api-reference.html#_get_location_tree
+      operationId: getLocationTree
+      parameters:
+        - name: parentId
+          in: query
+          description: The parent location ID, return root locations if parent is null
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: expandChildren
+          in: query
+          description: |-
+            Whether to return the child locations recursively, default is true.
+            Set it to false to improve performance when there are a lot of child locations.
+          required: false
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/XiqLocation"
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/locations/{id}':
     put:
       tags:
@@ -223,46 +263,6 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  "/locations/tree":
-    get:
-      tags:
-        - Location
-      summary: Get location tree
-      description: Get location hierarchical tree.
-      externalDocs:
-        description: API Reference
-        url: http://localhost:8081/api-docs/api-reference.html#_get_location_tree
-      operationId: getLocationTree
-      parameters:
-        - name: parentId
-          in: query
-          description: The parent location ID, return root locations if parent is null
-          required: false
-          schema:
-            type: integer
-            format: int64
-        - name: expandChildren
-          in: query
-          description: |-
-            Whether to return the child locations recursively, default is true.
-            Set it to false to improve performance when there are a lot of child locations.
-          required: false
-          schema:
-            type: boolean
-            default: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/XiqLocation"
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
 components:
   securitySchemes:
     BearerAuth:
@@ -271,16 +271,23 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    XiqUpdateLocationRequest:
-      type: object
-      properties:
-        parent_id:
-          type: integer
-          description: The parent location ID
-          format: int64
-        name:
-          type: string
-          description: The location name
+    XiqMeasurementUnit:
+      type: string
+      description: The measurement unit in feet/meters
+      enum:
+        - FEET
+        - METERS
+    XiqRfEnvironmentType:
+      type: string
+      description: The floor RF environment
+      enum:
+        - AUTO_ESTIMATE
+        - OFFICE
+        - OUTDOOR_FREE_SPACE
+        - OBSTRUCTED_IN_BUILDING
+        - OUTDOOR_SUBURBAN
+        - WAREHOUSE
+        - OUTDOOR_DENSE_URBAN
     XiqLocation:
       required:
         - create_time
@@ -329,56 +336,16 @@ components:
           items:
             $ref: '#/components/schemas/XiqLocation'
       description: The hierarchical location for Generic/Building/Floor
-    XiqMeasurementUnit:
-      type: string
-      description: The measurement unit in feet/meters
-      enum:
-        - FEET
-        - METERS
-    XiqRfEnvironmentType:
-      type: string
-      description: The floor RF environment
-      enum:
-        - AUTO_ESTIMATE
-        - OFFICE
-        - OUTDOOR_FREE_SPACE
-        - OBSTRUCTED_IN_BUILDING
-        - OUTDOOR_SUBURBAN
-        - WAREHOUSE
-        - OUTDOOR_DENSE_URBAN
-    XiqUpdateFloorRequest:
+    XiqUpdateLocationRequest:
       type: object
       properties:
         parent_id:
           type: integer
-          description: The parent building ID
+          description: The parent location ID
           format: int64
         name:
           type: string
-          description: The floor name
-        environment:
-          $ref: '#/components/schemas/XiqRfEnvironmentType'
-        db_attenuation:
-          type: number
-          description: The floor attenuation in dBs
-          format: double
-        measurement_unit:
-          $ref: '#/components/schemas/XiqMeasurementUnit'
-        installation_height:
-          type: number
-          description: The installation height
-          format: double
-        map_size_width:
-          type: number
-          description: The floor map width
-          format: double
-        map_size_height:
-          type: number
-          description: The floor map height
-          format: double
-        map_name:
-          type: string
-          description: The floor map name
+          description: The location name
     XiqFloor:
       required:
         - create_time
@@ -443,19 +410,39 @@ components:
           type: string
           description: The floormap name
       description: The Floor information on the floorplan.
-    XiqUpdateBuildingRequest:
+    XiqUpdateFloorRequest:
       type: object
       properties:
         parent_id:
           type: integer
-          description: The parent location ID
+          description: The parent building ID
           format: int64
         name:
           type: string
-          description: The building name
-        address:
+          description: The floor name
+        environment:
+          $ref: '#/components/schemas/XiqRfEnvironmentType'
+        db_attenuation:
+          type: number
+          description: The floor attenuation in dBs
+          format: double
+        measurement_unit:
+          $ref: '#/components/schemas/XiqMeasurementUnit'
+        installation_height:
+          type: number
+          description: The installation height
+          format: double
+        map_size_width:
+          type: number
+          description: The floor map width
+          format: double
+        map_size_height:
+          type: number
+          description: The floor map height
+          format: double
+        map_name:
           type: string
-          description: The street address
+          description: The floor map name
     XiqBuilding:
       required:
         - address
@@ -493,3 +480,16 @@ components:
           type: string
           description: The building street address
       description: The Building information on the floorplan.
+    XiqUpdateBuildingRequest:
+      type: object
+      properties:
+        parent_id:
+          type: integer
+          description: The parent location ID
+          format: int64
+        name:
+          type: string
+          description: The building name
+        address:
+          type: string
+          description: The street address

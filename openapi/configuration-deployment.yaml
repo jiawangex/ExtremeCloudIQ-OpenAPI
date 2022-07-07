@@ -53,6 +53,27 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /deployments/overview:
+    get:
+      tags:
+        - Configuration - Deployment
+      summary: Get configuration deployment overview
+      description: Get configuration deployment status overview.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_configuration_deployment_overview'
+      operationId: getDeployOverview
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDeploymentOverview'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /deployments/status:
     get:
       tags:
@@ -87,27 +108,6 @@ paths:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /deployments/overview:
-    get:
-      tags:
-        - Configuration - Deployment
-      summary: Get configuration deployment overview
-      description: Get configuration deployment status overview.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_configuration_deployment_overview'
-      operationId: getDeployOverview
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqDeploymentOverview'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
 components:
   securitySchemes:
     BearerAuth:
@@ -116,30 +116,6 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    XiqDeploymentPolicy:
-      required:
-        - enable_complete_configuration_update
-      type: object
-      properties:
-        enable_complete_configuration_update:
-          type: boolean
-          description: 'true if update complete configuration, otherwise update delta configuration'
-        firmware_upgrade_policy:
-          $ref: '#/components/schemas/XiqFirmwareUpgradePolicy'
-        firmware_activate_option:
-          $ref: '#/components/schemas/XiqFirmwareActivateOption'
-      description: Push configuration and upgrade firmware policy
-    XiqDeploymentRequest:
-      required:
-        - devices
-        - policy
-      type: object
-      properties:
-        devices:
-          $ref: 'device.yaml#/components/schemas/XiqDeviceFilter'
-        policy:
-          $ref: '#/components/schemas/XiqDeploymentPolicy'
-      description: The configuration deployment request to devices
     XiqFirmwareActivateOption:
       type: object
       properties:
@@ -168,6 +144,30 @@ components:
           type: boolean
           description: Whether enable distributed firmware upgrade (Only applicable to APs)
       description: The firmware upgrade policy
+    XiqDeploymentPolicy:
+      required:
+        - enable_complete_configuration_update
+      type: object
+      properties:
+        enable_complete_configuration_update:
+          type: boolean
+          description: 'true if update complete configuration, otherwise update delta configuration'
+        firmware_upgrade_policy:
+          $ref: '#/components/schemas/XiqFirmwareUpgradePolicy'
+        firmware_activate_option:
+          $ref: '#/components/schemas/XiqFirmwareActivateOption'
+      description: Push configuration and upgrade firmware policy
+    XiqDeploymentRequest:
+      required:
+        - devices
+        - policy
+      type: object
+      properties:
+        devices:
+          $ref: 'device.yaml#/components/schemas/XiqDeviceFilter'
+        policy:
+          $ref: '#/components/schemas/XiqDeploymentPolicy'
+      description: The configuration deployment request to devices
     XiqDeploymentResponse:
       type: object
       properties:
@@ -175,6 +175,21 @@ components:
           type: integer
           format: int64
       description: The configuration deployment response
+    XiqDeploymentOverview:
+      required:
+        - in_progress_devices
+        - total_progress
+      type: object
+      properties:
+        in_progress_devices:
+          type: integer
+          description: The device count with in progress deployment
+          format: int32
+        total_progress:
+          type: integer
+          description: 'The total progress, range from 0 to 100'
+          format: int32
+      description: The configuration deployment overview
     XiqDeploymentStatus:
       type: object
       properties:
@@ -198,18 +213,3 @@ components:
         finished:
           type: boolean
       description: The configuration deployment status
-    XiqDeploymentOverview:
-      required:
-        - in_progress_devices
-        - total_progress
-      type: object
-      properties:
-        in_progress_devices:
-          type: integer
-          description: The device count with in progress deployment
-          format: int32
-        total_progress:
-          type: integer
-          description: 'The total progress, range from 0 to 100'
-          format: int32
-      description: The configuration deployment overview

@@ -112,6 +112,16 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    XiqOperationStatus:
+      type: string
+      description: The current operation status
+      enum:
+        - PENDING
+        - RUNNING
+        - CANCELING
+        - SUCCEEDED
+        - FAILED
+        - CANCELED
     XiqOperationMetadata:
       required:
         - cancelable
@@ -177,13 +187,3 @@ components:
         error:
           $ref: 'common/components.yaml#/components/schemas/XiqError'
       description: Long Running Operation (LRO) model
-    XiqOperationStatus:
-      type: string
-      description: The current operation status
-      enum:
-        - PENDING
-        - RUNNING
-        - CANCELING
-        - SUCCEEDED
-        - FAILED
-        - CANCELED

@@ -25,163 +25,6 @@ tags:
   - name: Client
     description: The clients associate to the devices of ExtremeCloud IQ
 paths:
-  '/clients/{id}':
-    get:
-      tags:
-        - Client
-      summary: Get client info
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_details_for_one_client'
-      operationId: getClient
-      description: Get client detailed information.
-      parameters:
-        - name: id
-          in: path
-          description: The client ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: views
-          in: query
-          description: The views to return client fields (Check fields for each view at XiqClientView schema)
-          required: false
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/XiqClientView'
-        - name: fields
-          in: query
-          description: The client fields to return
-          required: false
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/XiqClientField'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqClient'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  /clients/usage:
-    get:
-      tags:
-        - Client
-      summary: Get usage per client
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_usage'
-      operationId: getClientUsage
-      description: Get the client usage.
-      parameters:
-        - name: clientIds
-          in: query
-          description: The client IDs
-          required: true
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int64
-        - name: startTime
-          in: query
-          description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: endTime
-          in: query
-          description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/XiqClientUsage'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  /clients/summary:
-    get:
-      tags:
-        - Client
-      summary: Get client summary metrics
-      description: Get number of connected wireless clients and number of detected wired clients.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_summary'
-      operationId: getClientSummary
-      parameters:
-        - name: locationIds
-          in: query
-          description: The location IDs
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int64
-        - name: deviceIds
-          in: query
-          description: The device IDs
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int64
-        - name: vlans
-          in: query
-          description: The associate VLAN IDs
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int32
-        - name: userProfileNames
-          in: query
-          description: The user profile names
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-        - name: ssids
-          in: query
-          description: The SSIDs
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqClientSummary'
-        default:
-          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   /clients/active:
     get:
       tags:
@@ -278,6 +121,163 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedXiqClient'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /clients/summary:
+    get:
+      tags:
+        - Client
+      summary: Get client summary metrics
+      description: Get number of connected wireless clients and number of detected wired clients.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_summary'
+      operationId: getClientSummary
+      parameters:
+        - name: locationIds
+          in: query
+          description: The location IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        - name: deviceIds
+          in: query
+          description: The device IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        - name: vlans
+          in: query
+          description: The associate VLAN IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+        - name: userProfileNames
+          in: query
+          description: The user profile names
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: ssids
+          in: query
+          description: The SSIDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqClientSummary'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /clients/usage:
+    get:
+      tags:
+        - Client
+      summary: Get usage per client
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_usage'
+      operationId: getClientUsage
+      description: Get the client usage.
+      parameters:
+        - name: clientIds
+          in: query
+          description: The client IDs
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        - name: startTime
+          in: query
+          description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: endTime
+          in: query
+          description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqClientUsage'
+        default:
+          $ref: 'common/components.yaml#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/clients/{id}':
+    get:
+      tags:
+        - Client
+      summary: Get client info
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_client_details_for_one_client'
+      operationId: getClient
+      description: Get client detailed information.
+      parameters:
+        - name: id
+          in: path
+          description: The client ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: views
+          in: query
+          description: The views to return client fields (Check fields for each view at XiqClientView schema)
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqClientView'
+        - name: fields
+          in: query
+          description: The client fields to return
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqClientField'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqClient'
         default:
           $ref: 'common/components.yaml#/components/responses/ErrorResponse'
       security:
@@ -510,30 +510,6 @@ components:
           items:
             $ref: 'device.yaml#/components/schemas/XiqLocationLegend'
       description: The Client associate to ExtremeCloud IQ device
-    XiqClientUsage:
-      type: object
-      properties:
-        client_id:
-          type: integer
-          description: The client ID
-          format: int64
-        usage:
-          type: integer
-          description: The client total usage
-          format: int64
-      description: The client usage over the period
-    XiqClientSummary:
-      type: object
-      properties:
-        connected_wireless_client_count:
-          type: integer
-          description: The connected wireless client count
-          format: int64
-        detected_wired_client_count:
-          type: integer
-          description: The detected wired client count
-          format: int64
-      description: The summary for clients
     PagedXiqClient:
       required:
         - count
@@ -563,3 +539,27 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqClient'
+    XiqClientSummary:
+      type: object
+      properties:
+        connected_wireless_client_count:
+          type: integer
+          description: The connected wireless client count
+          format: int64
+        detected_wired_client_count:
+          type: integer
+          description: The detected wired client count
+          format: int64
+      description: The summary for clients
+    XiqClientUsage:
+      type: object
+      properties:
+        client_id:
+          type: integer
+          description: The client ID
+          format: int64
+        usage:
+          type: integer
+          description: The client total usage
+          format: int64
+      description: The client usage over the period

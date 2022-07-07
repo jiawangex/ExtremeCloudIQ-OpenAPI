@@ -189,33 +189,6 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    XiqVlanObjectClassifiedEntry:
-      required:
-        - create_time
-        - id
-        - update_time
-        - vlan_id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        vlan_id:
-          type: integer
-          description: The VLAN ID
-          format: int32
-        classification_rule:
-          $ref: '#/components/schemas/XiqClassificationRule'
-      description: The payload of VLAN object classified entry
     XiqVlanProfile:
       required:
         - create_time
@@ -305,42 +278,28 @@ components:
           description: The VLAN object classified entries
           items:
             $ref: '#/components/schemas/XiqCreateVlanObjectClassifiedEntryRequest'
-    XiqClassification:
+    XiqUpdateVlanProfileRequest:
       required:
-        - classification_id
-        - classification_type
-        - create_time
-        - id
-        - match
-        - update_time
-        - value
+        - default_vlan_id
+        - enable_classification
+        - name
       type: object
       properties:
-        id:
+        name:
+          type: string
+          description: The VLAN profile name
+        default_vlan_id:
           type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        classification_type:
-          $ref: '#/components/schemas/XiqClassificationType'
-        match:
+          description: The default VLAN ID
+          format: int32
+        enable_classification:
           type: boolean
-          description: Contains or not contains)
-        classification_id:
-          type: integer
-          description: 'The ID of location, cloud config group, IP address, IP subnet or IP range.'
-          format: int64
-        value:
-          type: string
-          description: The value of classification
-      description: The payload of common object - classification
+          description: If apply VLANs to devices using classification
+        classified_entries:
+          type: array
+          description: The VLAN object classified entries
+          items:
+            $ref: '#/components/schemas/XiqUpdateVlanObjectClassifiedEntryRequest'
     XiqClassificationRule:
       required:
         - create_time
@@ -382,6 +341,69 @@ components:
         - IP_ADDRESS
         - IP_SUBNET
         - IP_RANGE
+    XiqVlanObjectClassifiedEntry:
+      required:
+        - create_time
+        - id
+        - update_time
+        - vlan_id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        vlan_id:
+          type: integer
+          description: The VLAN ID
+          format: int32
+        classification_rule:
+          $ref: '#/components/schemas/XiqClassificationRule'
+      description: The payload of VLAN object classified entry
+    XiqClassification:
+      required:
+        - classification_id
+        - classification_type
+        - create_time
+        - id
+        - match
+        - update_time
+        - value
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        classification_type:
+          $ref: '#/components/schemas/XiqClassificationType'
+        match:
+          type: boolean
+          description: Contains or not contains)
+        classification_id:
+          type: integer
+          description: 'The ID of location, cloud config group, IP address, IP subnet or IP range.'
+          format: int64
+        value:
+          type: string
+          description: The value of classification
+      description: The payload of common object - classification
     XiqCreateVlanObjectClassifiedEntryRequest:
       required:
         - classification_rule_id
@@ -412,25 +434,3 @@ components:
           description: The classification rule ID
           format: int64
       description: The VLAN object classified entries
-    XiqUpdateVlanProfileRequest:
-      required:
-        - default_vlan_id
-        - enable_classification
-        - name
-      type: object
-      properties:
-        name:
-          type: string
-          description: The VLAN profile name
-        default_vlan_id:
-          type: integer
-          description: The default VLAN ID
-          format: int32
-        enable_classification:
-          type: boolean
-          description: If apply VLANs to devices using classification
-        classified_entries:
-          type: array
-          description: The VLAN object classified entries
-          items:
-            $ref: '#/components/schemas/XiqUpdateVlanObjectClassifiedEntryRequest'

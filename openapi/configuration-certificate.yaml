@@ -85,6 +85,32 @@ components:
       enum:
         - CERT
         - KEY
+    XiqCertificate:
+      required:
+        - create_time
+        - id
+        - name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        cert_type:
+          $ref: '#/components/schemas/XiqCertificateType'
+        name:
+          type: string
+          description: The certificate file name
+      description: The data in the current page
     PagedXiqCertificate:
       required:
         - count
@@ -114,29 +140,3 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqCertificate'
-    XiqCertificate:
-      required:
-        - create_time
-        - id
-        - name
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        cert_type:
-          $ref: '#/components/schemas/XiqCertificateType'
-        name:
-          type: string
-          description: The certificate file name
-      description: The data in the current page
