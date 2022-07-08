@@ -57,9 +57,17 @@ pnpm install
 
 # Get Started
 
-## Edit OpenAPI
-All OpenAPI definitions are under [openapi](openapi) directory and the common components definitions are under 
-[openapi/common](openapi/common) directory.
+## Define OpenAPI
+There are a lot of APIs for different domains in ExtremeCloud IQ.
+To improve maintainability, we adopt multiple-file approach to define all OpenAPIs.
+
+* All OpenAPI definitions are under [openapi](openapi) directory.
+* The common components definitions are under [openapi/common](openapi/common) directory.
+* The different domain's OpenAPIs are under `openapi/{domain-name}` directory.
+* Each domain directory has below structure: 
+  * `openapi.yaml` define the domain OpenAPI.
+  * `paths` directory contains all paths for the domain OpenAPI.
+  * `components` directory contains `schemas`, `parameters`, `examples` directories.
 
 You are freely to choose any text editor tools to add or change OpenAPI definitions, but choosing the right tools can 
 significantly improve your productivity.
