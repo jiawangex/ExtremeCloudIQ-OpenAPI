@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$(dirname $0)/.."
+
+for dir in `ls openapi`; do
+  source_file="openapi/${dir}/openapi.yaml"
+  if [ -f "${source_file}" ]; then
+    pnpm redocly bundle --ext yaml "${source_file}" --output "bundled/${dir}.yaml"
+  fi
+done
