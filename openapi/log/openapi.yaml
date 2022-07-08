@@ -13,8 +13,7 @@ info:
   version:
     $ref: ../info-version
 externalDocs:
-  description: API Reference
-  url: https://extremecloudiq.com/api-docs/api-reference.html
+  $ref: ../external-docs.yaml
 servers:
   - url: '{base_url}'
     description: ExtremeCloud IQ REST API Server
