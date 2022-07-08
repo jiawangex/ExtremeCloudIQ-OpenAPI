@@ -29,12 +29,8 @@ info:
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
   version: 22.5.0.0
 servers:
-  - url: '{base_url}'
+  - url: 'https://api.extremecloudiq.com'
     description: ExtremeCloud IQ REST API Server
-    variables:
-      base_url:
-        description: ExtremeCloud IQ Production
-        default: 'https://api.extremecloudiq.com'
 externalDocs:
   description: API Reference
   url: 'https://extremecloudiq.com/api-docs/api-reference.html'

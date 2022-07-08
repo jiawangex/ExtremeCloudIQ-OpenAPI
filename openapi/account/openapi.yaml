@@ -15,12 +15,7 @@ info:
 externalDocs:
   $ref: ../external-docs.yaml
 servers:
-  - url: '{base_url}'
-    description: ExtremeCloud IQ REST API Server
-    variables:
-      base_url:
-        description: ExtremeCloud IQ Production
-        default: https://api.extremecloudiq.com
+  - $ref: ../server-default.yaml
 tags:
   - name: Account
     description: ExtremeCloud IQ Account
