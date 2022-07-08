@@ -1,7 +1,8 @@
 openapi: 3.0.3
 info:
   title: ExtremeCloud IQ API
-  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  description:
+    $ref: ../info-description.md
   termsOfService: https://www.extremenetworks.com/company/legal/terms-of-use/
   contact:
     name: Extreme Networks Support
