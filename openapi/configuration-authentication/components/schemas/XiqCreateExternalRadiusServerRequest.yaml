@@ -1,0 +1,40 @@
+required:
+  - accounting_port
+  - authentication_port
+  - enable_a3
+  - ip_addr
+  - name
+  - server_type
+type: object
+properties:
+  name:
+    type: string
+    description: The external RADIUS server name
+  shared_secret:
+    type: string
+    description: The shared secret for the external RADIUS server (optional)
+  authentication_port:
+    maximum: 65535
+    minimum: 1
+    type: integer
+    description: The authentication port for the external RADIUS server (1 ~ 65535)
+    format: int32
+    default: 1812
+  accounting_port:
+    maximum: 65535
+    minimum: 1
+    type: integer
+    description: The accounting port for the external RADIUS server (1 ~ 65535)
+    format: int32
+    default: 1813
+  server_type:
+    $ref: ./XiqRadiusServerType.yaml
+  ip_addr:
+    type: string
+    description: The IP address or hostname of the RADIUS server
+  enable_a3:
+    type: boolean
+    description: >-
+      Indicates whether this is an Extreme A3 RADIUS server or not, cannot be
+      updated after creation. Please set it to false if it is not an Extreme A3
+      RADIUS server.

@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: The application ID
+    format: int64
+  name:
+    type: string
+    description: The application name
+  clients:
+    type: integer
+    description: The associated unique client count
+    format: int64
+  users:
+    type: integer
+    description: The associated unique user count
+    format: int64
+  usage:
+    type: integer
+    description: The application usage
+    format: int64
+description: The Top N Applications Usage

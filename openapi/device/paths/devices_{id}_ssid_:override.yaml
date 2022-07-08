@@ -1,0 +1,31 @@
+post:
+  tags:
+    - Device
+  summary: Override SSID for a device
+  description: Override SSID broadcast name/passphrase for a specific device.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_device_level_ssid_override
+  operationId: overrideDeviceLevelSsid
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceLevelSsid.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

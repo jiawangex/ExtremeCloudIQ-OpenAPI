@@ -1,0 +1,122 @@
+get:
+  tags:
+    - Device
+  summary: '[LRO] List devices'
+  description: List devices with filters and pagination.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_device_list
+  operationId: listDevices
+  parameters:
+    - name: page
+      in: query
+      description: Page number, min = 1
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        default: 1
+    - name: limit
+      in: query
+      description: Page Size, min = 1, max = 100
+      required: false
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+        default: 10
+    - name: locationId
+      in: query
+      description: Location Id
+      required: false
+      schema:
+        type: integer
+        format: int64
+    - name: connected
+      in: query
+      description: The device connect status
+      required: false
+      schema:
+        type: boolean
+    - name: adminStates
+      in: query
+      description: The device admin states
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqDeviceAdminState.yaml
+    - name: macAddresses
+      in: query
+      description: The device mac addresses
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: sns
+      in: query
+      description: The device serial numbers
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: hostnames
+      in: query
+      description: The device host names
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: sortField
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        $ref: ../components/schemas/XiqDeviceSortField.yaml
+    - name: order
+      in: query
+      description: The sort order (ascending by default)
+      required: false
+      schema:
+        $ref: ../../common/components/schemas/XiqSortOrder.yaml
+    - name: views
+      in: query
+      description: >-
+        The views to return device fields (Check fields for each view at
+        XiqDeviceView schema)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqDeviceView.yaml
+    - name: fields
+      in: query
+      description: The device fields to return
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqDeviceField.yaml
+    - name: async
+      in: query
+      description: Whether to enable async mode
+      required: false
+      schema:
+        type: boolean
+        default: false
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PagedXiqDevice.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

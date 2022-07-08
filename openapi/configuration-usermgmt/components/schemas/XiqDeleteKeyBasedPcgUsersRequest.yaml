@@ -1,0 +1,12 @@
+required:
+  - user_ids
+type: object
+properties:
+  user_ids:
+    type: array
+    description: The user ID list
+    items:
+      type: integer
+      description: The user ID list
+      format: int64
+description: The payload of delete Key Based Private Client Group users request

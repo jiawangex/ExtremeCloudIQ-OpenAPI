@@ -1,0 +1,90 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get user profile by ID
+  description: Get user profile details for the specified ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_user_profile_by_id
+  operationId: getUserProfile
+  parameters:
+    - name: id
+      in: path
+      description: The user profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqUserProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update user profile
+  description: Update an existing user profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_user_profile_configuration
+  operationId: updateCoUserProfile
+  parameters:
+    - name: id
+      in: path
+      description: The user profile ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of user profile.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateUserProfileRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqUserProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - Policy
+  summary: Delete an user profile by ID
+  description: Delete an existing user profile by ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_user_profile_configuration
+  operationId: deleteCoUserProfile
+  parameters:
+    - name: id
+      in: path
+      description: The user profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

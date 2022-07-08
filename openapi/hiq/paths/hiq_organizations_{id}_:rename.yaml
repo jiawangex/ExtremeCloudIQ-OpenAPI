@@ -1,0 +1,31 @@
+post:
+  tags:
+    - HIQ
+  summary: Rename an existing organization
+  description: Rename an existing organization (Available when HIQ is enabled).
+  externalDocs:
+    description: API Reference
+    url: http://localhost:8081/api-docs/api-reference.html#_rename_organization
+  operationId: renameOrganization
+  parameters:
+    - name: id
+      in: path
+      description: Organization ID to rename
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The new organization name
+    content:
+      application/json:
+        schema:
+          type: string
+    required: true
+  responses:
+    '204':
+      description: No Content
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,47 @@
+get:
+  tags:
+    - Application
+  summary: List the TopN applications
+  description: List the TopN applications by usage.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_list_top_n_applications_usage
+  operationId: listTopApplicationsUsage
+  parameters:
+    - name: 'n'
+      in: path
+      description: The TopN number
+      required: true
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+    - name: startTime
+      in: query
+      description: The start time for querying top application usage
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: endTime
+      in: query
+      description: The end time for querying top application usage
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/XiqTopApplicationsUsage.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

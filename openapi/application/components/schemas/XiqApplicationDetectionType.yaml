@@ -1,0 +1,5 @@
+type: string
+enum:
+  - HOST_NAME
+  - SERVER_IP_ADDRESS
+  - PORT_NUMBER

@@ -1,0 +1,25 @@
+delete:
+  tags:
+    - Notification
+  summary: Delete webhook subscription
+  description: Delete an exist webhook subscription.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_webhook_subscriptions
+  operationId: deleteSubscription
+  parameters:
+    - name: id
+      in: path
+      description: The webhook subscription ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

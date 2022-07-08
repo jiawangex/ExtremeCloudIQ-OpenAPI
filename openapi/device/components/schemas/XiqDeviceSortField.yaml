@@ -1,0 +1,7 @@
+type: string
+description: >-
+  All available device sort fields<br/><br/>MAC = Device MAC Address<br/>SN =
+  Device Serial Number
+enum:
+  - MAC
+  - SN

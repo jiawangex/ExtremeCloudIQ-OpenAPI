@@ -1,0 +1,12 @@
+required:
+  - wifi0_enabled
+  - wifi1_enabled
+type: object
+properties:
+  wifi0_enabled:
+    type: boolean
+    description: The SSID is enabled or not on wifi0 interface
+  wifi1_enabled:
+    type: boolean
+    description: The SSID is enabled or not on wifi1 interface
+description: The SSID status

@@ -1,0 +1,78 @@
+get:
+  tags:
+    - Application
+  summary: List the applications
+  description: List a page of applications by filter.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_list_the_applications
+  operationId: listApplications
+  parameters:
+    - name: page
+      in: query
+      description: Page number, min = 1
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        default: 1
+    - name: limit
+      in: query
+      description: Page Size, min = 1, max = 100
+      required: false
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+        default: 10
+    - name: name
+      in: query
+      description: Application Name
+      required: false
+      schema:
+        type: string
+    - name: detectionProtocol
+      in: query
+      description: Application Detection Protocol, only for custom Application
+      required: false
+      schema:
+        $ref: ../components/schemas/XiqApplicationDetectionProtocol.yaml
+    - name: detectionType
+      in: query
+      description: Application Detection Type, only for custom Application
+      required: false
+      schema:
+        $ref: ../components/schemas/XiqApplicationDetectionType.yaml
+    - name: predefined
+      in: query
+      description: Flag to filter predefined or custom Application
+      required: false
+      schema:
+        type: boolean
+      example: true
+    - name: sortField
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        $ref: ../components/schemas/XiqApplicationSortField.yaml
+    - name: order
+      in: query
+      description: The sort order (ascending by default)
+      required: false
+      schema:
+        $ref: ../../common/components/schemas/XiqSortOrder.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PagedXiqApplication.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

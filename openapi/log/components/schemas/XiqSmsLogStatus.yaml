@@ -1,0 +1,7 @@
+type: string
+description: The SMS status
+enum:
+  - SEND_OUT
+  - COMPLETE
+  - SUCCESS
+  - FAIL

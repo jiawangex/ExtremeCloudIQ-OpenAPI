@@ -1,0 +1,31 @@
+required:
+  - device_ids
+  - target_os
+type: object
+properties:
+  device_ids:
+    maxItems: 2147483647
+    minItems: 1
+    type: array
+    description: >-
+      The one or multiple device IDs to change the OS mode. Must be all AP or
+      Switches in the same list. For AP only "AP_410C", "AP_460C", "AP_305C",
+      "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are allowed change to
+      WiNG OS. For Switch: only "5520", "5420F", "5420M" are allowed to change
+      its OS type.
+    items:
+      type: integer
+      description: >-
+        The one or multiple device IDs to change the OS mode. Must be all AP or
+        Switches in the same list. For AP only "AP_410C", "AP_460C", "AP_305C",
+        "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are allowed change to
+        WiNG OS. For Switch: only "5520", "5420F", "5420M" are allowed to change
+        its OS type.
+      format: int64
+  target_os:
+    type: string
+    description: >-
+      The target OS mode to change to, for AP: only WiNG is supported, for
+      Switch: EXOS or VOSS
+    example: WiNG
+description: The request for change the device(s) OS mode.

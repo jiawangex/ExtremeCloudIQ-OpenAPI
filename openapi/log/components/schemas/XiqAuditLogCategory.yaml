@@ -1,0 +1,8 @@
+type: string
+enum:
+  - ADMIN
+  - SYSTEM
+  - DEPLOYMENT
+  - CONFIG
+  - MONITOR
+  - ALARM

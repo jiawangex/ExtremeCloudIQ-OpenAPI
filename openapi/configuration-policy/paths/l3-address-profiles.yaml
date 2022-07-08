@@ -1,0 +1,36 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: List L3 address profiles
+  description: List all L3 Address Profiles.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_list_the_l3_address_profile
+  operationId: listL3AddressProfiles
+  parameters:
+    - name: addressType
+      in: query
+      description: The address type
+      required: true
+      schema:
+        type: string
+        enum:
+          - L3_ADDRESS_TYPE_UNSPECIFIED
+          - L3_ADDRESS_TYPE_IP_ADDRESS
+          - L3_ADDRESS_TYPE_IP_SUBNET
+          - L3_ADDRESS_TYPE_IP_RANGE
+          - UNRECOGNIZED
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/XiqL3AddressProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

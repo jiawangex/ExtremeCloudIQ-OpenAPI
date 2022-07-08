@@ -1,0 +1,20 @@
+required:
+  - creating_org_id
+  - reading_org_ids
+type: object
+properties:
+  reading_org_ids:
+    type: array
+    description: >-
+      The organization ID list for reading data (Empty means read data from all
+      organizations in the HIQ)
+    items:
+      type: integer
+      description: >-
+        The organization ID list for reading data (Empty means read data from
+        all organizations in the HIQ)
+      format: int64
+  creating_org_id:
+    type: integer
+    description: The organization ID for creating new data
+    format: int64

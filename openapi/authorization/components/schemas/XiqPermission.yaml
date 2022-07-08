@@ -1,0 +1,16 @@
+required:
+  - category
+  - description
+  - name
+type: object
+properties:
+  name:
+    type: string
+    description: The permission name
+  description:
+    type: string
+    description: The description for the permission
+  category:
+    type: string
+    description: The category for the permission
+description: The permission list

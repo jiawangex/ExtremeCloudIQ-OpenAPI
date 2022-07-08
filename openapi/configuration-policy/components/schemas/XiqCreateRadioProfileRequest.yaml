@@ -1,0 +1,56 @@
+required:
+  - name
+type: object
+properties:
+  name:
+    type: string
+    description: The radio profile name
+  description:
+    type: string
+    description: The radio profile description.
+  transmission_power:
+    maximum: 20
+    minimum: 1
+    type: integer
+    description: The transmission power floor in the range of 1-20 dBm or null for Auto.
+    format: int32
+  max_transmit_power:
+    maximum: 20
+    minimum: 10
+    type: integer
+    description: The maximum transmit power in the range of 10-20 dBm.
+    format: int32
+  transmission_power_floor:
+    maximum: 20
+    minimum: 2
+    type: integer
+    description: The transmission power floor in the range of 2-20 dBm.
+    format: int32
+  transmission_power_max_drop:
+    maximum: 18
+    minimum: 0
+    type: integer
+    description: The transmission power max drop in the range of 0-18 dB.
+    format: int32
+  max_clients:
+    maximum: 255
+    minimum: 1
+    type: integer
+    description: The maximum number of clients in the range of 1-255.
+    format: int32
+  enable_client_transmission_power:
+    type: boolean
+    description: Whether or not client transmission power control (802.11h) is enabled.
+  client_transmission_power:
+    maximum: 20
+    minimum: 1
+    type: integer
+    description: The client transmission power (in the range of 1-20 dBm) if it is enabled.
+    format: int32
+  radio_mode:
+    $ref: ./XiqRadioMode.yaml
+  enable_ofdma:
+    type: boolean
+    description: >-
+      Whether to enable Orthogonal Frequency Division Multiple Access (802.11ax)
+      for multiple-user access by subdividing a channel.

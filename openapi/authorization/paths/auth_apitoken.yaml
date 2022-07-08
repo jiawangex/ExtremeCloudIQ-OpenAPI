@@ -1,0 +1,38 @@
+post:
+  tags:
+    - Authorization
+  summary: Generate new API token
+  description: >-
+    Generate a new API token with given permissions and expiration time. 
+
+    The available permission list can be found via 'GET /auth/permissions'
+    endpoint.
+  operationId: generateApiToken
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_generate_api_token
+  requestBody:
+    description: Generate API token request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqGenerateApiTokenRequest.yaml
+        examples:
+          Generate API token example 1:
+            summary: Generate API token with specific permissions
+            description: Generate API token with a single permission to read account info
+            value:
+              description: Token for reading account info only
+              expire_time: 1604737598
+              permissions:
+                - account:r
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqGenerateApiTokenResponse.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml

@@ -1,0 +1,13 @@
+required:
+  - password
+  - username
+type: object
+properties:
+  username:
+    type: string
+    description: The login username
+  password:
+    type: string
+    description: The login password
+x-tags:
+  - Authentication

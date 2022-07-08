@@ -1,0 +1,25 @@
+required:
+  - location_id
+type: object
+properties:
+  location_id:
+    type: integer
+    description: The assigned location ID, it must be FLOOR type
+    format: int64
+  x:
+    type: number
+    description: The horizontal value in the floor map
+    format: double
+  'y':
+    type: number
+    description: The vertical value in the floor map
+    format: double
+  latitude:
+    type: number
+    description: The latitude in the geography
+    format: double
+  longitude:
+    type: number
+    description: The longitude in the geography
+    format: double
+description: Device location assignment

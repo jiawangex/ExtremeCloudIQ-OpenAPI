@@ -1,0 +1,159 @@
+required:
+  - create_time
+  - id
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  location_id:
+    type: integer
+    description: The location ID
+    format: int64
+  device_id:
+    type: integer
+    description: The device ID
+    format: int64
+  hostname:
+    type: string
+    description: The hostname of the client
+  mac_address:
+    type: string
+    description: The MAC address of the client
+  ip_address:
+    type: string
+    description: The IP address of the client
+  ipv6_address:
+    type: string
+    description: The IPv6 address of the client
+  os_type:
+    type: string
+    description: The OS type of the client
+  username:
+    type: string
+    description: The username of the client.
+  user_profile_name:
+    type: string
+    description: The user profile name of the client
+  connected:
+    type: boolean
+    description: Client is connected or not
+  online_time:
+    type: string
+    description: The online time for the client
+    format: date-time
+  offline_time:
+    type: string
+    description: The offline time for the client
+    format: date-time
+  vlan:
+    type: integer
+    description: The associate VLAN
+    format: int32
+  connection_type:
+    type: integer
+    description: The connection type
+    format: int32
+  ssid:
+    type: string
+    description: The SSID
+  port:
+    type: string
+    description: The associate device port
+  org_name:
+    type: string
+    description: The organization name
+  device_function:
+    type: integer
+    description: The associated device function
+    format: int32
+  device_mac_address:
+    type: string
+    description: The associated device mac address
+  device_name:
+    type: string
+    description: The associated device name
+  auth:
+    type: integer
+    description: The authentication type
+    format: int32
+  channel:
+    type: integer
+    description: The channel value
+    format: int32
+  client_health:
+    type: integer
+    description: The health score of client
+    format: int32
+  application_health:
+    type: integer
+    description: The health score of application
+    format: int32
+  radio_health:
+    type: integer
+    description: The health score of radio
+    format: int32
+  network_health:
+    type: integer
+    description: The health score of network
+    format: int32
+  radio_type:
+    type: integer
+    description: The radio type
+    format: int32
+  encryption_method:
+    type: integer
+    description: The encryption method
+    format: int32
+  interface_name:
+    type: string
+    description: The interface name
+  bssid:
+    type: string
+    description: The bssid
+  rssi:
+    type: integer
+    description: The RSSI
+    format: int32
+  snr:
+    type: integer
+    description: The SNR
+    format: int32
+  description:
+    type: string
+    description: The description of client
+  category:
+    type: string
+    description: The category of client
+  mobility:
+    type: string
+    description: The client mobility
+  port_type_name:
+    type: string
+    description: The client port type name
+  wing_ap:
+    type: boolean
+    description: Wing ap flag
+  vendor:
+    type: string
+    description: The vendor of client
+  locations:
+    type: array
+    description: The detailed location
+    items:
+      $ref: ../../../device/components/schemas/XiqLocationLegend.yaml
+description: The Client associate to ExtremeCloud IQ device

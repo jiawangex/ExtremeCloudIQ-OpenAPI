@@ -1,0 +1,64 @@
+required:
+  - base_dn
+  - bind_dn
+  - bind_dn_password
+  - destination_port
+  - enable_strip_realm_name
+  - enable_tls
+  - l3_address_profile_id
+  - name
+  - protocol_type
+  - verification_mode
+type: object
+properties:
+  name:
+    type: string
+    description: The LDAP server name
+  description:
+    type: string
+    description: The LDAP server description(optional)
+  enable_tls:
+    type: boolean
+    description: >-
+      To enable TLS or not, if ture, caCertificateId, clientCertificateId and
+      clientKeyId must be specified
+  bind_dn:
+    type: string
+    description: The LDAP server bind DN name
+  bind_dn_password:
+    type: string
+    description: The LDAP server bind DN password
+  base_dn:
+    type: string
+    description: The RADIUS user base DN
+  l3_address_profile_id:
+    type: integer
+    description: The L3 address profile ID
+    format: int64
+  protocol_type:
+    $ref: ./XiqLdapProtocolType.yaml
+  enable_strip_realm_name:
+    type: boolean
+    description: enable strip realm name or not
+  destination_port:
+    minimum: 1
+    type: integer
+    description: The LDAP server destination port (1 ~ 65535)
+    format: int32
+  verification_mode:
+    $ref: ./XiqLdapServerVerificationMode.yaml
+  ca_certificate_id:
+    type: integer
+    description: The CA certificate ID, refer to XiqCertificate
+    format: int64
+  client_certificate_id:
+    type: integer
+    description: The client certificate ID, refer to XiqCertificate
+    format: int64
+  client_key_id:
+    type: integer
+    description: The client key ID, refer to XiqCertificate
+    format: int64
+  client_key_password:
+    type: string
+    description: The LDAP server client key password

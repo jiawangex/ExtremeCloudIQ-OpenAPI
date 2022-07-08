@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Account
+  summary: Get home ExtremeCloud IQ account info
+  description: Get home ExtremeCloud IQ account info.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_basic_info
+  operationId: getHomeAccount
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqAccount.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,9 @@
+type: string
+description: The authentication group
+enum:
+  - TLS_PEAP_TTLS_LEAP_MD5
+  - TLS_PEAP_TTLS_LEAP
+  - TLS_PEAP
+  - TLS_TTLS
+  - TLS
+  - LEAP

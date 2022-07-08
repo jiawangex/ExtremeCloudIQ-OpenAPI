@@ -1,0 +1,69 @@
+get:
+  tags:
+    - User
+  summary: List external access users
+  description: List a page of external access users.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_external_user_list
+  operationId: listExternalUsers
+  parameters:
+    - name: page
+      in: query
+      description: Page number, min = 1
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        default: 1
+    - name: limit
+      in: query
+      description: Page Size, min = 1, max = 100
+      required: false
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+        default: 10
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PagedXiqExternalUser.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - User
+  summary: Grant external access
+  description: Grant external access to a specific user.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_grant_external_user
+  operationId: grantExternalUser
+  requestBody:
+    description: Grant external user request
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqGrantExternalUserRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqExternalUser.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

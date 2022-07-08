@@ -1,0 +1,11 @@
+required:
+  - sn_to_mac
+type: object
+properties:
+  sn_to_mac:
+    type: object
+    additionalProperties:
+      type: string
+      description: Serial number -> MAC address
+    description: Serial number -> MAC address
+description: ExtremeWireless (WiNG) devices to onboard

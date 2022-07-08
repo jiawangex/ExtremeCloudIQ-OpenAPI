@@ -1,0 +1,5 @@
+type: string
+description: The external user directory type
+enum:
+  - OPEN_LDAP
+  - ACTIVE_DIRECTORY

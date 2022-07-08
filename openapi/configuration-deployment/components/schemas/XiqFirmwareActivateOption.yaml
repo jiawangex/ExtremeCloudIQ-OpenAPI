@@ -1,0 +1,16 @@
+type: object
+properties:
+  enable_activate_at_next_reboot:
+    type: boolean
+    description: Activate at next reboot (requires rebooting manually)
+  activation_delay_seconds:
+    type: integer
+    description: Activate after the given seconds
+    format: int64
+  activation_time:
+    type: integer
+    description: >-
+      Activate at the following time according to the system clock on the
+      updated device
+    format: int64
+description: The firmware activate option (Only one of them can be enabled)

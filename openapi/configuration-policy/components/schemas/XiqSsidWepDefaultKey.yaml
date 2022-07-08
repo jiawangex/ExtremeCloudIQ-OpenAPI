@@ -1,0 +1,8 @@
+type: string
+description: The default key, FIRST, SECOND,THIRD, OR FOURTH
+example: FIRST
+enum:
+  - FIRST
+  - SECOND
+  - THIRD
+  - FOURTH

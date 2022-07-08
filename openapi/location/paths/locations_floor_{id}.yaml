@@ -1,0 +1,59 @@
+put:
+  tags:
+    - Location
+  summary: Update floor
+  description: Update floor information with the floor ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_update_floor
+  operationId: updateFloor
+  parameters:
+    - name: id
+      in: path
+      description: The floor ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update floor request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateFloorRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqFloor.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Location
+  summary: Delete floor by ID
+  description: Delete the floor for the specified ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_floor
+  operationId: deleteFloor
+  parameters:
+    - name: id
+      in: path
+      description: The floor ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

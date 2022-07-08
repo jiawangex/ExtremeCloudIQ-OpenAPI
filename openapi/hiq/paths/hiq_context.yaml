@@ -1,0 +1,51 @@
+get:
+  tags:
+    - HIQ
+  summary: Get HIQ context
+  description: >-
+    Get the current effective HIQ context for reading or creating data in
+    organizations.
+
+    Appliable when HIQ is enabled.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_hiq_context
+  operationId: getHiqContext
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqHiqContext.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - HIQ
+  summary: Set HIQ context
+  description: >-
+    Set the current effective HIQ context for reading or creating data in
+    organizations.
+
+    Only HIQ Admin can performance this operation when HIQ is enabled.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_set_hiq_context
+  operationId: setHiqContext
+  requestBody:
+    description: The new HIQ context
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqHiqContext.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

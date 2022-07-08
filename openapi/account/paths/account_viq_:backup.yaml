@@ -1,0 +1,16 @@
+post:
+  tags:
+    - Account
+  summary: Backup VIQ
+  description: Backup VIQ in ExtremeCloud IQ.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_viq_backup
+  operationId: backupViq
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

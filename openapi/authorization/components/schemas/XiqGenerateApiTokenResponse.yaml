@@ -1,0 +1,36 @@
+required:
+  - access_token
+  - create_time
+  - creator_id
+  - customer_id
+  - permissions
+type: object
+properties:
+  access_token:
+    type: string
+    description: The API access token
+  create_time:
+    type: string
+    description: The create timestamp
+    format: date-time
+  expire_time:
+    type: string
+    description: The expire timestamp, if null means no expiration
+    format: date-time
+  creator_id:
+    type: integer
+    description: The user ID who created the API token
+    format: int64
+  customer_id:
+    type: integer
+    description: The customer ID who owns the API token
+    format: int64
+  description:
+    type: string
+    description: The description for the API token
+  permissions:
+    type: array
+    description: The permissions for the API token
+    items:
+      type: string
+      description: The permissions for the API token

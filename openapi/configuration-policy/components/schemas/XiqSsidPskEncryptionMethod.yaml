@@ -1,0 +1,8 @@
+type: string
+description: >-
+  The encryption method: for WPA3_PSK please use CCMP, for WPA2_PSK or WPA_PSK,
+  please use CCMP or TKIP, for AUTO_PSK, please use AUTO_TKIP_CCMP
+enum:
+  - CCMP
+  - TKIP
+  - AUTO_TKIP_CCMP

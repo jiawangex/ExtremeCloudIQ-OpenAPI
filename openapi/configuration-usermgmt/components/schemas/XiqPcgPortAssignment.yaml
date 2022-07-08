@@ -1,0 +1,27 @@
+required:
+  - device_id
+type: object
+properties:
+  device_id:
+    type: integer
+    description: The device ID of AP150W
+    format: int64
+  eth1_user_id:
+    type: integer
+    description: >-
+      The eth1 user ID, get available users from
+      "/pcgs/key-based/network-policy-{policyId}/users"
+    format: int64
+  eth2_user_id:
+    type: integer
+    description: >-
+      The eth2 user ID, get available users from
+      "/pcgs/key-based/network-policy-{policyId}/users"
+    format: int64
+  eth3_user_id:
+    type: integer
+    description: >-
+      The eth3 user ID, get available users from
+      "/pcgs/key-based/network-policy-{policyId}/users"
+    format: int64
+description: The PCG port assignment entry

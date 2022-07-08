@@ -1,0 +1,52 @@
+get:
+  tags:
+    - Device
+  summary: Get device CPU/memory usage history
+  description: Get average device CPU and memory usage history.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_device_cpu_and_memory_usage_for_one_device
+  operationId: getDeviceCpuMemoryHistory
+  parameters:
+    - name: id
+      in: path
+      description: Device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: startTime
+      in: query
+      description: The start time to query, epoch time in milliseconds since 1/1/1970
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: endTime
+      in: query
+      description: The end time to query, epoch time in milliseconds since 1/1/1970
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: interval
+      in: query
+      description: The aggregate interval in milliseconds
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/XiqDeviceCpuMemoryUsage.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,89 @@
+get:
+  tags:
+    - Network Policy
+  summary: Get the network policy
+  description: Get an existing network policy by ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_network_policy
+  operationId: getNetworkPolicy
+  parameters:
+    - name: id
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqNetworkPolicy.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Network Policy
+  summary: Update the network policy
+  description: Update network policy by ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_network_policy
+  operationId: updateNetworkPolicy
+  parameters:
+    - name: id
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The body of update network policy API
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateNetworkPolicyRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqNetworkPolicy.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Network Policy
+  summary: Delete the network policy
+  description: Delete an existing network policy by ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_network_policy
+  operationId: deleteNetworkPolicy
+  parameters:
+    - name: id
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,32 @@
+type: object
+properties:
+  parent_id:
+    type: integer
+    description: The parent building ID
+    format: int64
+  name:
+    type: string
+    description: The floor name
+  environment:
+    $ref: ./XiqRfEnvironmentType.yaml
+  db_attenuation:
+    type: number
+    description: The floor attenuation in dBs
+    format: double
+  measurement_unit:
+    $ref: ./XiqMeasurementUnit.yaml
+  installation_height:
+    type: number
+    description: The installation height
+    format: double
+  map_size_width:
+    type: number
+    description: The floor map width
+    format: double
+  map_size_height:
+    type: number
+    description: The floor map height
+    format: double
+  map_name:
+    type: string
+    description: The floor map name

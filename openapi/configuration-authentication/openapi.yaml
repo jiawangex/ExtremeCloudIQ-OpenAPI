@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: https://www.extremenetworks.com/company/legal/terms-of-use/
+  contact:
+    name: Extreme Networks Support
+    url: https://www.extremenetworks.com/support
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: https://extremecloudiq.com/api-docs/api-reference.html
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: https://api.extremecloudiq.com
+tags:
+  - name: Configuration - Authentication
+    description: AD/LDAP/RADIUS/CWP/...
+paths:
+  /ad-servers:
+    $ref: paths/ad-servers.yaml
+  /cwps:
+    $ref: paths/cwps.yaml
+  /ldap-servers:
+    $ref: paths/ldap-servers.yaml
+  /ldap-servers/{id}:
+    $ref: paths/ldap-servers_{id}.yaml
+  /radius-servers/internal:
+    $ref: paths/radius-servers_internal.yaml
+  /radius-servers/internal/{id}:
+    $ref: paths/radius-servers_internal_{id}.yaml
+  /radius-servers/internal/devices:
+    $ref: paths/radius-servers_internal_devices.yaml
+  /radius-servers/external:
+    $ref: paths/radius-servers_external.yaml
+  /radius-servers/external/{id}:
+    $ref: paths/radius-servers_external_{id}.yaml
+  /radius-proxies:
+    $ref: paths/radius-proxies.yaml
+  /radius-proxies/{id}:
+    $ref: paths/radius-proxies_{id}.yaml
+  /radius-proxies/devices:
+    $ref: paths/radius-proxies_devices.yaml
+  /radius-client-objects:
+    $ref: paths/radius-client-objects.yaml
+  /radius-client-objects/{id}:
+    $ref: paths/radius-client-objects_{id}.yaml
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT

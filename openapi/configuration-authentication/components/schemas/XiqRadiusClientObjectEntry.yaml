@@ -1,0 +1,18 @@
+required:
+  - radius_server_id
+  - server_role
+  - server_type
+type: object
+properties:
+  server_role:
+    $ref: ./XiqServerRole.yaml
+  server_type:
+    $ref: ./XiqRadiusClientObjectType.yaml
+  radius_server_id:
+    type: integer
+    description: >-
+      The ID of the RADIUS server object, for EXTERNAL_RADIUS_SERVER please use
+      the ID of external RADIUS server object. For INTERNAL_RADIUS_SERVER,
+      please use the RADIUS device ID
+    format: int64
+description: The entry of RADIUS client object

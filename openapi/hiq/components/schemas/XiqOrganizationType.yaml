@@ -1,0 +1,5 @@
+type: string
+description: The organization type
+enum:
+  - REGULAR
+  - PRIVATE

@@ -1,0 +1,29 @@
+type: object
+properties:
+  arbitration_interframe_space:
+    maximum: 15
+    minimum: 1
+    type: integer
+    description: The Arbitration Interframe space, in the range of 1 to 15.
+    format: int32
+  min_contention_window:
+    maximum: 15
+    minimum: 1
+    type: integer
+    description: The Minimum Contention window, in the range of 1 to 15.
+    format: int32
+  max_contention_window:
+    maximum: 15
+    minimum: 1
+    type: integer
+    description: The Maximum Contention window, in the range of 1 to 15.
+    format: int32
+  transmission_opportunity_limit:
+    maximum: 8192
+    minimum: 0
+    type: integer
+    description: The Transmission Opportunity limit, in the range of 0 to 8192.
+    format: int32
+  enable_no_ack:
+    type: boolean
+    description: Whether to enable No Acknowledgment

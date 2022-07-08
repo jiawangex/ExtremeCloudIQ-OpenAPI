@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Device
+  summary: Assign location to multiple devices
+  description: Assign the location to the target devices.
+  operationId: assignDevicesLocation
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqAssignDevicesLocationRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

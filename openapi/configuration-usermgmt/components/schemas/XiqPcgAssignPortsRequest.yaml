@@ -1,0 +1,10 @@
+required:
+  - port_assignments
+type: object
+properties:
+  port_assignments:
+    type: array
+    description: The port assignment list
+    items:
+      $ref: ./XiqPcgPortAssignment.yaml
+description: The payload to assign ports for AP150W)

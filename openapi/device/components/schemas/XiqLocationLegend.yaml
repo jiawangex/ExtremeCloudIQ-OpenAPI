@@ -1,0 +1,10 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: The location ID
+    format: int64
+  name:
+    type: string
+    description: The location name
+description: The simple location information

@@ -1,0 +1,7 @@
+type: string
+description: The entitlement key type
+enum:
+  - EVALUATION
+  - PERMANENT
+  - RENEW
+  - UNKNOWN

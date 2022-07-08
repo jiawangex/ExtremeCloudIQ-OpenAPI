@@ -1,0 +1,36 @@
+required:
+  - create_time
+  - host_name
+  - id
+  - radius_server_id
+  - radius_server_name
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  radius_server_id:
+    type: integer
+    description: The RADIUS server id
+    format: int64
+  radius_server_name:
+    type: string
+    description: The RADIUS server name
+  host_name:
+    type: string
+    description: The RADIUS server device hostname
+description: The configuration of internal RADIUS device object

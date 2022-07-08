@@ -1,0 +1,90 @@
+get:
+  tags:
+    - User
+  summary: Get external access info
+  description: Get external access info for a specific external user.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_external_user
+  operationId: getExternalUser
+  parameters:
+    - name: id
+      in: path
+      description: The external user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqExternalUser.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - User
+  summary: Revoke external access
+  description: Revoke external acccess for a specific user.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_revoke_external_user
+  operationId: revokeExternalUser
+  parameters:
+    - name: id
+      in: path
+      description: The external user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+patch:
+  tags:
+    - User
+  summary: Update external access info
+  description: Updates external access info for a specific user.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_external_user
+  operationId: updateExternalUser
+  parameters:
+    - name: id
+      in: path
+      description: The external user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update external user request
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateExternalUserRequest.yaml
+        examples:
+          Update external user info.:
+            description: Update external user info.
+            value:
+              user_role: ADMINISTRATOR
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

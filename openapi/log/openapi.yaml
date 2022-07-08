@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: https://www.extremenetworks.com/company/legal/terms-of-use/
+  contact:
+    name: Extreme Networks Support
+    url: https://www.extremenetworks.com/support
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: https://extremecloudiq.com/api-docs/api-reference.html
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: https://api.extremecloudiq.com
+tags:
+  - name: Log
+    description: Access all kinds of logs in ExtremeCloud IQ
+paths:
+  /logs/sms:
+    $ref: paths/logs_sms.yaml
+  /logs/email:
+    $ref: paths/logs_email.yaml
+  /logs/credential:
+    $ref: paths/logs_credential.yaml
+  /logs/auth:
+    $ref: paths/logs_auth.yaml
+  /logs/audit:
+    $ref: paths/logs_audit.yaml
+  /logs/accounting:
+    $ref: paths/logs_accounting.yaml
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT

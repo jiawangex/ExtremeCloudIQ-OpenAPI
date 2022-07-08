@@ -1,0 +1,17 @@
+required:
+  - name
+type: object
+properties:
+  name:
+    type: string
+    description: The CCG name
+  description:
+    type: string
+    description: The CCG description
+  device_ids:
+    type: array
+    description: The device ID list.
+    items:
+      type: integer
+      description: The device ID list.
+      format: int64

@@ -1,0 +1,30 @@
+put:
+  tags:
+    - Device
+  summary: Assign RADIUS proxy to devices
+  description: Assign a RADIUS proxy to multiple devices.
+  operationId: assignDevicesRadiusProxy
+  parameters:
+    - name: ids
+      in: query
+      description: The device IDs
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+    - name: radiusProxyId
+      in: query
+      description: The RADIUS proxy ID to assign
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

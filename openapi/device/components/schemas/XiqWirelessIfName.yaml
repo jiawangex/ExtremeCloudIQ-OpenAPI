@@ -1,0 +1,7 @@
+type: string
+description: >-
+  The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1) to be
+  disabled/enabled, cannot be empty or no SSID will be disabled or enabled.
+enum:
+  - WIFI0
+  - WIFI1

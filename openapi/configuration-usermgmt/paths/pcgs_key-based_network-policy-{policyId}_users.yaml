@@ -1,0 +1,127 @@
+get:
+  tags:
+    - Configuration - User Management
+  summary: Get users for a PCG-enabled network policy
+  description: Get users for a specific PCG-enabled network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_key_based_pcg_users_from_given_network_policy_id
+  operationId: getKeyBasedPcgUsers
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/XiqKeyBasedPcgUser.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - User Management
+  summary: Replace all users in a PCG-enabled network policy
+  description: Replace all users in a specific PCG-enabled network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_replace_all_key_based_pcg_users
+  operationId: updateKeyBasedPcgUsers
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of update Key-based PCG users request
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateKeyBasedPcgUsersRequest.yaml
+    required: true
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - Configuration - User Management
+  summary: Add users to a PCG-enabled network policy
+  description: Add users to a PCG-enabled network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_add_key_based_pcg_users_to_an_exists_key_based_pcg
+  operationId: addKeyBasedPcgUsers
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of add users to PCG-enabled network policy
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqCreateKeyBasedPcgUsersRequest.yaml
+    required: true
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - User Management
+  summary: Delete users from a PCG-enabled network policy
+  description: Delete users from a PCG-enabled network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_key_based_pcg_users
+  operationId: deleteKeyBasedPcgUsers
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of delete Key-based PCG users request
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeleteKeyBasedPcgUsersRequest.yaml
+    required: true
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

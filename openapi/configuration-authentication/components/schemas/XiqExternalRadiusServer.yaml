@@ -1,0 +1,54 @@
+required:
+  - accounting_port
+  - authentication_port
+  - create_time
+  - enable_a3
+  - id
+  - ip_address
+  - name
+  - server_type
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The external RADIUS server name
+  shared_secret:
+    type: string
+    description: The shared secret for the external RADIUS server (optional)
+  authentication_port:
+    type: integer
+    description: The authentication port for the external RADIUS server (1 ~ 65535)
+    format: int32
+  accounting_port:
+    type: integer
+    description: The accounting port for the external RADIUS server (1 ~ 65535)
+    format: int32
+  server_type:
+    $ref: ./XiqRadiusServerType.yaml
+  ip_address:
+    type: string
+    description: The ip address or hostname of the RADIUS server
+  enable_a3:
+    type: boolean
+    description: >-
+      Indicates whether this is an Extreme A3 RADIUS server or not, cannot be
+      updated after creation. Please set it to false if it is not an Extreme A3
+      RADIUS server.
+description: The configuration of external RADIUS server object

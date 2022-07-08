@@ -1,0 +1,18 @@
+post:
+  tags:
+    - Authentication
+  summary: User logout (Revoke the current access token)
+  description: >-
+    User logout, the current access token will be revoked and the following
+    access with the same token will be immediately denied.
+  operationId: logout
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_logout
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

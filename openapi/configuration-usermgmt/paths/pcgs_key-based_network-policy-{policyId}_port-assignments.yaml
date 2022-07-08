@@ -1,0 +1,67 @@
+get:
+  tags:
+    - Configuration - User Management
+  summary: Get device port assignments in network policy
+  description: >-
+    Get port assignments for devices (only support AP150W now) in a network
+    policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_port_assignment_details_of_ap150w
+  operationId: getPortAssignments
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqGetPortAssignmentDetailsResponse.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - Configuration - User Management
+  summary: Assign ports to devices in network policy
+  description: Assign ports for devices (only support AP150W now) in a network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_assign_ports_for_ap150w
+  operationId: assignPorts
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of assign ports for devices
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqPcgAssignPortsRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqPcgAssignPortsResponse.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

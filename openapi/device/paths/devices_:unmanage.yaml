@@ -1,0 +1,20 @@
+post:
+  tags:
+    - Device
+  summary: Change status to Unmanaged
+  description: Change device management status to Unmanaged for the target devices.
+  operationId: changeStatusToUnmanage
+  requestBody:
+    description: The device filter
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceFilter.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

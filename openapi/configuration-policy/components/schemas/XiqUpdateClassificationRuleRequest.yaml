@@ -1,0 +1,16 @@
+required:
+  - classifications
+  - name
+type: object
+properties:
+  name:
+    type: string
+    description: The name of classification assignment
+  description:
+    type: string
+    description: The description of classification assignment
+  classifications:
+    type: array
+    description: The details of rule Rules
+    items:
+      $ref: ./XiqUpdateClassificationRequest.yaml

@@ -1,0 +1,27 @@
+type: object
+properties:
+  devices:
+    type: integer
+    description: 'Total # of all licensed devices'
+    format: int32
+  standalone:
+    type: boolean
+    description: Returns true if HIQ is not enabled, otherwise returns false
+  expired:
+    type: boolean
+    description: Whether VIQ is expired
+  customer_id:
+    type: string
+    description: The customer ID, also known as Salesforce customer ID
+  vhm_id:
+    type: string
+    description: The VIQ ID
+  owner_id:
+    type: integer
+    description: The owner account ID
+    format: int64
+  licenses:
+    type: array
+    description: The license list
+    items:
+      $ref: ./XiqViqLicense.yaml

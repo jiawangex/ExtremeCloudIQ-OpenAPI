@@ -1,0 +1,12 @@
+required:
+  - devices
+  - network_policy_id
+type: object
+properties:
+  devices:
+    $ref: ./XiqDeviceFilter.yaml
+  network_policy_id:
+    type: integer
+    description: The assigned network policy
+    format: int64
+description: Device network policy assignment for multiple devices

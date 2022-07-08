@@ -1,0 +1,27 @@
+put:
+  tags:
+    - Device
+  summary: Change hostname for a device
+  description: Change hostname for a specific device.
+  operationId: changeHostname
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: hostname
+      in: query
+      description: The new hostname
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

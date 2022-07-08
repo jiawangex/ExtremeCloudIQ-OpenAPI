@@ -1,0 +1,49 @@
+required:
+  - encryption_method
+  - key_management
+type: object
+properties:
+  key_management:
+    $ref: ./XiqSsidWepKeyManagement.yaml
+  encryption_method:
+    $ref: ./XiqSsidWepEncryptionMethod.yaml
+  authentication_method:
+    $ref: ./XiqSsidWepAuthenticationMethod.yaml
+  default_key:
+    $ref: ./XiqSsidWepDefaultKey.yaml
+  key_type:
+    $ref: ./XiqSsidKeyType.yaml
+  key_value:
+    maxLength: 13
+    minLength: 5
+    type: string
+    description: >-
+      The first key value, must be 13 characters long for WEP104, and 5
+      characters long for WEP40, cannot be null if it is the default key
+    example: abcd123456789
+  key_value2:
+    maxLength: 13
+    minLength: 5
+    type: string
+    description: >-
+      The second key value, must be 13 characters long for WEP104, and 5
+      characters long for WEP40, cannot be null if it is the default key
+  key_value3:
+    maxLength: 13
+    minLength: 5
+    type: string
+    description: >-
+      The third key value, must be 13 characters long for WEP104, and 5
+      characters long for WEP40, cannot be null if it is the default key
+  key_value4:
+    maxLength: 13
+    minLength: 5
+    type: string
+    description: >-
+      The fourth key value, must be 13 characters long for WEP104, and 5
+      characters long for WEP40, cannot be null if it is the default key
+  radius_server_group_id:
+    type: integer
+    description: The RADIUS server group ID if using WEP_8021x as the key management
+    format: int64
+description: The request for setting the SSID to be WEP mode.

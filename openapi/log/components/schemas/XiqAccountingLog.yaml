@@ -1,0 +1,113 @@
+required:
+  - id
+type: object
+properties:
+  id:
+    type: integer
+    description: The Accounting log id
+    format: int64
+  username:
+    type: string
+    description: The username
+  org_id:
+    type: integer
+    description: The org id
+    format: int64
+  timestamp:
+    type: integer
+    description: The email log timestamp
+    format: int64
+  vhm_id:
+    type: string
+    description: The vhm id
+  device_serial_number:
+    type: string
+    description: The device serial number
+  acct_session_id:
+    type: string
+    description: The acct session id
+  acct_multi_id:
+    type: string
+    description: The acct multi id
+  group_name:
+    type: string
+    description: The group name
+  nas_ip_address:
+    type: string
+    description: The nas ip address
+  nas_port:
+    type: string
+    description: The nas port
+  nas_port_type:
+    type: string
+    description: The nas port type
+  acct_start_time:
+    type: integer
+    description: The acct start time
+    format: int64
+  acct_stop_time:
+    type: integer
+    description: The acct stop time
+    format: int64
+  acct_session_time:
+    type: integer
+    description: The acct session time
+    format: int64
+  acct_authentic:
+    type: string
+    description: The acct authentic
+  connect_info:
+    type: string
+    description: The connect info
+  acct_input_octets:
+    type: integer
+    description: The acct input octets
+    format: int64
+  acct_output_octets:
+    type: integer
+    description: The acct output octets
+    format: int64
+  called_station_id:
+    type: string
+    description: The called station id
+  calling_station_id:
+    type: string
+    description: The calling station id
+  acct_terminate_cause:
+    type: string
+    description: The acct terminate cause
+  service_type:
+    type: string
+    description: The service type
+  framed_ip_address:
+    type: string
+    description: The framed ip address
+  acct_start_delay:
+    type: integer
+    description: The acct start delay
+    format: int64
+  acct_stop_delay:
+    type: integer
+    description: The acct stop delay
+    format: int64
+  ssid:
+    type: string
+    description: The ssid
+  identity:
+    type: string
+    description: The identity
+  nas_identifier:
+    type: string
+    description: The nas identifier
+  mgmt_mac_address:
+    type: string
+    description: The management mac address
+  attribute_num:
+    type: integer
+    description: The attribute num
+    format: int32
+  event_time:
+    type: integer
+    description: The event time
+    format: int64
+description: ExtremeCloud IQ Accounting Log

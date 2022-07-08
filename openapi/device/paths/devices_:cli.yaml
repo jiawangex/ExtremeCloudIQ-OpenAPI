@@ -1,0 +1,34 @@
+post:
+  tags:
+    - Device
+  summary: '[LRO] Send CLI to devices'
+  description: >-
+    Send CLI commands to the target devices. This API can be run at async mode,
+    please follow the Long-Running Operation (LRO) guide to track the progress
+    and the result.
+  operationId: sendCliToDevices
+  parameters:
+    - name: async
+      in: query
+      description: Whether to enable async mode
+      required: false
+      schema:
+        type: boolean
+        default: false
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqSendCliRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqSendCliResponse.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

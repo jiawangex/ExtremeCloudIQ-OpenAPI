@@ -1,0 +1,29 @@
+required:
+  - day_of_month
+  - hour_of_day
+  - minute_of_hour
+  - month
+  - year
+type: object
+properties:
+  day_of_month:
+    type: integer
+    description: The day of month
+    format: int32
+  month:
+    type: integer
+    description: The month
+    format: int32
+  year:
+    type: integer
+    description: The year
+    format: int32
+  hour_of_day:
+    type: integer
+    description: The 24-hour format hour of day
+    format: int32
+  minute_of_hour:
+    type: integer
+    description: The minute of the hour
+    format: int32
+description: The end date and time

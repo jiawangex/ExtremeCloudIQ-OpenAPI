@@ -1,0 +1,55 @@
+required:
+  - create_time
+  - id
+  - name
+  - predefined
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The CCG name
+  description:
+    type: string
+    description: The CCG description
+  predefined:
+    type: boolean
+    description: Whether it is predefined
+  read_only:
+    type: boolean
+    description: Whether it is read-only
+  zone_name:
+    type: string
+    description: The zone name.
+  zone_id:
+    type: integer
+    description: The zone ID
+    format: int64
+  zone_location_id:
+    type: integer
+    description: The zone location ID
+    format: int64
+  device_ids:
+    type: array
+    description: The device IDs selected for this Ccg.
+    items:
+      type: integer
+      description: The device IDs selected for this Ccg.
+      format: int64
+description: The CCG

@@ -1,0 +1,90 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get a classification rule by ID
+  description: Get a specific classification rule.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_classification_rule_by_id
+  operationId: getClassificationRule
+  parameters:
+    - name: id
+      in: path
+      description: The classification Rule ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqClassificationRule.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update classification rule
+  description: Update the exist classification rule.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_classification_rule_configuration
+  operationId: updateClassificationRule
+  parameters:
+    - name: id
+      in: path
+      description: The classification rule ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload to update exist classification rule
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateClassificationRuleRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqClassificationRule.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - Policy
+  summary: Delete classification rule by ID
+  description: Delete an existing classification rule by ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_classification_rule_configuration
+  operationId: deleteClassificationRule
+  parameters:
+    - name: id
+      in: path
+      description: The classification rule ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

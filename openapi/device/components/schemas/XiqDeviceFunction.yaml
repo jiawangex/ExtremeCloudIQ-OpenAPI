@@ -1,0 +1,12 @@
+type: string
+description: The device function, such as AP, Router, Switch, etc.
+enum:
+  - AP
+  - ROUTER
+  - ROUTER_AS_L2_VPN_GATEWAY
+  - ROUTER_AS_L3_VPN_GATEWAY
+  - SWITCH
+  - SWITCH_HAC
+  - SWITCH_DELL
+  - L2_VPN_GATEWAY
+  - L3_VPN_GATEWAY

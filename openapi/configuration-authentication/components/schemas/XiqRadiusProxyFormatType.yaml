@@ -1,0 +1,7 @@
+type: string
+description: The format type of RADIUS proxy
+enum:
+  - NAI
+  - NT
+  - SPN
+  - AUTO

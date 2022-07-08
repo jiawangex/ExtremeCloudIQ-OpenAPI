@@ -1,0 +1,18 @@
+required:
+  - policy_id
+  - policy_name
+type: object
+properties:
+  policy_id:
+    type: integer
+    description: The network policy ID
+    format: int64
+  policy_name:
+    type: string
+    description: The network policy name
+  pcg_port_assignment_entry_details:
+    type: array
+    description: The PCG port assignment entry details
+    items:
+      $ref: ./XiqPcgPortAssignmentEntryDetail.yaml
+description: The response of port assignment details for AP150W

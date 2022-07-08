@@ -1,0 +1,36 @@
+required:
+  - id
+type: object
+properties:
+  id:
+    type: integer
+    description: The audit log id
+    format: int64
+  category:
+    $ref: ./XiqAuditLogCategory.yaml
+  user_id:
+    type: integer
+    description: The user id
+    format: int64
+  code:
+    type: integer
+    description: The audit log code
+    format: int32
+  username:
+    type: string
+    description: The user name
+  vhm_name:
+    type: string
+    description: The vhm name
+  parameters:
+    type: string
+    description: The audit log parameters
+  org_id:
+    type: integer
+    description: The org id
+    format: int64
+  timestamp:
+    type: integer
+    description: The audit log timestamp
+    format: int64
+description: ExtremeCloud IQ Audit Log

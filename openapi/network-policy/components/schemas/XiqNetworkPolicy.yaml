@@ -1,0 +1,37 @@
+required:
+  - create_time
+  - id
+  - name
+  - predefined
+  - type
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The network policy name
+  description:
+    type: string
+    description: The network policy description
+  predefined:
+    type: boolean
+    description: Whether it is a predefined network policy
+  type:
+    type: string
+    description: The network policy type

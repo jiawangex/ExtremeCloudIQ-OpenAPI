@@ -1,0 +1,11 @@
+type: object
+properties:
+  enable_scan_all_channels:
+    type: boolean
+    description: Whether to enable scanning all channels
+  dwell_time:
+    type: string
+    description: The dwell time in the range from 250 to 30000 ms
+  scan_channels:
+    type: string
+    description: The comma separated list of scan channels

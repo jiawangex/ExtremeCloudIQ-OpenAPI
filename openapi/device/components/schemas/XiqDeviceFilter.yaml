@@ -1,0 +1,10 @@
+type: object
+properties:
+  ids:
+    type: array
+    description: The device ID list
+    items:
+      type: integer
+      description: The device ID list
+      format: int64
+description: The filter to get matched devices

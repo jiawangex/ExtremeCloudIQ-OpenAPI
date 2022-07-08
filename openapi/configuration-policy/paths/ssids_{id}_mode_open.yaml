@@ -1,0 +1,25 @@
+put:
+  tags:
+    - Configuration - Policy
+  summary: Change the SSID mode to open access
+  description: Change the SSID mode to open access.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_open_access
+  operationId: setSsidModeOpen
+  parameters:
+    - name: id
+      in: path
+      description: The SSID ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

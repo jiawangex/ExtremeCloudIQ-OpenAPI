@@ -1,0 +1,18 @@
+required:
+  - policy_name
+  - ssid_name
+  - users
+type: object
+properties:
+  policy_name:
+    type: string
+    description: The network policy name
+  ssid_name:
+    type: string
+    description: The SSID name
+  users:
+    type: array
+    description: The Key-based PCG users
+    items:
+      $ref: ./XiqKeyBasedPcgUserBaseInfo.yaml
+description: The request to initiate Key-based Private Client Group

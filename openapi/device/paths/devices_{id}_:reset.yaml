@@ -1,0 +1,32 @@
+post:
+  tags:
+    - Device
+  summary: '[LRO] Reset a device to factory default'
+  description: Reset a device to factory default settings.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_reset_device_for_once_device
+  operationId: resetDevice
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: async
+      in: query
+      description: Whether to enable async mode
+      required: false
+      schema:
+        type: boolean
+        default: false
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

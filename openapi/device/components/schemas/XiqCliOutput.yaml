@@ -1,0 +1,14 @@
+required:
+  - cli
+  - response_code
+type: object
+properties:
+  cli:
+    type: string
+    description: The CLI sent to the device
+  response_code:
+    $ref: ./XiqCliResponseCode.yaml
+  output:
+    type: string
+    description: The CLI output
+description: The CLI output

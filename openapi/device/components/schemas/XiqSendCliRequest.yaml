@@ -1,0 +1,14 @@
+required:
+  - clis
+  - devices
+type: object
+properties:
+  devices:
+    $ref: ./XiqDeviceFilter.yaml
+  clis:
+    type: array
+    description: The one or multiple CLIs to send
+    items:
+      type: string
+      description: The one or multiple CLIs to send
+description: The request for sending CLIs to devices

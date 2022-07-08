@@ -1,0 +1,59 @@
+put:
+  tags:
+    - Configuration - User Management
+  summary: Update user group
+  description: Update existing user group information.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_update_user_group
+  operationId: updateUserGroup
+  parameters:
+    - name: id
+      in: path
+      description: The user group ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update user-group request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateUserGroupRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqUserGroup.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - User Management
+  summary: Delete user group by ID
+  description: Delete the user-group for the specified ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_user_group
+  operationId: deleteUserGroup
+  parameters:
+    - name: id
+      in: path
+      description: The user group ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

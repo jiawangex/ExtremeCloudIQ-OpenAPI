@@ -1,0 +1,59 @@
+put:
+  tags:
+    - Configuration - User Management
+  summary: Update an end user
+  description: Update a specific end user.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_update_end_user
+  operationId: updateEndUser
+  parameters:
+    - name: id
+      in: path
+      description: The end user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update end user request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateEndUserRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqEndUser.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - User Management
+  summary: Delete end user by ID
+  description: Delete a specific end user.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_end_user
+  operationId: deleteSsidUser
+  parameters:
+    - name: id
+      in: path
+      description: The end user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

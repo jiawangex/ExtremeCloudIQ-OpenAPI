@@ -1,0 +1,5 @@
+type: string
+description: The measurement unit in feet/meters
+enum:
+  - FEET
+  - METERS

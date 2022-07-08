@@ -1,0 +1,62 @@
+required:
+  - cache_lifetime
+  - enable_radius_server_credential_caching
+  - entries
+  - external_user_directory_type
+  - ldap_retry_interval
+  - local_check_interval
+  - remote_check_interval
+  - user_group_attribute
+type: object
+properties:
+  ldap_retry_interval:
+    maximum: 200000000
+    minimum: 60
+    type: integer
+    description: >-
+      Retry the previously unresponsive primary server after the specified
+      seconds
+    format: int32
+    default: 600
+  local_check_interval:
+    maximum: 3600
+    minimum: 30
+    type: integer
+    description: >-
+      Time to user local cache if none of the external servers are reachable in
+      seconds
+    format: int32
+    default: 300
+  remote_check_interval:
+    maximum: 3600
+    minimum: 10
+    type: integer
+    description: Try the next backup server after specified seconds
+    format: int32
+    default: 30
+  enable_radius_server_credential_caching:
+    type: boolean
+    description: >-
+      Caching credentials allows for better performance and higher availability
+      by reducing the dependence on RADIUS servers across high-latency WAN
+      links.
+  cache_lifetime:
+    maximum: 2592000
+    minimum: 3600
+    type: integer
+    description: Retain Cache for
+    format: int32
+    default: 86400
+  user_group_attribute:
+    type: string
+    description: 'The user group attribute, use string such as: ''memberOf'''
+    example: memberOf
+    default: memberOf
+  external_user_directory_type:
+    $ref: ./XiqExternalUserDirectoryType.yaml
+  entries:
+    type: array
+    description: The external user directory server entries
+    items:
+      $ref: ./XiqExternalUserDirectoryEntry.yaml
+description: The setting for external user directory, AD or LDAP

@@ -1,0 +1,71 @@
+get:
+  tags:
+    - Device
+  summary: Get device info for a specific device
+  description: Get device info for a specific device.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_device_details_for_one_device
+  operationId: getDevice
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: views
+      in: query
+      description: >-
+        The views to return device fields (Check details at XiqDeviceView
+        schema)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqDeviceView.yaml
+    - name: fields
+      in: query
+      description: The device fields to return
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqDeviceField.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqDevice.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Device
+  summary: Delete a device
+  description: Delete a specific device.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_device
+  operationId: deleteDevice
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

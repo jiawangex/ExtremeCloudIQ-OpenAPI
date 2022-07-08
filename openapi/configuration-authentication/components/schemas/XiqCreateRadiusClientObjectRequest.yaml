@@ -1,0 +1,44 @@
+required:
+  - accounting_interim_update_interval
+  - enable_inject_operator_name_attribute
+  - enable_message_authenticator_attribute
+  - enable_permit_dynamic_authorization_message_change
+  - entries
+  - name
+  - retry_interval
+type: object
+properties:
+  name:
+    type: string
+    description: The RADIUS client object name.
+  description:
+    type: string
+    description: The RADIUS client object description.
+  enable_inject_operator_name_attribute:
+    type: boolean
+    description: The flag for enable Inject Operator Name Attribute
+  enable_message_authenticator_attribute:
+    type: boolean
+    description: The flag for enable message authenticator attribute
+  enable_permit_dynamic_authorization_message_change:
+    type: boolean
+    description: The flag for enable permit dynamic authorization message change
+  retry_interval:
+    maximum: 100000000
+    minimum: 60
+    type: integer
+    description: The retry interval, 60 - 100000000 seconds
+    format: int32
+  accounting_interim_update_interval:
+    maximum: 100000000
+    minimum: 60
+    type: integer
+    description: The accounting interim update interval, 60 - 100000000 seconds
+    format: int32
+  entries:
+    maxItems: 2147483647
+    minItems: 1
+    type: array
+    description: The list of RADIUS client object entries
+    items:
+      $ref: ./XiqRadiusClientObjectEntry.yaml

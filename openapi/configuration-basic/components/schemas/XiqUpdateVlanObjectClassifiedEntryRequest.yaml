@@ -1,0 +1,14 @@
+required:
+  - classification_rule_id
+  - vlan_id
+type: object
+properties:
+  vlan_id:
+    type: integer
+    description: The VLAN ID
+    format: int32
+  classification_rule_id:
+    type: integer
+    description: The classification rule ID
+    format: int64
+description: The VLAN object classified entries

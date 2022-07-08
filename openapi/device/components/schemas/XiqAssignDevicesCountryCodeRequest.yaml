@@ -1,0 +1,10 @@
+required:
+  - country_code
+  - devices
+type: object
+properties:
+  devices:
+    $ref: ./XiqDeviceFilter.yaml
+  country_code:
+    $ref: ./XiqCountryCode.yaml
+description: Device country-code assignment for multiple devices

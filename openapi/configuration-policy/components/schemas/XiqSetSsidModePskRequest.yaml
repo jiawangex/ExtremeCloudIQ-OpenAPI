@@ -1,0 +1,28 @@
+required:
+  - encryption_method
+  - key_management
+  - key_type
+  - key_value
+type: object
+properties:
+  key_management:
+    $ref: ./XiqSsidPskKeyManagement.yaml
+  encryption_method:
+    $ref: ./XiqSsidPskEncryptionMethod.yaml
+  anti_logging_threshold:
+    type: integer
+    description: The anti logging threshold
+    format: int32
+  key_type:
+    $ref: ./XiqSsidKeyType.yaml
+  key_value:
+    maxLength: 2147483647
+    minLength: 8
+    type: string
+    description: The PSK key value, minimum 8 characters long
+  sae_group:
+    $ref: ./XiqSsidSaeGroup.yaml
+  transition_mode:
+    type: boolean
+    description: Indicates the transition mode if key management is WPA3
+description: The request for setting the SSID to be PSK mode.

@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Device
+  summary: Change admin state to 'Managed' for a device
+  description: Change device management status to Managed for a specific device.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_change_status_to_managed_for_one_device
+  operationId: changeDeviceStatusToManage
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,5 @@
+type: string
+description: The base DN fetch mode of active directory server
+enum:
+  - AUTO
+  - MANUAL

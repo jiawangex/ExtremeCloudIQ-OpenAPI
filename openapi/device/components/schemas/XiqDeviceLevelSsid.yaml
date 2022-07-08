@@ -1,0 +1,19 @@
+required:
+  - ssid_id
+type: object
+properties:
+  ssid_id:
+    type: integer
+    description: The SSID ID to override, cannot be null.
+    format: int64
+  ssid:
+    type: string
+    description: >-
+      The broadcast ssid name to override. Can only override if the SSID profile
+      is OPEN or PSK mode.
+  passphrase:
+    type: string
+    description: >-
+      The ssid passphrase to override. Can only override if the SSID profile is
+      in PSK mode.
+description: The ssid/passphrase for device level ssid to override

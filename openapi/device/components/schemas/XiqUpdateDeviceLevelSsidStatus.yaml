@@ -1,0 +1,28 @@
+required:
+  - enabled
+  - if_names
+  - ssid_ids
+type: object
+properties:
+  ssid_ids:
+    type: array
+    description: >-
+      The one or multiple SSID to be disabled/enabled, cannot be empty or no
+      action will be triggered.
+    items:
+      type: integer
+      description: >-
+        The one or multiple SSID to be disabled/enabled, cannot be empty or no
+        action will be triggered.
+      format: int64
+  if_names:
+    type: array
+    description: >-
+      The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1) to be
+      disabled/enabled, cannot be empty or no SSID will be disabled or enabled.
+    items:
+      $ref: ./XiqWirelessIfName.yaml
+  enabled:
+    type: boolean
+    description: To disable or enable the given device level SSIDs on the wifi interfaces.
+description: The request for disable/enable device level ssid.

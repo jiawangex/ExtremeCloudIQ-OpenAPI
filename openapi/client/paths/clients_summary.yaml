@@ -1,0 +1,66 @@
+get:
+  tags:
+    - Client
+  summary: Get client summary metrics
+  description: >-
+    Get number of connected wireless clients and number of detected wired
+    clients.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_client_summary
+  operationId: getClientSummary
+  parameters:
+    - name: locationIds
+      in: query
+      description: The location IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+    - name: deviceIds
+      in: query
+      description: The device IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+    - name: vlans
+      in: query
+      description: The associate VLAN IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+    - name: userProfileNames
+      in: query
+      description: The user profile names
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: ssids
+      in: query
+      description: The SSIDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqClientSummary.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

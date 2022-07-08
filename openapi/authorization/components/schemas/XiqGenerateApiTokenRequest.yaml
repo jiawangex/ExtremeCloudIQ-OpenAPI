@@ -1,0 +1,20 @@
+required:
+  - permissions
+type: object
+properties:
+  expire_time:
+    type: integer
+    description: >-
+      The token expire time, format is the number of seconds from epoch of
+      1970-01-01T00:00:00Z. If null means no expiration, the minimum value is
+      current time plus 300 seconds.
+    format: int64
+  description:
+    type: string
+    description: The token description
+  permissions:
+    type: array
+    description: The token permissions
+    items:
+      type: string
+      description: The token permissions

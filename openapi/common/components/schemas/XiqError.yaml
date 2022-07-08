@@ -1,0 +1,15 @@
+type: object
+properties:
+  error_code:
+    type: string
+    description: The error code
+  error_id:
+    type: string
+    description: The error ID for internal troubleshooting
+  error_message:
+    type: string
+    description: The error detailed message
+required:
+  - error_code
+  - error_id
+  - error_message

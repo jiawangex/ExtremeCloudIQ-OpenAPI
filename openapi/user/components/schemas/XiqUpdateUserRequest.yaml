@@ -1,0 +1,16 @@
+type: object
+properties:
+  login_name:
+    type: string
+    description: Login name, i.e. username or login Email
+  display_name:
+    type: string
+    description: The user name to display
+  idle_timeout:
+    type: integer
+    description: >-
+      The idle timeout in minutes, the minimum value is 5 minutes and the
+      maximum value is 4 hours
+    format: int32
+  user_role:
+    $ref: ./XiqUserRole.yaml

@@ -1,0 +1,49 @@
+required:
+  - create_time
+  - id
+  - name
+  - password_type
+  - predefined
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The email template name
+  description:
+    type: string
+    description: The email template description
+  predefined:
+    type: boolean
+    description: Wheter or not it is a system prefined template
+  content:
+    type: string
+    description: The email template form.
+  enable_preview:
+    type: boolean
+    description: The setting to enable preview
+  logo_url:
+    type: string
+    description: The logo url
+  icon_url:
+    type: string
+    description: The icon url
+  password_type:
+    $ref: ./XiqPasswordType.yaml
+description: The password or ppsk notification template for user groups.

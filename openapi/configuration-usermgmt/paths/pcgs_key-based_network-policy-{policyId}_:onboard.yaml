@@ -1,0 +1,31 @@
+post:
+  tags:
+    - Configuration - User Management
+  summary: Create Key-based PCG in network policy
+  description: Create a Key-based Private Client Group for a specific network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_create_key_based_pcg_data
+  operationId: onboardKeyBasedPrivateClientGroup
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqOnboardKeyBasedPcgRequest.yaml
+    required: true
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,11 @@
+type: string
+description: The supported radio modes.
+enum:
+  - B_G
+  - G_N
+  - A
+  - A_N
+  - AC
+  - AX_2_4_GHZ
+  - AX_5_GHZ
+  - AX_6_GHZ

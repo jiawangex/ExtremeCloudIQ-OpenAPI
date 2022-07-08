@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Device
+  summary: Query network policy for multiple devices
+  description: Query the network policy for the target devices.
+  operationId: queryDevicesNetworkPolicy
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceFilter.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              $ref: ../../network-policy/components/schemas/XiqNetworkPolicy.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

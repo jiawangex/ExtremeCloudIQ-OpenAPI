@@ -1,0 +1,22 @@
+type: object
+properties:
+  current_progress:
+    type: integer
+    description: The current deploy progress if not finished, range from 0 to 100
+    format: int32
+  current_step_code:
+    type: string
+    description: The code of the current deploy step if not finished
+  current_step_message:
+    type: string
+    description: The readable message of the current deploy step if not finished
+  is_finished_successful:
+    type: boolean
+    description: Indicates whether the last deployment is successful if finished
+  last_deploy_time:
+    type: integer
+    description: The last deployed time (Only valid when in_progress = false)
+    format: int64
+  finished:
+    type: boolean
+description: The configuration deployment status

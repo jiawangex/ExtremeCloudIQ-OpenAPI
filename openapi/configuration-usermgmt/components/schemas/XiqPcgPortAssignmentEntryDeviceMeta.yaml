@@ -1,0 +1,35 @@
+required:
+  - create_time
+  - id
+  - mac_address
+  - product_type
+  - serial_number
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  mac_address:
+    type: string
+    description: The mac address
+  serial_number:
+    type: string
+    description: The serial number
+  product_type:
+    type: string
+    description: The product type
+description: The PCG port assignment entry device info

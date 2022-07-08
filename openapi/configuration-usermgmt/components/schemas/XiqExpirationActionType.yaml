@@ -1,0 +1,5 @@
+type: string
+description: The Expiration Action to take, null if the account is never expired.
+enum:
+  - SHOW_MESSAGE
+  - REJECT_ACCESS

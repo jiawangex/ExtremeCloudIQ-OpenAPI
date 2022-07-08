@@ -1,0 +1,47 @@
+required:
+  - data_center
+  - issued_at
+  - owner_id
+  - role
+  - scopes
+  - user_id
+  - user_name
+type: object
+properties:
+  user_name:
+    type: string
+    description: The login username
+  user_id:
+    type: integer
+    description: The login user ID
+    format: int64
+  role:
+    type: string
+    description: The role of login user
+  owner_id:
+    type: integer
+    description: The home ownerId of login user
+    format: int64
+  data_center:
+    type: string
+    description: The home data center of login user
+  scopes:
+    type: array
+    description: The login user permissions
+    items:
+      type: string
+      description: The login user permissions
+  issued_at:
+    type: string
+    description: The time at which the JWT was issued
+    format: date-time
+  expiration_time:
+    type: string
+    description: >-
+      The expiration time on or after which the JWT MUST NOT be accepted for
+      processing
+    format: date-time
+  expires_in:
+    type: integer
+    description: The expires in seconds
+    format: int64

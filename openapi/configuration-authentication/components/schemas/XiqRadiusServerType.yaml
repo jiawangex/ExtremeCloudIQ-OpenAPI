@@ -1,0 +1,9 @@
+type: string
+description: >-
+  The port type of the RADIUS server, can only be either ACCOUNTING,
+  AUTHENTICATION, or BOTH
+example: BOTH
+enum:
+  - ACCOUNTING
+  - AUTHENTICATION
+  - BOTH

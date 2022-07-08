@@ -1,0 +1,101 @@
+get:
+  tags:
+    - Client
+  summary: List active clients
+  description: List active clients with filters and pagination.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_client_list
+  operationId: listActiveClients
+  parameters:
+    - name: locationIds
+      in: query
+      description: The location IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+    - name: deviceIds
+      in: query
+      description: The device IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+    - name: vlans
+      in: query
+      description: The associate vlan IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+    - name: userProfileNames
+      in: query
+      description: The user profile names
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: ssids
+      in: query
+      description: The SSIDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: page
+      in: query
+      description: Page number, min = 1
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        default: 1
+    - name: limit
+      in: query
+      description: Page Size, min = 1, max = 100
+      required: false
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+        default: 10
+    - name: views
+      in: query
+      description: >-
+        The views to return client fields (Check fields for each view at
+        XiqClientView schema)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqClientView.yaml
+    - name: fields
+      in: query
+      description: The client fields to return
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqClientField.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PagedXiqClient.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

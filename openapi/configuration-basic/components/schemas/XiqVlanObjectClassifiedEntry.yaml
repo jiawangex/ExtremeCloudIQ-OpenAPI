@@ -1,0 +1,26 @@
+required:
+  - create_time
+  - id
+  - update_time
+  - vlan_id
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  vlan_id:
+    type: integer
+    description: The VLAN ID
+    format: int32
+  classification_rule:
+    $ref: ./XiqClassificationRule.yaml
+description: The payload of VLAN object classified entry

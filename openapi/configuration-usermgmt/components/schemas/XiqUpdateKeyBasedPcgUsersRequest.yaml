@@ -1,0 +1,10 @@
+required:
+  - users
+type: object
+properties:
+  users:
+    type: array
+    description: The Key-based PCG users
+    items:
+      $ref: ./XiqKeyBasedPcgUserBaseInfo.yaml
+description: The payload of replace Key-based Private Client Group users request

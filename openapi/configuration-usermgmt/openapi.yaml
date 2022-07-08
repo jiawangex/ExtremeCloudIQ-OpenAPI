@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: ExtremeCloud IQ API
+  description: ExtremeCloud IQ RESTful API for external and internal applications.
+  termsOfService: https://www.extremenetworks.com/company/legal/terms-of-use/
+  contact:
+    name: Extreme Networks Support
+    url: https://www.extremenetworks.com/support
+    email: support@extremenetworks.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 22.4.0.0
+externalDocs:
+  description: API Reference
+  url: https://extremecloudiq.com/api-docs/api-reference.html
+servers:
+  - url: '{base_url}'
+    description: ExtremeCloud IQ REST API Server
+    variables:
+      base_url:
+        description: ExtremeCloud IQ Production
+        default: https://api.extremecloudiq.com
+tags:
+  - name: Configuration - User Management
+    description: User Group/End User/PCG/PPSK Classification
+paths:
+  /email-templates:
+    $ref: paths/email-templates.yaml
+  /sms-templates:
+    $ref: paths/sms-templates.yaml
+  /endusers:
+    $ref: paths/endusers.yaml
+  /endusers/{id}:
+    $ref: paths/endusers_{id}.yaml
+  /endusers/{id}/:regenerate-password:
+    $ref: paths/endusers_{id}_:regenerate-password.yaml
+  /usergroups:
+    $ref: paths/usergroups.yaml
+  /usergroups/{id}:
+    $ref: paths/usergroups_{id}.yaml
+  /pcgs/key-based:
+    $ref: paths/pcgs_key-based.yaml
+  /pcgs/key-based/network-policy-{policyId}/:onboard:
+    $ref: paths/pcgs_key-based_network-policy-{policyId}_:onboard.yaml
+  /pcgs/key-based/network-policy-{policyId}/users:
+    $ref: paths/pcgs_key-based_network-policy-{policyId}_users.yaml
+  /pcgs/key-based/network-policy-{policyId}/port-assignments:
+    $ref: paths/pcgs_key-based_network-policy-{policyId}_port-assignments.yaml
+  /pcgs/key-based/network-policy-{policyId}/keys/:generate:
+    $ref: paths/pcgs_key-based_network-policy-{policyId}_keys_:generate.yaml
+  /pcgs/key-based/network-policy-{policyId}/keys/:email:
+    $ref: paths/pcgs_key-based_network-policy-{policyId}_keys_:email.yaml
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JSON Web Token (JWT) based authentication
+      scheme: bearer
+      bearerFormat: JWT

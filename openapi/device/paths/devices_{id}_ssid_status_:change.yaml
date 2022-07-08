@@ -1,0 +1,31 @@
+post:
+  tags:
+    - Device
+  summary: Enable or disable SSID for a device
+  description: Enable or disable SSIDs on the given wifi interfaces for a specific device.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
+  operationId: changeDeviceLevelSsidStatus
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateDeviceLevelSsidStatus.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

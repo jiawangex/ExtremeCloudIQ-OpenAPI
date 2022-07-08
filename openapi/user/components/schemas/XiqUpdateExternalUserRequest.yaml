@@ -1,0 +1,11 @@
+type: object
+properties:
+  user_role:
+    $ref: ./XiqUserRole.yaml
+  org_id:
+    type: integer
+    description: The HIQ organization ID if it is HIQ user, otherwise leave it as empty.
+    format: int64
+  enable_api_access:
+    type: boolean
+    description: Whether to enable API access, false by default.

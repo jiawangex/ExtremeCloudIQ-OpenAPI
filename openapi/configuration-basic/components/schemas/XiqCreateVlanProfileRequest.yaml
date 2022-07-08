@@ -1,0 +1,21 @@
+required:
+  - default_vlan_id
+  - enable_classification
+  - name
+type: object
+properties:
+  name:
+    type: string
+    description: The VLAN profile name
+  default_vlan_id:
+    type: integer
+    description: The default VLAN ID
+    format: int32
+  enable_classification:
+    type: boolean
+    description: If apply VLANs to devices using classification
+  classified_entries:
+    type: array
+    description: The VLAN object classified entries
+    items:
+      $ref: ./XiqCreateVlanObjectClassifiedEntryRequest.yaml

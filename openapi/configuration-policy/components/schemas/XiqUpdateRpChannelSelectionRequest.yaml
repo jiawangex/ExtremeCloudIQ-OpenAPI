@@ -1,0 +1,96 @@
+type: object
+properties:
+  enable_dynamic_channel_switching:
+    type: boolean
+    description: >-
+      Whether to dynamically select and switch channels based on the defined
+      criteria.
+  channel_width:
+    type: string
+    description: The channel frequency range
+  enable_dynamic_frequency_selection:
+    type: boolean
+    description: Whether dynamic frequency selection is enabled (a/n, a, ac mode)
+  enable_static_channel:
+    type: boolean
+    description: Whether static channel is enabled (manual channel selection return)
+  enable_zero_wait_dfs:
+    type: boolean
+    description: Whether ZeroWait DFS is enabled
+  enable_use_last_selection:
+    type: boolean
+    description: >-
+      Whether to use the last known power and channel during the AP boot up
+      process
+  exclude_channels:
+    type: string
+    description: >-
+      The comma-separated list of excluded channels not on the selected channel
+      width.
+  exclude_channels_width:
+    type: string
+    description: >-
+      The comma-separated list of excluded channels on the selected channel
+      width.
+  channel:
+    maximum: 165
+    minimum: 1
+    type: integer
+    description: The number of channel selections or AUTO for default selection.
+    format: int32
+  enable_limit_channel_selection:
+    type: boolean
+    description: >-
+      Whether to allow for limiting the channel selection to non-overlapping
+      channels. (b/g,g/n/, axes modes)
+  channel_region:
+    type: string
+    description: The channel region -- "USA", "Canada", "Europe", or "World"
+  channel_model:
+    maximum: 4
+    minimum: 3
+    type: integer
+    description: The number of channel models to limit.
+    format: int32
+  channels:
+    type: string
+    description: The comma separated list of channels allowed channel switching
+  enable_channel_auto_selection:
+    type: boolean
+    description: >-
+      Whether to enable automatic channel switching during specified time
+      interval.
+  channel_selection_start_time:
+    type: string
+    description: The start time for channel switching in 24-hr time format of hh:mm
+  channel_selection_end_time:
+    type: string
+    description: The end time for channel switching in 24-hr time format of hh:mm
+  enable_avoid_switch_channel_if_clients_connected:
+    type: boolean
+    description: >-
+      Whether to avoid channel switching if there are already max connected
+      clients
+  channel_selection_max_clients:
+    maximum: 100
+    minimum: 0
+    type: integer
+    description: The maximum number of connected clients to avoid switching
+    format: int32
+  enable_switch_channel_if_exceed_threshold:
+    type: boolean
+    description: >-
+      Whether to enable channel switching when RF interference exceeds the
+      threshold
+  rf_interference_threshold:
+    maximum: 80
+    minimum: 10
+    type: integer
+    description: The RF interference threshold for channel switching.
+    format: int32
+  crc_error_threshold:
+    maximum: 80
+    minimum: 10
+    type: integer
+    description: The CRC error threshold for channel switching.
+    format: int32

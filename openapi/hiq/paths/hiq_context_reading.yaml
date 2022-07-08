@@ -1,0 +1,59 @@
+get:
+  tags:
+    - HIQ
+  summary: Get organizations for reading data
+  description: >-
+    Get organizations for reading data (Empty list means reading data from all
+    organizations in the HIQ).
+
+    Appliable when HIQ is enabled.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_reading_context
+  operationId: getReadingOrgIds
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - HIQ
+  summary: Set organizations for reading data
+  description: >-
+    Set organization for reading data (Empty list means reading data from all
+    organizations in the HIQ).
+
+    Only HIQ Admin can performance this operation.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_set_reading_context
+  operationId: setReadingOrgIds
+  requestBody:
+    description: The organization IDs used for reading data
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

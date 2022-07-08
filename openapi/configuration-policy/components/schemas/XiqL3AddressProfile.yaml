@@ -1,0 +1,25 @@
+required:
+  - address_type
+  - create_time
+  - id
+  - name
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  address_type:
+    $ref: ./XiqL3AddressType.yaml
+  name:
+    type: string
+    description: Address profile name

@@ -1,0 +1,11 @@
+required:
+  - sns
+type: object
+properties:
+  sns:
+    type: array
+    description: The serial numbers
+    items:
+      type: string
+      description: The serial numbers
+description: ExtremeXOS (EXOS) devices to onboard
