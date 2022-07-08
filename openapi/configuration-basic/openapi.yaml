@@ -1,17 +1,17 @@
 openapi: 3.0.3
 info:
-  title: ExtremeCloud IQ API
+  title:
+    $ref: ../info-title
   description:
     $ref: ../info-description.md
-  termsOfService: https://www.extremenetworks.com/company/legal/terms-of-use/
+  termsOfService:
+    $ref: ../info-termOfService
   contact:
-    name: Extreme Networks Support
-    url: https://www.extremenetworks.com/support
-    email: support@extremenetworks.com
+    $ref: ../info-contact.yaml
   license:
-    name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: 22.4.0.0
+    $ref: ../info-license.yaml
+  version:
+    $ref: ../info-version
 externalDocs:
   description: API Reference
   url: https://extremecloudiq.com/api-docs/api-reference.html

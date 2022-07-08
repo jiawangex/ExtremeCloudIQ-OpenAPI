@@ -2,17 +2,23 @@ openapi: 3.0.3
 info:
   title: ExtremeCloud IQ API
   description: >-
-    ExtremeCloud IQ RESTful API for external and internal applications.
+    ExtremeCloud IQ OpenAPI is designed for external and internal applications.
 
 
-    Please [ExtremeCloud IQ Developer
+    All related resources are available at [ExtremeCloud IQ Developer
     Portal](https://developer.extremecloudiq.com/).
 
 
-    https://developer.extremecloudiq.com/documentation/
+    Please check [Get Started and Tutorial
+    documentations](https://developer.extremecloudiq.com/documentation/) before
+    using the API. 
 
 
-    https://extremecloudiq.com/.
+    To use the API, you must have a valid [ExtremeCloud
+    IQ](https://extremecloudiq.com/) account,
+
+    otherwise please register new account
+    [here](https://www.extremenetworks.com/cloud-networking/).
   termsOfService: 'https://www.extremenetworks.com/company/legal/terms-of-use/'
   contact:
     name: Extreme Networks Support
