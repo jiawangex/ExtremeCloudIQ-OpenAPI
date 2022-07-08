@@ -7039,6 +7039,22 @@ components:
           description: The login password
       x-tags:
         - Authentication
+    XiqError:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: The error code
+        error_id:
+          type: string
+          description: The error ID for internal troubleshooting
+        error_message:
+          type: string
+          description: The error detailed message
+      required:
+        - error_code
+        - error_id
+        - error_message
     XiqLoginResponse:
       required:
         - access_token
@@ -7058,22 +7074,6 @@ components:
           description: The lifetime in seconds of the access token
       x-tags:
         - Authentication
-    XiqError:
-      type: object
-      properties:
-        error_code:
-          type: string
-          description: The error code
-        error_id:
-          type: string
-          description: The error ID for internal troubleshooting
-        error_message:
-          type: string
-          description: The error detailed message
-      required:
-        - error_code
-        - error_id
-        - error_message
     XiqGenerateApiTokenRequest:
       required:
         - permissions
@@ -7180,6 +7180,18 @@ components:
           type: integer
           description: The expires in seconds
           format: int64
+    XiqCheckPermissionRequest:
+      required:
+        - method
+        - uri
+      type: object
+      properties:
+        uri:
+          type: string
+          description: The request HTTP URI
+        method:
+          type: string
+          description: The request HTTP method
     XiqPermission:
       required:
         - category
@@ -7197,18 +7209,6 @@ components:
           type: string
           description: The category for the permission
       description: The permission list
-    XiqCheckPermissionRequest:
-      required:
-        - method
-        - uri
-      type: object
-      properties:
-        uri:
-          type: string
-          description: The request HTTP URI
-        method:
-          type: string
-          description: The request HTTP method
     XiqCheckPermissionResponse:
       required:
         - permissions
@@ -7227,12 +7227,6 @@ components:
           items:
             type: string
             description: The role list
-    XiqAccountMode:
-      type: string
-      description: Account mode
-      enum:
-        - COPILOT
-        - CONNECT
     XiqAccountType:
       type: string
       description: Account type
@@ -7241,6 +7235,12 @@ components:
         - CUSTOMER
         - HIQ
         - PARTNER
+    XiqAccountMode:
+      type: string
+      description: Account mode
+      enum:
+        - COPILOT
+        - CONNECT
     XiqAccount:
       required:
         - account_mode
@@ -7333,6 +7333,16 @@ components:
         data_center:
           type: string
           description: The data center to store the VIQ data
+    XiqLicenseStatus:
+      type: string
+      description: The VIQ license status
+      enum:
+        - BUY
+        - PLAN
+        - EVAL
+        - EXPIRED
+        - INVALID
+        - MIGRATED
     XiqEntitlementType:
       type: string
       description: The entitlement key type
@@ -7350,16 +7360,6 @@ components:
         - EVAL
         - MSP
         - UNKNOWN
-    XiqLicenseStatus:
-      type: string
-      description: The VIQ license status
-      enum:
-        - BUY
-        - PLAN
-        - EVAL
-        - EXPIRED
-        - INVALID
-        - MIGRATED
     XiqViqLicense:
       required:
         - create_time
@@ -7749,23 +7749,6 @@ components:
         color:
           type: string
           description: The tagged color for the organization
-    XiqMeasurementUnit:
-      type: string
-      description: The measurement unit in feet/meters
-      enum:
-        - FEET
-        - METERS
-    XiqRfEnvironmentType:
-      type: string
-      description: The floor RF environment
-      enum:
-        - AUTO_ESTIMATE
-        - OFFICE
-        - OUTDOOR_FREE_SPACE
-        - OBSTRUCTED_IN_BUILDING
-        - OUTDOOR_SUBURBAN
-        - WAREHOUSE
-        - OUTDOOR_DENSE_URBAN
     XiqLocation:
       required:
         - create_time
@@ -7824,6 +7807,56 @@ components:
         name:
           type: string
           description: The location name
+    XiqRfEnvironmentType:
+      type: string
+      description: The floor RF environment
+      enum:
+        - AUTO_ESTIMATE
+        - OFFICE
+        - OUTDOOR_FREE_SPACE
+        - OBSTRUCTED_IN_BUILDING
+        - OUTDOOR_SUBURBAN
+        - WAREHOUSE
+        - OUTDOOR_DENSE_URBAN
+    XiqMeasurementUnit:
+      type: string
+      description: The measurement unit in feet/meters
+      enum:
+        - FEET
+        - METERS
+    XiqUpdateFloorRequest:
+      type: object
+      properties:
+        parent_id:
+          type: integer
+          description: The parent building ID
+          format: int64
+        name:
+          type: string
+          description: The floor name
+        environment:
+          $ref: '#/components/schemas/XiqRfEnvironmentType'
+        db_attenuation:
+          type: number
+          description: The floor attenuation in dBs
+          format: double
+        measurement_unit:
+          $ref: '#/components/schemas/XiqMeasurementUnit'
+        installation_height:
+          type: number
+          description: The installation height
+          format: double
+        map_size_width:
+          type: number
+          description: The floor map width
+          format: double
+        map_size_height:
+          type: number
+          description: The floor map height
+          format: double
+        map_name:
+          type: string
+          description: The floor map name
     XiqFloor:
       required:
         - create_time
@@ -7888,39 +7921,19 @@ components:
           type: string
           description: The floormap name
       description: The Floor information on the floorplan.
-    XiqUpdateFloorRequest:
+    XiqUpdateBuildingRequest:
       type: object
       properties:
         parent_id:
           type: integer
-          description: The parent building ID
+          description: The parent location ID
           format: int64
         name:
           type: string
-          description: The floor name
-        environment:
-          $ref: '#/components/schemas/XiqRfEnvironmentType'
-        db_attenuation:
-          type: number
-          description: The floor attenuation in dBs
-          format: double
-        measurement_unit:
-          $ref: '#/components/schemas/XiqMeasurementUnit'
-        installation_height:
-          type: number
-          description: The installation height
-          format: double
-        map_size_width:
-          type: number
-          description: The floor map width
-          format: double
-        map_size_height:
-          type: number
-          description: The floor map height
-          format: double
-        map_name:
+          description: The building name
+        address:
           type: string
-          description: The floor map name
+          description: The street address
     XiqBuilding:
       required:
         - address
@@ -7958,19 +7971,6 @@ components:
           type: string
           description: The building street address
       description: The Building information on the floorplan.
-    XiqUpdateBuildingRequest:
-      type: object
-      properties:
-        parent_id:
-          type: integer
-          description: The parent location ID
-          format: int64
-        name:
-          type: string
-          description: The building name
-        address:
-          type: string
-          description: The street address
     XiqDeviceAdminState:
       type: string
       enum:
@@ -7979,19 +7979,6 @@ components:
         - STAGED
         - MANAGED
         - UNMANAGED
-    XiqDeviceFunction:
-      type: string
-      description: 'The device function, such as AP, Router, Switch, etc.'
-      enum:
-        - AP
-        - ROUTER
-        - ROUTER_AS_L2_VPN_GATEWAY
-        - ROUTER_AS_L3_VPN_GATEWAY
-        - SWITCH
-        - SWITCH_HAC
-        - SWITCH_DELL
-        - L2_VPN_GATEWAY
-        - L3_VPN_GATEWAY
     XiqDeviceSortField:
       type: string
       description: >-
@@ -8000,6 +7987,11 @@ components:
       enum:
         - MAC
         - SN
+    XiqSortOrder:
+      type: string
+      enum:
+        - ASC
+        - DESC
     XiqDeviceView:
       type: string
       description: >-
@@ -8054,17 +8046,30 @@ components:
         - LOCATIONS
         - DESCRIPTION
         - COUNTRY_CODE
-    XiqDeviceFilter:
+    XiqDeviceFunction:
+      type: string
+      description: 'The device function, such as AP, Router, Switch, etc.'
+      enum:
+        - AP
+        - ROUTER
+        - ROUTER_AS_L2_VPN_GATEWAY
+        - ROUTER_AS_L3_VPN_GATEWAY
+        - SWITCH
+        - SWITCH_HAC
+        - SWITCH_DELL
+        - L2_VPN_GATEWAY
+        - L3_VPN_GATEWAY
+    XiqLocationLegend:
       type: object
       properties:
-        ids:
-          type: array
-          description: The device ID list
-          items:
-            type: integer
-            description: The device ID list
-            format: int64
-      description: The filter to get matched devices
+        id:
+          type: integer
+          description: The location ID
+          format: int64
+        name:
+          type: string
+          description: The location name
+      description: The simple location information
     XiqDevice:
       required:
         - create_time
@@ -8202,94 +8207,153 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqDevice'
-    XiqDeviceLevelSsid:
+    XiqExtremeDevices:
       required:
-        - ssid_id
+        - sns
       type: object
       properties:
-        ssid_id:
-          type: integer
-          description: 'The SSID ID to override, cannot be null.'
-          format: int64
-        ssid:
-          type: string
-          description: >-
-            The broadcast ssid name to override. Can only override if the SSID
-            profile is OPEN or PSK mode.
-        passphrase:
-          type: string
-          description: >-
-            The ssid passphrase to override. Can only override if the SSID
-            profile is in PSK mode.
-      description: The ssid/passphrase for device level ssid to override
-    XiqDeviceLevelSsidStatus:
-      required:
-        - wifi0_enabled
-        - wifi1_enabled
-      type: object
-      properties:
-        wifi0_enabled:
-          type: boolean
-          description: The SSID is enabled or not on wifi0 interface
-        wifi1_enabled:
-          type: boolean
-          description: The SSID is enabled or not on wifi1 interface
-      description: The SSID status
-    XiqUpdateDeviceLevelSsidStatus:
-      required:
-        - enabled
-        - if_names
-        - ssid_ids
-      type: object
-      properties:
-        ssid_ids:
+        sns:
           type: array
-          description: >-
-            The one or multiple SSID to be disabled/enabled, cannot be empty or
-            no action will be triggered.
+          description: The serial numbers
+          items:
+            type: string
+            description: The serial numbers
+      description: Extreme/Aerohive devices to onboard
+    XiqExosDevices:
+      required:
+        - sns
+      type: object
+      properties:
+        sns:
+          type: array
+          description: The serial numbers
+          items:
+            type: string
+            description: The serial numbers
+      description: ExtremeXOS (EXOS) devices to onboard
+    XiqVossDevices:
+      required:
+        - sns
+      type: object
+      properties:
+        sns:
+          type: array
+          description: The serial numbers
+          items:
+            type: string
+            description: The serial numbers
+      description: VSP Operating System Software (VOSS) devices to onboard
+    XiqWingDevices:
+      required:
+        - sn_to_mac
+      type: object
+      properties:
+        sn_to_mac:
+          type: object
+          additionalProperties:
+            type: string
+            description: Serial number -> MAC address
+          description: Serial number -> MAC address
+      description: ExtremeWireless (WiNG) devices to onboard
+    XiqDellDevices:
+      required:
+        - sn_to_st
+      type: object
+      properties:
+        sn_to_st:
+          type: object
+          additionalProperties:
+            type: string
+            description: Serial number -> Service tag
+          description: Serial number -> Service tag
+      description: Dell devices to onboard
+    XiqOnboardDeviceRequest:
+      type: object
+      properties:
+        extreme:
+          $ref: '#/components/schemas/XiqExtremeDevices'
+        exos:
+          $ref: '#/components/schemas/XiqExosDevices'
+        voss:
+          $ref: '#/components/schemas/XiqVossDevices'
+        wing:
+          $ref: '#/components/schemas/XiqWingDevices'
+        dell:
+          $ref: '#/components/schemas/XiqDellDevices'
+      description: The payload to onboard devices
+    XiqDeviceFilter:
+      type: object
+      properties:
+        ids:
+          type: array
+          description: The device ID list
           items:
             type: integer
-            description: >-
-              The one or multiple SSID to be disabled/enabled, cannot be empty
-              or no action will be triggered.
+            description: The device ID list
             format: int64
-        if_names:
+      description: The filter to get matched devices
+    XiqSendCliRequest:
+      required:
+        - clis
+        - devices
+      type: object
+      properties:
+        devices:
+          $ref: '#/components/schemas/XiqDeviceFilter'
+        clis:
           type: array
-          description: >-
-            The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1)
-            to be disabled/enabled, cannot be empty or no SSID will be disabled
-            or enabled.
+          description: The one or multiple CLIs to send
           items:
-            $ref: '#/components/schemas/XiqWirelessIfName'
-        enabled:
-          type: boolean
-          description: >-
-            To disable or enable the given device level SSIDs on the wifi
-            interfaces.
-      description: The request for disable/enable device level ssid.
-    XiqDeviceStats:
+            type: string
+            description: The one or multiple CLIs to send
+      description: The request for sending CLIs to devices
+    XiqCliResponseCode:
+      type: string
+      description: The CLI response code
+      enum:
+        - UNSPECIFIED
+        - SUCCEED
+        - ERR_DEVICE_NOT_EXIST
+        - ERR_DEVICE_NOT_ACTIVE
+        - ERR_SEND_MESSAGE
+        - ERR_CLI_EXECUTED
+        - ERR_DEVICE_NOT_SUPPORTED
+        - ERR_SIMULATE_NOT_SUPPORTED
+        - ERR_VERSION_NOT_SUPPORTED
+        - ERR_PARSE_FILE
+        - ERR_UNMANAGED_DEVICE
+        - ERR_CLI_NOT_SENT
+        - ERR_TIMEOUT
+        - ERR_VPN_USING
+        - CLI_SENT_SUCCEED
+        - ERR_CLI_MAX_CLI_LIMIT_EXCEEDED
+    XiqCliOutput:
+      required:
+        - cli
+        - response_code
       type: object
       properties:
-        total_device_count:
-          type: integer
-          format: int32
-        managed_device_count:
-          type: integer
-          format: int32
-        connected_device_count:
-          type: integer
-          format: int32
-    XiqLocationLegend:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The location ID
-          format: int64
-        name:
+        cli:
           type: string
-          description: The location name
-      description: The simple location information
+          description: The CLI sent to the device
+        response_code:
+          $ref: '#/components/schemas/XiqCliResponseCode'
+        output:
+          type: string
+          description: The CLI output
+      description: The CLI output
+    XiqSendCliResponse:
+      type: object
+      properties:
+        device_cli_outputs:
+          type: object
+          additionalProperties:
+            type: array
+            description: device ID -> CLI outputs
+            items:
+              $ref: '#/components/schemas/XiqCliOutput'
+          description: device ID -> CLI outputs
+      description: The response for sending CLIs to devices
     XiqDeviceLocation:
       required:
         - create_time
@@ -8385,6 +8449,57 @@ components:
         device_location:
           $ref: '#/components/schemas/XiqDeviceLocationAssignment'
       description: Device location assignment for multiple devices
+    XiqNetworkPolicy:
+      required:
+        - create_time
+        - id
+        - name
+        - predefined
+        - type
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The network policy name
+        description:
+          type: string
+          description: The network policy description
+        predefined:
+          type: boolean
+          description: Whether it is a predefined network policy
+        type:
+          type: string
+          description: The network policy type
+    XiqAssignDevicesNetworkPolicyRequest:
+      required:
+        - devices
+        - network_policy_id
+      type: object
+      properties:
+        devices:
+          $ref: '#/components/schemas/XiqDeviceFilter'
+        network_policy_id:
+          type: integer
+          description: The assigned network policy
+          format: int64
+      description: Device network policy assignment for multiple devices
     XiqCountryCode:
       type: string
       description: The country code.
@@ -8527,151 +8642,6 @@ components:
         country_code:
           $ref: '#/components/schemas/XiqCountryCode'
       description: Device country-code assignment for multiple devices
-    XiqDellDevices:
-      required:
-        - sn_to_st
-      type: object
-      properties:
-        sn_to_st:
-          type: object
-          additionalProperties:
-            type: string
-            description: Serial number -> Service tag
-          description: Serial number -> Service tag
-      description: Dell devices to onboard
-    XiqExosDevices:
-      required:
-        - sns
-      type: object
-      properties:
-        sns:
-          type: array
-          description: The serial numbers
-          items:
-            type: string
-            description: The serial numbers
-      description: ExtremeXOS (EXOS) devices to onboard
-    XiqVossDevices:
-      required:
-        - sns
-      type: object
-      properties:
-        sns:
-          type: array
-          description: The serial numbers
-          items:
-            type: string
-            description: The serial numbers
-      description: VSP Operating System Software (VOSS) devices to onboard
-    XiqWingDevices:
-      required:
-        - sn_to_mac
-      type: object
-      properties:
-        sn_to_mac:
-          type: object
-          additionalProperties:
-            type: string
-            description: Serial number -> MAC address
-          description: Serial number -> MAC address
-      description: ExtremeWireless (WiNG) devices to onboard
-    XiqExtremeDevices:
-      required:
-        - sns
-      type: object
-      properties:
-        sns:
-          type: array
-          description: The serial numbers
-          items:
-            type: string
-            description: The serial numbers
-      description: Extreme/Aerohive devices to onboard
-    XiqOnboardDeviceRequest:
-      type: object
-      properties:
-        extreme:
-          $ref: '#/components/schemas/XiqExtremeDevices'
-        exos:
-          $ref: '#/components/schemas/XiqExosDevices'
-        voss:
-          $ref: '#/components/schemas/XiqVossDevices'
-        wing:
-          $ref: '#/components/schemas/XiqWingDevices'
-        dell:
-          $ref: '#/components/schemas/XiqDellDevices'
-      description: The payload to onboard devices
-    XiqSendCliRequest:
-      required:
-        - clis
-        - devices
-      type: object
-      properties:
-        devices:
-          $ref: '#/components/schemas/XiqDeviceFilter'
-        clis:
-          type: array
-          description: The one or multiple CLIs to send
-          items:
-            type: string
-            description: The one or multiple CLIs to send
-      description: The request for sending CLIs to devices
-    XiqCliOutput:
-      required:
-        - cli
-        - response_code
-      type: object
-      properties:
-        cli:
-          type: string
-          description: The CLI sent to the device
-        response_code:
-          $ref: '#/components/schemas/XiqCliResponseCode'
-        output:
-          type: string
-          description: The CLI output
-      description: The CLI output
-    XiqCliResponseCode:
-      type: string
-      description: The CLI response code
-      enum:
-        - UNSPECIFIED
-        - SUCCEED
-        - ERR_DEVICE_NOT_EXIST
-        - ERR_DEVICE_NOT_ACTIVE
-        - ERR_SEND_MESSAGE
-        - ERR_CLI_EXECUTED
-        - ERR_DEVICE_NOT_SUPPORTED
-        - ERR_SIMULATE_NOT_SUPPORTED
-        - ERR_VERSION_NOT_SUPPORTED
-        - ERR_PARSE_FILE
-        - ERR_UNMANAGED_DEVICE
-        - ERR_CLI_NOT_SENT
-        - ERR_TIMEOUT
-        - ERR_VPN_USING
-        - CLI_SENT_SUCCEED
-        - ERR_CLI_MAX_CLI_LIMIT_EXCEEDED
-    XiqSendCliResponse:
-      type: object
-      properties:
-        device_cli_outputs:
-          type: object
-          additionalProperties:
-            type: array
-            description: device ID -> CLI outputs
-            items:
-              $ref: '#/components/schemas/XiqCliOutput'
-          description: device ID -> CLI outputs
-      description: The response for sending CLIs to devices
-    XiqWirelessIfName:
-      type: string
-      description: >-
-        The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1) to
-        be disabled/enabled, cannot be empty or no SSID will be disabled or
-        enabled.
-      enum:
-        - WIFI0
-        - WIFI1
     XiqChangeDevicesOsModeRequest:
       required:
         - device_ids
@@ -8704,19 +8674,108 @@ components:
             Switch: EXOS or VOSS
           example: WiNG
       description: The request for change the device(s) OS mode.
-    XiqAssignDevicesNetworkPolicyRequest:
-      required:
-        - devices
-        - network_policy_id
+    XiqDeviceStats:
       type: object
       properties:
-        devices:
-          $ref: '#/components/schemas/XiqDeviceFilter'
-        network_policy_id:
+        total_device_count:
           type: integer
-          description: The assigned network policy
+          format: int32
+        managed_device_count:
+          type: integer
+          format: int32
+        connected_device_count:
+          type: integer
+          format: int32
+    XiqDeviceLevelSsidStatus:
+      required:
+        - wifi0_enabled
+        - wifi1_enabled
+      type: object
+      properties:
+        wifi0_enabled:
+          type: boolean
+          description: The SSID is enabled or not on wifi0 interface
+        wifi1_enabled:
+          type: boolean
+          description: The SSID is enabled or not on wifi1 interface
+      description: The SSID status
+    XiqWirelessIfName:
+      type: string
+      description: >-
+        The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1) to
+        be disabled/enabled, cannot be empty or no SSID will be disabled or
+        enabled.
+      enum:
+        - WIFI0
+        - WIFI1
+    XiqUpdateDeviceLevelSsidStatus:
+      required:
+        - enabled
+        - if_names
+        - ssid_ids
+      type: object
+      properties:
+        ssid_ids:
+          type: array
+          description: >-
+            The one or multiple SSID to be disabled/enabled, cannot be empty or
+            no action will be triggered.
+          items:
+            type: integer
+            description: >-
+              The one or multiple SSID to be disabled/enabled, cannot be empty
+              or no action will be triggered.
+            format: int64
+        if_names:
+          type: array
+          description: >-
+            The one or multiple ssid on wifi interfaces (example:wifi0 or wifi1)
+            to be disabled/enabled, cannot be empty or no SSID will be disabled
+            or enabled.
+          items:
+            $ref: '#/components/schemas/XiqWirelessIfName'
+        enabled:
+          type: boolean
+          description: >-
+            To disable or enable the given device level SSIDs on the wifi
+            interfaces.
+      description: The request for disable/enable device level ssid.
+    XiqDeviceLevelSsid:
+      required:
+        - ssid_id
+      type: object
+      properties:
+        ssid_id:
+          type: integer
+          description: 'The SSID ID to override, cannot be null.'
           format: int64
-      description: Device network policy assignment for multiple devices
+        ssid:
+          type: string
+          description: >-
+            The broadcast ssid name to override. Can only override if the SSID
+            profile is OPEN or PSK mode.
+        passphrase:
+          type: string
+          description: >-
+            The ssid passphrase to override. Can only override if the SSID
+            profile is in PSK mode.
+      description: The ssid/passphrase for device level ssid to override
+    XiqDeviceCpuMemoryUsage:
+      type: object
+      properties:
+        average_cpu:
+          type: integer
+          description: The device average cpu usage
+          format: int32
+        average_memory:
+          type: integer
+          description: The device average memory usage
+          format: int32
+        timestamp:
+          type: integer
+          description: The timestamp for data aggregate
+          format: int64
+      description: Get time series of the average device cpu and memory usage
     XiqDeviceAlarm:
       type: object
       properties:
@@ -8773,65 +8832,6 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqDeviceAlarm'
-    XiqDeviceCpuMemoryUsage:
-      type: object
-      properties:
-        average_cpu:
-          type: integer
-          description: The device average cpu usage
-          format: int32
-        average_memory:
-          type: integer
-          description: The device average memory usage
-          format: int32
-        timestamp:
-          type: integer
-          description: The timestamp for data aggregate
-          format: int64
-      description: Get time series of the average device cpu and memory usage
-    XiqSortOrder:
-      type: string
-      enum:
-        - ASC
-        - DESC
-    XiqNetworkPolicy:
-      required:
-        - create_time
-        - id
-        - name
-        - predefined
-        - type
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: 'The organization identifier, valid when enabling HIQ feature'
-          format: int64
-        name:
-          type: string
-          description: The network policy name
-        description:
-          type: string
-          description: The network policy description
-        predefined:
-          type: boolean
-          description: Whether it is a predefined network policy
-        type:
-          type: string
-          description: The network policy type
     XiqNetworkPolicyType:
       type: string
       description: The network policy type
@@ -9158,35 +9158,17 @@ components:
       enum:
         - NAME
         - CATEGORY
-    PagedXiqApplication:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
+    XiqApplicationDetectionRule:
       type: object
       properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqApplication'
+        value:
+          type: string
+          description: The value of detection rule type
+        protocol:
+          $ref: '#/components/schemas/XiqApplicationDetectionProtocol'
+        type:
+          $ref: '#/components/schemas/XiqApplicationDetectionType'
+      description: The Application Detection Rule
     XiqApplication:
       required:
         - create_time
@@ -9234,39 +9216,35 @@ components:
           items:
             $ref: '#/components/schemas/XiqApplicationDetectionRule'
       description: The Application Model
-    XiqApplicationDetectionRule:
+    PagedXiqApplication:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
       type: object
       properties:
-        value:
-          type: string
-          description: The value of detection rule type
-        protocol:
-          $ref: '#/components/schemas/XiqApplicationDetectionProtocol'
-        type:
-          $ref: '#/components/schemas/XiqApplicationDetectionType'
-      description: The Application Detection Rule
-    XiqApplicationTopClientsUsage:
-      type: object
-      properties:
-        application_id:
+        page:
           type: integer
-          description: The application ID
-          format: int64
-        client_id:
+          description: The current page number
+          format: int32
+        count:
           type: integer
-          description: The TOP N client ID
-          format: int64
-        client_mac_address:
-          type: string
-          description: The MAC address of TOP N client
-        client_host_name:
-          type: string
-          description: The host name of TOP N client
-        usage:
+          description: The element count of the current page
+          format: int32
+        total_pages:
           type: integer
-          description: The TOP N client usage
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
           format: int64
-      description: The Top N Clients Usage per Application
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqApplication'
     XiqTopApplicationsUsage:
       type: object
       properties:
@@ -9290,6 +9268,28 @@ components:
           description: The application usage
           format: int64
       description: The Top N Applications Usage
+    XiqApplicationTopClientsUsage:
+      type: object
+      properties:
+        application_id:
+          type: integer
+          description: The application ID
+          format: int64
+        client_id:
+          type: integer
+          description: The TOP N client ID
+          format: int64
+        client_mac_address:
+          type: string
+          description: The MAC address of TOP N client
+        client_host_name:
+          type: string
+          description: The host name of TOP N client
+        usage:
+          type: integer
+          description: The TOP N client usage
+          format: int64
+      description: The Top N Clients Usage per Application
     XiqSmsLogStatus:
       type: string
       description: The SMS status
@@ -9804,12 +9804,6 @@ components:
         - AUTHENTICATION_LOG
         - EMAIL_LOG
         - SMS_LOG
-    XiqSubscriptionStatus:
-      type: string
-      description: The webhook subscription status.
-      enum:
-        - ENABLED
-        - DISABLED
     XiqSubscriptionMessageType:
       type: string
       description: The subscription message type.
@@ -9824,6 +9818,12 @@ components:
         - AUTHENTICATION_LOG_ALL
         - EMAIL_LOG_ALL
         - SMS_LOG_ALL
+    XiqSubscriptionStatus:
+      type: string
+      description: The webhook subscription status.
+      enum:
+        - ENABLED
+        - DISABLED
     XiqWebhookSubscription:
       required:
         - application
@@ -9887,6 +9887,19 @@ components:
         message_type:
           $ref: '#/components/schemas/XiqSubscriptionMessageType'
       description: The payload to create webhook subscription
+    XiqFirmwareUpgradePolicy:
+      required:
+        - enable_distributed_upgrade
+        - enable_enforce_upgrade
+      type: object
+      properties:
+        enable_enforce_upgrade:
+          type: boolean
+          description: Whether enforce firmware upgrade even if the versions are the same
+        enable_distributed_upgrade:
+          type: boolean
+          description: Whether enable distributed firmware upgrade (Only applicable to APs)
+      description: The firmware upgrade policy
     XiqFirmwareActivateOption:
       type: object
       properties:
@@ -9904,19 +9917,6 @@ components:
             updated device
           format: int64
       description: The firmware activate option (Only one of them can be enabled)
-    XiqFirmwareUpgradePolicy:
-      required:
-        - enable_distributed_upgrade
-        - enable_enforce_upgrade
-      type: object
-      properties:
-        enable_enforce_upgrade:
-          type: boolean
-          description: Whether enforce firmware upgrade even if the versions are the same
-        enable_distributed_upgrade:
-          type: boolean
-          description: Whether enable distributed firmware upgrade (Only applicable to APs)
-      description: The firmware upgrade policy
     XiqDeploymentPolicy:
       required:
         - enable_complete_configuration_update
@@ -9988,6 +9988,112 @@ components:
         finished:
           type: boolean
       description: The configuration deployment status
+    XiqClassificationType:
+      type: string
+      description: Classification type
+      enum:
+        - LOCATION
+        - CLOUD_CONFIG_GROUP
+        - IP_ADDRESS
+        - IP_SUBNET
+        - IP_RANGE
+    XiqClassification:
+      required:
+        - classification_id
+        - classification_type
+        - create_time
+        - id
+        - match
+        - update_time
+        - value
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        classification_type:
+          $ref: '#/components/schemas/XiqClassificationType'
+        match:
+          type: boolean
+          description: Contains or not contains)
+        classification_id:
+          type: integer
+          description: >-
+            The ID of location, cloud config group, IP address, IP subnet or IP
+            range.
+          format: int64
+        value:
+          type: string
+          description: The value of classification
+      description: The payload of common object - classification
+    XiqClassificationRule:
+      required:
+        - create_time
+        - id
+        - name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        name:
+          type: string
+          description: The classification assignment name
+        description:
+          type: string
+          description: The classification assignment description
+        classifications:
+          type: array
+          description: The details of rule assignments
+          items:
+            $ref: '#/components/schemas/XiqClassification'
+      description: The payload of common object - classification assignment
+    XiqVlanObjectClassifiedEntry:
+      required:
+        - create_time
+        - id
+        - update_time
+        - vlan_id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        vlan_id:
+          type: integer
+          description: The VLAN ID
+          format: int32
+        classification_rule:
+          $ref: '#/components/schemas/XiqClassificationRule'
+      description: The payload of VLAN object classified entry
     XiqVlanProfile:
       required:
         - create_time
@@ -10055,6 +10161,21 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqVlanProfile'
+    XiqCreateVlanObjectClassifiedEntryRequest:
+      required:
+        - classification_rule_id
+        - vlan_id
+      type: object
+      properties:
+        vlan_id:
+          type: integer
+          description: The VLAN ID
+          format: int32
+        classification_rule_id:
+          type: integer
+          description: The classification rule ID
+          format: int64
+      description: The VLAN object classified entries
     XiqCreateVlanProfileRequest:
       required:
         - default_vlan_id
@@ -10077,6 +10198,21 @@ components:
           description: The VLAN object classified entries
           items:
             $ref: '#/components/schemas/XiqCreateVlanObjectClassifiedEntryRequest'
+    XiqUpdateVlanObjectClassifiedEntryRequest:
+      required:
+        - classification_rule_id
+        - vlan_id
+      type: object
+      properties:
+        vlan_id:
+          type: integer
+          description: The VLAN ID
+          format: int32
+        classification_rule_id:
+          type: integer
+          description: The classification rule ID
+          format: int64
+      description: The VLAN object classified entries
     XiqUpdateVlanProfileRequest:
       required:
         - default_vlan_id
@@ -10099,142 +10235,12 @@ components:
           description: The VLAN object classified entries
           items:
             $ref: '#/components/schemas/XiqUpdateVlanObjectClassifiedEntryRequest'
-    XiqClassificationRule:
-      required:
-        - create_time
-        - id
-        - name
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        name:
-          type: string
-          description: The classification assignment name
-        description:
-          type: string
-          description: The classification assignment description
-        classifications:
-          type: array
-          description: The details of rule assignments
-          items:
-            $ref: '#/components/schemas/XiqClassification'
-      description: The payload of common object - classification assignment
-    XiqClassificationType:
+    XiqPasswordType:
       type: string
-      description: Classification type
+      description: The access key type
       enum:
-        - LOCATION
-        - CLOUD_CONFIG_GROUP
-        - IP_ADDRESS
-        - IP_SUBNET
-        - IP_RANGE
-    XiqVlanObjectClassifiedEntry:
-      required:
-        - create_time
-        - id
-        - update_time
-        - vlan_id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        vlan_id:
-          type: integer
-          description: The VLAN ID
-          format: int32
-        classification_rule:
-          $ref: '#/components/schemas/XiqClassificationRule'
-      description: The payload of VLAN object classified entry
-    XiqClassification:
-      required:
-        - classification_id
-        - classification_type
-        - create_time
-        - id
-        - match
-        - update_time
-        - value
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        classification_type:
-          $ref: '#/components/schemas/XiqClassificationType'
-        match:
-          type: boolean
-          description: Contains or not contains)
-        classification_id:
-          type: integer
-          description: >-
-            The ID of location, cloud config group, IP address, IP subnet or IP
-            range.
-          format: int64
-        value:
-          type: string
-          description: The value of classification
-      description: The payload of common object - classification
-    XiqCreateVlanObjectClassifiedEntryRequest:
-      required:
-        - classification_rule_id
-        - vlan_id
-      type: object
-      properties:
-        vlan_id:
-          type: integer
-          description: The VLAN ID
-          format: int32
-        classification_rule_id:
-          type: integer
-          description: The classification rule ID
-          format: int64
-      description: The VLAN object classified entries
-    XiqUpdateVlanObjectClassifiedEntryRequest:
-      required:
-        - classification_rule_id
-        - vlan_id
-      type: object
-      properties:
-        vlan_id:
-          type: integer
-          description: The VLAN ID
-          format: int32
-        classification_rule_id:
-          type: integer
-          description: The classification rule ID
-          format: int64
-      description: The VLAN object classified entries
+        - PPSK
+        - RADIUS
     XiqEmailTemplate:
       required:
         - create_time
@@ -10498,6 +10504,264 @@ components:
         sms_password_delivery:
           type: string
           description: The password delivery SMS
+    XiqRegenerateEndUserPasswordResponse:
+      required:
+        - password
+      type: object
+      properties:
+        password:
+          type: string
+          description: The new password of the end user
+      description: The newly generated password for the end user
+    XiqPasswordDbLocation:
+      type: string
+      description: The access key storage location
+      enum:
+        - CLOUD
+        - LOCAL
+    XiqPcgType:
+      type: string
+      description: The private client group type for pcgUseOnly
+      enum:
+        - AP_BASED
+        - KEY_BASED
+    XiqPskGenerationMethod:
+      type: string
+      description: The psk generation method
+      enum:
+        - PASSWORD_ONLY
+        - USER_STRING_PASSWORD
+    XiqPasswordCharacterType:
+      type: string
+      description: 'Password generation using letters, numbers, and/or special characters'
+      enum:
+        - INCLUDE_ALL_CHARACTER_TYPE_ENABLED
+        - INCLUDE_ANY_CHARACTER_TYPES_ENABLED
+        - INCLUDE_ONLY_ONE_CHARACTER_TYPE_ENABLED
+    XiqPasswordSettings:
+      required:
+        - password_character_types
+        - password_length
+        - psk_generation_method
+      type: object
+      properties:
+        enable_letters:
+          type: boolean
+          description: Enable use of letters
+        enable_numbers:
+          type: boolean
+          description: Enable use of numbers
+        enable_special_characters:
+          type: boolean
+          description: Enable use of special characters
+        password_concat_string:
+          type: string
+          description: The password concatenated string
+        psk_generation_method:
+          $ref: '#/components/schemas/XiqPskGenerationMethod'
+        password_character_types:
+          $ref: '#/components/schemas/XiqPasswordCharacterType'
+        password_length:
+          type: integer
+          description: The maximun password string length
+          format: int32
+      description: The password settings ID
+    XiqExpirationType:
+      type: string
+      description: The for one of the account experation types.
+      enum:
+        - NEVER_EXPIRE
+        - VALID_DURING_DATES
+        - VALID_FOR_TIME_PERIOD
+        - DAILY
+    XiqDateTimeType:
+      required:
+        - day_of_month
+        - hour_of_day
+        - minute_of_hour
+        - month
+        - year
+      type: object
+      properties:
+        day_of_month:
+          type: integer
+          description: The day of month
+          format: int32
+        month:
+          type: integer
+          description: The month
+          format: int32
+        year:
+          type: integer
+          description: The year
+          format: int32
+        hour_of_day:
+          type: integer
+          description: The 24-hour format hour of day
+          format: int32
+        minute_of_hour:
+          type: integer
+          description: The minute of the hour
+          format: int32
+      description: The end date and time
+    XiqValidDuringDateSettings:
+      required:
+        - end_date_time
+        - start_date_time
+        - time_zone
+      type: object
+      properties:
+        start_date_time:
+          $ref: '#/components/schemas/XiqDateTimeType'
+        end_date_time:
+          $ref: '#/components/schemas/XiqDateTimeType'
+        time_zone:
+          type: string
+          description: The date/time timezone
+      description: The settings for Valid During Dates option or null for other settings.
+    XiqValidTimePeriodAfterType:
+      type: string
+      description: The valid time period after Id creation or first login.
+      enum:
+        - ID_CREATION
+        - FIRST_LOGIN
+    XiqDateTimeUnitType:
+      type: string
+      description: The after expiration scheduled time unit.
+      enum:
+        - MINUTE
+        - HOUR
+        - DAY
+        - WEEK
+    XiqValidTimePeriodAfterIdCreation:
+      required:
+        - valid_time_period
+        - valid_time_period_unit
+      type: object
+      properties:
+        valid_time_period:
+          type: integer
+          description: The valid time period after account creation
+          format: int32
+        valid_time_period_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+      description: >-
+        The settings for the valid time period after ID Creation option or null
+        for the other option
+    XiqValidTimePeriodAfterFirstLogin:
+      required:
+        - first_login_within
+        - first_login_within_unit
+        - valid_time_period
+        - valid_time_period_unit
+      type: object
+      properties:
+        valid_time_period:
+          type: integer
+          description: The valid time period after the first login
+          format: int32
+        valid_time_period_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+        first_login_within:
+          type: integer
+          description: The first time the access key must be used
+          format: int32
+        first_login_within_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+      description: >-
+        The settings for the valid time period after First Login option or null
+        for the other option
+    XiqValidForTimePeriodSettings:
+      required:
+        - valid_time_period_after
+      type: object
+      properties:
+        valid_time_period_after:
+          $ref: '#/components/schemas/XiqValidTimePeriodAfterType'
+        after_id_creation_settings:
+          $ref: '#/components/schemas/XiqValidTimePeriodAfterIdCreation'
+        after_first_login_settings:
+          $ref: '#/components/schemas/XiqValidTimePeriodAfterFirstLogin'
+      description: >-
+        The settings for Valid For Time Period option or null for other
+        settings.
+    XiqValidDailySettings:
+      required:
+        - daily_end_hour
+        - daily_end_minute
+        - daily_start_hour
+        - daily_start_minute
+      type: object
+      properties:
+        daily_start_hour:
+          type: integer
+          description: The 24-hour format start hour of the day
+          format: int32
+        daily_start_minute:
+          type: integer
+          description: The minute of the hour
+          format: int32
+        daily_end_hour:
+          type: integer
+          description: The 24-hour format end hour of day the end
+          format: int32
+        daily_end_minute:
+          type: integer
+          description: The minute of the hour
+          format: int32
+      description: The settings for Valid Daily option or null for other settings.
+    XiqExpirationActionType:
+      type: string
+      description: 'The Expiration Action to take, null if the account is never expired.'
+      enum:
+        - SHOW_MESSAGE
+        - REJECT_ACCESS
+    XiqPostExpirationAction:
+      type: object
+      properties:
+        enable_credentials_renewal:
+          type: boolean
+          description: The renew user credentials option or null for other option.
+        enable_delete_immediately:
+          type: boolean
+          description: The immediate delete option or null to schedule the delete.
+        delete_after_value:
+          type: integer
+          description: >-
+            The after expiration scheduled time to delete or null to not
+            delete..
+          format: int32
+        delete_after_unit:
+          $ref: '#/components/schemas/XiqDateTimeUnitType'
+      description: The type of action to take after the account expiration.
+    XiqExpirationSettings:
+      type: object
+      properties:
+        expiration_type:
+          $ref: '#/components/schemas/XiqExpirationType'
+        valid_during_dates:
+          $ref: '#/components/schemas/XiqValidDuringDateSettings'
+        valid_for_time_period:
+          $ref: '#/components/schemas/XiqValidForTimePeriodSettings'
+        valid_daily:
+          $ref: '#/components/schemas/XiqValidDailySettings'
+        expiration_action:
+          $ref: '#/components/schemas/XiqExpirationActionType'
+        post_expiration_action:
+          $ref: '#/components/schemas/XiqPostExpirationAction'
+      description: The password expiration settings
+    XiqDeliverySettings:
+      type: object
+      properties:
+        email_template_id:
+          type: integer
+          description: The Email Template ID
+          format: int64
+        sms_template_id:
+          type: integer
+          description: 'The SMS Template ID '
+          format: int64
+      description: The password delivery settings
     XiqUserGroup:
       required:
         - create_time
@@ -10675,10 +10939,52 @@ components:
           $ref: '#/components/schemas/XiqExpirationSettings'
         delivery_settings:
           $ref: '#/components/schemas/XiqDeliverySettings'
-    XiqPcgPortAssignmentEntryDetail:
+    XiqKeyBasedPcgUser:
       required:
         - create_time
+        - email
         - id
+        - name
+        - update_time
+        - user_group_name
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The user name of key based PCG, which could not share with other
+            exist key based PCG
+        email:
+          type: string
+          description: The email for deliver key based PCG user password
+        user_group_name:
+          type: string
+          description: The user group name
+        id:
+          type: integer
+          description: The user ID
+          format: int64
+        create_time:
+          type: string
+          description: The create timestamp
+          format: date-time
+        update_time:
+          type: string
+          description: The create timestamp
+          format: date-time
+        org_id:
+          type: integer
+          description: The organization ID
+          format: int64
+      description: The key based PCG user detailed info
+    XiqKeyBasedPcg:
+      required:
+        - create_time
+        - enabled
+        - id
+        - policy_id
+        - policy_name
+        - ssid_name
         - update_time
       type: object
       properties:
@@ -10698,15 +11004,120 @@ components:
           type: integer
           description: 'The organization identifier, valid when enabling HIQ feature'
           format: int64
-        device:
-          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryDeviceMeta'
-        eth1:
-          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
-        eth2:
-          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
-        eth3:
-          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
-      description: The PCG port assignment entry detail
+        policy_id:
+          type: integer
+          description: The network policy ID
+          format: int64
+        policy_name:
+          type: string
+          description: The network policy name
+        ssid_name:
+          type: string
+          description: The SSID name
+        enabled:
+          type: boolean
+          description: Enabled Key Based PCG
+        users:
+          type: array
+          description: The XIQ key based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUser'
+      description: The response of key based PCG data
+    XiqKeyBasedPcgUserBaseInfo:
+      required:
+        - email
+        - name
+        - user_group_name
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The user name of key based PCG, which could not share with other
+            exist key based PCG
+        email:
+          type: string
+          description: The email for deliver key based PCG user password
+        user_group_name:
+          type: string
+          description: The user group name
+      description: The user's base info
+    XiqInitKeyBasedPcgNetworkPolicyRequest:
+      required:
+        - policy_name
+        - ssid_name
+        - users
+      type: object
+      properties:
+        policy_name:
+          type: string
+          description: The network policy name
+        ssid_name:
+          type: string
+          description: The SSID name
+        users:
+          type: array
+          description: The Key-based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
+      description: The request to initiate Key-based Private Client Group
+    XiqOnboardKeyBasedPcgRequest:
+      required:
+        - enabled
+        - ssid_name
+        - user_ids
+      type: object
+      properties:
+        ssid_name:
+          type: string
+        enabled:
+          type: boolean
+          description: Enable the key based PCG
+        user_ids:
+          type: array
+          description: The request user IDs
+          items:
+            type: integer
+            description: The request user IDs
+            format: int64
+      description: >-
+        The payload to create Key Based PCG data(from exist network policy and
+        SSID)
+    XiqUpdateKeyBasedPcgUsersRequest:
+      required:
+        - users
+      type: object
+      properties:
+        users:
+          type: array
+          description: The Key-based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
+      description: The payload of replace Key-based Private Client Group users request
+    XiqCreateKeyBasedPcgUsersRequest:
+      required:
+        - users
+      type: object
+      properties:
+        users:
+          type: array
+          description: The key based PCG users
+          items:
+            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
+      description: The payload of add Key-based Private Client Group users request
+    XiqDeleteKeyBasedPcgUsersRequest:
+      required:
+        - user_ids
+      type: object
+      properties:
+        user_ids:
+          type: array
+          description: The user ID list
+          items:
+            type: integer
+            description: The user ID list
+            format: int64
+      description: The payload of delete Key Based Private Client Group users request
     XiqPcgPortAssignmentEntryDeviceMeta:
       required:
         - create_time
@@ -10790,6 +11201,38 @@ components:
             type: string
             description: The SSIDs
       description: The PCG port assignment entry of eth user info
+    XiqPcgPortAssignmentEntryDetail:
+      required:
+        - create_time
+        - id
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        device:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryDeviceMeta'
+        eth1:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
+        eth2:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
+        eth3:
+          $ref: '#/components/schemas/XiqPcgPortAssignmentEntryEthUserMeta'
+      description: The PCG port assignment entry detail
     XiqGetPortAssignmentDetailsResponse:
       required:
         - policy_id
@@ -10809,381 +11252,45 @@ components:
           items:
             $ref: '#/components/schemas/XiqPcgPortAssignmentEntryDetail'
       description: The response of port assignment details for AP150W
-    XiqPasswordCharacterType:
-      type: string
-      description: 'Password generation using letters, numbers, and/or special characters'
-      enum:
-        - INCLUDE_ALL_CHARACTER_TYPE_ENABLED
-        - INCLUDE_ANY_CHARACTER_TYPES_ENABLED
-        - INCLUDE_ONLY_ONE_CHARACTER_TYPE_ENABLED
-    XiqPasswordDbLocation:
-      type: string
-      description: The access key storage location
-      enum:
-        - CLOUD
-        - LOCAL
-    XiqPasswordSettings:
+    XiqPcgPortAssignment:
       required:
-        - password_character_types
-        - password_length
-        - psk_generation_method
+        - device_id
       type: object
       properties:
-        enable_letters:
-          type: boolean
-          description: Enable use of letters
-        enable_numbers:
-          type: boolean
-          description: Enable use of numbers
-        enable_special_characters:
-          type: boolean
-          description: Enable use of special characters
-        password_concat_string:
-          type: string
-          description: The password concatenated string
-        psk_generation_method:
-          $ref: '#/components/schemas/XiqPskGenerationMethod'
-        password_character_types:
-          $ref: '#/components/schemas/XiqPasswordCharacterType'
-        password_length:
+        device_id:
           type: integer
-          description: The maximun password string length
-          format: int32
-      description: The password settings ID
-    XiqPasswordType:
-      type: string
-      description: The access key type
-      enum:
-        - PPSK
-        - RADIUS
-    XiqPcgType:
-      type: string
-      description: The private client group type for pcgUseOnly
-      enum:
-        - AP_BASED
-        - KEY_BASED
-    XiqPostExpirationAction:
-      type: object
-      properties:
-        enable_credentials_renewal:
-          type: boolean
-          description: The renew user credentials option or null for other option.
-        enable_delete_immediately:
-          type: boolean
-          description: The immediate delete option or null to schedule the delete.
-        delete_after_value:
+          description: The device ID of AP150W
+          format: int64
+        eth1_user_id:
           type: integer
           description: >-
-            The after expiration scheduled time to delete or null to not
-            delete..
-          format: int32
-        delete_after_unit:
-          $ref: '#/components/schemas/XiqDateTimeUnitType'
-      description: The type of action to take after the account expiration.
-    XiqPskGenerationMethod:
-      type: string
-      description: The psk generation method
-      enum:
-        - PASSWORD_ONLY
-        - USER_STRING_PASSWORD
-    XiqDateTimeType:
-      required:
-        - day_of_month
-        - hour_of_day
-        - minute_of_hour
-        - month
-        - year
-      type: object
-      properties:
-        day_of_month:
-          type: integer
-          description: The day of month
-          format: int32
-        month:
-          type: integer
-          description: The month
-          format: int32
-        year:
-          type: integer
-          description: The year
-          format: int32
-        hour_of_day:
-          type: integer
-          description: The 24-hour format hour of day
-          format: int32
-        minute_of_hour:
-          type: integer
-          description: The minute of the hour
-          format: int32
-      description: The end date and time
-    XiqDateTimeUnitType:
-      type: string
-      description: The after expiration scheduled time unit.
-      enum:
-        - MINUTE
-        - HOUR
-        - DAY
-        - WEEK
-    XiqDeliverySettings:
-      type: object
-      properties:
-        email_template_id:
-          type: integer
-          description: The Email Template ID
+            The eth1 user ID, get available users from
+            "/pcgs/key-based/network-policy-{policyId}/users"
           format: int64
-        sms_template_id:
+        eth2_user_id:
           type: integer
-          description: 'The SMS Template ID '
-          format: int64
-      description: The password delivery settings
-    XiqExpirationActionType:
-      type: string
-      description: 'The Expiration Action to take, null if the account is never expired.'
-      enum:
-        - SHOW_MESSAGE
-        - REJECT_ACCESS
-    XiqExpirationSettings:
-      type: object
-      properties:
-        expiration_type:
-          $ref: '#/components/schemas/XiqExpirationType'
-        valid_during_dates:
-          $ref: '#/components/schemas/XiqValidDuringDateSettings'
-        valid_for_time_period:
-          $ref: '#/components/schemas/XiqValidForTimePeriodSettings'
-        valid_daily:
-          $ref: '#/components/schemas/XiqValidDailySettings'
-        expiration_action:
-          $ref: '#/components/schemas/XiqExpirationActionType'
-        post_expiration_action:
-          $ref: '#/components/schemas/XiqPostExpirationAction'
-      description: The password expiration settings
-    XiqExpirationType:
-      type: string
-      description: The for one of the account experation types.
-      enum:
-        - NEVER_EXPIRE
-        - VALID_DURING_DATES
-        - VALID_FOR_TIME_PERIOD
-        - DAILY
-    XiqValidDailySettings:
-      required:
-        - daily_end_hour
-        - daily_end_minute
-        - daily_start_hour
-        - daily_start_minute
-      type: object
-      properties:
-        daily_start_hour:
-          type: integer
-          description: The 24-hour format start hour of the day
-          format: int32
-        daily_start_minute:
-          type: integer
-          description: The minute of the hour
-          format: int32
-        daily_end_hour:
-          type: integer
-          description: The 24-hour format end hour of day the end
-          format: int32
-        daily_end_minute:
-          type: integer
-          description: The minute of the hour
-          format: int32
-      description: The settings for Valid Daily option or null for other settings.
-    XiqValidDuringDateSettings:
-      required:
-        - end_date_time
-        - start_date_time
-        - time_zone
-      type: object
-      properties:
-        start_date_time:
-          $ref: '#/components/schemas/XiqDateTimeType'
-        end_date_time:
-          $ref: '#/components/schemas/XiqDateTimeType'
-        time_zone:
-          type: string
-          description: The date/time timezone
-      description: The settings for Valid During Dates option or null for other settings.
-    XiqValidForTimePeriodSettings:
-      required:
-        - valid_time_period_after
-      type: object
-      properties:
-        valid_time_period_after:
-          $ref: '#/components/schemas/XiqValidTimePeriodAfterType'
-        after_id_creation_settings:
-          $ref: '#/components/schemas/XiqValidTimePeriodAfterIdCreation'
-        after_first_login_settings:
-          $ref: '#/components/schemas/XiqValidTimePeriodAfterFirstLogin'
-      description: >-
-        The settings for Valid For Time Period option or null for other
-        settings.
-    XiqValidTimePeriodAfterFirstLogin:
-      required:
-        - first_login_within
-        - first_login_within_unit
-        - valid_time_period
-        - valid_time_period_unit
-      type: object
-      properties:
-        valid_time_period:
-          type: integer
-          description: The valid time period after the first login
-          format: int32
-        valid_time_period_unit:
-          $ref: '#/components/schemas/XiqDateTimeUnitType'
-        first_login_within:
-          type: integer
-          description: The first time the access key must be used
-          format: int32
-        first_login_within_unit:
-          $ref: '#/components/schemas/XiqDateTimeUnitType'
-      description: >-
-        The settings for the valid time period after First Login option or null
-        for the other option
-    XiqValidTimePeriodAfterIdCreation:
-      required:
-        - valid_time_period
-        - valid_time_period_unit
-      type: object
-      properties:
-        valid_time_period:
-          type: integer
-          description: The valid time period after account creation
-          format: int32
-        valid_time_period_unit:
-          $ref: '#/components/schemas/XiqDateTimeUnitType'
-      description: >-
-        The settings for the valid time period after ID Creation option or null
-        for the other option
-    XiqValidTimePeriodAfterType:
-      type: string
-      description: The valid time period after Id creation or first login.
-      enum:
-        - ID_CREATION
-        - FIRST_LOGIN
-    XiqRegenerateEndUserPasswordResponse:
-      required:
-        - password
-      type: object
-      properties:
-        password:
-          type: string
-          description: The new password of the end user
-      description: The newly generated password for the end user
-    XiqInitKeyBasedPcgNetworkPolicyRequest:
-      required:
-        - policy_name
-        - ssid_name
-        - users
-      type: object
-      properties:
-        policy_name:
-          type: string
-          description: The network policy name
-        ssid_name:
-          type: string
-          description: The SSID name
-        users:
-          type: array
-          description: The Key-based PCG users
-          items:
-            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
-      description: The request to initiate Key-based Private Client Group
-    XiqKeyBasedPcgUserBaseInfo:
-      required:
-        - email
-        - name
-        - user_group_name
-      type: object
-      properties:
-        name:
-          type: string
           description: >-
-            The user name of key based PCG, which could not share with other
-            exist key based PCG
-        email:
-          type: string
-          description: The email for deliver key based PCG user password
-        user_group_name:
-          type: string
-          description: The user group name
-      description: The user's base info
-    XiqKeyBasedPcgUser:
-      required:
-        - create_time
-        - email
-        - id
-        - name
-        - update_time
-        - user_group_name
-      type: object
-      properties:
-        name:
-          type: string
+            The eth2 user ID, get available users from
+            "/pcgs/key-based/network-policy-{policyId}/users"
+          format: int64
+        eth3_user_id:
+          type: integer
           description: >-
-            The user name of key based PCG, which could not share with other
-            exist key based PCG
-        email:
-          type: string
-          description: The email for deliver key based PCG user password
-        user_group_name:
-          type: string
-          description: The user group name
-        id:
-          type: integer
-          description: The user ID
+            The eth3 user ID, get available users from
+            "/pcgs/key-based/network-policy-{policyId}/users"
           format: int64
-        create_time:
-          type: string
-          description: The create timestamp
-          format: date-time
-        update_time:
-          type: string
-          description: The create timestamp
-          format: date-time
-        org_id:
-          type: integer
-          description: The organization ID
-          format: int64
-      description: The key based PCG user detailed info
-    XiqCreateKeyBasedPcgUsersRequest:
+      description: The PCG port assignment entry
+    XiqPcgAssignPortsRequest:
       required:
-        - users
+        - port_assignments
       type: object
       properties:
-        users:
+        port_assignments:
           type: array
-          description: The key based PCG users
+          description: The port assignment list
           items:
-            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
-      description: The payload of add Key-based Private Client Group users request
-    XiqUpdateKeyBasedPcgUsersRequest:
-      required:
-        - users
-      type: object
-      properties:
-        users:
-          type: array
-          description: The Key-based PCG users
-          items:
-            $ref: '#/components/schemas/XiqKeyBasedPcgUserBaseInfo'
-      description: The payload of replace Key-based Private Client Group users request
-    XiqDeleteKeyBasedPcgUsersRequest:
-      required:
-        - user_ids
-      type: object
-      properties:
-        user_ids:
-          type: array
-          description: The user ID list
-          items:
-            type: integer
-            description: The user ID list
-            format: int64
-      description: The payload of delete Key Based Private Client Group users request
+            $ref: '#/components/schemas/XiqPcgPortAssignment'
+      description: The payload to assign ports for AP150W)
     XiqPcgPortAssignmentEntry:
       required:
         - create_time
@@ -11231,45 +11338,6 @@ components:
             "/pcgs/key-based/network-policy-{policyId}/users"
           format: int64
       description: The PCG port assignment entry
-    XiqPcgPortAssignment:
-      required:
-        - device_id
-      type: object
-      properties:
-        device_id:
-          type: integer
-          description: The device ID of AP150W
-          format: int64
-        eth1_user_id:
-          type: integer
-          description: >-
-            The eth1 user ID, get available users from
-            "/pcgs/key-based/network-policy-{policyId}/users"
-          format: int64
-        eth2_user_id:
-          type: integer
-          description: >-
-            The eth2 user ID, get available users from
-            "/pcgs/key-based/network-policy-{policyId}/users"
-          format: int64
-        eth3_user_id:
-          type: integer
-          description: >-
-            The eth3 user ID, get available users from
-            "/pcgs/key-based/network-policy-{policyId}/users"
-          format: int64
-      description: The PCG port assignment entry
-    XiqPcgAssignPortsRequest:
-      required:
-        - port_assignments
-      type: object
-      properties:
-        port_assignments:
-          type: array
-          description: The port assignment list
-          items:
-            $ref: '#/components/schemas/XiqPcgPortAssignment'
-      description: The payload to assign ports for AP150W)
     XiqPcgAssignPortsResponse:
       required:
         - pcg_port_assignment_entries
@@ -11290,86 +11358,6 @@ components:
           items:
             $ref: '#/components/schemas/XiqPcgPortAssignmentEntry'
       description: The response of assign ports for AP150W
-    XiqKeyBasedPcg:
-      required:
-        - create_time
-        - enabled
-        - id
-        - policy_id
-        - policy_name
-        - ssid_name
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: 'The organization identifier, valid when enabling HIQ feature'
-          format: int64
-        policy_id:
-          type: integer
-          description: The network policy ID
-          format: int64
-        policy_name:
-          type: string
-          description: The network policy name
-        ssid_name:
-          type: string
-          description: The SSID name
-        enabled:
-          type: boolean
-          description: Enabled Key Based PCG
-        users:
-          type: array
-          description: The XIQ key based PCG users
-          items:
-            $ref: '#/components/schemas/XiqKeyBasedPcgUser'
-      description: The response of key based PCG data
-    XiqOnboardKeyBasedPcgRequest:
-      required:
-        - enabled
-        - ssid_name
-        - user_ids
-      type: object
-      properties:
-        ssid_name:
-          type: string
-        enabled:
-          type: boolean
-          description: Enable the key based PCG
-        user_ids:
-          type: array
-          description: The request user IDs
-          items:
-            type: integer
-            description: The request user IDs
-            format: int64
-      description: >-
-        The payload to create Key Based PCG data(from exist network policy and
-        SSID)
-    XiqRadioMode:
-      type: string
-      description: The supported radio modes.
-      enum:
-        - B_G
-        - G_N
-        - A
-        - A_N
-        - AC
-        - AX_2_4_GHZ
-        - AX_5_GHZ
-        - AX_6_GHZ
     XiqCloudConfigGroup:
       required:
         - create_time
@@ -11455,6 +11443,24 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqCloudConfigGroup'
+    XiqCreateCloudConfigGroupRequest:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The CCG name
+        description:
+          type: string
+          description: The CCG description
+        device_ids:
+          type: array
+          description: The device ID list.
+          items:
+            type: integer
+            description: The device ID list.
+            format: int64
     XiqUpdateCloudConfigGroupRequest:
       type: object
       properties:
@@ -11471,62 +11477,6 @@ components:
             type: integer
             description: The device ID list.
             format: int64
-    XiqCreateClassificationRequest:
-      required:
-        - classification_type
-        - classification_type_id
-        - match
-      type: object
-      properties:
-        classification_type:
-          type: string
-          description: Classification type
-          enum:
-            - CLASSIFICATION_TYPE_UNSPECIFIED
-            - CLASSIFICATION_TYPE_LOCATION
-            - CLASSIFICATION_TYPE_CLOUD_CONFIG_GROUP
-            - CLASSIFICATION_TYPE_IP_ADDRESS
-            - CLASSIFICATION_TYPE_IP_SUBNET
-            - CLASSIFICATION_TYPE_IP_RANGE
-            - UNRECOGNIZED
-        match:
-          type: boolean
-          description: Contains or not contains
-        classification_type_id:
-          type: integer
-          description: >-
-            The ID of location, cloud config group, IP address, IP subnet or IP
-            range.
-          format: int64
-      description: The details of rule assignments
-    XiqUpdateClassificationRequest:
-      required:
-        - classification_type
-        - classification_type_id
-        - match
-      type: object
-      properties:
-        classification_type:
-          type: string
-          description: Classification type
-          enum:
-            - CLASSIFICATION_TYPE_UNSPECIFIED
-            - CLASSIFICATION_TYPE_LOCATION
-            - CLASSIFICATION_TYPE_CLOUD_CONFIG_GROUP
-            - CLASSIFICATION_TYPE_IP_ADDRESS
-            - CLASSIFICATION_TYPE_IP_SUBNET
-            - CLASSIFICATION_TYPE_IP_RANGE
-            - UNRECOGNIZED
-        match:
-          type: boolean
-          description: Contains or not contains)
-        classification_type_id:
-          type: integer
-          description: >-
-            The ID of location, cloud config group, IP address, IP subnet or IP
-            range.
-          format: int64
-      description: The details of rule Rules
     PagedXiqClassificationRule:
       required:
         - count
@@ -11556,6 +11506,34 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqClassificationRule'
+    XiqCreateClassificationRequest:
+      required:
+        - classification_type
+        - classification_type_id
+        - match
+      type: object
+      properties:
+        classification_type:
+          type: string
+          description: Classification type
+          enum:
+            - CLASSIFICATION_TYPE_UNSPECIFIED
+            - CLASSIFICATION_TYPE_LOCATION
+            - CLASSIFICATION_TYPE_CLOUD_CONFIG_GROUP
+            - CLASSIFICATION_TYPE_IP_ADDRESS
+            - CLASSIFICATION_TYPE_IP_SUBNET
+            - CLASSIFICATION_TYPE_IP_RANGE
+            - UNRECOGNIZED
+        match:
+          type: boolean
+          description: Contains or not contains
+        classification_type_id:
+          type: integer
+          description: >-
+            The ID of location, cloud config group, IP address, IP subnet or IP
+            range.
+          format: int64
+      description: The details of rule assignments
     XiqCreateClassificationRuleRequest:
       required:
         - classifications
@@ -11573,6 +11551,34 @@ components:
           description: The details of rule assignments
           items:
             $ref: '#/components/schemas/XiqCreateClassificationRequest'
+    XiqUpdateClassificationRequest:
+      required:
+        - classification_type
+        - classification_type_id
+        - match
+      type: object
+      properties:
+        classification_type:
+          type: string
+          description: Classification type
+          enum:
+            - CLASSIFICATION_TYPE_UNSPECIFIED
+            - CLASSIFICATION_TYPE_LOCATION
+            - CLASSIFICATION_TYPE_CLOUD_CONFIG_GROUP
+            - CLASSIFICATION_TYPE_IP_ADDRESS
+            - CLASSIFICATION_TYPE_IP_SUBNET
+            - CLASSIFICATION_TYPE_IP_RANGE
+            - UNRECOGNIZED
+        match:
+          type: boolean
+          description: Contains or not contains)
+        classification_type_id:
+          type: integer
+          description: >-
+            The ID of location, cloud config group, IP address, IP subnet or IP
+            range.
+          format: int64
+      description: The details of rule Rules
     XiqUpdateClassificationRuleRequest:
       required:
         - classifications
@@ -11590,24 +11596,6 @@ components:
           description: The details of rule Rules
           items:
             $ref: '#/components/schemas/XiqUpdateClassificationRequest'
-    XiqCreateCloudConfigGroupRequest:
-      required:
-        - name
-      type: object
-      properties:
-        name:
-          type: string
-          description: The CCG name
-        description:
-          type: string
-          description: The CCG description
-        device_ids:
-          type: array
-          description: The device ID list.
-          items:
-            type: integer
-            description: The device ID list.
-            format: int64
     XiqL3AddressType:
       type: string
       description: Address type
@@ -11641,227 +11629,18 @@ components:
         name:
           type: string
           description: Address profile name
-    XiqSsidKeyType:
+    XiqRadioMode:
       type: string
-      description: 'The key type, ASCII or HEX'
-      example: ASCII
+      description: The supported radio modes.
       enum:
-        - ASCII
-        - HEX
-    XiqSsidPskEncryptionMethod:
-      type: string
-      description: >-
-        The encryption method: for WPA3_PSK please use CCMP, for WPA2_PSK or
-        WPA_PSK, please use CCMP or TKIP, for AUTO_PSK, please use
-        AUTO_TKIP_CCMP
-      enum:
-        - CCMP
-        - TKIP
-        - AUTO_TKIP_CCMP
-    XiqSsidPskKeyManagement:
-      type: string
-      description: 'The key management: WPA3_PSK, WPA2_PSK, WPA_PSK,AUTO_PSK'
-      enum:
-        - WPA_PSK
-        - WPA2_PSK
-        - WPA3_PSK
-        - AUTO_PSK
-    XiqSsidSaeGroup:
-      type: string
-      description: >-
-        The SAE group: ALL, ECC, or FFC, must be selected when the key
-        management is WPA3
-      enum:
-        - ALL
-        - ECC
-        - FFC
-    XiqSsidPpskKeyManagement:
-      type: string
-      description: 'The key management: WPA2_PSK, WPA_PSK,AUTO_PSK'
-      enum:
-        - WPA_PSK
-        - WPA2_PSK
-        - AUTO_PSK
-    XiqSsidDot1xEncryptionMethod:
-      type: string
-      description: >-
-        The encryption method: for WPA_8021X, WPA2_8021X, please use CCMP or
-        TKIP, for AUTO_8021X, please use AUTO_TKIP_CCMP, for WPA3_8021X, please
-        use AES192
-      example: CCMP
-      enum:
-        - CCMP
-        - TKIP
-        - AUTO_TKIP_CCMP
-        - AES192
-    XiqSsidDot1xKeyManagement:
-      type: string
-      description: 'The key management: WPA_8021X, WPA2_8021X, WPA3_8021X or AUTO_8021X'
-      example: WPA3_8021X
-      enum:
-        - WPA_8021X
-        - WPA2_8021X
-        - WPA3_8021X
-        - AUTO_8021X
-    XiqSetSsidModeWepRequest:
-      required:
-        - encryption_method
-        - key_management
-      type: object
-      properties:
-        key_management:
-          $ref: '#/components/schemas/XiqSsidWepKeyManagement'
-        encryption_method:
-          $ref: '#/components/schemas/XiqSsidWepEncryptionMethod'
-        authentication_method:
-          $ref: '#/components/schemas/XiqSsidWepAuthenticationMethod'
-        default_key:
-          $ref: '#/components/schemas/XiqSsidWepDefaultKey'
-        key_type:
-          $ref: '#/components/schemas/XiqSsidKeyType'
-        key_value:
-          maxLength: 13
-          minLength: 5
-          type: string
-          description: >-
-            The first key value, must be 13 characters long for WEP104, and 5
-            characters long for WEP40, cannot be null if it is the default key
-          example: abcd123456789
-        key_value2:
-          maxLength: 13
-          minLength: 5
-          type: string
-          description: >-
-            The second key value, must be 13 characters long for WEP104, and 5
-            characters long for WEP40, cannot be null if it is the default key
-        key_value3:
-          maxLength: 13
-          minLength: 5
-          type: string
-          description: >-
-            The third key value, must be 13 characters long for WEP104, and 5
-            characters long for WEP40, cannot be null if it is the default key
-        key_value4:
-          maxLength: 13
-          minLength: 5
-          type: string
-          description: >-
-            The fourth key value, must be 13 characters long for WEP104, and 5
-            characters long for WEP40, cannot be null if it is the default key
-        radius_server_group_id:
-          type: integer
-          description: The RADIUS server group ID if using WEP_8021x as the key management
-          format: int64
-      description: The request for setting the SSID to be WEP mode.
-    XiqSetSsidModePpskRequest:
-      required:
-        - enable_mac_bind
-        - enable_max_clients_per_ppsk
-        - encryption_method
-        - key_management
-        - user_group_ids
-      type: object
-      properties:
-        key_management:
-          $ref: '#/components/schemas/XiqSsidPpskKeyManagement'
-        encryption_method:
-          $ref: '#/components/schemas/XiqSsidPskEncryptionMethod'
-        user_group_ids:
-          type: array
-          description: 'The user group IDs to be attached to the SSID, cannot be empty'
-          items:
-            type: integer
-            description: 'The user group IDs to be attached to the SSID, cannot be empty'
-            format: int64
-        enable_max_clients_per_ppsk:
-          type: boolean
-          description: Flag for enabling the max clients per PPSK
-        max_clients_per_ppsk:
-          maximum: 15
-          minimum: 0
-          type: integer
-          description: >-
-            The max clients (0-15) per PPSK if enabled
-            enable_max_clients_per_ppsk flag, 0 means unlimited
-          format: int32
-        enable_mac_bind:
-          type: boolean
-          description: >-
-            Flag for enabling mac binding or not. This setting is only supported
-            with local PPSK.
-        max_macs_per_ppsk:
-          maximum: 5
-          minimum: 1
-          type: integer
-          description: 'Set the max MAC binding numbers per private PSK, Min:1, Max:5'
-          format: int32
-        ppsk_server_id:
-          type: integer
-          description: The PPSK server device ID
-          format: int64
-      description: The request for setting the SSID to be PPSK mode.
-    XiqSetSsidModeDot1xRequest:
-      required:
-        - enable_idm
-        - encryption_method
-        - key_management
-      type: object
-      properties:
-        key_management:
-          $ref: '#/components/schemas/XiqSsidDot1xKeyManagement'
-        encryption_method:
-          $ref: '#/components/schemas/XiqSsidDot1xEncryptionMethod'
-        enable_idm:
-          type: boolean
-          description: Flag for using ExtremeCloud IQ Authentication Service or not
-        transition_mode:
-          type: boolean
-          description: >-
-            Flag for enabling transition mode if using WPA3 as the key
-            management type
-        radius_server_group_id:
-          type: integer
-          description: >-
-            The RADIUS server group ID if not using ExtremeCloud IQ
-            Authentication Service
-          format: int64
-        user_group_ids:
-          type: array
-          description: The user group IDs if using ExtremeCloud IQ Authentication Service
-          items:
-            type: integer
-            description: The user group IDs if using ExtremeCloud IQ Authentication Service
-            format: int64
-      description: The request for setting the SSID to be 802.1x mode.
-    XiqSetSsidModePskRequest:
-      required:
-        - encryption_method
-        - key_management
-        - key_type
-        - key_value
-      type: object
-      properties:
-        key_management:
-          $ref: '#/components/schemas/XiqSsidPskKeyManagement'
-        encryption_method:
-          $ref: '#/components/schemas/XiqSsidPskEncryptionMethod'
-        anti_logging_threshold:
-          type: integer
-          description: The anti logging threshold
-          format: int32
-        key_type:
-          $ref: '#/components/schemas/XiqSsidKeyType'
-        key_value:
-          maxLength: 2147483647
-          minLength: 8
-          type: string
-          description: 'The PSK key value, minimum 8 characters long'
-        sae_group:
-          $ref: '#/components/schemas/XiqSsidSaeGroup'
-        transition_mode:
-          type: boolean
-          description: Indicates the transition mode if key management is WPA3
-      description: The request for setting the SSID to be PSK mode.
+        - B_G
+        - G_N
+        - A
+        - A_N
+        - AC
+        - AX_2_4_GHZ
+        - AX_5_GHZ
+        - AX_6_GHZ
     XiqRadioProfile:
       required:
         - create_time
@@ -12043,67 +11822,6 @@ components:
           description: >-
             Whether to enable Orthogonal Frequency Division Multiple Access
             (802.11ax) for multiple-user access by subdividing a channel.
-    XiqUpdateRadioProfileRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The radio profile name
-        description:
-          type: string
-          description: The radio profile description.
-        transmission_power:
-          maximum: 20
-          minimum: 1
-          type: integer
-          description: >-
-            The transmission power floor in the range of 1-20 dBm or null for
-            Auto.
-          format: int32
-        max_transmit_power:
-          maximum: 20
-          minimum: 10
-          type: integer
-          description: The maximum transmit power in the range of 10-20 dBm.
-          format: int32
-        transmission_power_floor:
-          maximum: 20
-          minimum: 2
-          type: integer
-          description: The transmission power floor in the range of 2-20 dBm.
-          format: int32
-        transmission_power_max_drop:
-          maximum: 18
-          minimum: 0
-          type: integer
-          description: The transmission power max drop in the range of 0-18 dB.
-          format: int32
-        max_clients:
-          maximum: 255
-          minimum: 1
-          type: integer
-          description: The maximum number of clients in the range of 1-255.
-          format: int32
-        enable_client_transmission_power:
-          type: boolean
-          description: >-
-            Whether or not client transmission power control (802.11h) is
-            enabled.
-        client_transmission_power:
-          maximum: 20
-          minimum: 1
-          type: integer
-          description: >-
-            The client transmission power (in the range of 1-20 dBm) if it is
-            enabled.
-          format: int32
-        radio_mode:
-          $ref: '#/components/schemas/XiqRadioMode'
-        enable_ofdma:
-          type: boolean
-          description: >-
-            Whether to enable Orthogonal Frequency Division Multiple Access
-            (802.11ax) for multiple-user access by subdividing a channel.
     XiqRpMacOuiProfile:
       required:
         - create_time
@@ -12195,24 +11913,67 @@ components:
         defender_defined:
           type: boolean
           description: Whether defender is defined
-    XiqUpdateRpMacOuiProfileRequest:
+    XiqUpdateRadioProfileRequest:
       type: object
       properties:
         name:
           type: string
-          description: The product name
-        value:
-          type: string
-          description: The product MAC or OUI
+          description: The radio profile name
         description:
           type: string
-          description: The product description
-        mac_type:
-          type: string
-          description: 'The json type, eg, "mac-oui-profile"  or "MAC_OUI"'
-        defender_defined:
+          description: The radio profile description.
+        transmission_power:
+          maximum: 20
+          minimum: 1
+          type: integer
+          description: >-
+            The transmission power floor in the range of 1-20 dBm or null for
+            Auto.
+          format: int32
+        max_transmit_power:
+          maximum: 20
+          minimum: 10
+          type: integer
+          description: The maximum transmit power in the range of 10-20 dBm.
+          format: int32
+        transmission_power_floor:
+          maximum: 20
+          minimum: 2
+          type: integer
+          description: The transmission power floor in the range of 2-20 dBm.
+          format: int32
+        transmission_power_max_drop:
+          maximum: 18
+          minimum: 0
+          type: integer
+          description: The transmission power max drop in the range of 0-18 dB.
+          format: int32
+        max_clients:
+          maximum: 255
+          minimum: 1
+          type: integer
+          description: The maximum number of clients in the range of 1-255.
+          format: int32
+        enable_client_transmission_power:
           type: boolean
-          description: Whether defender is defined
+          description: >-
+            Whether or not client transmission power control (802.11h) is
+            enabled.
+        client_transmission_power:
+          maximum: 20
+          minimum: 1
+          type: integer
+          description: >-
+            The client transmission power (in the range of 1-20 dBm) if it is
+            enabled.
+          format: int32
+        radio_mode:
+          $ref: '#/components/schemas/XiqRadioMode'
+        enable_ofdma:
+          type: boolean
+          description: >-
+            Whether to enable Orthogonal Frequency Division Multiple Access
+            (802.11ax) for multiple-user access by subdividing a channel.
     XiqRpWmmQosSettings:
       required:
         - create_time
@@ -12876,6 +12637,24 @@ components:
           type: integer
           description: The Outdoor Deployment for signal distance from 300 to 10000 meters
           format: int32
+    XiqUpdateRpMacOuiProfileRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The product name
+        value:
+          type: string
+          description: The product MAC or OUI
+        description:
+          type: string
+          description: The product description
+        mac_type:
+          type: string
+          description: 'The json type, eg, "mac-oui-profile"  or "MAC_OUI"'
+        defender_defined:
+          type: boolean
+          description: Whether defender is defined
     XiqRpChannelSelection:
       required:
         - create_time
@@ -13085,35 +12864,6 @@ components:
           type: integer
           description: The CRC error threshold for channel switching.
           format: int32
-    XiqSsidWepAuthenticationMethod:
-      type: string
-      description: 'The authentication method type, OPEN or SHARED'
-      enum:
-        - OPEN
-        - SHARED
-    XiqSsidWepDefaultKey:
-      type: string
-      description: 'The default key, FIRST, SECOND,THIRD, OR FOURTH'
-      example: FIRST
-      enum:
-        - FIRST
-        - SECOND
-        - THIRD
-        - FOURTH
-    XiqSsidWepEncryptionMethod:
-      type: string
-      description: 'The encryption method type, WEP104 or WEP40'
-      example: WEP104
-      enum:
-        - WEP40
-        - WEP104
-    XiqSsidWepKeyManagement:
-      type: string
-      description: 'The key management type, WEP or WEP_8021X'
-      example: WEP_8021X
-      enum:
-        - WEP
-        - WEP_8021X
     XiqSsid:
       required:
         - broadcast_name
@@ -13182,6 +12932,256 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqSsid'
+    XiqSsidWepKeyManagement:
+      type: string
+      description: 'The key management type, WEP or WEP_8021X'
+      example: WEP_8021X
+      enum:
+        - WEP
+        - WEP_8021X
+    XiqSsidWepEncryptionMethod:
+      type: string
+      description: 'The encryption method type, WEP104 or WEP40'
+      example: WEP104
+      enum:
+        - WEP40
+        - WEP104
+    XiqSsidWepAuthenticationMethod:
+      type: string
+      description: 'The authentication method type, OPEN or SHARED'
+      enum:
+        - OPEN
+        - SHARED
+    XiqSsidWepDefaultKey:
+      type: string
+      description: 'The default key, FIRST, SECOND,THIRD, OR FOURTH'
+      example: FIRST
+      enum:
+        - FIRST
+        - SECOND
+        - THIRD
+        - FOURTH
+    XiqSsidKeyType:
+      type: string
+      description: 'The key type, ASCII or HEX'
+      example: ASCII
+      enum:
+        - ASCII
+        - HEX
+    XiqSetSsidModeWepRequest:
+      required:
+        - encryption_method
+        - key_management
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidWepKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidWepEncryptionMethod'
+        authentication_method:
+          $ref: '#/components/schemas/XiqSsidWepAuthenticationMethod'
+        default_key:
+          $ref: '#/components/schemas/XiqSsidWepDefaultKey'
+        key_type:
+          $ref: '#/components/schemas/XiqSsidKeyType'
+        key_value:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: >-
+            The first key value, must be 13 characters long for WEP104, and 5
+            characters long for WEP40, cannot be null if it is the default key
+          example: abcd123456789
+        key_value2:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: >-
+            The second key value, must be 13 characters long for WEP104, and 5
+            characters long for WEP40, cannot be null if it is the default key
+        key_value3:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: >-
+            The third key value, must be 13 characters long for WEP104, and 5
+            characters long for WEP40, cannot be null if it is the default key
+        key_value4:
+          maxLength: 13
+          minLength: 5
+          type: string
+          description: >-
+            The fourth key value, must be 13 characters long for WEP104, and 5
+            characters long for WEP40, cannot be null if it is the default key
+        radius_server_group_id:
+          type: integer
+          description: The RADIUS server group ID if using WEP_8021x as the key management
+          format: int64
+      description: The request for setting the SSID to be WEP mode.
+    XiqSsidPskKeyManagement:
+      type: string
+      description: 'The key management: WPA3_PSK, WPA2_PSK, WPA_PSK,AUTO_PSK'
+      enum:
+        - WPA_PSK
+        - WPA2_PSK
+        - WPA3_PSK
+        - AUTO_PSK
+    XiqSsidPskEncryptionMethod:
+      type: string
+      description: >-
+        The encryption method: for WPA3_PSK please use CCMP, for WPA2_PSK or
+        WPA_PSK, please use CCMP or TKIP, for AUTO_PSK, please use
+        AUTO_TKIP_CCMP
+      enum:
+        - CCMP
+        - TKIP
+        - AUTO_TKIP_CCMP
+    XiqSsidSaeGroup:
+      type: string
+      description: >-
+        The SAE group: ALL, ECC, or FFC, must be selected when the key
+        management is WPA3
+      enum:
+        - ALL
+        - ECC
+        - FFC
+    XiqSetSsidModePskRequest:
+      required:
+        - encryption_method
+        - key_management
+        - key_type
+        - key_value
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidPskKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidPskEncryptionMethod'
+        anti_logging_threshold:
+          type: integer
+          description: The anti logging threshold
+          format: int32
+        key_type:
+          $ref: '#/components/schemas/XiqSsidKeyType'
+        key_value:
+          maxLength: 2147483647
+          minLength: 8
+          type: string
+          description: 'The PSK key value, minimum 8 characters long'
+        sae_group:
+          $ref: '#/components/schemas/XiqSsidSaeGroup'
+        transition_mode:
+          type: boolean
+          description: Indicates the transition mode if key management is WPA3
+      description: The request for setting the SSID to be PSK mode.
+    XiqSsidPpskKeyManagement:
+      type: string
+      description: 'The key management: WPA2_PSK, WPA_PSK,AUTO_PSK'
+      enum:
+        - WPA_PSK
+        - WPA2_PSK
+        - AUTO_PSK
+    XiqSetSsidModePpskRequest:
+      required:
+        - enable_mac_bind
+        - enable_max_clients_per_ppsk
+        - encryption_method
+        - key_management
+        - user_group_ids
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidPpskKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidPskEncryptionMethod'
+        user_group_ids:
+          type: array
+          description: 'The user group IDs to be attached to the SSID, cannot be empty'
+          items:
+            type: integer
+            description: 'The user group IDs to be attached to the SSID, cannot be empty'
+            format: int64
+        enable_max_clients_per_ppsk:
+          type: boolean
+          description: Flag for enabling the max clients per PPSK
+        max_clients_per_ppsk:
+          maximum: 15
+          minimum: 0
+          type: integer
+          description: >-
+            The max clients (0-15) per PPSK if enabled
+            enable_max_clients_per_ppsk flag, 0 means unlimited
+          format: int32
+        enable_mac_bind:
+          type: boolean
+          description: >-
+            Flag for enabling mac binding or not. This setting is only supported
+            with local PPSK.
+        max_macs_per_ppsk:
+          maximum: 5
+          minimum: 1
+          type: integer
+          description: 'Set the max MAC binding numbers per private PSK, Min:1, Max:5'
+          format: int32
+        ppsk_server_id:
+          type: integer
+          description: The PPSK server device ID
+          format: int64
+      description: The request for setting the SSID to be PPSK mode.
+    XiqSsidDot1xKeyManagement:
+      type: string
+      description: 'The key management: WPA_8021X, WPA2_8021X, WPA3_8021X or AUTO_8021X'
+      example: WPA3_8021X
+      enum:
+        - WPA_8021X
+        - WPA2_8021X
+        - WPA3_8021X
+        - AUTO_8021X
+    XiqSsidDot1xEncryptionMethod:
+      type: string
+      description: >-
+        The encryption method: for WPA_8021X, WPA2_8021X, please use CCMP or
+        TKIP, for AUTO_8021X, please use AUTO_TKIP_CCMP, for WPA3_8021X, please
+        use AES192
+      example: CCMP
+      enum:
+        - CCMP
+        - TKIP
+        - AUTO_TKIP_CCMP
+        - AES192
+    XiqSetSsidModeDot1xRequest:
+      required:
+        - enable_idm
+        - encryption_method
+        - key_management
+      type: object
+      properties:
+        key_management:
+          $ref: '#/components/schemas/XiqSsidDot1xKeyManagement'
+        encryption_method:
+          $ref: '#/components/schemas/XiqSsidDot1xEncryptionMethod'
+        enable_idm:
+          type: boolean
+          description: Flag for using ExtremeCloud IQ Authentication Service or not
+        transition_mode:
+          type: boolean
+          description: >-
+            Flag for enabling transition mode if using WPA3 as the key
+            management type
+        radius_server_group_id:
+          type: integer
+          description: >-
+            The RADIUS server group ID if not using ExtremeCloud IQ
+            Authentication Service
+          format: int64
+        user_group_ids:
+          type: array
+          description: The user group IDs if using ExtremeCloud IQ Authentication Service
+          items:
+            type: integer
+            description: The user group IDs if using ExtremeCloud IQ Authentication Service
+            format: int64
+      description: The request for setting the SSID to be 802.1x mode.
     XiqUserProfile:
       required:
         - create_time
@@ -13651,64 +13651,40 @@ components:
           type: integer
           description: 'The client key ID, refer to XiqCertificate'
           format: int64
-    XiqRadiusClient:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The RADIUS client ID
-          format: int64
-        shared_secret:
-          type: string
-          description: The shared secret of RADIUS client
-        description:
-          type: string
-          description: The RADIUS client description
-        l3_address_profile_id:
-          type: integer
-          description: The associate L3 address profile ID
-          format: int64
-      description: The associate RADIUS client for RADIUS proxy
-    XiqCreateRadiusClient:
-      type: object
-      properties:
-        shared_secret:
-          type: string
-          description: The shared secret of RADIUS client
-        description:
-          type: string
-          description: The RADIUS client description
-        l3_address_profile_id:
-          type: integer
-          description: The associate L3 address profile ID
-          format: int64
-      description: The associate RADIUS client for RADIUS proxy
-    XiqUpdateRadiusClient:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: >-
-            The RADIUS client ID, using an existing ID or leave empty to create
-            a new one
-          format: int64
-        shared_secret:
-          type: string
-          description: The shared secret of RADIUS client
-        description:
-          type: string
-          description: The RADIUS client description
-        l3_address_profile_id:
-          type: integer
-          description: The associate L3 address profile ID
-          format: int64
-      description: The associate RADIUS client for RADIUS proxy
+    XiqInternalRadiusServerAuthenticationMethodGroup:
+      type: string
+      description: The authentication group
+      enum:
+        - TLS_PEAP_TTLS_LEAP_MD5
+        - TLS_PEAP_TTLS_LEAP
+        - TLS_PEAP
+        - TLS_TTLS
+        - TLS
+        - LEAP
+    XiqInternalRadiusServerAuthenticationMethod:
+      type: string
+      description: The default authentication method
+      enum:
+        - TLS
+        - PEAP
+        - TTLS
+        - LEAP
+        - MD5
     XiqExternalUserDirectoryType:
       type: string
       description: The external user directory type
       enum:
         - OPEN_LDAP
         - ACTIVE_DIRECTORY
+    XiqServerRole:
+      type: string
+      description: 'The server role, PRIMARY or BACKUP'
+      example: PRIMARY
+      enum:
+        - PRIMARY
+        - BACKUP1
+        - BACKUP2
+        - BACKUP3
     XiqExternalUserDirectoryEntry:
       required:
         - default_server_id
@@ -13789,25 +13765,24 @@ components:
           items:
             $ref: '#/components/schemas/XiqExternalUserDirectoryEntry'
       description: 'The setting for external user directory, AD or LDAP'
-    XiqInternalRadiusServerAuthenticationMethod:
-      type: string
-      description: The default authentication method
-      enum:
-        - TLS
-        - PEAP
-        - TTLS
-        - LEAP
-        - MD5
-    XiqInternalRadiusServerAuthenticationMethodGroup:
-      type: string
-      description: The authentication group
-      enum:
-        - TLS_PEAP_TTLS_LEAP_MD5
-        - TLS_PEAP_TTLS_LEAP
-        - TLS_PEAP
-        - TLS_TTLS
-        - TLS
-        - LEAP
+    XiqRadiusClient:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The RADIUS client ID
+          format: int64
+        shared_secret:
+          type: string
+          description: The shared secret of RADIUS client
+        description:
+          type: string
+          description: The RADIUS client description
+        l3_address_profile_id:
+          type: integer
+          description: The associate L3 address profile ID
+          format: int64
+      description: The associate RADIUS client for RADIUS proxy
     XiqInternalRadiusServer:
       required:
         - authentication_method_group
@@ -14190,15 +14165,72 @@ components:
             endpoint: '/radius-proxy'
           items:
             $ref: '#/components/schemas/XiqRadiusClient'
-    XiqServerRole:
-      type: string
-      description: 'The server role, PRIMARY or BACKUP'
-      example: PRIMARY
-      enum:
-        - PRIMARY
-        - BACKUP1
-        - BACKUP2
-        - BACKUP3
+    XiqInternalRadiusDevice:
+      required:
+        - create_time
+        - host_name
+        - id
+        - radius_server_id
+        - radius_server_name
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        radius_server_id:
+          type: integer
+          description: The RADIUS server id
+          format: int64
+        radius_server_name:
+          type: string
+          description: The RADIUS server name
+        host_name:
+          type: string
+          description: The RADIUS server device hostname
+      description: The configuration of internal RADIUS device object
+    PagedXiqInternalRadiusDevice:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqInternalRadiusDevice'
     XiqRadiusServerType:
       type: string
       description: >-
@@ -14368,6 +14400,14 @@ components:
         ip_addr:
           type: string
           description: The IP address or hostname of the RADIUS server
+    XiqRadiusProxyFormatType:
+      type: string
+      description: The format type of RADIUS proxy
+      enum:
+        - NAI
+        - NT
+        - SPN
+        - AUTO
     XiqRadiusProxyRealm:
       type: object
       properties:
@@ -14386,48 +14426,6 @@ components:
           description: The associate RADIUS client object ID
           format: int64
       description: The associate RADIUS proxy realm for RADIUS proxy
-    XiqCreateRadiusProxyRealm:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The RADIUS proxy realm name
-        enable_strip_realm_name:
-          type: boolean
-          description: The flag for enable strip realm name
-        radius_client_object_id:
-          type: integer
-          description: The associate RADIUS client object ID
-          format: int64
-      description: The associate RADIUS proxy realm for RADIUS proxy
-    XiqUpdateRadiusProxyRealm:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: >-
-            The RADIUS proxy realm ID, using an existing ID or leave empty to
-            create a new one
-          format: int64
-        name:
-          type: string
-          description: The RADIUS proxy realm name
-        enable_strip_realm_name:
-          type: boolean
-          description: The flag for enable strip realm name
-        radius_client_object_id:
-          type: integer
-          description: The associate RADIUS client object ID
-          format: int64
-      description: The associate RADIUS proxy realm for RADIUS proxy
-    XiqRadiusProxyFormatType:
-      type: string
-      description: The format type of RADIUS proxy
-      enum:
-        - NAI
-        - NT
-        - SPN
-        - AUTO
     XiqRadiusProxy:
       required:
         - create_time
@@ -14514,6 +14512,34 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqRadiusProxy'
+    XiqCreateRadiusClient:
+      type: object
+      properties:
+        shared_secret:
+          type: string
+          description: The shared secret of RADIUS client
+        description:
+          type: string
+          description: The RADIUS client description
+        l3_address_profile_id:
+          type: integer
+          description: The associate L3 address profile ID
+          format: int64
+      description: The associate RADIUS client for RADIUS proxy
+    XiqCreateRadiusProxyRealm:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The RADIUS proxy realm name
+        enable_strip_realm_name:
+          type: boolean
+          description: The flag for enable strip realm name
+        radius_client_object_id:
+          type: integer
+          description: The associate RADIUS client object ID
+          format: int64
+      description: The associate RADIUS proxy realm for RADIUS proxy
     XiqCreateRadiusProxyRequest:
       required:
         - dead_time
@@ -14570,6 +14596,46 @@ components:
             description: The device IDS to assign RADIUS proxy
             format: int64
       description: The payload to create a new RADIUS proxy
+    XiqUpdateRadiusClient:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: >-
+            The RADIUS client ID, using an existing ID or leave empty to create
+            a new one
+          format: int64
+        shared_secret:
+          type: string
+          description: The shared secret of RADIUS client
+        description:
+          type: string
+          description: The RADIUS client description
+        l3_address_profile_id:
+          type: integer
+          description: The associate L3 address profile ID
+          format: int64
+      description: The associate RADIUS client for RADIUS proxy
+    XiqUpdateRadiusProxyRealm:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: >-
+            The RADIUS proxy realm ID, using an existing ID or leave empty to
+            create a new one
+          format: int64
+        name:
+          type: string
+          description: The RADIUS proxy realm name
+        enable_strip_realm_name:
+          type: boolean
+          description: The flag for enable strip realm name
+        radius_client_object_id:
+          type: integer
+          description: The associate RADIUS client object ID
+          format: int64
+      description: The associate RADIUS proxy realm for RADIUS proxy
     XiqUpdateRadiusProxyRequest:
       type: object
       properties:
@@ -14811,72 +14877,6 @@ components:
           type: integer
           description: 'The accounting interim update interval, 60 - 100000000 seconds'
           format: int32
-    XiqInternalRadiusDevice:
-      required:
-        - create_time
-        - host_name
-        - id
-        - radius_server_id
-        - radius_server_name
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: 'The organization identifier, valid when enabling HIQ feature'
-          format: int64
-        radius_server_id:
-          type: integer
-          description: The RADIUS server id
-          format: int64
-        radius_server_name:
-          type: string
-          description: The RADIUS server name
-        host_name:
-          type: string
-          description: The RADIUS server device hostname
-      description: The configuration of internal RADIUS device object
-    PagedXiqInternalRadiusDevice:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqInternalRadiusDevice'
     XiqCertificateType:
       type: string
       enum:
