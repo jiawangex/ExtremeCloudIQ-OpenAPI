@@ -1,7 +1,7 @@
 {
   "name": "extremecloudiq-openapi",
   "version": "1.0.0",
-  "description": "ExtremeCloud IQ OpenAPI design",
+  "description": "ExtremeCloud IQ OpenAPI definitions",
   "author": "Shangquan Wen",
   "license": "Apache 2.0",
   "keywords": [
@@ -19,8 +19,8 @@
   },
   "scripts": {
     "clean": "rm -rf node_modules bundled",
-    "lint": "pnpm redocly lint openapi/*.yaml && pnpm spectral lint openapi/*.yaml",
-    "bundle": "pnpm redocly bundle --output bundled --ext yaml openapi/*.yaml",
+    "lint": "pnpm redocly lint openapi/*/openapi.yaml && pnpm spectral lint openapi/*/openapi.yaml",
+    "bundle": "sh scripts/bundle-openapis",
     "merge": "pnpm openapi-merge-cli --config .openapi-merge.yaml",
     "test": "pnpm lint",
     "build": "pnpm lint && pnpm bundle && pnpm merge",
