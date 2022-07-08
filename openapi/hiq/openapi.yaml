@@ -32,8 +32,4 @@ paths:
     $ref: paths/hiq_organizations_{id}_:rename.yaml
 components:
   securitySchemes:
-    BearerAuth:
-      type: http
-      description: JSON Web Token (JWT) based authentication
-      scheme: bearer
-      bearerFormat: JWT
+    $ref: ../common/components/securitySchemes/index.yaml

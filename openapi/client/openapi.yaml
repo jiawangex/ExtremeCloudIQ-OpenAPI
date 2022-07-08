@@ -30,8 +30,4 @@ paths:
     $ref: paths/clients_{id}.yaml
 components:
   securitySchemes:
-    BearerAuth:
-      type: http
-      description: JSON Web Token (JWT) based authentication
-      scheme: bearer
-      bearerFormat: JWT
+    $ref: ../common/components/securitySchemes/index.yaml

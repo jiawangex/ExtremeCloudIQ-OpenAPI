@@ -48,8 +48,4 @@ paths:
     $ref: paths/pcgs_key-based_network-policy-{policyId}_keys_:email.yaml
 components:
   securitySchemes:
-    BearerAuth:
-      type: http
-      description: JSON Web Token (JWT) based authentication
-      scheme: bearer
-      bearerFormat: JWT
+    $ref: ../common/components/securitySchemes/index.yaml
