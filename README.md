@@ -13,9 +13,25 @@ Our API follows [OpenAPI 3.0.x specification](https://spec.openapis.org/oas/late
 
 Please check the details at [ExtremeCloud IQ API guidelines](api-guideline.md).
 
-# Get Started
+# Prerequisite
 
-## Install `pnpm`
+## Install Node.js
+> You can SKIP this step if you have already installed `Node.js` before.
+
+Please check [official site](https://nodejs.org/en/) to install `Node.js` on your local machine.
+
+* Install `Node.js` via CLI:
+If you are Mac user and have `homebrew` installed, it's very simple to install it:
+```bash
+brew install node
+```
+
+* Verify `Node.js` installation:
+```bash
+node --version
+```
+
+## Install pnpm
 > You can SKIP this step if you have already installed `pnpm` before.
 
 We are using `pnpm` as the dependency management tool in our project, please make sure 
@@ -31,13 +47,15 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm --version
 ```
 
-## Install package dependencies via `pnpm`
+## Install package dependencies via pnpm
 > You can SKIP this step if you have run it before.
 
 We rely on some external tools to lint, build and preview our OpenAPI, please make sure install all of them before proceeding.
 ```bash
 pnpm install
 ```
+
+# Get Started
 
 ## Edit OpenAPI
 All OpenAPI definitions are under [openapi](openapi) directory and the common components definitions are under 
