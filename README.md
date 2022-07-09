@@ -13,9 +13,25 @@ Our API follows [OpenAPI 3.0.x specification](https://spec.openapis.org/oas/late
 
 Please check the details at [ExtremeCloud IQ API guidelines](api-guideline.md).
 
-# Get Started
+# Prerequisite
 
-## Install `pnpm`
+## Install Node.js
+> You can SKIP this step if you have already installed `Node.js` before.
+
+Please check [official site](https://nodejs.org/en/) to install `Node.js` on your local machine.
+
+* Install `Node.js` via CLI:
+If you are Mac user and have `homebrew` installed, it's very simple to install it:
+```bash
+brew install node
+```
+
+* Verify `Node.js` installation:
+```bash
+node --version
+```
+
+## Install pnpm
 > You can SKIP this step if you have already installed `pnpm` before.
 
 We are using `pnpm` as the dependency management tool in our project, please make sure 
@@ -31,7 +47,7 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm --version
 ```
 
-## Install package dependencies via `pnpm`
+## Install package dependencies via pnpm
 > You can SKIP this step if you have run it before.
 
 We rely on some external tools to lint, build and preview our OpenAPI, please make sure install all of them before proceeding.
@@ -39,9 +55,19 @@ We rely on some external tools to lint, build and preview our OpenAPI, please ma
 pnpm install
 ```
 
-## Edit OpenAPI
-All OpenAPI definitions are under [openapi](openapi) directory and the common components definitions are under 
-[openapi/common](openapi/common) directory.
+# Get Started
+
+## Define OpenAPI
+There are a lot of APIs for different domains in ExtremeCloud IQ.
+To improve maintainability, we adopt multiple-file approach to define all OpenAPIs.
+
+* All OpenAPI definitions are under [openapi](openapi) directory.
+* The common components definitions are under [openapi/common](openapi/common) directory.
+* The different domain's OpenAPIs are under `openapi/{domain-name}` directory.
+* Each domain directory has below structure: 
+  * `openapi.yaml` define the domain OpenAPI.
+  * `paths` directory contains all paths for the domain OpenAPI.
+  * `components` directory contains `schemas`, `parameters`, `examples` directories.
 
 You are freely to choose any text editor tools to add or change OpenAPI definitions, but choosing the right tools can 
 significantly improve your productivity.

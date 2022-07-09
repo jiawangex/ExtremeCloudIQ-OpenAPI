@@ -1,0 +1,65 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get neighborhood analysis settings
+  description: Get the neighborhood analysis settings belonging to a radio profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_get_radio_profile_neighborhood_analysis_by_id
+  operationId: getNeighborhoodAnalysis
+  parameters:
+    - name: id
+      in: path
+      description: The neighborhood analysis settings ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpNeighborhoodAnalysis.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update neighborhood analysis settings
+  description: Update the neighborhood analysis settings belonging to a radio profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_update_radio_profile_neighborhood_analysis_by_id
+  operationId: updateNeighborhoodAnalysis
+  parameters:
+    - name: id
+      in: path
+      description: The neighborhood analysis settings ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of the update neighborhood analysis settings request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateRpNeighborhoodAnalysisRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpNeighborhoodAnalysis.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

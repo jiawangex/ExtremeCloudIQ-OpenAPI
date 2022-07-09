@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Device
+  summary: Reboot devices
+  description: Reboot the target devices.
+  operationId: rebootDevices
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceFilter.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

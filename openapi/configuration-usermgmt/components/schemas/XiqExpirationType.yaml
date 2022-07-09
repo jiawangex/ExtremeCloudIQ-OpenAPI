@@ -1,0 +1,7 @@
+type: string
+description: The for one of the account experation types.
+enum:
+  - NEVER_EXPIRE
+  - VALID_DURING_DATES
+  - VALID_FOR_TIME_PERIOD
+  - DAILY

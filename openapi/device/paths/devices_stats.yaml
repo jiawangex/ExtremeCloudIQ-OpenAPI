@@ -1,0 +1,31 @@
+get:
+  tags:
+    - Device
+  summary: Get device stats
+  description: >-
+    Get device stats, such as total device count, managed device count,
+    connected device count, etc.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_list_device_status_summary
+  operationId: getDeviceStats
+  parameters:
+    - name: locationId
+      in: query
+      description: The location ID
+      required: false
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqDeviceStats.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

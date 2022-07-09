@@ -1,0 +1,6 @@
+url: '{base_url}'
+description: ExtremeCloud IQ REST API Server
+variables:
+  base_url:
+    description: ExtremeCloud IQ Production
+    default: https://api.extremecloudiq.com

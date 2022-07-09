@@ -1,0 +1,28 @@
+post:
+  tags:
+    - Configuration - Deployment
+  summary: Push configuration and upgrade firmware
+  description: Push configuration and upgrade firmware to the target devices.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_push_configuration_and_upgrade_firmware_to_devices
+  operationId: deployConfig
+  requestBody:
+    description: The device deploy configuration
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeploymentRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqDeploymentResponse.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,7 @@
+type: string
+description: Account type
+enum:
+  - INTERNAL
+  - CUSTOMER
+  - HIQ
+  - PARTNER

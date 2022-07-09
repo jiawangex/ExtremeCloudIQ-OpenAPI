@@ -1,0 +1,24 @@
+required:
+  - daily_end_hour
+  - daily_end_minute
+  - daily_start_hour
+  - daily_start_minute
+type: object
+properties:
+  daily_start_hour:
+    type: integer
+    description: The 24-hour format start hour of the day
+    format: int32
+  daily_start_minute:
+    type: integer
+    description: The minute of the hour
+    format: int32
+  daily_end_hour:
+    type: integer
+    description: The 24-hour format end hour of day the end
+    format: int32
+  daily_end_minute:
+    type: integer
+    description: The minute of the hour
+    format: int32
+description: The settings for Valid Daily option or null for other settings.

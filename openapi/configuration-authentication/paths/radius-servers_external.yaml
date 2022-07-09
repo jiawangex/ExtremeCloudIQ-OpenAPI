@@ -1,0 +1,69 @@
+get:
+  tags:
+    - Configuration - Authentication
+  summary: List external RADIUS servers
+  description: List a page of external RADIUS server configurations.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_servers
+  operationId: listExternalRadiusServers
+  parameters:
+    - name: page
+      in: query
+      description: Page number, min = 1
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        default: 1
+    - name: limit
+      in: query
+      description: Page Size, min = 1, max = 100
+      required: false
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+        default: 10
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PagedXiqExternalRadiusServer.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - Configuration - Authentication
+  summary: Create external RADIUS server configuration
+  description: Create a new external RADIUS server configuration.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_create_external_radius_server_configuration
+  operationId: createExternalRadiusServer
+  requestBody:
+    description: Use the payload configuration to create a new external RADIUS server
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqCreateExternalRadiusServerRequest.yaml
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqExternalRadiusServer.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

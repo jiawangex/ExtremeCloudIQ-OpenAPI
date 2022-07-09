@@ -1,0 +1,74 @@
+get:
+  tags:
+    - Device
+  summary: Get network policy for a device
+  description: Get the network policy for a specific device.
+  operationId: getDeviceNetworkPolicy
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../../network-policy/components/schemas/XiqNetworkPolicy.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Device
+  summary: Assign network policy to a device
+  description: Assign a network policy to a specific device.
+  operationId: assignDeviceNetworkPolicy
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: networkPolicyId
+      in: query
+      description: The network policy ID to assign
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Device
+  summary: Revoke network policy for a device
+  description: Revoke the assigned network policy for a specific device.
+  operationId: revokeDeviceNetworkPolicy
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

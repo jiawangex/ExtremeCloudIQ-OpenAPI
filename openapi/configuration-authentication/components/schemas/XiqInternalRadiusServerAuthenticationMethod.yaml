@@ -1,0 +1,8 @@
+type: string
+description: The default authentication method
+enum:
+  - TLS
+  - PEAP
+  - TTLS
+  - LEAP
+  - MD5

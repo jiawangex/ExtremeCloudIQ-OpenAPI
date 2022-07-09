@@ -1,0 +1,15 @@
+type: object
+properties:
+  expiration_type:
+    $ref: ./XiqExpirationType.yaml
+  valid_during_dates:
+    $ref: ./XiqValidDuringDateSettings.yaml
+  valid_for_time_period:
+    $ref: ./XiqValidForTimePeriodSettings.yaml
+  valid_daily:
+    $ref: ./XiqValidDailySettings.yaml
+  expiration_action:
+    $ref: ./XiqExpirationActionType.yaml
+  post_expiration_action:
+    $ref: ./XiqPostExpirationAction.yaml
+description: The password expiration settings

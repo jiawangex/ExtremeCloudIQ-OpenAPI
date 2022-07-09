@@ -1,0 +1,15 @@
+type: object
+properties:
+  enable_credentials_renewal:
+    type: boolean
+    description: The renew user credentials option or null for other option.
+  enable_delete_immediately:
+    type: boolean
+    description: The immediate delete option or null to schedule the delete.
+  delete_after_value:
+    type: integer
+    description: The after expiration scheduled time to delete or null to not delete..
+    format: int32
+  delete_after_unit:
+    $ref: ./XiqDateTimeUnitType.yaml
+description: The type of action to take after the account expiration.

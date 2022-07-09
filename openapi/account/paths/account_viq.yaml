@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Account
+  summary: Get VIQ Info
+  description: Get account VIQ and license info.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_viq_info
+  operationId: getViqInfo
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqViq.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

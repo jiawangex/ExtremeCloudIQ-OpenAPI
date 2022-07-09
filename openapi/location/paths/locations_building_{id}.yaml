@@ -1,0 +1,66 @@
+put:
+  tags:
+    - Location
+  summary: Update building
+  description: Update the building information with the building ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_update_building
+  operationId: updateBuilding
+  parameters:
+    - name: id
+      in: path
+      description: The building ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update building request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateBuildingRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqBuilding.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Location
+  summary: Delete building by ID
+  description: Delete the building for the specified ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_building
+  operationId: deleteBuilding
+  parameters:
+    - name: id
+      in: path
+      description: The building ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: force_delete
+      in: query
+      description: Force deletion of this building and its descendants recursively
+      required: false
+      schema:
+        type: boolean
+        default: false
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

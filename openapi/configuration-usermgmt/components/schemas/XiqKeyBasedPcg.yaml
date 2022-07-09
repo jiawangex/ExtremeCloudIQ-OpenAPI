@@ -1,0 +1,45 @@
+required:
+  - create_time
+  - enabled
+  - id
+  - policy_id
+  - policy_name
+  - ssid_name
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  policy_id:
+    type: integer
+    description: The network policy ID
+    format: int64
+  policy_name:
+    type: string
+    description: The network policy name
+  ssid_name:
+    type: string
+    description: The SSID name
+  enabled:
+    type: boolean
+    description: Enabled Key Based PCG
+  users:
+    type: array
+    description: The XIQ key based PCG users
+    items:
+      $ref: ./XiqKeyBasedPcgUser.yaml
+description: The response of key based PCG data

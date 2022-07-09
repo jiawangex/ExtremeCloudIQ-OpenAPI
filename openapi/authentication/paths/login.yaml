@@ -1,0 +1,47 @@
+post:
+  tags:
+    - Authentication
+  summary: User login with username and password
+  description: >-
+    Get access token via username and password authentication.
+
+    The client must present Bearer token to access the protected API
+    endpoints.The Bearer token should be present in the "Authorization" request
+    header field and use the "Bearer" HTTP authentication scheme to transmit the
+    access token.
+  operationId: login
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_login
+  requestBody:
+    description: Login request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqLoginRequest.yaml
+        examples:
+          Normal login:
+            summary: Login with username and password
+            description: User login with username/email and password
+            value:
+              username: username@company.com
+              password: ChangeMe
+    required: true
+  responses:
+    '200':
+      description: Successfully login
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqLoginResponse.yaml
+          examples:
+            200 example:
+              summary: Login successful
+              description: Login successful response example.
+              value:
+                access_token: >-
+                  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBjdXN0MDAxLmNvbSIsInVzZXJfaWQiOjEsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwiY3VzdG9tZXJfaWQiOjEsImN1c3RvbWVyX21vZGUiOjAsImhpcV9lbmFibGVkIjpmYWxzZSwib3duZXJfaWQiOjEwMiwib3JnX2lkIjowLCJkYXRhX2NlbnRlciI6IlVTX1dlc3QiLCJxdW90YSI6Ijc1MDA7dz0zNjAwIiwianRpIjoiMTcyZTExMWMwNDMzNDBkODkyYmViYTkyNmZlOTM0NmYiLCJpc3MiOiJleHRyZW1lY2xvdWRpcS5jb20iLCJpYXQiOjE2NDQ4NzcwNDgsImV4cCI6MTY0NDk2MzQ0OH0.kFRSUXLhg9800gSU2BQ4Gf7l_8eEhgpd0D90Ia6w0kw
+                token_type: Bearer
+                expires_in: 86400
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml

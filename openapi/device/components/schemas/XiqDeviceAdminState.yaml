@@ -1,0 +1,7 @@
+type: string
+enum:
+  - NEW
+  - BOOTSTRAP
+  - STAGED
+  - MANAGED
+  - UNMANAGED

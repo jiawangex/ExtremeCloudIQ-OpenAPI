@@ -1,0 +1,33 @@
+required:
+  - id
+type: object
+properties:
+  id:
+    type: integer
+    description: The Email log id
+    format: int64
+  username:
+    type: string
+    description: The username
+  org_id:
+    type: integer
+    description: The org id
+    format: int64
+  timestamp:
+    type: integer
+    description: The email log timestamp
+    format: int64
+  user_id:
+    type: integer
+    description: The user id
+    format: int64
+  customer_id:
+    type: string
+    description: The customer id
+  approver_email:
+    type: string
+    description: The approver Email
+  status:
+    type: string
+    description: The email log status
+description: ExtremeCloud IQ Email Log

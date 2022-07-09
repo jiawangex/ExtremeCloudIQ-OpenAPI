@@ -1,0 +1,89 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get radio profile by ID
+  description: Get radio profile details for the specified ID.
+  externalDocs:
+    description: API Reference
+    url: http://localhost:8081/api-docs/api-reference.html#_get_radio_profile_by_id
+  operationId: getRadioProfile
+  parameters:
+    - name: id
+      in: path
+      description: The radio profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRadioProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update radio profile by ID
+  description: Update the existing radio profile by the profile ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_update_radio_profile_configuration
+  operationId: updateRadioProfile
+  parameters:
+    - name: id
+      in: path
+      description: The radio profile ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of the update radio profile request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateRadioProfileRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRadioProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - Policy
+  summary: Delete radio profile by ID
+  description: Delete the existing radio profile by the profile ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_delete_radio_profile_configuration
+  operationId: deleteRadioProfile
+  parameters:
+    - name: id
+      in: path
+      description: The radio profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,65 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get radio miscellaneous settings
+  description: Get the radio miscellaneous settings belonging to a radio profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_get_radio_miscellaneous_settings_by_id
+  operationId: getRpMiscellaneousSettings
+  parameters:
+    - name: id
+      in: path
+      description: The radio miscellaneous settings ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpMiscellaneousSettings.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update radio miscellaneous settings
+  description: Update the radio miscellaneous settings belonging to a radio profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_update_radio_miscellaneous_settings_by_id
+  operationId: updateRpMiscellaneousSettings
+  parameters:
+    - name: id
+      in: path
+      description: The radio miscellaneous settings ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of the update radio miscellaneous settings request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateRpMiscellaneousSettingsRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpMiscellaneousSettings.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

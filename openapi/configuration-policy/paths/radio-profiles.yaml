@@ -1,0 +1,68 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: List radio profiles
+  description: List a page of radio profiles.
+  externalDocs:
+    description: API Reference
+    url: http://localhost:8081/api-docs/api-reference.html#_list_the_radio_profiles
+  operationId: listRadioProfiles
+  parameters:
+    - name: page
+      in: query
+      description: Page number, min = 1
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        default: 1
+    - name: limit
+      in: query
+      description: Page Size, min = 1, max = 100
+      required: false
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+        default: 10
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PagedXiqRadioProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - Configuration - Policy
+  summary: Create a radio profile
+  description: Create a new radio profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_create_radio_profile_configuration
+  operationId: createRadioProfile
+  requestBody:
+    description: The request body to create new user profile.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqCreateRadioProfileRequest.yaml
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRadioProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

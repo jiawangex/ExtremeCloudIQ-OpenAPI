@@ -1,0 +1,70 @@
+put:
+  tags:
+    - Location
+  summary: Update location
+  description: Update the location information with the specified location ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_update_location
+  operationId: updateLocation
+  parameters:
+    - name: id
+      in: path
+      description: The location ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update location request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateLocationRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqLocation.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Location
+  summary: Delete location by ID
+  description: Delete the location for the specified ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_location
+  operationId: deleteLocation
+  parameters:
+    - name: id
+      in: path
+      description: The location ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: force_delete
+      in: query
+      description: Force deletion of this location and its descendants recursively
+      required: false
+      schema:
+        type: boolean
+        default: false
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: string
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

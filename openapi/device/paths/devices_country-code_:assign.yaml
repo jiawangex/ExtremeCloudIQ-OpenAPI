@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Device
+  summary: Assign a country code to devices
+  description: Assign the country code to one or more devices.
+  operationId: assignDevicesCountryCode
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqAssignDevicesCountryCodeRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,49 @@
+get:
+  tags:
+    - Configuration - User Management
+  summary: List Key-based Private Client Groups
+  description: List all Key-based Private Client Groups.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_list_all_key_based_pcg_entries
+  operationId: listKeyBasedPrivateClientGroups
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/XiqKeyBasedPcg.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - Configuration - User Management
+  summary: Setup a Key-based Private Client Group
+  description: >-
+    Setup a Key-based Private Client Group, including network policy, user, user
+    group, SSID, etc.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_initiate_key_based_pcg
+  operationId: setupKeyBasedPrivateClientGroupNetworkPolicy
+  requestBody:
+    description: The request to setup Key-based PCG network policy
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqInitKeyBasedPcgNetworkPolicyRequest.yaml
+    required: true
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

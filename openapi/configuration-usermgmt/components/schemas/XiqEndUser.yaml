@@ -1,0 +1,68 @@
+required:
+  - create_time
+  - email_address
+  - expired_time
+  - id
+  - name
+  - phone_number
+  - update_time
+  - user_group_id
+  - user_name
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The user common name
+  description:
+    type: string
+    description: The user description
+  email_address:
+    type: string
+    description: The user email address
+  phone_number:
+    type: string
+    description: The user phone number
+  password:
+    type: string
+    description: The user password
+  user_name:
+    type: string
+    description: >-
+      The user identifiable name or the same one from common name, emailAddress
+      or phoneNumber
+  organization:
+    type: string
+    description: The organization name
+  visit_purpose:
+    type: string
+    description: The purpose of visit
+  email_password_delivery:
+    type: string
+    description: The email address for password delivery
+  sms_password_delivery:
+    type: string
+    description: The sms number for password delivery
+  user_group_id:
+    type: integer
+    description: The user group ID
+    format: int64
+  expired_time:
+    type: integer
+    description: The password expired time
+    format: int64

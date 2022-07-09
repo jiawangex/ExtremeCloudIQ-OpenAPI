@@ -1,0 +1,41 @@
+required:
+  - id
+type: object
+properties:
+  id:
+    type: integer
+    description: The SMS log id
+    format: int64
+  user_id:
+    type: integer
+    description: The user id
+    format: int64
+  customer_id:
+    type: string
+    description: The customer id
+  tel:
+    type: string
+    description: The phone number
+  profile_name:
+    type: string
+    description: The profile name
+  status:
+    $ref: ./XiqSmsLogStatus.yaml
+  message_id:
+    type: string
+    description: The message id from 3rd provider
+  status_from_provider:
+    type: string
+    description: The status from provider
+  provider_type:
+    type: string
+    description: The provider type
+  org_id:
+    type: integer
+    description: The org id
+    format: int64
+  timestamp:
+    type: integer
+    description: The audit log timestamp
+    format: int64
+description: ExtremeCloud IQ SMS Log

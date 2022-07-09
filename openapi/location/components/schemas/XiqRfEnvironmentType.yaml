@@ -1,0 +1,10 @@
+type: string
+description: The floor RF environment
+enum:
+  - AUTO_ESTIMATE
+  - OFFICE
+  - OUTDOOR_FREE_SPACE
+  - OBSTRUCTED_IN_BUILDING
+  - OUTDOOR_SUBURBAN
+  - WAREHOUSE
+  - OUTDOOR_DENSE_URBAN

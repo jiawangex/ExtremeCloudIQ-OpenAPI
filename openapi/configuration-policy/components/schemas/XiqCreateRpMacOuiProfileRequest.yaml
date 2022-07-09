@@ -1,0 +1,20 @@
+required:
+  - name
+  - value
+type: object
+properties:
+  name:
+    type: string
+    description: The product name
+  value:
+    type: string
+    description: The product MAC or OUI
+  description:
+    type: string
+    description: The product description
+  mac_type:
+    type: string
+    description: The json type, eg, "mac-oui-profile"  or "MAC_OUI"
+  defender_defined:
+    type: boolean
+    description: Whether defender is defined

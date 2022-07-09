@@ -1,0 +1,6 @@
+type: string
+description: The LDAP server verification mode
+enum:
+  - TRY
+  - NEVER
+  - DEMAND

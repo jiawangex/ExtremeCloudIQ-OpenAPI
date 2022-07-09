@@ -1,0 +1,43 @@
+required:
+  - user_group_id
+  - user_name
+type: object
+properties:
+  user_group_id:
+    type: integer
+    description: The user group ID
+    format: int64
+  name:
+    type: string
+    description: The user common name
+  user_name:
+    type: string
+    description: >-
+      The designated username, must match either the user's name, emailAddress,
+      or phoneNumber
+  organization:
+    type: string
+    description: The organization name
+  visit_purpose:
+    type: string
+    description: The purpose of visit
+  description:
+    type: string
+    description: The user description
+  email_address:
+    type: string
+    description: The user email
+  phone_number:
+    type: string
+    description: The user phone number
+  password:
+    type: string
+    description: >-
+      The user password, if null a random password will be generated base on the
+      user group rule
+  email_password_delivery:
+    type: string
+    description: The password delivery Email
+  sms_password_delivery:
+    type: string
+    description: The password delivery SMS

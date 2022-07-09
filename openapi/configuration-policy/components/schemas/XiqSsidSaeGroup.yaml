@@ -1,0 +1,8 @@
+type: string
+description: >-
+  The SAE group: ALL, ECC, or FFC, must be selected when the key management is
+  WPA3
+enum:
+  - ALL
+  - ECC
+  - FFC

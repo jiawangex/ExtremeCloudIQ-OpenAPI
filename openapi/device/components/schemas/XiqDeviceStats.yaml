@@ -1,0 +1,11 @@
+type: object
+properties:
+  total_device_count:
+    type: integer
+    format: int32
+  managed_device_count:
+    type: integer
+    format: int32
+  connected_device_count:
+    type: integer
+    format: int32

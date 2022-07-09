@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Device
+  summary: Change admin state to 'Unmanaged' for a device
+  description: Change device admin state to 'Unmanaged' for a specific device.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
+  operationId: changeDeviceStatusToUnmanage
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

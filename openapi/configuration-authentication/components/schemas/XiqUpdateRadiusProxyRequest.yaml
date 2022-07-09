@@ -1,0 +1,40 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The RADIUS proxy name
+  description:
+    type: string
+    description: The RADIUS proxy description
+  format_type:
+    $ref: ./XiqRadiusProxyFormatType.yaml
+  retry_count:
+    type: integer
+    description: The retry count of RADIUS proxy
+    format: int32
+  retry_delay:
+    type: integer
+    description: The retry delay of RADIUS proxy
+    format: int32
+  dead_time:
+    type: integer
+    description: The dead time of RADIUS proxy
+    format: int32
+  enable_inject_operator_name_attribute:
+    type: boolean
+    description: The flag for enable inject operator name attribute
+  clients:
+    type: array
+    description: The RADIUS clients of RADIUS proxy
+    items:
+      $ref: ./XiqUpdateRadiusClient.yaml
+  realms:
+    maxItems: 2147483647
+    minItems: 2
+    type: array
+    description: >-
+      The RADIUS realms of RADIUS proxy, provide at least two default RADIUS
+      realms with name 'DEFAULT' and 'NULL'
+    items:
+      $ref: ./XiqUpdateRadiusProxyRealm.yaml
+description: The payload to update RADIUS proxy

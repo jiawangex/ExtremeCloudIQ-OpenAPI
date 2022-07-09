@@ -1,0 +1,90 @@
+get:
+  tags:
+    - Configuration - Basic
+  summary: Get a VLAN profile
+  description: Get a specific VLAN profile by ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_vlan_profile_by_id
+  operationId: getVlanProfile
+  parameters:
+    - name: id
+      in: path
+      description: The VLAN profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqVlanProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+patch:
+  tags:
+    - Configuration - Basic
+  summary: Update a VLAN profile
+  description: Update a specific VLAN profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_vlan_profile_configuration
+  operationId: updateVlanProfile
+  parameters:
+    - name: id
+      in: path
+      description: The VLAN profile ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload to update VLAN profile
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateVlanProfileRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqVlanProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - Basic
+  summary: Delete a VLAN profile
+  description: Delete a specific VLAN profile by ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_vlan_profile_configuration
+  operationId: deleteVlanProfile
+  parameters:
+    - name: id
+      in: path
+      description: The VLAN profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

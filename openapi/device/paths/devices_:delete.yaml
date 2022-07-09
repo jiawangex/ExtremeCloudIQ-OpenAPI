@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Device
+  summary: Delete devices
+  description: Bulk delete the devices matching the filter criteria.
+  operationId: deleteDevices
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceFilter.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

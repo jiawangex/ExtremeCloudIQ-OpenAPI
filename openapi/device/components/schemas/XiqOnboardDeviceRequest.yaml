@@ -1,0 +1,13 @@
+type: object
+properties:
+  extreme:
+    $ref: ./XiqExtremeDevices.yaml
+  exos:
+    $ref: ./XiqExosDevices.yaml
+  voss:
+    $ref: ./XiqVossDevices.yaml
+  wing:
+    $ref: ./XiqWingDevices.yaml
+  dell:
+    $ref: ./XiqDellDevices.yaml
+description: The payload to onboard devices

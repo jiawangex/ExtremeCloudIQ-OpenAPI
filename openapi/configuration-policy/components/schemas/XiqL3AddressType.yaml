@@ -1,0 +1,6 @@
+type: string
+description: Address type
+enum:
+  - IP_ADDRESS
+  - IP_SUBNET
+  - IP_RANGE

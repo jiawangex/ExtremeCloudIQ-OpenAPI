@@ -1,0 +1,5 @@
+type: string
+description: The psk generation method
+enum:
+  - PASSWORD_ONLY
+  - USER_STRING_PASSWORD

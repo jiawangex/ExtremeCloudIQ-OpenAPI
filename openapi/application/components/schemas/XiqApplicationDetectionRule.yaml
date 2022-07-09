@@ -1,0 +1,10 @@
+type: object
+properties:
+  value:
+    type: string
+    description: The value of detection rule type
+  protocol:
+    $ref: ./XiqApplicationDetectionProtocol.yaml
+  type:
+    $ref: ./XiqApplicationDetectionType.yaml
+description: The Application Detection Rule

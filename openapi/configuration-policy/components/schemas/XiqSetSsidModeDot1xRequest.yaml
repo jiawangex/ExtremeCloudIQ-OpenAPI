@@ -1,0 +1,30 @@
+required:
+  - enable_idm
+  - encryption_method
+  - key_management
+type: object
+properties:
+  key_management:
+    $ref: ./XiqSsidDot1xKeyManagement.yaml
+  encryption_method:
+    $ref: ./XiqSsidDot1xEncryptionMethod.yaml
+  enable_idm:
+    type: boolean
+    description: Flag for using ExtremeCloud IQ Authentication Service or not
+  transition_mode:
+    type: boolean
+    description: Flag for enabling transition mode if using WPA3 as the key management type
+  radius_server_group_id:
+    type: integer
+    description: >-
+      The RADIUS server group ID if not using ExtremeCloud IQ Authentication
+      Service
+    format: int64
+  user_group_ids:
+    type: array
+    description: The user group IDs if using ExtremeCloud IQ Authentication Service
+    items:
+      type: integer
+      description: The user group IDs if using ExtremeCloud IQ Authentication Service
+      format: int64
+description: The request for setting the SSID to be 802.1x mode.

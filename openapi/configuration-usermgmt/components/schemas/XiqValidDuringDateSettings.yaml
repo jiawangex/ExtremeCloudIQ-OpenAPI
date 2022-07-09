@@ -1,0 +1,14 @@
+required:
+  - end_date_time
+  - start_date_time
+  - time_zone
+type: object
+properties:
+  start_date_time:
+    $ref: ./XiqDateTimeType.yaml
+  end_date_time:
+    $ref: ./XiqDateTimeType.yaml
+  time_zone:
+    type: string
+    description: The date/time timezone
+description: The settings for Valid During Dates option or null for other settings.

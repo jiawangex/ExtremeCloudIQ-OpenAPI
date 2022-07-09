@@ -1,0 +1,7 @@
+type: string
+description: 'The key management: WPA3_PSK, WPA2_PSK, WPA_PSK,AUTO_PSK'
+enum:
+  - WPA_PSK
+  - WPA2_PSK
+  - WPA3_PSK
+  - AUTO_PSK

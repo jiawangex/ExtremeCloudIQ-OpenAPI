@@ -1,0 +1,21 @@
+required:
+  - application
+  - message_type
+  - url
+type: object
+properties:
+  application:
+    type: string
+    description: The external application name.
+    example: example-app
+  url:
+    type: string
+    description: The webhook endpoint URL.
+    example: https://webhook_endpoint-example-123
+  secret:
+    type: string
+    description: The basic auth secret for the webhook endpoint.
+    example: erw3245cq3dasbjtyj
+  message_type:
+    $ref: ./XiqSubscriptionMessageType.yaml
+description: The payload to create webhook subscription

@@ -1,0 +1,5 @@
+type: string
+description: Account mode
+enum:
+  - COPILOT
+  - CONNECT

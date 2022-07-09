@@ -1,0 +1,21 @@
+type: object
+properties:
+  application_id:
+    type: integer
+    description: The application ID
+    format: int64
+  client_id:
+    type: integer
+    description: The TOP N client ID
+    format: int64
+  client_mac_address:
+    type: string
+    description: The MAC address of TOP N client
+  client_host_name:
+    type: string
+    description: The host name of TOP N client
+  usage:
+    type: integer
+    description: The TOP N client usage
+    format: int64
+description: The Top N Clients Usage per Application

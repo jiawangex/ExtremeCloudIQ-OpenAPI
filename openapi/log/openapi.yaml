@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title:
+    $ref: ../info-title
+  description:
+    $ref: ../info-description.md
+  termsOfService:
+    $ref: ../info-termOfService
+  contact:
+    $ref: ../info-contact.yaml
+  license:
+    $ref: ../info-license.yaml
+  version:
+    $ref: ../info-version
+externalDocs:
+  $ref: ../external-docs.yaml
+servers:
+  - $ref: ../server-default.yaml
+tags:
+  - name: Log
+    description: Access all kinds of logs in ExtremeCloud IQ
+paths:
+  /logs/audit:
+    $ref: paths/logs_audit.yaml
+  /logs/sms:
+    $ref: paths/logs_sms.yaml
+  /logs/email:
+    $ref: paths/logs_email.yaml
+  /logs/credential:
+    $ref: paths/logs_credential.yaml
+  /logs/auth:
+    $ref: paths/logs_auth.yaml
+  /logs/accounting:
+    $ref: paths/logs_accounting.yaml
+components:
+  securitySchemes:
+    $ref: ../common/components/securitySchemes/index.yaml

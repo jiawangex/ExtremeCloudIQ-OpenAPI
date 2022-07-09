@@ -1,0 +1,43 @@
+required:
+  - delivery_settings
+  - expiration_settings
+  - name
+  - password_db_location
+  - password_settings
+  - password_type
+type: object
+properties:
+  name:
+    type: string
+    description: The user group name
+  description:
+    type: string
+    description: The user group description
+  password_db_location:
+    $ref: ./XiqPasswordDbLocation.yaml
+  ppsk_use_only:
+    type: boolean
+    description: Whether it's for PPSK use only
+  password_type:
+    $ref: ./XiqPasswordType.yaml
+  enable_max_clients_per_ppsk:
+    type: boolean
+    description: The enablement for the maximum number of clients per private PSK
+  max_clients_per_ppsk:
+    type: integer
+    description: The maximum number of clients per private PSK
+    format: int32
+  pcg_use_only:
+    type: boolean
+    description: Whether it's for PCG use only
+  pcg_type:
+    $ref: ./XiqPcgType.yaml
+  enable_cwp_reg:
+    type: boolean
+    description: Whether to enable CWP registration setting
+  password_settings:
+    $ref: ./XiqPasswordSettings.yaml
+  expiration_settings:
+    $ref: ./XiqExpirationSettings.yaml
+  delivery_settings:
+    $ref: ./XiqDeliverySettings.yaml

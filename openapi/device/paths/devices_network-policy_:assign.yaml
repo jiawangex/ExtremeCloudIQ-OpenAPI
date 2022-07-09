@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Device
+  summary: Assign network policy to multiple devices
+  description: Assign the network policy to the target devices.
+  operationId: assignDevicesNetworkPolicy
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqAssignDevicesNetworkPolicyRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

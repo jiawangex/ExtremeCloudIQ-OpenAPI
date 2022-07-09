@@ -1,0 +1,6 @@
+type: string
+description: The key type, ASCII or HEX
+example: ASCII
+enum:
+  - ASCII
+  - HEX

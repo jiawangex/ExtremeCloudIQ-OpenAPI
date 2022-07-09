@@ -1,0 +1,19 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: >-
+      The RADIUS client ID, using an existing ID or leave empty to create a new
+      one
+    format: int64
+  shared_secret:
+    type: string
+    description: The shared secret of RADIUS client
+  description:
+    type: string
+    description: The RADIUS client description
+  l3_address_profile_id:
+    type: integer
+    description: The associate L3 address profile ID
+    format: int64
+description: The associate RADIUS client for RADIUS proxy

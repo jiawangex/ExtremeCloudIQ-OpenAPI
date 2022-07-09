@@ -1,0 +1,10 @@
+required:
+  - device_location
+  - devices
+type: object
+properties:
+  devices:
+    $ref: ./XiqDeviceFilter.yaml
+  device_location:
+    $ref: ./XiqDeviceLocationAssignment.yaml
+description: Device location assignment for multiple devices

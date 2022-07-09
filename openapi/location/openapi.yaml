@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title:
+    $ref: ../info-title
+  description:
+    $ref: ../info-description.md
+  termsOfService:
+    $ref: ../info-termOfService
+  contact:
+    $ref: ../info-contact.yaml
+  license:
+    $ref: ../info-license.yaml
+  version:
+    $ref: ../info-version
+externalDocs:
+  $ref: ../external-docs.yaml
+servers:
+  - $ref: ../server-default.yaml
+tags:
+  - name: Location
+    description: Hierarchical locations and floor plan
+paths:
+  /locations/tree:
+    $ref: paths/locations_tree.yaml
+  /locations/{id}:
+    $ref: paths/locations_{id}.yaml
+  /locations/floor/{id}:
+    $ref: paths/locations_floor_{id}.yaml
+  /locations/building/{id}:
+    $ref: paths/locations_building_{id}.yaml
+components:
+  securitySchemes:
+    $ref: ../common/components/securitySchemes/index.yaml

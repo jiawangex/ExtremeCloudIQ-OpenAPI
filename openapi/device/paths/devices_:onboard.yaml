@@ -1,0 +1,23 @@
+post:
+  tags:
+    - Device
+  summary: Onboard Devices
+  description: >-
+    Onboard devices for all devices, such as Extreme/Aerohive, EXOS, VOSS, WiNG,
+    and Dell.
+
+    This is asynchronized operation to support massive device onboarding.
+  operationId: onboardDevices
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqOnboardDeviceRequest.yaml
+    required: true
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

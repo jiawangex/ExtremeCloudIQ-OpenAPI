@@ -1,0 +1,5 @@
+type: string
+description: The authentication method type, OPEN or SHARED
+enum:
+  - OPEN
+  - SHARED

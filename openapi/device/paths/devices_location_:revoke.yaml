@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Device
+  summary: Revoke location for multiple devices
+  description: Revoke the location from the target devices.
+  operationId: revokeDevicesLocation
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceFilter.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

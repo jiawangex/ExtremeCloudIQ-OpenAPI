@@ -1,0 +1,10 @@
+required:
+  - devices
+  - policy
+type: object
+properties:
+  devices:
+    $ref: ../../../device/components/schemas/XiqDeviceFilter.yaml
+  policy:
+    $ref: ./XiqDeploymentPolicy.yaml
+description: The configuration deployment request to devices

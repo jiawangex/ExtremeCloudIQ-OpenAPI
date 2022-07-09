@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Configuration - User Management
+  summary: Generate shared keys for users in network policy
+  description: >-
+    Generate/regenerate shared keys for specified users in a specific PCG-enable
+    network policy.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_generate_keys
+  operationId: generateKeys
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: userIds
+      in: query
+      description: The user IDs
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

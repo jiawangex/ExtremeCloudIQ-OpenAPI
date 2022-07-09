@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Configuration - Deployment
+  summary: Get configuration deployment overview
+  description: Get configuration deployment status overview.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_configuration_deployment_overview
+  operationId: getDeployOverview
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqDeploymentOverview.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

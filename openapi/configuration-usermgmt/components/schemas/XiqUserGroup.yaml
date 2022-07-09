@@ -1,0 +1,59 @@
+required:
+  - create_time
+  - delivery_settings
+  - expiration_settings
+  - id
+  - name
+  - password_db_location
+  - password_settings
+  - password_type
+  - predefined
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The user group name
+  description:
+    type: string
+    description: The user group description
+  predefined:
+    type: boolean
+    description: Whether it is predefined
+  password_db_location:
+    $ref: ./XiqPasswordDbLocation.yaml
+  password_type:
+    $ref: ./XiqPasswordType.yaml
+  pcg_use_only:
+    type: boolean
+    description: ' Whether it''s for PCG use only'
+  pcg_type:
+    $ref: ./XiqPcgType.yaml
+  ppsk_use_only:
+    type: boolean
+    description: Whether it's for PPSK use only
+  enable_cwp_reg:
+    type: boolean
+    description: Whether to enable CWP registration setting
+  password_settings:
+    $ref: ./XiqPasswordSettings.yaml
+  expiration_settings:
+    $ref: ./XiqExpirationSettings.yaml
+  delivery_settings:
+    $ref: ./XiqDeliverySettings.yaml

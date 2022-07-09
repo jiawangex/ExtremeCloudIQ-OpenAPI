@@ -1,0 +1,29 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The user common name
+  organization:
+    type: string
+    description: The organization name
+  visit_purpose:
+    type: string
+    description: The purpose of visit
+  description:
+    type: string
+    description: The user description
+  email_address:
+    type: string
+    description: The user email
+  phone_number:
+    type: string
+    description: The user phone number
+  password:
+    type: string
+    description: The user password
+  email_password_delivery:
+    type: string
+    description: The password delivery Email
+  sms_password_delivery:
+    type: string
+    description: The password delivery SMS

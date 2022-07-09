@@ -1,0 +1,7 @@
+type: string
+description: The after expiration scheduled time unit.
+enum:
+  - MINUTE
+  - HOUR
+  - DAY
+  - WEEK

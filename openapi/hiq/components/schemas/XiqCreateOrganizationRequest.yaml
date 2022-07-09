@@ -1,0 +1,10 @@
+required:
+  - name
+type: object
+properties:
+  name:
+    type: string
+    description: The organization name, must be unique in VIQ
+  color:
+    type: string
+    description: The tagged color for the organization

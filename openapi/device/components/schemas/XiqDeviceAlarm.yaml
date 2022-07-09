@@ -1,0 +1,26 @@
+type: object
+properties:
+  entity_id:
+    type: integer
+    description: The device ID
+    format: int64
+  timestamp:
+    type: integer
+    description: The timestamp for alarm created
+    format: int64
+  severity:
+    type: string
+    description: The severity of the alarm
+  category:
+    type: string
+    description: The category of the alarm
+  device_mac:
+    type: string
+    description: The device MAC of the alarm
+  client_mac:
+    type: string
+    description: The client MAC of the alarm
+  description:
+    type: string
+    description: The alarm description
+description: The device alarm view

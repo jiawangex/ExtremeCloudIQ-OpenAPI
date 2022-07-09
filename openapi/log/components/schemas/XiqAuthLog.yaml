@@ -1,0 +1,59 @@
+required:
+  - id
+type: object
+properties:
+  id:
+    type: string
+    description: The auth log id
+  auth_type:
+    type: string
+    description: The auth type
+  sn:
+    type: string
+    description: The serial number
+  vhm_id:
+    type: string
+    description: The vhm id
+  username:
+    type: string
+    description: The username
+  reply:
+    type: string
+    description: The reply
+  called_station_id:
+    type: string
+    description: The called station id
+  calling_station_id:
+    type: string
+    description: The calling station id
+  auth_date:
+    type: integer
+    description: The authentication date
+    format: int64
+  ssid:
+    type: string
+    description: The ssid
+  identity:
+    type: string
+    description: The identity
+  nas_port_type:
+    type: string
+    description: The nas port type
+  reject_reason:
+    type: string
+    description: The reject reason
+  nas_identifier:
+    type: string
+    description: The nas identifier
+  mgmt_mac_address:
+    type: string
+    description: The management mac address
+  org_id:
+    type: integer
+    description: The org id
+    format: int64
+  timestamp:
+    type: integer
+    description: The audit log timestamp
+    format: int64
+description: ExtremeCloud IQ Auth Log

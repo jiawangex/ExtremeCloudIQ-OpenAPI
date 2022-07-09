@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Device
+  summary: Change device OS mode
+  description: Change OS mode for AP or Switch.
+  operationId: changeDevicesOsMode
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqChangeDevicesOsModeRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

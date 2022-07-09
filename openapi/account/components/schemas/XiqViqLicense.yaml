@@ -1,0 +1,48 @@
+required:
+  - create_time
+  - id
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  status:
+    $ref: ./XiqLicenseStatus.yaml
+  active_date:
+    type: string
+    description: The active date
+    format: date-time
+  expire_date:
+    type: string
+    description: The expire date
+    format: date-time
+  entitlement_key:
+    type: string
+    description: The entitlement key
+  entitlement_type:
+    $ref: ./XiqEntitlementType.yaml
+  mode:
+    $ref: ./XiqLicenseMode.yaml
+  devices:
+    type: integer
+    description: The device number
+    format: int32
+  activated:
+    type: integer
+    description: The activated device number
+    format: int32
+  available:
+    type: integer
+    description: The available device number
+    format: int32
+description: The license list

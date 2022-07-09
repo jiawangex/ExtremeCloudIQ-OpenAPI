@@ -1,0 +1,19 @@
+required:
+  - enabled
+  - ssid_name
+  - user_ids
+type: object
+properties:
+  ssid_name:
+    type: string
+  enabled:
+    type: boolean
+    description: Enable the key based PCG
+  user_ids:
+    type: array
+    description: The request user IDs
+    items:
+      type: integer
+      description: The request user IDs
+      format: int64
+description: The payload to create Key Based PCG data(from exist network policy and SSID)

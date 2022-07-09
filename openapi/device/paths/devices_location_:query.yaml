@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Device
+  summary: Query location for multiple devices
+  description: Query the location for the target devices.
+  operationId: queryDevicesLocation
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceFilter.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              $ref: ../components/schemas/XiqDeviceLocation.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

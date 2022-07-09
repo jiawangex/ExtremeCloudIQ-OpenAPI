@@ -1,0 +1,44 @@
+required:
+  - create_time
+  - id
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The application name
+  description:
+    type: string
+    description: The application description
+  predefined:
+    type: boolean
+    description: Flag to describle whether the application is predefined or customized
+  category_id:
+    type: integer
+    description: The category ID of application
+    format: int64
+  category_name:
+    type: string
+    description: The category name of application
+  detection_rules:
+    type: array
+    description: The application detection rules
+    items:
+      $ref: ./XiqApplicationDetectionRule.yaml
+description: The Application Model

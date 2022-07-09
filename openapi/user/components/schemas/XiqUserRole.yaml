@@ -1,0 +1,11 @@
+type: string
+description: The user administrative role.
+enum:
+  - ADMINISTRATOR
+  - OPERATOR
+  - MONITOR
+  - HELP_DESK
+  - GUEST_MANAGEMENT
+  - OBSERVER
+  - INSTALLER
+  - APPLICATION_OPERATOR

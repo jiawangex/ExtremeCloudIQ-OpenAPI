@@ -1,0 +1,126 @@
+required:
+  - authentication_method_group
+  - authentication_server_port
+  - ca_certificate_id
+  - create_time
+  - default_authentication_method
+  - device_ids
+  - enable_authentication_server
+  - enable_check_cert_common_name
+  - enable_check_user_for_tls_auth
+  - enable_radius_accounting_settings
+  - enable_verify_server_cert
+  - external_user_directory
+  - id
+  - name
+  - server_certificate_id
+  - server_key_id
+  - update_time
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier
+    format: int64
+  create_time:
+    type: string
+    description: The create time
+    format: date-time
+  update_time:
+    type: string
+    description: The last update time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  name:
+    type: string
+    description: The internal RADIUS server name
+  description:
+    type: string
+    description: The internal RADIUS server description
+  authentication_method_group:
+    $ref: ./XiqInternalRadiusServerAuthenticationMethodGroup.yaml
+  default_authentication_method:
+    $ref: ./XiqInternalRadiusServerAuthenticationMethod.yaml
+  enable_verify_server_cert:
+    type: boolean
+    description: Enable verify server cert or not
+  server_key_password:
+    type: string
+    description: password for server key
+  enable_check_cert_common_name:
+    type: boolean
+    description: Enable check cert common name or not
+  enable_check_user_for_tls_auth:
+    type: boolean
+    description: Enable check user for TLS auth or not
+  enable_check_user_for_peap_auth:
+    type: boolean
+    description: >-
+      Enable check user for PEAP auth or not, for Active Directory as the
+      external user directory only
+  enable_check_user_for_ttls_auth:
+    type: boolean
+    description: >-
+      Enable check user for TTLS auth or not, for Active Directory as the
+      external user directory only
+  enable_authentication_server:
+    type: boolean
+    description: Enable the RADIUS server as authentication or not
+  enable_radius_accounting_settings:
+    type: boolean
+    description: >-
+      Enable the RADIUS server as accounting or not, must enable authentication
+      server if want to enable accounting settings
+  authentication_server_port:
+    maximum: 65535
+    minimum: 1
+    type: integer
+    description: Port for the authentication, must enable authentication. Max:65535, Min:1
+    format: int32
+    default: 1812
+  active_session_limit:
+    maximum: 15
+    minimum: 0
+    type: integer
+    description: Active session limit, must enable accounting setting. Max:15, Min:0
+    format: int32
+    default: 0
+  active_session_age_timeout:
+    maximum: 300000000
+    minimum: 30
+    type: integer
+    description: >-
+      Active session age timeout in seconds, must enable accounting setting.
+      Max:300000000, Min:30
+    format: int32
+    default: 30
+  external_user_directory:
+    $ref: ./XiqExternalUserDirectory.yaml
+  ca_certificate_id:
+    type: integer
+    description: The CA certificate ID
+    format: int64
+  server_certificate_id:
+    type: integer
+    description: The Server certificate ID
+    format: int64
+  server_key_id:
+    type: integer
+    description: The Server key ID
+    format: int64
+  device_ids:
+    type: array
+    description: The list of device ID associated with the internal RADIUS server
+    items:
+      type: integer
+      description: The list of device ID associated with the internal RADIUS server
+      format: int64
+  clients:
+    type: array
+    description: The RADIUS clients of RADIUS proxy
+    items:
+      $ref: ./XiqRadiusClient.yaml
+description: The configuration of internal RADIUS server object

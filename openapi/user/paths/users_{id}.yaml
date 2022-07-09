@@ -1,0 +1,87 @@
+get:
+  tags:
+    - User
+  summary: Get user info by ID
+  description: Get user info for a specific user.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_user
+  operationId: getUser
+  parameters:
+    - name: id
+      in: path
+      description: The user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqUser.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+patch:
+  tags:
+    - User
+  summary: Update user info
+  description: Updates user info for a specific user.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_update_user
+  operationId: updateUser
+  parameters:
+    - name: id
+      in: path
+      description: The user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update user request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateUserRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqUser.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - User
+  summary: Delete user by ID
+  description: Delete a specific user.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_user
+  operationId: deleteUser
+  parameters:
+    - name: id
+      in: path
+      description: The user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

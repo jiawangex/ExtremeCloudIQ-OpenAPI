@@ -1,0 +1,90 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get MAC OUI profile
+  description: Get the MAC OUI profile belonging the radio optimization settings.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_get_mac_oui_profile_by_id
+  operationId: getRpMacOuiProfile
+  parameters:
+    - name: id
+      in: path
+      description: The MAC OUI profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpMacOuiProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update MAC OUI profile
+  description: Update the existing MAC OUI profile for radio usage optimization.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_update_mac_oui_profile_by_id
+  operationId: updateRpMacOuiProfile
+  parameters:
+    - name: id
+      in: path
+      description: The MAC OUI profile ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of the update MAC OUI profile request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateRpMacOuiProfileRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpMacOuiProfile.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - Policy
+  summary: Delete MAC OUI profile
+  description: Delete the existing MAC OUI profile for radio usage optimization.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_delete_mac_oui_profile_by_id
+  operationId: deleteRpMacOuiProfile
+  parameters:
+    - name: id
+      in: path
+      description: The MAC OUI profile ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

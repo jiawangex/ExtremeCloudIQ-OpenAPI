@@ -1,0 +1,9 @@
+type: string
+description: The VIQ license status
+enum:
+  - BUY
+  - PLAN
+  - EVAL
+  - EXPIRED
+  - INVALID
+  - MIGRATED

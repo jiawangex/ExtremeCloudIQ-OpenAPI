@@ -1,0 +1,11 @@
+type: object
+properties:
+  email_template_id:
+    type: integer
+    description: The Email Template ID
+    format: int64
+  sms_template_id:
+    type: integer
+    description: 'The SMS Template ID '
+    format: int64
+description: The password delivery settings

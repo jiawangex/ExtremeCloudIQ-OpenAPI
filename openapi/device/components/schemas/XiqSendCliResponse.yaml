@@ -1,0 +1,11 @@
+type: object
+properties:
+  device_cli_outputs:
+    type: object
+    additionalProperties:
+      type: array
+      description: device ID -> CLI outputs
+      items:
+        $ref: ./XiqCliOutput.yaml
+    description: device ID -> CLI outputs
+description: The response for sending CLIs to devices

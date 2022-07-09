@@ -1,0 +1,5 @@
+type: string
+description: The private client group type for pcgUseOnly
+enum:
+  - AP_BASED
+  - KEY_BASED

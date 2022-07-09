@@ -1,0 +1,5 @@
+type: string
+description: LDAP server protocol type
+enum:
+  - LDAP
+  - LDAPS

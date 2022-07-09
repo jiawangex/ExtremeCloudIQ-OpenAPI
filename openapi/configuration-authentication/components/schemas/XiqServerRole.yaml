@@ -1,0 +1,8 @@
+type: string
+description: The server role, PRIMARY or BACKUP
+example: PRIMARY
+enum:
+  - PRIMARY
+  - BACKUP1
+  - BACKUP2
+  - BACKUP3

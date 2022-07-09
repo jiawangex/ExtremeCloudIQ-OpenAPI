@@ -1,0 +1,47 @@
+get:
+  tags:
+    - Client
+  summary: Get client info
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_client_details_for_one_client
+  operationId: getClient
+  description: Get client detailed information.
+  parameters:
+    - name: id
+      in: path
+      description: The client ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: views
+      in: query
+      description: >-
+        The views to return client fields (Check fields for each view at
+        XiqClientView schema)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqClientView.yaml
+    - name: fields
+      in: query
+      description: The client fields to return
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: ../components/schemas/XiqClientField.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqClient.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

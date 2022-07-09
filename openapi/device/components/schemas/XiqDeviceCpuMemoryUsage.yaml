@@ -1,0 +1,15 @@
+type: object
+properties:
+  average_cpu:
+    type: integer
+    description: The device average cpu usage
+    format: int32
+  average_memory:
+    type: integer
+    description: The device average memory usage
+    format: int32
+  timestamp:
+    type: integer
+    description: The timestamp for data aggregate
+    format: int64
+description: Get time series of the average device cpu and memory usage

@@ -1,0 +1,32 @@
+post:
+  tags:
+    - Account
+  summary: Switch to another ExtremeCloud IQ account
+  description: >-
+    Switch to external ExtremeCloud IQ account or switch back to home
+    ExtremeCloud IQ account.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_switch_account
+  operationId: switchAccount
+  parameters:
+    - name: id
+      in: query
+      description: >-
+        The account ID to switch, switch back to home ExtremeCloud IQ account if
+        not provide
+      required: false
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../../authentication/components/schemas/XiqLoginResponse.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

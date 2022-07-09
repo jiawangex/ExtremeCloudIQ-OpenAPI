@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title:
+    $ref: ../info-title
+  description:
+    $ref: ../info-description.md
+  termsOfService:
+    $ref: ../info-termOfService
+  contact:
+    $ref: ../info-contact.yaml
+  license:
+    $ref: ../info-license.yaml
+  version:
+    $ref: ../info-version
+externalDocs:
+  $ref: ../external-docs.yaml
+servers:
+  - $ref: ../server-default.yaml
+tags:
+  - name: Configuration - Deployment
+    description: Push configuration to devices
+paths:
+  /deployments:
+    $ref: paths/deployments.yaml
+  /deployments/overview:
+    $ref: paths/deployments_overview.yaml
+  /deployments/status:
+    $ref: paths/deployments_status.yaml
+components:
+  securitySchemes:
+    $ref: ../common/components/securitySchemes/index.yaml

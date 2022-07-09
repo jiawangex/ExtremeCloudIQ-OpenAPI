@@ -1,0 +1,12 @@
+required:
+  - name
+  - vlan_profile_id
+type: object
+properties:
+  name:
+    type: string
+    description: The user profile name
+  vlan_profile_id:
+    type: integer
+    description: The VLAN profile id
+    format: int64

@@ -1,0 +1,30 @@
+put:
+  tags:
+    - Device
+  summary: Change description for a device
+  description: Change description for a specific device.
+  operationId: changeDeviceDescription
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The device description
+    content:
+      text/plain:
+        schema:
+          maxLength: 64
+          minLength: 1
+          type: string
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

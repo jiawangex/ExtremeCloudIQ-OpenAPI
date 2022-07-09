@@ -1,0 +1,65 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get Wmm QoS settings
+  description: Get the Wi-Fi Multimedia (WMM) QoS settings belonging to a radio profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_get_wmm_qos_settings_by_id
+  operationId: getRpWmmQosSettings
+  parameters:
+    - name: id
+      in: path
+      description: The radio QoS settings ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpWmmQosSettings.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update Wmm QoS settings
+  description: Update the Wi-Fi Multimedia (WMM) QoS settings belonging to a radio profile.
+  externalDocs:
+    description: API Reference
+    url: >-
+      http://localhost:8081/api-docs/api-reference.html#_update_wmm_qos_settings_by_id
+  operationId: updateRpWmmQosSettings
+  parameters:
+    - name: id
+      in: path
+      description: The Wmm QoS settings ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of the update Wmm QoS settings request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateRpWmmQosSettingsRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqRpWmmQosSettings.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

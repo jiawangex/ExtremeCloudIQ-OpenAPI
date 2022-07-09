@@ -1,0 +1,8 @@
+type: string
+description: The license mode
+enum:
+  - BUY
+  - PLANNER
+  - EVAL
+  - MSP
+  - UNKNOWN

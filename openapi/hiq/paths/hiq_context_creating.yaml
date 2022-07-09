@@ -1,0 +1,55 @@
+get:
+  tags:
+    - HIQ
+  summary: Get organization for creating new data
+  description: >-
+    Get organization for creating new data (Only one organization is active for
+    creating new data).
+
+    Appliable when HIQ is enabled.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_creating_context
+  operationId: getCreatingOrgId
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: integer
+            format: int64
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - HIQ
+  summary: Set organization for creating new data
+  description: >-
+    Set organization for creating new data (Only one organization is active for
+    creating new data).
+
+    Only HIQ Admin can performance this operation when HIQ is enabled.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_set_creating_context
+  operationId: setCreatingOrgId
+  requestBody:
+    description: The organization ID used for creating new data
+    content:
+      application/json:
+        schema:
+          type: integer
+          format: int64
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

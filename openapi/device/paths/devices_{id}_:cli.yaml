@@ -1,0 +1,37 @@
+post:
+  tags:
+    - Device
+  summary: Send CLI to a device
+  description: Send CLI commands to a specific device.
+  externalDocs:
+    description: API Reference
+    url: http://localhost:8081/api-docs/api-reference.html#_send_cli_to_one_device
+  operationId: sendCliToDevice
+  parameters:
+    - name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The one or multiple CLIs to send
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: string
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqSendCliResponse.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

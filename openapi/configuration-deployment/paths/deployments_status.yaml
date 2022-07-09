@@ -1,0 +1,34 @@
+get:
+  tags:
+    - Configuration - Deployment
+  summary: Get configuration deployment status
+  description: Get configuration deployment status for the target devices.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_configuration_deployment_status
+  operationId: getDeployStatus
+  parameters:
+    - name: deviceIds
+      in: query
+      description: The target device IDs
+      required: true
+      schema:
+        uniqueItems: true
+        type: array
+        items:
+          type: integer
+          format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              $ref: ../components/schemas/XiqDeploymentStatus.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

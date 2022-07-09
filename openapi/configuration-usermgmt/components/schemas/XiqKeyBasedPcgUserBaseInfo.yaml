@@ -1,0 +1,18 @@
+required:
+  - email
+  - name
+  - user_group_name
+type: object
+properties:
+  name:
+    type: string
+    description: >-
+      The user name of key based PCG, which could not share with other exist key
+      based PCG
+  email:
+    type: string
+    description: The email for deliver key based PCG user password
+  user_group_name:
+    type: string
+    description: The user group name
+description: The user's base info

@@ -1,0 +1,13 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The RADIUS proxy realm name
+  enable_strip_realm_name:
+    type: boolean
+    description: The flag for enable strip realm name
+  radius_client_object_id:
+    type: integer
+    description: The associate RADIUS client object ID
+    format: int64
+description: The associate RADIUS proxy realm for RADIUS proxy

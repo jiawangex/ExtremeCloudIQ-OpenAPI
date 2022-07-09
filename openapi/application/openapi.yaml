@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title:
+    $ref: ../info-title
+  description:
+    $ref: ../info-description.md
+  termsOfService:
+    $ref: ../info-termOfService
+  contact:
+    $ref: ../info-contact.yaml
+  license:
+    $ref: ../info-license.yaml
+  version:
+    $ref: ../info-version
+externalDocs:
+  $ref: ../external-docs.yaml
+servers:
+  - $ref: ../server-default.yaml
+tags:
+  - name: Application
+    description: Application management and application metrics
+paths:
+  /applications:
+    $ref: paths/applications.yaml
+  /applications/top{n}:
+    $ref: paths/applications_top{n}.yaml
+  /applications/{id}/clients/top{n}:
+    $ref: paths/applications_{id}_clients_top{n}.yaml
+components:
+  securitySchemes:
+    $ref: ../common/components/securitySchemes/index.yaml

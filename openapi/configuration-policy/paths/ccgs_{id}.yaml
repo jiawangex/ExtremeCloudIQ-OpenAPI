@@ -1,0 +1,90 @@
+get:
+  tags:
+    - Configuration - Policy
+  summary: Get a cloud config group
+  description: Get cloud config group info for the specified ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_cloud_config_group
+  operationId: getCloudConfigGroup
+  parameters:
+    - name: id
+      in: path
+      description: The cloud config group ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCloudConfigGroup.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Policy
+  summary: Update cloud config group information
+  description: Update the cloud config group details having the specified ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_cloud_config_group
+  operationId: updateCloudConfigGroup
+  parameters:
+    - name: id
+      in: path
+      description: The cloud config group ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: Update cloud config group request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateCloudConfigGroupRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCloudConfigGroup.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - Policy
+  summary: Delete a cloud config group
+  description: Delete a specific cloud config group by ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_cloud_config_group
+  operationId: deleteCloudConfigGroup
+  parameters:
+    - name: id
+      in: path
+      description: The cloud config group ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

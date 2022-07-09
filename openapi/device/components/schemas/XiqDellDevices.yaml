@@ -1,0 +1,11 @@
+required:
+  - sn_to_st
+type: object
+properties:
+  sn_to_st:
+    type: object
+    additionalProperties:
+      type: string
+      description: Serial number -> Service tag
+    description: Serial number -> Service tag
+description: Dell devices to onboard

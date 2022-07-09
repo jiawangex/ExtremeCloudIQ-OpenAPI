@@ -1,0 +1,4 @@
+type: http
+description: JSON Web Token (JWT) based authentication
+scheme: bearer
+bearerFormat: JWT

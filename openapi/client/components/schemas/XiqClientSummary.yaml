@@ -1,0 +1,11 @@
+type: object
+properties:
+  connected_wireless_client_count:
+    type: integer
+    description: The connected wireless client count
+    format: int64
+  detected_wired_client_count:
+    type: integer
+    description: The detected wired client count
+    format: int64
+description: The summary for clients

@@ -1,0 +1,106 @@
+get:
+  tags:
+    - Configuration - Authentication
+  summary: Get LDAP server by ID
+  description: Get a specific LDAP server by ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_ldap_server
+  operationId: getLdapServer
+  parameters:
+    - name: id
+      in: path
+      description: 'The LDAP server '
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqLdapServer.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - Authentication
+  summary: Update LDAP server configuration
+  description: Update configuration for a specific LDAP server.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_update_ldap_server
+  operationId: updateLdapServer
+  parameters:
+    - name: id
+      in: path
+      description: The LDAP server ID.
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The body of update LDAP server API
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateLdapServerRequest.yaml
+        examples:
+          Update an existing LDAP server:
+            summary: Update an existing LDAP server
+            description: The payload to update an existing LDAP server
+            value:
+              name: test-ldap-server-1
+              description: test ldap server 1
+              enable_tls: true
+              bind_dn: extremenetworks.com
+              bind_dn_password: '888888'
+              base_dn: extremenetworks.com
+              l3_address_profile_id: 1
+              protocol_type: LDAPS
+              enable_strip_realm_name: false
+              destination_port: 20
+              verification_mode: DEMAND
+              ca_certificate_id: 100
+              client_certificate_id: 200
+              client_key_id: 300
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqLdapServer.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Configuration - Authentication
+  summary: Delete a LDAP server
+  description: Delete a specific LDAP server by ID.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_ldap_server
+  operationId: deleteLdapServer
+  parameters:
+    - name: id
+      in: path
+      description: The LDAP server ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

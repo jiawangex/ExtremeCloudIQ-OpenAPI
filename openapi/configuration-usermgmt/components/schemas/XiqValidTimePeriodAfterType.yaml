@@ -1,0 +1,5 @@
+type: string
+description: The valid time period after Id creation or first login.
+enum:
+  - ID_CREATION
+  - FIRST_LOGIN

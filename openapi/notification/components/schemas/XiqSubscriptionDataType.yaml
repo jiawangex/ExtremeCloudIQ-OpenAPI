@@ -1,0 +1,11 @@
+type: string
+description: The webhook subscription data type.
+enum:
+  - LOCATION
+  - AUDIT_LOG
+  - GDPR_LOG
+  - CREDENTIAL_LOG
+  - ACCOUNTING_LOG
+  - AUTHENTICATION_LOG
+  - EMAIL_LOG
+  - SMS_LOG

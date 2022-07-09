@@ -1,0 +1,12 @@
+type: object
+properties:
+  parent_id:
+    type: integer
+    description: The parent location ID
+    format: int64
+  name:
+    type: string
+    description: The building name
+  address:
+    type: string
+    description: The street address

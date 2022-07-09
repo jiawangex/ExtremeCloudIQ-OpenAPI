@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title:
+    $ref: ../info-title
+  description:
+    $ref: ../info-description.md
+  termsOfService:
+    $ref: ../info-termOfService
+  contact:
+    $ref: ../info-contact.yaml
+  license:
+    $ref: ../info-license.yaml
+  version:
+    $ref: ../info-version
+externalDocs:
+  $ref: ../external-docs.yaml
+servers:
+  - $ref: ../server-default.yaml
+tags:
+  - name: Device
+    description: 'Supported device platforms: Cloud Engine, IQ Engine, WiNG, VOSS, EXOS...'
+paths:
+  /devices:
+    $ref: paths/devices.yaml
+  /devices/:onboard:
+    $ref: paths/devices_:onboard.yaml
+  /devices/:manage:
+    $ref: paths/devices_:manage.yaml
+  /devices/:unmanage:
+    $ref: paths/devices_:unmanage.yaml
+  /devices/:delete:
+    $ref: paths/devices_:delete.yaml
+  /devices/:reboot:
+    $ref: paths/devices_:reboot.yaml
+  /devices/:cli:
+    $ref: paths/devices_:cli.yaml
+  /devices/location/:query:
+    $ref: paths/devices_location_:query.yaml
+  /devices/location/:assign:
+    $ref: paths/devices_location_:assign.yaml
+  /devices/location/:revoke:
+    $ref: paths/devices_location_:revoke.yaml
+  /devices/radius-proxy/:assign:
+    $ref: paths/devices_radius-proxy_:assign.yaml
+  /devices/network-policy/:query:
+    $ref: paths/devices_network-policy_:query.yaml
+  /devices/network-policy/:assign:
+    $ref: paths/devices_network-policy_:assign.yaml
+  /devices/network-policy/:revoke:
+    $ref: paths/devices_network-policy_:revoke.yaml
+  /devices/network-policy/{policyId}:
+    $ref: paths/devices_network-policy_{policyId}.yaml
+  /devices/os/:change:
+    $ref: paths/devices_os_:change.yaml
+  /devices/country-code/:assign:
+    $ref: paths/devices_country-code_:assign.yaml
+  /devices/stats:
+    $ref: paths/devices_stats.yaml
+  /devices/{id}:
+    $ref: paths/devices_{id}.yaml
+  /devices/{id}/hostname:
+    $ref: paths/devices_{id}_hostname.yaml
+  /devices/{id}/description:
+    $ref: paths/devices_{id}_description.yaml
+  /devices/{id}/:manage:
+    $ref: paths/devices_{id}_:manage.yaml
+  /devices/{id}/:unmanage:
+    $ref: paths/devices_{id}_:unmanage.yaml
+  /devices/{id}/:reset:
+    $ref: paths/devices_{id}_:reset.yaml
+  /devices/{id}/:reboot:
+    $ref: paths/devices_{id}_:reboot.yaml
+  /devices/{id}/:cli:
+    $ref: paths/devices_{id}_:cli.yaml
+  /devices/{id}/location:
+    $ref: paths/devices_{id}_location.yaml
+  /devices/{id}/network-policy:
+    $ref: paths/devices_{id}_network-policy.yaml
+  /devices/{id}/ssid/status:
+    $ref: paths/devices_{id}_ssid_status.yaml
+  /devices/{id}/ssid/status/:change:
+    $ref: paths/devices_{id}_ssid_status_:change.yaml
+  /devices/{id}/ssid/:override:
+    $ref: paths/devices_{id}_ssid_:override.yaml
+  /devices/{id}/history/cpu-mem:
+    $ref: paths/devices_{id}_history_cpu-mem.yaml
+  /devices/{id}/alarms:
+    $ref: paths/devices_{id}_alarms.yaml
+components:
+  securitySchemes:
+    $ref: ../common/components/securitySchemes/index.yaml

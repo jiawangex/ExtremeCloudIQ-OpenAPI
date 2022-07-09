@@ -1,0 +1,49 @@
+get:
+  tags:
+    - HIQ
+  summary: List all organizations
+  description: List all organizations in current HIQ (Available when HIQ is enabled).
+  externalDocs:
+    description: API Reference
+    url: http://localhost:8081/api-docs/api-reference.html#_get_all_organizations
+  operationId: listOrganizations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/XiqOrganization.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - HIQ
+  summary: Create a new organization
+  description: Create a new organization in current HIQ (Available when HIQ is enabled).
+  externalDocs:
+    description: API Reference
+    url: http://localhost:8081/api-docs/api-reference.html#_create_organization
+  operationId: createOrganization
+  requestBody:
+    description: Create new organization request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqCreateOrganizationRequest.yaml
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqOrganization.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

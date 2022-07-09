@@ -1,0 +1,14 @@
+required:
+  - in_progress_devices
+  - total_progress
+type: object
+properties:
+  in_progress_devices:
+    type: integer
+    description: The device count with in progress deployment
+    format: int32
+  total_progress:
+    type: integer
+    description: The total progress, range from 0 to 100
+    format: int32
+description: The configuration deployment overview

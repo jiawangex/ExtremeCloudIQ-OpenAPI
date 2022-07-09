@@ -1,0 +1,17 @@
+required:
+  - permissions
+  - roles
+type: object
+properties:
+  permissions:
+    type: array
+    description: The permission list
+    items:
+      $ref: ./XiqPermission.yaml
+  roles:
+    uniqueItems: true
+    type: array
+    description: The role list
+    items:
+      type: string
+      description: The role list

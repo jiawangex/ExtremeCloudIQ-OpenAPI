@@ -1,0 +1,11 @@
+required:
+  - method
+  - uri
+type: object
+properties:
+  uri:
+    type: string
+    description: The request HTTP URI
+  method:
+    type: string
+    description: The request HTTP method
