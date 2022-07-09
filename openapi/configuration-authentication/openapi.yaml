@@ -40,10 +40,10 @@ paths:
     $ref: paths/radius-servers_external_{id}.yaml
   /radius-proxies:
     $ref: paths/radius-proxies.yaml
-  /radius-proxies/{id}:
-    $ref: paths/radius-proxies_{id}.yaml
   /radius-proxies/devices:
     $ref: paths/radius-proxies_devices.yaml
+  /radius-proxies/{id}:
+    $ref: paths/radius-proxies_{id}.yaml
   /radius-client-objects:
     $ref: paths/radius-client-objects.yaml
   /radius-client-objects/{id}:

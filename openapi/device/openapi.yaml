@@ -50,10 +50,10 @@ paths:
     $ref: paths/devices_network-policy_:revoke.yaml
   /devices/network-policy/{policyId}:
     $ref: paths/devices_network-policy_{policyId}.yaml
-  /devices/country-code/:assign:
-    $ref: paths/devices_country-code_:assign.yaml
   /devices/os/:change:
     $ref: paths/devices_os_:change.yaml
+  /devices/country-code/:assign:
+    $ref: paths/devices_country-code_:assign.yaml
   /devices/stats:
     $ref: paths/devices_stats.yaml
   /devices/{id}:

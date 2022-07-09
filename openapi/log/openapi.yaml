@@ -20,6 +20,8 @@ tags:
   - name: Log
     description: Access all kinds of logs in ExtremeCloud IQ
 paths:
+  /logs/audit:
+    $ref: paths/logs_audit.yaml
   /logs/sms:
     $ref: paths/logs_sms.yaml
   /logs/email:
@@ -28,8 +30,6 @@ paths:
     $ref: paths/logs_credential.yaml
   /logs/auth:
     $ref: paths/logs_auth.yaml
-  /logs/audit:
-    $ref: paths/logs_audit.yaml
   /logs/accounting:
     $ref: paths/logs_accounting.yaml
 components:

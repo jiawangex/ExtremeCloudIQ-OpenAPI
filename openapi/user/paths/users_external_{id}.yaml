@@ -26,31 +26,6 @@ get:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:
     - BearerAuth: []
-delete:
-  tags:
-    - User
-  summary: Revoke external access
-  description: Revoke external acccess for a specific user.
-  externalDocs:
-    description: API Reference
-    url: >-
-      https://extremecloudiq.com/api-docs/api-reference.html#_revoke_external_user
-  operationId: revokeExternalUser
-  parameters:
-    - name: id
-      in: path
-      description: The external user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
-  responses:
-    '200':
-      description: OK
-    default:
-      $ref: ../../common/components/responses/ErrorResponse.yaml
-  security:
-    - BearerAuth: []
 patch:
   tags:
     - User
@@ -81,6 +56,31 @@ patch:
             value:
               user_role: ADMINISTRATOR
     required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - User
+  summary: Revoke external access
+  description: Revoke external acccess for a specific user.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_revoke_external_user
+  operationId: revokeExternalUser
+  parameters:
+    - name: id
+      in: path
+      description: The external user ID
+      required: true
+      schema:
+        type: integer
+        format: int64
   responses:
     '200':
       description: OK

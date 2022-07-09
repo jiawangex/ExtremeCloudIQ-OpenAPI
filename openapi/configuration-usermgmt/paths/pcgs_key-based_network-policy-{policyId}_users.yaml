@@ -29,38 +29,6 @@ get:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:
     - BearerAuth: []
-put:
-  tags:
-    - Configuration - User Management
-  summary: Replace all users in a PCG-enabled network policy
-  description: Replace all users in a specific PCG-enabled network policy.
-  externalDocs:
-    description: API Reference
-    url: >-
-      https://extremecloudiq.com/api-docs/api-reference.html#_replace_all_key_based_pcg_users
-  operationId: updateKeyBasedPcgUsers
-  parameters:
-    - name: policyId
-      in: path
-      description: The network policy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
-  requestBody:
-    description: The payload of update Key-based PCG users request
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/XiqUpdateKeyBasedPcgUsersRequest.yaml
-    required: true
-  responses:
-    '202':
-      description: Accepted
-    default:
-      $ref: ../../common/components/responses/ErrorResponse.yaml
-  security:
-    - BearerAuth: []
 post:
   tags:
     - Configuration - User Management
@@ -85,6 +53,38 @@ post:
       application/json:
         schema:
           $ref: ../components/schemas/XiqCreateKeyBasedPcgUsersRequest.yaml
+    required: true
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Configuration - User Management
+  summary: Replace all users in a PCG-enabled network policy
+  description: Replace all users in a specific PCG-enabled network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_replace_all_key_based_pcg_users
+  operationId: updateKeyBasedPcgUsers
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The payload of update Key-based PCG users request
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqUpdateKeyBasedPcgUsersRequest.yaml
     required: true
   responses:
     '202':

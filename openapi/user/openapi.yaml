@@ -20,10 +20,10 @@ tags:
   - name: User
     description: Local and external user management in ExtremeCloud IQ account
 paths:
-  /users/me:
-    $ref: paths/users_me.yaml
   /users:
     $ref: paths/users.yaml
+  /users/me:
+    $ref: paths/users_me.yaml
   /users/{id}:
     $ref: paths/users_{id}.yaml
   /users/external:
