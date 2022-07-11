@@ -47,7 +47,7 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm --version
 ```
 
-## Install package dependencies via pnpm
+## Install all dependencies for the project
 > You can SKIP this step if you have run it before.
 
 We rely on some external tools to lint, build and preview our OpenAPI, please make sure install all of them before proceeding.
@@ -58,16 +58,11 @@ pnpm install
 # Get Started
 
 ## Define OpenAPI
-There are a lot of APIs for different domains in ExtremeCloud IQ.
-To improve maintainability, we adopt multiple-file approach to define all OpenAPIs.
+There are dozens of domains and hundreds endpoints in ExtremeCloud IQ API for now, and the number is still growing.
 
-* All OpenAPI definitions are under [openapi](openapi) directory.
-* The common components definitions are under [openapi/common](openapi/common) directory.
-* The different domain's OpenAPIs are under `openapi/{domain-name}` directory.
-* Each domain directory has below structure: 
-  * `openapi.yaml` define the domain OpenAPI.
-  * `paths` directory contains all paths for the domain OpenAPI.
-  * `components` directory contains `schemas`, `parameters`, `examples` directories.
+To improve maintainability, we adopt **multiple-domain** and **multiple-file** approach to define all OpenAPIs.
+
+Please check [This Documentation](openapi/README.md) for the details.
 
 You are freely to choose any text editor tools to add or change OpenAPI definitions, but choosing the right tools can 
 significantly improve your productivity.
@@ -200,6 +195,22 @@ pnpm swagger-ui --port 8899 <openapi-file>
 > Swagger UI cannot preview non-bundled OpenAPI definition, i.e. it can only point to the files under `bundled` directory,
 > otherwise there maybe display errors when navigating in the UI.
 
+## Get OpenAPI definition statistics
+You can run below command to get the latest OpenAPI statistics for the current OpenAPI definition:
+```bash
+pnpm stats
+```
+
+The command will generate statistics for the following metrics:
+* References
+* External Documents
+* Schemas
+* Parameters
+* Links
+* Path Items
+* Operations
+* Tags
+
 # API Design Procedure
 
 We **MUST** follow the below procedure for any OpenAPI definition changes:
@@ -207,13 +218,14 @@ We **MUST** follow the below procedure for any OpenAPI definition changes:
 1. Create feature branch from release branch
 2. Change OpenAPI definition
 3. [Build the changed OpenAPI definitions](#build-openapi) to make sure they are passed our custom linting ruleset
-4. Create a GitHub pull request and add stakeholders (API Governance team, BE, FE, QA, PLM, etc.) to review and approve
-5. Make sure resolve all concerns from stakeholders
-6. Start working on the new OpenAPI parallel:
+4. Commit the OpenAPI definition changes and latest generated [xcloudiq-openapi.yaml](xcloudiq-openapi.yaml)
+5. Create a GitHub pull request and add stakeholders (API Governance team, BE, FE, QA, PLM, etc.) to review and approve
+6. Make sure resolve all concerns from stakeholders
+7. Start working on the new OpenAPI parallel:
    1. Backend engineer start the API implementation
    2. Frontend engineer start the UI implementation
    3. QA engineer start to write test cases
    4. PLM start to communicate the new OpenAPI proposal to customer
-7. Repeat `step 2` to `step 5` if additional OpenAPI definition change needed during `step 6` (**Anyone** can initiate the process)
-8. Merge changes to release branch
-9. Delete the feature branch
+8. Repeat `step 2` to `step 6` if additional OpenAPI definition change needed during `step 7` (**Anyone** can initiate the process)
+9. Merge changes to release branch
+10. Delete the feature branch
