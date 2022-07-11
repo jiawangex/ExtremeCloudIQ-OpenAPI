@@ -25,7 +25,8 @@
     "test": "pnpm lint",
     "build": "pnpm lint && pnpm bundle && pnpm merge",
     "redoc": "pnpm redocly preview-docs --port 8888 xcloudiq-openapi.yaml",
-    "swagger": "pnpm swagger-ui --port 8899 xcloudiq-openapi.yaml"
+    "swagger": "pnpm swagger-ui --port 8899 xcloudiq-openapi.yaml",
+    "stats": "pnpm redocly stats xcloudiq-openapi.yaml"
   },
   "repository": {
     "type": "git",
