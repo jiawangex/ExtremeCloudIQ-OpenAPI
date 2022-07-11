@@ -235,3 +235,6 @@ We **MUST** follow the below procedure for any OpenAPI definition changes:
 8. Repeat `step 2` to `step 6` if additional OpenAPI definition change is needed during `step 7` (**Anyone** can initiate the process)
 9. Merge changes to release branch
 10. Delete the feature branch
+
+# Questions
+Please check the [Frequently Asked Questions](docs/FAQ.md) page if you have any questions.
