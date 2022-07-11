@@ -11,7 +11,7 @@ design principles and strictly follow our API design guidelines.
 We adopted **Design First** (i.e. API First or Contract First) approach for the REST API definition.
 Our API follows [OpenAPI 3.0.x specification](https://spec.openapis.org/oas/latest.html).
 
-Please check the details at [ExtremeCloud IQ API guidelines](api-guideline.md).
+Please check the details at [ExtremeCloud IQ API guidelines](docs/api-guidelines.md).
 
 # Prerequisite
 
@@ -102,7 +102,7 @@ You need to run OpenAPI linting whenever you make any OpenAPI definition change 
 pnpm lint
 ```
 
-To make sure every API definition change meets [ExtremeCloud IQ API Guidelines](api-guideline.md) requirements, we leverage
+To make sure every API definition change meets [ExtremeCloud IQ API Guidelines](docs/api-guidelines.md) requirements, we leverage
 both **Redocly** and **Spectral** to validate/linting the new OpenAPI.
 
 All errors **MUST** be resolved before creating a pull request unless the remediations would result in breaking changes
@@ -235,3 +235,6 @@ We **MUST** follow the below procedure for any OpenAPI definition changes:
 8. Repeat `step 2` to `step 6` if additional OpenAPI definition change is needed during `step 7` (**Anyone** can initiate the process)
 9. Merge changes to release branch
 10. Delete the feature branch
+
+# Questions
+Please check the [Frequently Asked Questions](docs/FAQ.md) page if you have any questions.
