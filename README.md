@@ -20,8 +20,9 @@ Please check the details at [ExtremeCloud IQ API guidelines](api-guideline.md).
 
 Please check [official site](https://nodejs.org/en/) to install `Node.js` on your local machine.
 
-* Install `Node.js` via CLI:
-If you are Mac user and have `homebrew` installed, it's very simple to install it:
+If you are a Mac user and have `homebrew` installed, it's very simple to install it.
+
+* Install `Node.js` via `homebrew`:
 ```bash
 brew install node
 ```
@@ -50,36 +51,29 @@ pnpm --version
 ## Install all dependencies for the project
 > You can SKIP this step if you have run it before.
 
-We rely on some external tools to lint, build and preview our OpenAPI, please make sure install all of them before proceeding.
+We rely on some external tools to lint, bundle, merge, build and preview our OpenAPI, please make sure 
+to install all of them before proceeding.
 ```bash
 pnpm install
 ```
 
-# Get Started
-
-## Define OpenAPI
-There are dozens of domains and hundreds endpoints in ExtremeCloud IQ API for now, and the number is still growing.
-
-To improve maintainability, we adopt **multiple-domain** and **multiple-file** approach to define all OpenAPIs.
-
-Please check [This Documentation](openapi/README.md) for the details.
-
-You are freely to choose any text editor tools to add or change OpenAPI definitions, but choosing the right tools can 
+## Choose OpenAPI Editor
+You are free to choose any text editor tools to add or change OpenAPI definitions, but choosing the right tools can
 significantly improve your productivity.
 
-We recommend you use one of the below tools to work with OpenAPI definition.
+We recommend you use one of the below tools to work with the OpenAPI definition.
 
 ### IntelliJ IDEA
-[IntelliJ IDEA](https://www.jetbrains.com/idea/) has a build-in plugin `OpenAPI specification` and is very good at refactoring.
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) has a built-in plugin `OpenAPI specification` and is very good at refactoring.
 
-Please also install [OpenAPI (Swagger) Editor](https://plugins.jetbrains.com/plugin/14837-openapi-swagger-editor) plugin, 
-which adds some useful features include, for example, SwaggerUI and ReDoc preview, IntelliSense, linting, 
+Please also install [OpenAPI (Swagger) Editor](https://plugins.jetbrains.com/plugin/14837-openapi-swagger-editor) plugin,
+which adds some useful features including, for example, SwaggerUI and ReDoc preview, IntelliSense, linting,
 schema enforcement, code navigation, definition links, snippets, static security analysis, and more!
 
 ### Stoplight Studio
-[Stoplight Studio](https://stoplight.io/studio) provides `Form` GUI and `Mocks` feature, which are very convenient in some use cases.
+[Stoplight Studio](https://stoplight.io/studio) provides `Form` GUI and `Mocks` features, which are very convenient in some use cases.
 
-You can either install desktop version (recommended) or use online version.
+You can either install the desktop version (recommended) or use the online version.
 
 ### Visual Studio Code
 [Visual Studio Code](https://code.visualstudio.com/) is a very popular free open source editor.
@@ -87,6 +81,18 @@ You can either install desktop version (recommended) or use online version.
 Please install [OpenAPI (Swagger) Editor](https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi) extension
 and [Redocly OpenAPI](https://marketplace.visualstudio.com/items?itemName=Redocly.openapi-vs-code) extension to help you
 write, validate, and maintain your OpenAPI documents.
+
+# Get Started
+
+## Define OpenAPI
+There are dozens of domains and hundreds of endpoints in ExtremeCloud IQ API for now.
+As more and more internal APIs migrate to the OpenAPI, the number of the endpoint may 
+grow to thousands in the near future.
+
+To improve maintainability and support efficient work for dozens of teams, 
+we adopt **multiple-domain** and **multiple-file** approach to define all OpenAPIs.
+
+Please go to the [OpenAPI root directory](openapi) to learn how to add a new OpenAPI and change the existing OpenAPI.
 
 ## Run OpenAPI Linting
 
@@ -99,7 +105,7 @@ pnpm lint
 To make sure every API definition change meets [ExtremeCloud IQ API Guidelines](api-guideline.md) requirements, we leverage
 both **Redocly** and **Spectral** to validate/linting the new OpenAPI.
 
-All errors **MUST** be resolved prior to creat pull request unless the remediations would result in breaking changes
+All errors **MUST** be resolved before creating a pull request unless the remediations would result in breaking changes
 for an existing API version.
 
 ### Redocly ruleset
@@ -129,31 +135,31 @@ API definitions can grow and become difficult to manage, especially if several t
 It's a good practice to maintain the reusable parts as separate files, and include them in the main (root) API definition 
 by referencing them with `$ref`. 
 
-We place the common components in [openapi/common](openapi/common) directory and other OpenAPIs are reference to this file.
+We place the common components in [openapi/common](openapi/common) directory and other OpenAPIs are a reference to these files.
 
-However, most OpenAPI tools don't support that multi-file approach, and require a single-file API definition.
+However, most OpenAPI tools don't support that multi-file approach and require a single-file API definition.
 
 The `bundle` command pulls the relevant parts of an API definition into a single file output in JSON or YAML format.
 ```bash
 pnpm bundle
 ```
-> 1. The above command will bundle all OpenAPI definitions under `openapi` directory to `bundled` directory.
+> 1. The above command will bundle all OpenAPI definitions under `openapi` directory to the `bundled` directory.
 > 2. Every bundled OpenAPI file is independent and not merged.
 
 ## Merge OpenAPI
-After bundle, there are still a lot of OpenAPI files that splitted by business domains. We may want a single OpenAPI file
+After the bundle, there are still a lot of OpenAPI files that are split by business domains. We may want a single OpenAPI file
 combine all of them.
 
-To do this, we need to run `merge` command:
+To do this, we need to run the `merge` command:
 ```bash
 pnpm merge
 ```
-> 1. The above command will merge all specified OpenAPI definitions under `bundled` directory into a single-file
+> 1. The above command will merge all specified OpenAPI definitions under the `bundled` directory into a single-file
      [xcloudiq-openapi.yaml](xcloudiq-openapi.yaml) under project root directory.
 > 2. The merge configuration is [.openapi-merge.yaml](.openapi-merge.yaml).
 
 ## Build OpenAPI
-To simplify the `lint`, `bundle` and `merge` workflow, we provide `build` command to combine all of them:
+To simplify the `lint`, `bundle`, and `merge` workflow, we provide the `build` command to combine all of them:
 ```bash
 pnpm build
 ```
@@ -192,11 +198,11 @@ If you want to preview a specific OpenAPI file with Swagger UI, please run the b
 ```bash
 pnpm swagger-ui --port 8899 <openapi-file>
 ```
-> Swagger UI cannot preview non-bundled OpenAPI definition, i.e. it can only point to the files under `bundled` directory,
-> otherwise there maybe display errors when navigating in the UI.
+> Swagger UI cannot preview non-bundled OpenAPI definition, i.e. it can only point to the files under the `bundled` directory,
+> otherwise there may be display errors when navigating in the UI.
 
 ## Get OpenAPI definition statistics
-You can run below command to get the latest OpenAPI statistics for the current OpenAPI definition:
+You can run the below command to get the latest OpenAPI statistics for the current OpenAPI definition:
 ```bash
 pnpm stats
 ```
@@ -215,17 +221,17 @@ The command will generate statistics for the following metrics:
 
 We **MUST** follow the below procedure for any OpenAPI definition changes:
 
-1. Create feature branch from release branch
-2. Change OpenAPI definition
+1. Create a feature branch from the release branch
+2. Change the OpenAPI definition
 3. [Build the changed OpenAPI definitions](#build-openapi) to make sure they are passed our custom linting ruleset
 4. Commit the OpenAPI definition changes and latest generated [xcloudiq-openapi.yaml](xcloudiq-openapi.yaml)
 5. Create a GitHub pull request and add stakeholders (API Governance team, BE, FE, QA, PLM, etc.) to review and approve
-6. Make sure resolve all concerns from stakeholders
+6. Make sure to resolve all concerns from stakeholders
 7. Start working on the new OpenAPI parallel:
-   1. Backend engineer start the API implementation
-   2. Frontend engineer start the UI implementation
-   3. QA engineer start to write test cases
-   4. PLM start to communicate the new OpenAPI proposal to customer
-8. Repeat `step 2` to `step 6` if additional OpenAPI definition change needed during `step 7` (**Anyone** can initiate the process)
+   1. Backend engineers start the API implementation
+   2. Frontend engineers start the UI implementation
+   3. QA engineers start to write test cases
+   4. PLM start to communicate the new OpenAPI proposal to the customer
+8. Repeat `step 2` to `step 6` if additional OpenAPI definition change is needed during `step 7` (**Anyone** can initiate the process)
 9. Merge changes to release branch
 10. Delete the feature branch
