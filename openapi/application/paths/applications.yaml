@@ -59,12 +59,7 @@ get:
       required: false
       schema:
         $ref: ../components/schemas/XiqApplicationSortField.yaml
-    - name: order
-      in: query
-      description: The sort order (ascending by default)
-      required: false
-      schema:
-        $ref: ../../common/components/schemas/XiqSortOrder.yaml
+    - $ref: ../../common/components/parameters/orderParam.yaml
   responses:
     '200':
       description: OK

@@ -1614,12 +1614,7 @@ paths:
           required: false
           schema:
             $ref: '#/components/schemas/XiqDeviceSortField'
-        - name: order
-          in: query
-          description: The sort order (ascending by default)
-          required: false
-          schema:
-            $ref: '#/components/schemas/XiqSortOrder'
+        - $ref: '#/components/parameters/orderParam'
         - name: views
           in: query
           description: >-
@@ -3219,12 +3214,7 @@ paths:
           required: false
           schema:
             $ref: '#/components/schemas/XiqApplicationSortField'
-        - name: order
-          in: query
-          description: The sort order (ascending by default)
-          required: false
-          schema:
-            $ref: '#/components/schemas/XiqSortOrder'
+        - $ref: '#/components/parameters/orderParam'
       responses:
         '200':
           description: OK
@@ -15757,6 +15747,13 @@ components:
       scheme: bearer
       bearerFormat: JWT
   parameters:
+    orderParam:
+      name: order
+      in: query
+      description: The sort order (ascending by default)
+      required: false
+      schema:
+        $ref: '#/components/schemas/XiqSortOrder'
     asyncParam:
       name: async
       in: query
