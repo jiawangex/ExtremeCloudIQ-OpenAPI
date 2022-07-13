@@ -5,7 +5,7 @@ post:
   description: Send CLI commands to a specific device.
   externalDocs:
     description: API Reference
-    url: http://localhost:8081/api-docs/api-reference.html#_send_cli_to_one_device
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
   operationId: sendCliToDevice
   parameters:
     - name: id

@@ -6,7 +6,7 @@ post:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
+      https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
   operationId: changeDeviceStatusToUnmanage
   parameters:
     - name: id

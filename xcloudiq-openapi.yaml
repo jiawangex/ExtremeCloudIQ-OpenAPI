@@ -1113,7 +1113,7 @@ paths:
       description: Rename an existing organization (Available when HIQ is enabled).
       externalDocs:
         description: API Reference
-        url: 'http://localhost:8081/api-docs/api-reference.html#_rename_organization'
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_rename_organization'
       operationId: renameOrganization
       parameters:
         - name: id
@@ -1145,7 +1145,7 @@ paths:
       description: Get location hierarchical tree.
       externalDocs:
         description: API Reference
-        url: 'http://localhost:8081/api-docs/api-reference.html#_get_location_tree'
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_location_tree'
       operationId: getLocationTree
       parameters:
         - name: parentId
@@ -2069,7 +2069,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_change_status_to_managed_for_one_device
+          https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_managed_for_one_device
       operationId: changeDeviceStatusToManage
       parameters:
         - name: id
@@ -2095,7 +2095,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
+          https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
       operationId: changeDeviceStatusToUnmanage
       parameters:
         - name: id
@@ -2121,7 +2121,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_reset_device_for_once_device
+          https://extremecloudiq.com/api-docs/api-reference.html#_reset_device_for_once_device
       operationId: resetDevice
       parameters:
         - name: id
@@ -2153,7 +2153,7 @@ paths:
       description: Reboot a specific device.
       externalDocs:
         description: API Reference
-        url: 'http://localhost:8081/api-docs/api-reference.html#_reboot_one_device'
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device'
       operationId: rebootDevice
       parameters:
         - name: id
@@ -2179,7 +2179,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_send_cli_to_one_device
+          https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
       operationId: sendCliToDevice
       parameters:
         - name: id
@@ -2403,7 +2403,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
+          https://extremecloudiq.com/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
       operationId: changeDeviceLevelSsidStatus
       parameters:
         - name: id
@@ -2435,7 +2435,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_device_level_ssid_override
+          https://extremecloudiq.com/api-docs/api-reference.html#_device_level_ssid_override
       operationId: overrideDeviceLevelSsid
       parameters:
         - name: id
@@ -4950,7 +4950,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_list_the_radio_profiles
+          https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radio_profiles
       operationId: listRadioProfiles
       parameters:
         - name: page
@@ -4991,7 +4991,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_create_radio_profile_configuration
+          https://extremecloudiq.com/api-docs/api-reference.html#_create_radio_profile_configuration
       operationId: createRadioProfile
       requestBody:
         description: The request body to create new user profile.
@@ -5020,7 +5020,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_list_mac_oui_profiles
+          https://extremecloudiq.com/api-docs/api-reference.html#_list_mac_oui_profiles
       operationId: listRpMacOuiProfiles
       parameters:
         - name: page
@@ -5061,7 +5061,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_create_mac_oui_profile_configuration
+          https://extremecloudiq.com/api-docs/api-reference.html#_create_mac_oui_profile_configuration
       operationId: createMacOuiProfile
       requestBody:
         description: The request body to create new user profile.
@@ -5090,7 +5090,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_radio_profile_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_profile_by_id
       operationId: getRadioProfile
       parameters:
         - name: id
@@ -5119,7 +5119,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_radio_profile_configuration
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_profile_configuration
       operationId: updateRadioProfile
       parameters:
         - name: id
@@ -5155,7 +5155,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_delete_radio_profile_configuration
+          https://extremecloudiq.com/api-docs/api-reference.html#_delete_radio_profile_configuration
       operationId: deleteRadioProfile
       parameters:
         - name: id
@@ -5183,7 +5183,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_wmm_qos_settings_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wmm_qos_settings_by_id
       operationId: getRpWmmQosSettings
       parameters:
         - name: id
@@ -5214,7 +5214,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_wmm_qos_settings_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_wmm_qos_settings_by_id
       operationId: updateRpWmmQosSettings
       parameters:
         - name: id
@@ -5251,7 +5251,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_sensor_scan_settings_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_sensor_scan_settings_by_id
       operationId: getRpSensorScanSettings
       parameters:
         - name: id
@@ -5280,7 +5280,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_sensor_scan_settings_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_sensor_scan_settings_by_id
       operationId: updateRpSensorScanSettings
       parameters:
         - name: id
@@ -5317,7 +5317,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_radio_usage_optimization_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_usage_optimization_by_id
       operationId: getRpRadioUsageOptimization
       parameters:
         - name: id
@@ -5348,7 +5348,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_radio_usage_optimization_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_usage_optimization_by_id
       operationId: updateRpRadioUsageOptimization
       parameters:
         - name: id
@@ -5385,7 +5385,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_radio_profile_neighborhood_analysis_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_profile_neighborhood_analysis_by_id
       operationId: getNeighborhoodAnalysis
       parameters:
         - name: id
@@ -5414,7 +5414,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_radio_profile_neighborhood_analysis_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_profile_neighborhood_analysis_by_id
       operationId: updateNeighborhoodAnalysis
       parameters:
         - name: id
@@ -5451,7 +5451,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_radio_miscellaneous_settings_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_miscellaneous_settings_by_id
       operationId: getRpMiscellaneousSettings
       parameters:
         - name: id
@@ -5480,7 +5480,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_radio_miscellaneous_settings_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_miscellaneous_settings_by_id
       operationId: updateRpMiscellaneousSettings
       parameters:
         - name: id
@@ -5517,7 +5517,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_mac_oui_profile_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_mac_oui_profile_by_id
       operationId: getRpMacOuiProfile
       parameters:
         - name: id
@@ -5546,7 +5546,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_mac_oui_profile_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_mac_oui_profile_by_id
       operationId: updateRpMacOuiProfile
       parameters:
         - name: id
@@ -5582,7 +5582,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_delete_mac_oui_profile_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_delete_mac_oui_profile_by_id
       operationId: deleteRpMacOuiProfile
       parameters:
         - name: id
@@ -5608,7 +5608,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_get_radio_profile_channel_selection_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_profile_channel_selection_by_id
       operationId: getRpChannelSelection
       parameters:
         - name: id
@@ -5637,7 +5637,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          http://localhost:8081/api-docs/api-reference.html#_update_radio_profile_channel_selection_by_id
+          https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_profile_channel_selection_by_id
       operationId: updateRpChannelSelection
       parameters:
         - name: id

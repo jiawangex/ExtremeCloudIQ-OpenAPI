@@ -6,7 +6,7 @@ get:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_get_mac_oui_profile_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_mac_oui_profile_by_id
   operationId: getRpMacOuiProfile
   parameters:
     - name: id
@@ -35,7 +35,7 @@ put:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_update_mac_oui_profile_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_mac_oui_profile_by_id
   operationId: updateRpMacOuiProfile
   parameters:
     - name: id
@@ -71,7 +71,7 @@ delete:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_delete_mac_oui_profile_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_mac_oui_profile_by_id
   operationId: deleteRpMacOuiProfile
   parameters:
     - name: id

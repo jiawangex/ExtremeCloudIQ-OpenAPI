@@ -6,7 +6,7 @@ post:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
+      https://extremecloudiq.com/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
   operationId: changeDeviceLevelSsidStatus
   parameters:
     - name: id

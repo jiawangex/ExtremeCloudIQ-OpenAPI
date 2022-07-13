@@ -6,7 +6,7 @@ get:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_get_radio_usage_optimization_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_usage_optimization_by_id
   operationId: getRpRadioUsageOptimization
   parameters:
     - name: id
@@ -35,7 +35,7 @@ put:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_update_radio_usage_optimization_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_usage_optimization_by_id
   operationId: updateRpRadioUsageOptimization
   parameters:
     - name: id

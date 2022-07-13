@@ -6,7 +6,7 @@ get:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_get_wmm_qos_settings_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_wmm_qos_settings_by_id
   operationId: getRpWmmQosSettings
   parameters:
     - name: id
@@ -35,7 +35,7 @@ put:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_update_wmm_qos_settings_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_wmm_qos_settings_by_id
   operationId: updateRpWmmQosSettings
   parameters:
     - name: id
