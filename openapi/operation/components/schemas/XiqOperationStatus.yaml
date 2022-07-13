@@ -1,0 +1,9 @@
+type: string
+description: The current operation status
+enum:
+  - PENDING
+  - RUNNING
+  - CANCELING
+  - SUCCEEDED
+  - FAILED
+  - CANCELED

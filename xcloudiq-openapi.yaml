@@ -43,6 +43,8 @@ tags:
     description: User login & logout
   - name: Authorization
     description: API token and permissions
+  - name: Operation
+    description: Long-Running Operations (LRO) management for asynchronous APIs
   - name: Account
     description: ExtremeCloud IQ Account
   - name: User
@@ -259,6 +261,95 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  '/operations/{operationId}':
+    get:
+      tags:
+        - Operation
+      summary: Get Long-Running Operation (LRO) status and result
+      description: >-
+        Get the Long-Running Operation (LRO) status and result.
+
+        The response will include either result or error if the operation is
+        done.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_operation'
+      operationId: getOperation
+      parameters:
+        - name: operationId
+          in: path
+          description: The operation ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqOperationObject'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Operation
+      summary: Delete Long-Running Operation (LRO)
+      description: >-
+        The Long-Running Operation (LRO) can be deleted when the operation is
+        done or in PENDING status.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_delete_operation
+      operationId: deleteOperation
+      parameters:
+        - name: operationId
+          in: path
+          description: The operation ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/operations/{operationId}/:cancel':
+    post:
+      tags:
+        - Operation
+      summary: Cancel Long-Running Operation (LRO)
+      description: >-
+        When the cancelable is true in operation metadata the clients are
+        allowed to send a cancel request to ask the backend to cancel the
+        operation.
+
+        The server makes its best effort to cancel the operation, but success is
+        not guaranteed.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_cancel_operation
+      operationId: cancelOperation
+      parameters:
+        - name: operationId
+          in: path
+          description: The operation ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /account/home:
     get:
       tags:
@@ -423,28 +514,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /users/me:
-    get:
-      tags:
-        - User
-      summary: Get current user info
-      description: Get currently login user info.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_get_current_user
-      operationId: getCurrentUser
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqUser'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   /users:
     get:
       tags:
@@ -514,6 +583,28 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /users/me:
+    get:
+      tags:
+        - User
+      summary: Get current user info
+      description: Get currently login user info.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_current_user
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqUser'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/users/{id}':
     get:
       tags:
@@ -539,30 +630,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqUser'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-    delete:
-      tags:
-        - User
-      summary: Delete user by ID
-      description: Delete a specific user.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_user'
-      operationId: deleteUser
-      parameters:
-        - name: id
-          in: path
-          description: The user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -598,6 +665,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqUser'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - User
+      summary: Delete user by ID
+      description: Delete a specific user.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_user'
+      operationId: deleteUser
+      parameters:
+        - name: id
+          in: path
+          description: The user ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -702,31 +793,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-    delete:
-      tags:
-        - User
-      summary: Revoke external access
-      description: Revoke external acccess for a specific user.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_revoke_external_user
-      operationId: revokeExternalUser
-      parameters:
-        - name: id
-          in: path
-          description: The external user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
     patch:
       tags:
         - User
@@ -757,6 +823,31 @@ paths:
                 value:
                   user_role: ADMINISTRATOR
         required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - User
+      summary: Revoke external access
+      description: Revoke external acccess for a specific user.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_revoke_external_user
+      operationId: revokeExternalUser
+      parameters:
+        - name: id
+          in: path
+          description: The external user ID
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: OK
@@ -1739,26 +1830,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  '/devices/country-code/:assign':
-    post:
-      tags:
-        - Device
-      summary: Assign a country code to devices
-      description: Assign the country code to one or more devices.
-      operationId: assignDevicesCountryCode
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqAssignDevicesCountryCodeRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   '/devices/os/:change':
     post:
       tags:
@@ -1771,6 +1842,26 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/XiqChangeDevicesOsModeRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/country-code/:assign':
+    post:
+      tags:
+        - Device
+      summary: Assign a country code to devices
+      description: Assign the country code to one or more devices.
+      operationId: assignDevicesCountryCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqAssignDevicesCountryCodeRequest'
         required: true
       responses:
         '200':
@@ -2996,6 +3087,79 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /logs/audit:
+    get:
+      tags:
+        - Log
+      summary: List audit logs
+      description: List a page of audit logs.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_audit_log'
+      operationId: listAuditLogs
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+        - name: categories
+          in: query
+          description: Audit category
+          required: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/XiqAuditLogCategory'
+        - name: username
+          in: query
+          description: The user login name
+          required: false
+          schema:
+            type: string
+        - name: startTime
+          in: query
+          description: >-
+            The start time to query, epoch time in milliseconds since 1/1/1970,
+            default is 0 if not specified or is negative
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: endTime
+          in: query
+          description: >-
+            The end time to query, epoch time in milliseconds since 1/1/1970,
+            default is now if not specified or is negative
+          required: false
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqAuditLog'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /logs/sms:
     get:
       tags:
@@ -3260,79 +3424,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedXiqAuthLog'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  /logs/audit:
-    get:
-      tags:
-        - Log
-      summary: List audit logs
-      description: List a page of audit logs.
-      externalDocs:
-        description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_audit_log'
-      operationId: listAuditLogs
-      parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
-        - name: categories
-          in: query
-          description: Audit category
-          required: false
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/XiqAuditLogCategory'
-        - name: username
-          in: query
-          description: The user login name
-          required: false
-          schema:
-            type: string
-        - name: startTime
-          in: query
-          description: >-
-            The start time to query, epoch time in milliseconds since 1/1/1970,
-            default is 0 if not specified or is negative
-          required: false
-          schema:
-            type: integer
-            format: int64
-        - name: endTime
-          in: query
-          description: >-
-            The end time to query, epoch time in milliseconds since 1/1/1970,
-            default is now if not specified or is negative
-          required: false
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedXiqAuditLog'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -3671,31 +3762,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-    delete:
-      tags:
-        - Configuration - Basic
-      summary: Delete a VLAN profile
-      description: Delete a specific VLAN profile by ID.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_delete_vlan_profile_configuration
-      operationId: deleteVlanProfile
-      parameters:
-        - name: id
-          in: path
-          description: The VLAN profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
     patch:
       tags:
         - Configuration - Basic
@@ -3728,6 +3794,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqVlanProfile'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Configuration - Basic
+      summary: Delete a VLAN profile
+      description: Delete a specific VLAN profile by ID.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_delete_vlan_profile_configuration
+      operationId: deleteVlanProfile
+      parameters:
+        - name: id
+          in: path
+          description: The VLAN profile ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -4230,38 +4321,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-    put:
-      tags:
-        - Configuration - User Management
-      summary: Replace all users in a PCG-enabled network policy
-      description: Replace all users in a specific PCG-enabled network policy.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_replace_all_key_based_pcg_users
-      operationId: updateKeyBasedPcgUsers
-      parameters:
-        - name: policyId
-          in: path
-          description: The network policy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        description: The payload of update Key-based PCG users request
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqUpdateKeyBasedPcgUsersRequest'
-        required: true
-      responses:
-        '202':
-          description: Accepted
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
     post:
       tags:
         - Configuration - User Management
@@ -4286,6 +4345,38 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/XiqCreateKeyBasedPcgUsersRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Configuration - User Management
+      summary: Replace all users in a PCG-enabled network policy
+      description: Replace all users in a specific PCG-enabled network policy.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_replace_all_key_based_pcg_users
+      operationId: updateKeyBasedPcgUsers
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The payload of update Key-based PCG users request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqUpdateKeyBasedPcgUsersRequest'
         required: true
       responses:
         '202':
@@ -6679,6 +6770,48 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /radius-proxies/devices:
+    get:
+      tags:
+        - Configuration - Authentication
+      summary: List Radius proxy devices
+      operationId: listRadiusProxyDevices
+      description: List devices for Radius Proxy.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_list_radius_proxy_devices
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/radius-proxies/{id}':
     get:
       tags:
@@ -6789,48 +6922,6 @@ paths:
       responses:
         '200':
           description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  /radius-proxies/devices:
-    get:
-      tags:
-        - Configuration - Authentication
-      summary: List Radius proxy devices
-      operationId: listRadiusProxyDevices
-      description: List devices for Radius Proxy.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_list_radius_proxy_devices
-      parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedXiqInternalRadiusDevice'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -7244,6 +7335,93 @@ components:
           items:
             type: string
             description: The role list
+    XiqOperationStatus:
+      type: string
+      description: The current operation status
+      enum:
+        - PENDING
+        - RUNNING
+        - CANCELING
+        - SUCCEEDED
+        - FAILED
+        - CANCELED
+    XiqOperationMetadata:
+      required:
+        - cancelable
+        - create_time
+        - expires_in
+        - status
+        - update_time
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/XiqOperationStatus'
+        cancelable:
+          type: boolean
+          description: Indicates if the operation can be canceled in the current status
+        percentage:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: >-
+            The progress in percentage ranges from 0 to 100 (it's not guaranteed
+            to be accurate)
+          format: int32
+        step:
+          type: string
+          description: >-
+            The optional step name for multiple steps operations when the
+            operation is running
+        create_time:
+          type: string
+          description: >-
+            The operation's create time, which is the time when the operation is
+            in PENDING status
+          format: date-time
+        update_time:
+          type: string
+          description: The operation's last update time
+          format: date-time
+        start_time:
+          type: string
+          description: >-
+            The operation's start time, which is the time when the operation is
+            in RUNNING status
+          format: date-time
+        end_time:
+          type: string
+          description: >-
+            The operation's end time, which is the time when the operation is
+            done
+          format: date-time
+        expires_in:
+          type: integer
+          description: >-
+            The number of seconds remaining until the operation expires and is
+            to be deleted.
+          format: int64
+      description: The metadata of Long Running Operation (LRO)
+    XiqOperationObject:
+      required:
+        - done
+        - id
+        - metadata
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the operation
+        metadata:
+          $ref: '#/components/schemas/XiqOperationMetadata'
+        done:
+          type: boolean
+          description: Whether the operation is done
+        response:
+          type: object
+          description: The API response of the operation if the status is SUCCEEDED
+        error:
+          $ref: '#/components/schemas/XiqError'
+      description: Long Running Operation (LRO) model
     XiqAccountType:
       type: string
       description: Account type
@@ -8517,6 +8695,38 @@ components:
           description: The assigned network policy
           format: int64
       description: Device network policy assignment for multiple devices
+    XiqChangeDevicesOsModeRequest:
+      required:
+        - device_ids
+        - target_os
+      type: object
+      properties:
+        device_ids:
+          maxItems: 2147483647
+          minItems: 1
+          type: array
+          description: >-
+            The one or multiple device IDs to change the OS mode. Must be all AP
+            or Switches in the same list. For AP only "AP_410C", "AP_460C",
+            "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
+            allowed change to WiNG OS. For Switch: only "5520", "5420F", "5420M"
+            are allowed to change its OS type.
+          items:
+            type: integer
+            description: >-
+              The one or multiple device IDs to change the OS mode. Must be all
+              AP or Switches in the same list. For AP only "AP_410C", "AP_460C",
+              "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
+              allowed change to WiNG OS. For Switch: only "5520", "5420F",
+              "5420M" are allowed to change its OS type.
+            format: int64
+        target_os:
+          type: string
+          description: >-
+            The target OS mode to change to, for AP: only WiNG is supported, for
+            Switch: EXOS or VOSS
+          example: WiNG
+      description: The request for change the device(s) OS mode.
     XiqCountryCode:
       type: string
       description: The country code.
@@ -8659,38 +8869,6 @@ components:
         country_code:
           $ref: '#/components/schemas/XiqCountryCode'
       description: Device country-code assignment for multiple devices
-    XiqChangeDevicesOsModeRequest:
-      required:
-        - device_ids
-        - target_os
-      type: object
-      properties:
-        device_ids:
-          maxItems: 2147483647
-          minItems: 1
-          type: array
-          description: >-
-            The one or multiple device IDs to change the OS mode. Must be all AP
-            or Switches in the same list. For AP only "AP_410C", "AP_460C",
-            "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
-            allowed change to WiNG OS. For Switch: only "5520", "5420F", "5420M"
-            are allowed to change its OS type.
-          items:
-            type: integer
-            description: >-
-              The one or multiple device IDs to change the OS mode. Must be all
-              AP or Switches in the same list. For AP only "AP_410C", "AP_460C",
-              "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
-              allowed change to WiNG OS. For Switch: only "5520", "5420F",
-              "5420M" are allowed to change its OS type.
-            format: int64
-        target_os:
-          type: string
-          description: >-
-            The target OS mode to change to, for AP: only WiNG is supported, for
-            Switch: EXOS or VOSS
-          example: WiNG
-      description: The request for change the device(s) OS mode.
     XiqDeviceStats:
       type: object
       properties:
@@ -9307,6 +9485,81 @@ components:
           description: The TOP N client usage
           format: int64
       description: The Top N Clients Usage per Application
+    XiqAuditLogCategory:
+      type: string
+      enum:
+        - ADMIN
+        - SYSTEM
+        - DEPLOYMENT
+        - CONFIG
+        - MONITOR
+        - ALARM
+    XiqAuditLog:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The audit log id
+          format: int64
+        category:
+          $ref: '#/components/schemas/XiqAuditLogCategory'
+        user_id:
+          type: integer
+          description: The user id
+          format: int64
+        code:
+          type: integer
+          description: The audit log code
+          format: int32
+        username:
+          type: string
+          description: The user name
+        vhm_name:
+          type: string
+          description: The vhm name
+        parameters:
+          type: string
+          description: The audit log parameters
+        org_id:
+          type: integer
+          description: The org id
+          format: int64
+        timestamp:
+          type: integer
+          description: The audit log timestamp
+          format: int64
+      description: ExtremeCloud IQ Audit Log
+    PagedXiqAuditLog:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqAuditLog'
     XiqSmsLogStatus:
       type: string
       description: The SMS status
@@ -9591,81 +9844,6 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqAuthLog'
-    XiqAuditLogCategory:
-      type: string
-      enum:
-        - ADMIN
-        - SYSTEM
-        - DEPLOYMENT
-        - CONFIG
-        - MONITOR
-        - ALARM
-    XiqAuditLog:
-      required:
-        - id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The audit log id
-          format: int64
-        category:
-          $ref: '#/components/schemas/XiqAuditLogCategory'
-        user_id:
-          type: integer
-          description: The user id
-          format: int64
-        code:
-          type: integer
-          description: The audit log code
-          format: int32
-        username:
-          type: string
-          description: The user name
-        vhm_name:
-          type: string
-          description: The vhm name
-        parameters:
-          type: string
-          description: The audit log parameters
-        org_id:
-          type: integer
-          description: The org id
-          format: int64
-        timestamp:
-          type: integer
-          description: The audit log timestamp
-          format: int64
-      description: ExtremeCloud IQ Audit Log
-    PagedXiqAuditLog:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqAuditLog'
     XiqAccountingLog:
       required:
         - id

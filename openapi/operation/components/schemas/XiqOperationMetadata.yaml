@@ -1,0 +1,53 @@
+required:
+  - cancelable
+  - create_time
+  - expires_in
+  - status
+  - update_time
+type: object
+properties:
+  status:
+    $ref: ./XiqOperationStatus.yaml
+  cancelable:
+    type: boolean
+    description: Indicates if the operation can be canceled in the current status
+  percentage:
+    maximum: 100
+    minimum: 0
+    type: integer
+    description: >-
+      The progress in percentage ranges from 0 to 100 (it's not guaranteed to be
+      accurate)
+    format: int32
+  step:
+    type: string
+    description: >-
+      The optional step name for multiple steps operations when the operation is
+      running
+  create_time:
+    type: string
+    description: >-
+      The operation's create time, which is the time when the operation is in
+      PENDING status
+    format: date-time
+  update_time:
+    type: string
+    description: The operation's last update time
+    format: date-time
+  start_time:
+    type: string
+    description: >-
+      The operation's start time, which is the time when the operation is in
+      RUNNING status
+    format: date-time
+  end_time:
+    type: string
+    description: The operation's end time, which is the time when the operation is done
+    format: date-time
+  expires_in:
+    type: integer
+    description: >-
+      The number of seconds remaining until the operation expires and is to be
+      deleted.
+    format: int64
+description: The metadata of Long Running Operation (LRO)

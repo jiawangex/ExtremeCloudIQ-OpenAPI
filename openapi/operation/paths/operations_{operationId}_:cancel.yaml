@@ -1,0 +1,28 @@
+post:
+  tags:
+    - Operation
+  summary: Cancel Long-Running Operation (LRO)
+  description: >-
+    When the cancelable is true in operation metadata the clients are allowed to
+    send a cancel request to ask the backend to cancel the operation.
+
+    The server makes its best effort to cancel the operation, but success is not
+    guaranteed.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_cancel_operation
+  operationId: cancelOperation
+  parameters:
+    - name: operationId
+      in: path
+      description: The operation ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
