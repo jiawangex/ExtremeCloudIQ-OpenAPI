@@ -26,10 +26,10 @@ paths:
     $ref: paths/logs_sms.yaml
   /logs/email:
     $ref: paths/logs_email.yaml
-  /logs/credential:
-    $ref: paths/logs_credential.yaml
   /logs/auth:
     $ref: paths/logs_auth.yaml
+  /logs/credential:
+    $ref: paths/logs_credential.yaml
   /logs/accounting:
     $ref: paths/logs_accounting.yaml
 components:
