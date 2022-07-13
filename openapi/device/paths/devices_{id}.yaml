@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_device_details_for_one_device
   operationId: getDevice
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../components/parameters/deviceIdParam.yaml
     - name: views
       in: query
       description: >-
@@ -55,13 +49,7 @@ delete:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_device
   operationId: deleteDevice
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../components/parameters/deviceIdParam.yaml
   responses:
     '200':
       description: OK

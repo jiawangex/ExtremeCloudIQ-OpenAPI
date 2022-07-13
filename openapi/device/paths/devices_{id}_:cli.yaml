@@ -8,13 +8,7 @@ post:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
   operationId: sendCliToDevice
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../components/parameters/deviceIdParam.yaml
   requestBody:
     description: The one or multiple CLIs to send
     content:

@@ -2092,13 +2092,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_details_for_one_device
       operationId: getDevice
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
         - name: views
           in: query
           description: >-
@@ -2138,13 +2132,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_device'
       operationId: deleteDevice
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2164,13 +2152,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_managed_for_one_device
       operationId: changeDeviceStatusToManage
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2190,13 +2172,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
       operationId: changeDeviceStatusToUnmanage
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2216,13 +2192,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
       operationId: sendCliToDevice
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       requestBody:
         description: The one or multiple CLIs to send
         content:
@@ -2255,13 +2225,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device
       operationId: rebootDevice
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2281,13 +2245,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_reset_device_for_once_device
       operationId: resetDevice
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
         - name: async
           in: query
           description: Whether to enable async mode
@@ -2310,13 +2268,7 @@ paths:
       description: Change hostname for a specific device.
       operationId: changeHostname
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
         - name: hostname
           in: query
           description: The new hostname
@@ -2338,13 +2290,7 @@ paths:
       description: Change description for a specific device.
       operationId: changeDeviceDescription
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       requestBody:
         description: The device description
         content:
@@ -2369,13 +2315,7 @@ paths:
       description: Get the location info for a specific device.
       operationId: getDeviceLocation
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2396,13 +2336,7 @@ paths:
         properties.
       operationId: assignDeviceLocation
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       requestBody:
         content:
           application/json:
@@ -2423,13 +2357,7 @@ paths:
       description: Revoke the assigned location for a specific device.
       operationId: revokeDeviceLocation
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2445,13 +2373,7 @@ paths:
       description: Get the network policy for a specific device.
       operationId: getDeviceNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2470,13 +2392,7 @@ paths:
       description: Assign a network policy to a specific device.
       operationId: assignDeviceNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
         - name: networkPolicyId
           in: query
           description: The network policy ID to assign
@@ -2498,13 +2414,7 @@ paths:
       description: Revoke the assigned network policy for a specific device.
       operationId: revokeDeviceNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2524,13 +2434,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_device_level_ssid_override
       operationId: overrideDeviceLevelSsid
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       requestBody:
         content:
           application/json:
@@ -2556,13 +2460,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_level_ssid_status_on_each_wifi_interface
       operationId: getDeviceLevelSsidStatus
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       responses:
         '200':
           description: OK
@@ -2590,13 +2488,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
       operationId: changeDeviceLevelSsidStatus
       parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/deviceIdParam'
       requestBody:
         content:
           application/json:
@@ -15882,3 +15774,12 @@ components:
       description: JSON Web Token (JWT) based authentication
       scheme: bearer
       bearerFormat: JWT
+  parameters:
+    deviceIdParam:
+      name: id
+      in: path
+      description: The device ID
+      required: true
+      schema:
+        type: integer
+        format: int64

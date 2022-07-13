@@ -9,13 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
   operationId: changeDeviceStatusToUnmanage
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../components/parameters/deviceIdParam.yaml
   responses:
     '200':
       description: OK
