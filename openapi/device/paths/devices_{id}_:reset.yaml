@@ -10,13 +10,7 @@ post:
   operationId: resetDevice
   parameters:
     - $ref: ../components/parameters/deviceIdParam.yaml
-    - name: async
-      in: query
-      description: Whether to enable async mode
-      required: false
-      schema:
-        type: boolean
-        default: false
+    - $ref: ../../common/components/parameters/asyncParam.yaml
   responses:
     '200':
       description: OK

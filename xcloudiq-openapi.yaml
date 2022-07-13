@@ -1638,13 +1638,7 @@ paths:
             type: array
             items:
               $ref: '#/components/schemas/XiqDeviceField'
-        - name: async
-          in: query
-          description: Whether to enable async mode
-          required: false
-          schema:
-            type: boolean
-            default: false
+        - $ref: '#/components/parameters/asyncParam'
       responses:
         '200':
           description: OK
@@ -1732,13 +1726,7 @@ paths:
         progress and the result.
       operationId: sendCliToDevices
       parameters:
-        - name: async
-          in: query
-          description: Whether to enable async mode
-          required: false
-          schema:
-            type: boolean
-            default: false
+        - $ref: '#/components/parameters/asyncParam'
       requestBody:
         content:
           application/json:
@@ -2246,13 +2234,7 @@ paths:
       operationId: resetDevice
       parameters:
         - $ref: '#/components/parameters/deviceIdParam'
-        - name: async
-          in: query
-          description: Whether to enable async mode
-          required: false
-          schema:
-            type: boolean
-            default: false
+        - $ref: '#/components/parameters/asyncParam'
       responses:
         '200':
           description: OK
@@ -15775,6 +15757,14 @@ components:
       scheme: bearer
       bearerFormat: JWT
   parameters:
+    asyncParam:
+      name: async
+      in: query
+      description: Whether to enable async mode
+      required: false
+      schema:
+        type: boolean
+        default: false
     deviceIdParam:
       name: id
       in: path
