@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Network Policy
+  summary: Add SSIDs to a network policy
+  description: Add SSIDs to a specific network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_adding_multiple_ssids_to_the_network_policy
+  operationId: addSsidsToNetworkPolicy
+  parameters:
+    - name: id
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The SSID ids to be added to the network policy
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,13 @@
+required:
+  - name
+  - type
+type: object
+properties:
+  name:
+    type: string
+    description: The network policy name
+  description:
+    type: string
+    description: The network policy description
+  type:
+    $ref: ./XiqNetworkPolicyType.yaml

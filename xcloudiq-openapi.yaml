@@ -2717,6 +2717,84 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /network-policies:
+    get:
+      tags:
+        - Network Policy
+      summary: List network policies
+      description: List a page of network policies.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_list_network_policies
+      operationId: listNetworkPolices
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+        - name: policyNames
+          in: query
+          description: The list of policy names
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqNetworkPolicy'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - Network Policy
+      summary: Create network policy
+      description: Create a new network policy.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_create_network_policy
+      operationId: createNetworkPolicy
+      requestBody:
+        description: The body of create network policy API
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateNetworkPolicyRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqNetworkPolicy'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/network-policies/{id}':
     get:
       tags:
@@ -2801,6 +2879,127 @@ paths:
           schema:
             type: integer
             format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/network-policies/{id}/ssids':
+    get:
+      tags:
+        - Network Policy
+      summary: List SSIDs for a network policy
+      description: List a page of SSIDs for a specific network policy.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_list_ssid_list_for_the_network_policy
+      operationId: listSsidsByNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqSsid'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/network-policies/{id}/ssids/:add':
+    post:
+      tags:
+        - Network Policy
+      summary: Add SSIDs to a network policy
+      description: Add SSIDs to a specific network policy.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_adding_multiple_ssids_to_the_network_policy
+      operationId: addSsidsToNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The SSID ids to be added to the network policy
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/network-policies/{id}/ssids/:remove':
+    post:
+      tags:
+        - Network Policy
+      summary: Removes SSIDs from the network policy
+      description: Removing multiple SSIDs from the network policy.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_removing_multiple_ssids_from_the_network_policy
+      operationId: deleteSsidsFromNetworkPolicy
+      parameters:
+        - name: id
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The SSID ids to be removed from the network policy
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+        required: true
       responses:
         '200':
           description: OK
@@ -9275,6 +9474,35 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqDeviceAlarm'
+    PagedXiqNetworkPolicy:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqNetworkPolicy'
     XiqNetworkPolicyType:
       type: string
       description: The network policy type
@@ -9286,6 +9514,20 @@ components:
         - NETWORK_ACCESS_AND_SWITCHING_AND_BR
         - NETWORK_ACCESS_AND_BRANCH_ROUTING
         - SWITCHING_AND_BRANCH_ROUTING
+    XiqCreateNetworkPolicyRequest:
+      required:
+        - name
+        - type
+      type: object
+      properties:
+        name:
+          type: string
+          description: The network policy name
+        description:
+          type: string
+          description: The network policy description
+        type:
+          $ref: '#/components/schemas/XiqNetworkPolicyType'
     XiqUpdateNetworkPolicyRequest:
       type: object
       properties:
@@ -9297,6 +9539,74 @@ components:
           description: The network policy description
         type:
           $ref: '#/components/schemas/XiqNetworkPolicyType'
+    XiqSsid:
+      required:
+        - broadcast_name
+        - create_time
+        - id
+        - name
+        - predefined
+        - update_time
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier
+          format: int64
+        create_time:
+          type: string
+          description: The create time
+          format: date-time
+        update_time:
+          type: string
+          description: The last update time
+          format: date-time
+        org_id:
+          type: integer
+          description: 'The organization identifier, valid when enabling HIQ feature'
+          format: int64
+        name:
+          type: string
+          description: The SSID profile name
+        broadcast_name:
+          type: string
+          description: The SSID broadcast name
+        description:
+          type: string
+          description: The SSID description
+        predefined:
+          type: boolean
+          description: Whether it is predefined
+      description: The SSID
+    PagedXiqSsid:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqSsid'
     XiqClientView:
       type: string
       description: >-
@@ -13307,74 +13617,6 @@ components:
           type: integer
           description: The CRC error threshold for channel switching.
           format: int32
-    XiqSsid:
-      required:
-        - broadcast_name
-        - create_time
-        - id
-        - name
-        - predefined
-        - update_time
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier
-          format: int64
-        create_time:
-          type: string
-          description: The create time
-          format: date-time
-        update_time:
-          type: string
-          description: The last update time
-          format: date-time
-        org_id:
-          type: integer
-          description: 'The organization identifier, valid when enabling HIQ feature'
-          format: int64
-        name:
-          type: string
-          description: The SSID profile name
-        broadcast_name:
-          type: string
-          description: The SSID broadcast name
-        description:
-          type: string
-          description: The SSID description
-        predefined:
-          type: boolean
-          description: Whether it is predefined
-      description: The SSID
-    PagedXiqSsid:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqSsid'
     XiqSsidWepKeyManagement:
       type: string
       description: 'The key management type, WEP or WEP_8021X'
