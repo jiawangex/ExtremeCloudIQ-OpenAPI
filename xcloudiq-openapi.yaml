@@ -1712,46 +1712,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  '/devices/:delete':
-    post:
-      tags:
-        - Device
-      summary: Delete devices
-      description: Bulk delete the devices matching the filter criteria.
-      operationId: deleteDevices
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqDeviceFilter'
-        required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/:reboot':
-    post:
-      tags:
-        - Device
-      summary: Reboot devices
-      description: Reboot the target devices.
-      operationId: rebootDevices
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqDeviceFilter'
-        required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   '/devices/:cli':
     post:
       tags:
@@ -1783,6 +1743,46 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqSendCliResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:reboot':
+    post:
+      tags:
+        - Device
+      summary: Reboot devices
+      description: Reboot the target devices.
+      operationId: rebootDevices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/:delete':
+    post:
+      tags:
+        - Device
+      summary: Delete devices
+      description: Bulk delete the devices matching the filter criteria.
+      operationId: deleteDevices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -1853,6 +1853,32 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  '/devices/network-policy/:query':
+    post:
+      tags:
+        - Device
+      summary: Query network policy for multiple devices
+      description: Query the network policy for the target devices.
+      operationId: queryDevicesNetworkPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceFilter'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/XiqNetworkPolicy'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/devices/radius-proxy/:assign':
     put:
       tags:
@@ -1880,32 +1906,6 @@ paths:
       responses:
         '200':
           description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/network-policy/:query':
-    post:
-      tags:
-        - Device
-      summary: Query network policy for multiple devices
-      description: Query the network policy for the target devices.
-      operationId: queryDevicesNetworkPolicy
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqDeviceFilter'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties:
-                  $ref: '#/components/schemas/XiqNetworkPolicy'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -1999,26 +1999,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  '/devices/os/:change':
-    post:
-      tags:
-        - Device
-      summary: Change device OS mode
-      description: Change OS mode for AP or Switch.
-      operationId: changeDevicesOsMode
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqChangeDevicesOsModeRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   '/devices/country-code/:assign':
     post:
       tags:
@@ -2031,6 +2011,26 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/XiqAssignDevicesCountryCodeRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/os/:change':
+    post:
+      tags:
+        - Device
+      summary: Change device OS mode
+      description: Change OS mode for AP or Switch.
+      operationId: changeDevicesOsMode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqChangeDevicesOsModeRequest'
         required: true
       responses:
         '200':
@@ -2143,6 +2143,156 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  '/devices/{id}/:manage':
+    post:
+      tags:
+        - Device
+      summary: Change admin state to 'Managed' for a device
+      description: Change device management status to Managed for a specific device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_managed_for_one_device
+      operationId: changeDeviceStatusToManage
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:unmanage':
+    post:
+      tags:
+        - Device
+      summary: Change admin state to 'Unmanaged' for a device
+      description: Change device admin state to 'Unmanaged' for a specific device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
+      operationId: changeDeviceStatusToUnmanage
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:cli':
+    post:
+      tags:
+        - Device
+      summary: Send CLI to a device
+      description: Send CLI commands to a specific device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
+      operationId: sendCliToDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The one or multiple CLIs to send
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqSendCliResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:reboot':
+    post:
+      tags:
+        - Device
+      summary: Reboot a device
+      description: Reboot a specific device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device
+      operationId: rebootDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/:reset':
+    post:
+      tags:
+        - Device
+      summary: '[LRO] Reset a device to factory default'
+      description: Reset a device to factory default settings.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_reset_device_for_once_device
+      operationId: resetDevice
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: async
+          in: query
+          description: Whether to enable async mode
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/devices/{id}/hostname':
     put:
       tags:
@@ -2198,156 +2348,6 @@ paths:
       responses:
         '200':
           description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/{id}/:manage':
-    post:
-      tags:
-        - Device
-      summary: Change admin state to 'Managed' for a device
-      description: Change device management status to Managed for a specific device.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_managed_for_one_device
-      operationId: changeDeviceStatusToManage
-      parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/{id}/:unmanage':
-    post:
-      tags:
-        - Device
-      summary: Change admin state to 'Unmanaged' for a device
-      description: Change device admin state to 'Unmanaged' for a specific device.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
-      operationId: changeDeviceStatusToUnmanage
-      parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/{id}/:reset':
-    post:
-      tags:
-        - Device
-      summary: '[LRO] Reset a device to factory default'
-      description: Reset a device to factory default settings.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_reset_device_for_once_device
-      operationId: resetDevice
-      parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: async
-          in: query
-          description: Whether to enable async mode
-          required: false
-          schema:
-            type: boolean
-            default: false
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/{id}/:reboot':
-    post:
-      tags:
-        - Device
-      summary: Reboot a device
-      description: Reboot a specific device.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device
-      operationId: rebootDevice
-      parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/{id}/:cli':
-    post:
-      tags:
-        - Device
-      summary: Send CLI to a device
-      description: Send CLI commands to a specific device.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
-      operationId: sendCliToDevice
-      parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        description: The one or multiple CLIs to send
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: string
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XiqSendCliResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -2503,6 +2503,38 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  '/devices/{id}/ssid/:override':
+    post:
+      tags:
+        - Device
+      summary: Override SSID for a device
+      description: Override SSID broadcast name/passphrase for a specific device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_device_level_ssid_override
+      operationId: overrideDeviceLevelSsid
+      parameters:
+        - name: id
+          in: path
+          description: The device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceLevelSsid'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/devices/{id}/ssid/status':
     get:
       tags:
@@ -2569,91 +2601,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  '/devices/{id}/ssid/:override':
-    post:
-      tags:
-        - Device
-      summary: Override SSID for a device
-      description: Override SSID broadcast name/passphrase for a specific device.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_device_level_ssid_override
-      operationId: overrideDeviceLevelSsid
-      parameters:
-        - name: id
-          in: path
-          description: The device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/XiqDeviceLevelSsid'
-        required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
-  '/devices/{id}/history/cpu-mem':
-    get:
-      tags:
-        - Device
-      summary: Get device CPU/memory usage history
-      description: Get average device CPU and memory usage history.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_get_device_cpu_and_memory_usage_for_one_device
-      operationId: getDeviceCpuMemoryHistory
-      parameters:
-        - name: id
-          in: path
-          description: Device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: startTime
-          in: query
-          description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: endTime
-          in: query
-          description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: interval
-          in: query
-          description: The aggregate interval in milliseconds
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/XiqDeviceCpuMemoryUsage'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   '/devices/{id}/alarms':
     get:
       tags:
@@ -2713,6 +2660,59 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedXiqDeviceAlarm'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/history/cpu-mem':
+    get:
+      tags:
+        - Device
+      summary: Get device CPU/memory usage history
+      description: Get average device CPU and memory usage history.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_device_cpu_and_memory_usage_for_one_device
+      operationId: getDeviceCpuMemoryHistory
+      parameters:
+        - name: id
+          in: path
+          description: Device ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: startTime
+          in: query
+          description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: endTime
+          in: query
+          description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: interval
+          in: query
+          description: The aggregate interval in milliseconds
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XiqDeviceCpuMemoryUsage'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -9380,38 +9380,6 @@ components:
           description: The assigned network policy
           format: int64
       description: Device network policy assignment for multiple devices
-    XiqChangeDevicesOsModeRequest:
-      required:
-        - device_ids
-        - target_os
-      type: object
-      properties:
-        device_ids:
-          maxItems: 2147483647
-          minItems: 1
-          type: array
-          description: >-
-            The one or multiple device IDs to change the OS mode. Must be all AP
-            or Switches in the same list. For AP only "AP_410C", "AP_460C",
-            "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
-            allowed change to WiNG OS. For Switch: only "5520", "5420F", "5420M"
-            are allowed to change its OS type.
-          items:
-            type: integer
-            description: >-
-              The one or multiple device IDs to change the OS mode. Must be all
-              AP or Switches in the same list. For AP only "AP_410C", "AP_460C",
-              "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
-              allowed change to WiNG OS. For Switch: only "5520", "5420F",
-              "5420M" are allowed to change its OS type.
-            format: int64
-        target_os:
-          type: string
-          description: >-
-            The target OS mode to change to, for AP: only WiNG is supported, for
-            Switch: EXOS or VOSS
-          example: WiNG
-      description: The request for change the device(s) OS mode.
     XiqCountryCode:
       type: string
       description: The country code.
@@ -9554,6 +9522,38 @@ components:
         country_code:
           $ref: '#/components/schemas/XiqCountryCode'
       description: Device country-code assignment for multiple devices
+    XiqChangeDevicesOsModeRequest:
+      required:
+        - device_ids
+        - target_os
+      type: object
+      properties:
+        device_ids:
+          maxItems: 2147483647
+          minItems: 1
+          type: array
+          description: >-
+            The one or multiple device IDs to change the OS mode. Must be all AP
+            or Switches in the same list. For AP only "AP_410C", "AP_460C",
+            "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
+            allowed change to WiNG OS. For Switch: only "5520", "5420F", "5420M"
+            are allowed to change its OS type.
+          items:
+            type: integer
+            description: >-
+              The one or multiple device IDs to change the OS mode. Must be all
+              AP or Switches in the same list. For AP only "AP_410C", "AP_460C",
+              "AP_305C", "AP_305CX", "AP_460S6C", "AP_460S12C", "AP_302W" are
+              allowed change to WiNG OS. For Switch: only "5520", "5420F",
+              "5420M" are allowed to change its OS type.
+            format: int64
+        target_os:
+          type: string
+          description: >-
+            The target OS mode to change to, for AP: only WiNG is supported, for
+            Switch: EXOS or VOSS
+          example: WiNG
+      description: The request for change the device(s) OS mode.
     XiqDeviceStats:
       type: object
       properties:
@@ -9566,6 +9566,26 @@ components:
         connected_device_count:
           type: integer
           format: int32
+    XiqDeviceLevelSsid:
+      required:
+        - ssid_id
+      type: object
+      properties:
+        ssid_id:
+          type: integer
+          description: 'The SSID ID to override, cannot be null.'
+          format: int64
+        ssid:
+          type: string
+          description: >-
+            The broadcast ssid name to override. Can only override if the SSID
+            profile is OPEN or PSK mode.
+        passphrase:
+          type: string
+          description: >-
+            The ssid passphrase to override. Can only override if the SSID
+            profile is in PSK mode.
+      description: The ssid/passphrase for device level ssid to override
     XiqDeviceLevelSsidStatus:
       required:
         - wifi0_enabled
@@ -9620,42 +9640,6 @@ components:
             To disable or enable the given device level SSIDs on the wifi
             interfaces.
       description: The request for disable/enable device level ssid.
-    XiqDeviceLevelSsid:
-      required:
-        - ssid_id
-      type: object
-      properties:
-        ssid_id:
-          type: integer
-          description: 'The SSID ID to override, cannot be null.'
-          format: int64
-        ssid:
-          type: string
-          description: >-
-            The broadcast ssid name to override. Can only override if the SSID
-            profile is OPEN or PSK mode.
-        passphrase:
-          type: string
-          description: >-
-            The ssid passphrase to override. Can only override if the SSID
-            profile is in PSK mode.
-      description: The ssid/passphrase for device level ssid to override
-    XiqDeviceCpuMemoryUsage:
-      type: object
-      properties:
-        average_cpu:
-          type: integer
-          description: The device average cpu usage
-          format: int32
-        average_memory:
-          type: integer
-          description: The device average memory usage
-          format: int32
-        timestamp:
-          type: integer
-          description: The timestamp for data aggregate
-          format: int64
-      description: Get time series of the average device cpu and memory usage
     XiqDeviceAlarm:
       type: object
       properties:
@@ -9712,6 +9696,22 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqDeviceAlarm'
+    XiqDeviceCpuMemoryUsage:
+      type: object
+      properties:
+        average_cpu:
+          type: integer
+          description: The device average cpu usage
+          format: int32
+        average_memory:
+          type: integer
+          description: The device average memory usage
+          format: int32
+        timestamp:
+          type: integer
+          description: The timestamp for data aggregate
+          format: int64
+      description: Get time series of the average device cpu and memory usage
     PagedXiqNetworkPolicy:
       required:
         - count
