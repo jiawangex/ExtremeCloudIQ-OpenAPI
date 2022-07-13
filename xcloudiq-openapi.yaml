@@ -3659,72 +3659,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /logs/credential:
-    get:
-      tags:
-        - Log
-      summary: List credential logs
-      description: List a page of credential logs.
-      externalDocs:
-        description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_list_credential_log
-      operationId: listCredentialLogs
-      parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
-        - name: username
-          in: query
-          description: The user login name
-          required: false
-          schema:
-            type: string
-        - name: startTime
-          in: query
-          description: >-
-            The start time to query, epoch time in milliseconds since 1/1/1970,
-            default is 0 if not specified or is negative
-          required: false
-          schema:
-            type: integer
-            format: int64
-        - name: endTime
-          in: query
-          description: >-
-            The end time to query, epoch time in milliseconds since 1/1/1970,
-            default is now if not specified or is negative
-          required: false
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedXiqCredentialLog'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   /logs/auth:
     get:
       tags:
@@ -3793,6 +3727,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedXiqAuthLog'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /logs/credential:
+    get:
+      tags:
+        - Log
+      summary: List credential logs
+      description: List a page of credential logs.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_list_credential_log
+      operationId: listCredentialLogs
+      parameters:
+        - name: page
+          in: query
+          description: 'Page number, min = 1'
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 1
+        - name: limit
+          in: query
+          description: 'Page Size, min = 1, max = 100'
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+        - name: username
+          in: query
+          description: The user login name
+          required: false
+          schema:
+            type: string
+        - name: startTime
+          in: query
+          description: >-
+            The start time to query, epoch time in milliseconds since 1/1/1970,
+            default is 0 if not specified or is negative
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: endTime
+          in: query
+          description: >-
+            The end time to query, epoch time in milliseconds since 1/1/1970,
+            default is now if not specified or is negative
+          required: false
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqCredentialLog'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -4651,6 +4651,43 @@ paths:
             schema:
               $ref: '#/components/schemas/XiqOnboardKeyBasedPcgRequest'
         required: true
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/pcgs/key-based/network-policy-{policyId}':
+    delete:
+      tags:
+        - Configuration - User Management
+      summary: Delete Private Client Group from a network policy
+      description: Delete Private Client Group settings from a network policy.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_delete_key_based_pcg
+      operationId: deletePcg
+      parameters:
+        - name: policyId
+          in: path
+          description: The network policy ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: ids
+          in: query
+          description: >-
+            The IDs of the Key-based PCG entity to be deleted from network
+            policy
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
       responses:
         '202':
           description: Accepted
@@ -10260,59 +10297,6 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqEmailLog'
-    XiqCredentialLog:
-      required:
-        - id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The Credential log id
-          format: int64
-        username:
-          type: string
-          description: The username
-        vhm_id:
-          type: string
-          description: The vhm id
-        org_id:
-          type: integer
-          description: The org id
-          format: int64
-        timestamp:
-          type: integer
-          description: The credential log timestamp
-          format: int64
-      description: ExtremeCloud IQ Credential Log
-    PagedXiqCredentialLog:
-      required:
-        - count
-        - page
-        - total_count
-        - total_pages
-      type: object
-      properties:
-        page:
-          type: integer
-          description: The current page number
-          format: int32
-        count:
-          type: integer
-          description: The element count of the current page
-          format: int32
-        total_pages:
-          type: integer
-          description: The total page number based on request page size
-          format: int32
-        total_count:
-          type: integer
-          description: The total element count
-          format: int64
-        data:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqCredentialLog'
     XiqAuthLog:
       required:
         - id
@@ -10402,6 +10386,59 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqAuthLog'
+    XiqCredentialLog:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The Credential log id
+          format: int64
+        username:
+          type: string
+          description: The username
+        vhm_id:
+          type: string
+          description: The vhm id
+        org_id:
+          type: integer
+          description: The org id
+          format: int64
+        timestamp:
+          type: integer
+          description: The credential log timestamp
+          format: int64
+      description: ExtremeCloud IQ Credential Log
+    PagedXiqCredentialLog:
+      required:
+        - count
+        - page
+        - total_count
+        - total_pages
+      type: object
+      properties:
+        page:
+          type: integer
+          description: The current page number
+          format: int32
+        count:
+          type: integer
+          description: The element count of the current page
+          format: int32
+        total_pages:
+          type: integer
+          description: The total page number based on request page size
+          format: int32
+        total_count:
+          type: integer
+          description: The total element count
+          format: int64
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqCredentialLog'
     XiqAccountingLog:
       required:
         - id

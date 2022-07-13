@@ -38,6 +38,8 @@ paths:
     $ref: paths/pcgs_key-based.yaml
   /pcgs/key-based/network-policy-{policyId}/:onboard:
     $ref: paths/pcgs_key-based_network-policy-{policyId}_:onboard.yaml
+  /pcgs/key-based/network-policy-{policyId}:
+    $ref: paths/pcgs_key-based_network-policy-{policyId}.yaml
   /pcgs/key-based/network-policy-{policyId}/users:
     $ref: paths/pcgs_key-based_network-policy-{policyId}_users.yaml
   /pcgs/key-based/network-policy-{policyId}/port-assignments:
