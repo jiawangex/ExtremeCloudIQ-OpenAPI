@@ -855,6 +855,27 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /hiq/status:
+    get:
+      tags:
+        - HIQ
+      summary: Get HIQ status
+      description: Get Hierarchical ExtremeCloud IQ (HIQ) status.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_hiq_status'
+      operationId: getHiqStatus
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqHiqStatus'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /hiq/context:
     get:
       tags:
@@ -1113,7 +1134,8 @@ paths:
       description: Rename an existing organization (Available when HIQ is enabled).
       externalDocs:
         description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_rename_organization'
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_rename_organization
       operationId: renameOrganization
       parameters:
         - name: id
@@ -1137,6 +1159,35 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /locations:
+    post:
+      tags:
+        - Location
+      summary: Create location
+      description: Create a new location under the parent location.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_create_location
+      operationId: createLocation
+      requestBody:
+        description: Create location request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateLocationRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqLocation'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /locations/tree:
     get:
       tags:
@@ -1145,7 +1196,8 @@ paths:
       description: Get location hierarchical tree.
       externalDocs:
         description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_location_tree'
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_location_tree
       operationId: getLocationTree
       parameters:
         - name: parentId
@@ -1175,6 +1227,39 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/XiqLocation'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /locations/floorplan:
+    post:
+      tags:
+        - Location
+      summary: Upload floorplan
+      description: Upload the floorplan map for the VIQ.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_upload_floor_plan
+      operationId: uploadFloorplan
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: |-
+                    The floorplan image file to upload. 
+                     For better performance, Extreme Networks recommends that the image file (.png .jpeg) be less than 500 KB.
+                  format: binary
+        required: true
+      responses:
+        '200':
+          description: OK
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -1252,6 +1337,34 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /locations/floor:
+    post:
+      tags:
+        - Location
+      summary: Create floor
+      description: Create a new floor under the parent building.
+      externalDocs:
+        description: API Reference
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_create_floor'
+      operationId: createFloor
+      requestBody:
+        description: Create floor request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateFloorRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqFloor'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   '/locations/floor/{id}':
     put:
       tags:
@@ -1308,6 +1421,35 @@ paths:
       responses:
         '200':
           description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /locations/building:
+    post:
+      tags:
+        - Location
+      summary: Create building
+      description: Create a new building under the parent location.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_create_building
+      operationId: createBuilding
+      requestBody:
+        description: Create building request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqCreateBuildingRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqBuilding'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -2153,7 +2295,8 @@ paths:
       description: Reboot a specific device.
       externalDocs:
         description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device'
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device
       operationId: rebootDevice
       parameters:
         - name: id
@@ -7900,6 +8043,14 @@ components:
         enable_api_access:
           type: boolean
           description: 'Whether to enable API access, false by default.'
+    XiqHiqStatus:
+      required:
+        - enabled
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: HIQ is enabled or not
     XiqHiqContext:
       required:
         - creating_org_id
@@ -7971,6 +8122,18 @@ components:
         color:
           type: string
           description: The tagged color for the organization
+    XiqCreateLocationRequest:
+      required:
+        - name
+      type: object
+      properties:
+        parent_id:
+          type: integer
+          description: The parent location ID
+          format: int64
+        name:
+          type: string
+          description: The location name
     XiqLocation:
       required:
         - create_time
@@ -8046,7 +8209,15 @@ components:
       enum:
         - FEET
         - METERS
-    XiqUpdateFloorRequest:
+    XiqCreateFloorRequest:
+      required:
+        - db_attenuation
+        - installation_height
+        - map_size_height
+        - map_size_width
+        - measurement_unit
+        - name
+        - parent_id
       type: object
       properties:
         parent_id:
@@ -8143,7 +8314,44 @@ components:
           type: string
           description: The floormap name
       description: The Floor information on the floorplan.
-    XiqUpdateBuildingRequest:
+    XiqUpdateFloorRequest:
+      type: object
+      properties:
+        parent_id:
+          type: integer
+          description: The parent building ID
+          format: int64
+        name:
+          type: string
+          description: The floor name
+        environment:
+          $ref: '#/components/schemas/XiqRfEnvironmentType'
+        db_attenuation:
+          type: number
+          description: The floor attenuation in dBs
+          format: double
+        measurement_unit:
+          $ref: '#/components/schemas/XiqMeasurementUnit'
+        installation_height:
+          type: number
+          description: The installation height
+          format: double
+        map_size_width:
+          type: number
+          description: The floor map width
+          format: double
+        map_size_height:
+          type: number
+          description: The floor map height
+          format: double
+        map_name:
+          type: string
+          description: The floor map name
+    XiqCreateBuildingRequest:
+      required:
+        - address
+        - name
+        - parent_id
       type: object
       properties:
         parent_id:
@@ -8193,6 +8401,19 @@ components:
           type: string
           description: The building street address
       description: The Building information on the floorplan.
+    XiqUpdateBuildingRequest:
+      type: object
+      properties:
+        parent_id:
+          type: integer
+          description: The parent location ID
+          format: int64
+        name:
+          type: string
+          description: The building name
+        address:
+          type: string
+          description: The street address
     XiqDeviceAdminState:
       type: string
       enum:

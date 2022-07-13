@@ -20,12 +20,20 @@ tags:
   - name: Location
     description: Hierarchical locations and floor plan
 paths:
+  /locations:
+    $ref: paths/locations.yaml
   /locations/tree:
     $ref: paths/locations_tree.yaml
+  /locations/floorplan:
+    $ref: paths/locations_floorplan.yaml
   /locations/{id}:
     $ref: paths/locations_{id}.yaml
+  /locations/floor:
+    $ref: paths/locations_floor.yaml
   /locations/floor/{id}:
     $ref: paths/locations_floor_{id}.yaml
+  /locations/building:
+    $ref: paths/locations_building.yaml
   /locations/building/{id}:
     $ref: paths/locations_building_{id}.yaml
 components:
