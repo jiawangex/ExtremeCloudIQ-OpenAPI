@@ -20,10 +20,6 @@ tags:
   - name: Configuration - Policy
     description: SSID/User Profile/Classification Rule/CCG/Radio Profile/...
 paths:
-  /ccgs:
-    $ref: paths/ccgs.yaml
-  /ccgs/{id}:
-    $ref: paths/ccgs_{id}.yaml
   /classification-rules:
     $ref: paths/classification-rules.yaml
   /classification-rules/{id}:
@@ -32,42 +28,58 @@ paths:
     $ref: paths/l3-address-profiles.yaml
   /radio-profiles:
     $ref: paths/radio-profiles.yaml
-  /radio-profiles/mac-ouis:
-    $ref: paths/radio-profiles_mac-ouis.yaml
   /radio-profiles/{id}:
     $ref: paths/radio-profiles_{id}.yaml
-  /radio-profiles/wmm-qos/{id}:
-    $ref: paths/radio-profiles_wmm-qos_{id}.yaml
-  /radio-profiles/sensor-scan/{id}:
-    $ref: paths/radio-profiles_sensor-scan_{id}.yaml
-  /radio-profiles/radio-usage-opt/{id}:
-    $ref: paths/radio-profiles_radio-usage-opt_{id}.yaml
-  /radio-profiles/neighborhood-analysis/{id}:
-    $ref: paths/radio-profiles_neighborhood-analysis_{id}.yaml
-  /radio-profiles/miscellaneous/{id}:
-    $ref: paths/radio-profiles_miscellaneous_{id}.yaml
-  /radio-profiles/mac-ouis/{id}:
-    $ref: paths/radio-profiles_mac-ouis_{id}.yaml
   /radio-profiles/channel-selection/{id}:
     $ref: paths/radio-profiles_channel-selection_{id}.yaml
-  /ssids:
-    $ref: paths/ssids.yaml
-  /ssids/{id}/psk/password:
-    $ref: paths/ssids_{id}_psk_password.yaml
-  /ssids/{id}/mode/wep:
-    $ref: paths/ssids_{id}_mode_wep.yaml
-  /ssids/{id}/mode/psk:
-    $ref: paths/ssids_{id}_mode_psk.yaml
-  /ssids/{id}/mode/ppsk:
-    $ref: paths/ssids_{id}_mode_ppsk.yaml
-  /ssids/{id}/mode/open:
-    $ref: paths/ssids_{id}_mode_open.yaml
-  /ssids/{id}/mode/dot1x:
-    $ref: paths/ssids_{id}_mode_dot1x.yaml
+  /radio-profiles/mac-ouis:
+    $ref: paths/radio-profiles_mac-ouis.yaml
+  /radio-profiles/mac-ouis/{id}:
+    $ref: paths/radio-profiles_mac-ouis_{id}.yaml
+  /radio-profiles/miscellaneous/{id}:
+    $ref: paths/radio-profiles_miscellaneous_{id}.yaml
+  /radio-profiles/neighborhood-analysis/{id}:
+    $ref: paths/radio-profiles_neighborhood-analysis_{id}.yaml
+  /radio-profiles/radio-usage-opt/{id}:
+    $ref: paths/radio-profiles_radio-usage-opt_{id}.yaml
+  /radio-profiles/sensor-scan/{id}:
+    $ref: paths/radio-profiles_sensor-scan_{id}.yaml
+  /radio-profiles/wmm-qos/{id}:
+    $ref: paths/radio-profiles_wmm-qos_{id}.yaml
   /user-profiles:
     $ref: paths/user-profiles.yaml
   /user-profiles/{id}:
     $ref: paths/user-profiles_{id}.yaml
+  /ssids:
+    $ref: paths/ssids.yaml
+  /ssids/{id}/:rename:
+    $ref: paths/ssids_{id}_:rename.yaml
+  /ssids/{id}/cwp/:attach:
+    $ref: paths/ssids_{id}_cwp_:attach.yaml
+  /ssids/{id}/cwp/:enable:
+    $ref: paths/ssids_{id}_cwp_:enable.yaml
+  /ssids/{id}/cwp/:disable:
+    $ref: paths/ssids_{id}_cwp_:disable.yaml
+  /ssids/{id}/mode/dot1x:
+    $ref: paths/ssids_{id}_mode_dot1x.yaml
+  /ssids/{id}/mode/open:
+    $ref: paths/ssids_{id}_mode_open.yaml
+  /ssids/{id}/mode/psk:
+    $ref: paths/ssids_{id}_mode_psk.yaml
+  /ssids/{id}/mode/ppsk:
+    $ref: paths/ssids_{id}_mode_ppsk.yaml
+  /ssids/{id}/mode/wep:
+    $ref: paths/ssids_{id}_mode_wep.yaml
+  /ssids/{id}/psk/password:
+    $ref: paths/ssids_{id}_psk_password.yaml
+  /ssids/{id}/radius-server-group/:attach:
+    $ref: paths/ssids_{id}_radius-server-group_:attach.yaml
+  /ssids/{id}/user-profile/:attach:
+    $ref: paths/ssids_{id}_user-profile_:attach.yaml
+  /ccgs:
+    $ref: paths/ccgs.yaml
+  /ccgs/{id}:
+    $ref: paths/ccgs_{id}.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml

@@ -1,0 +1,33 @@
+post:
+  tags:
+    - Configuration - Policy
+  summary: Attach radius server group to an SSID
+  description: Attach radius server group to an SSID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_attach_radius_server_group_to_an_ssid
+  operationId: attachRadiusServerGroupToSsid
+  parameters:
+    - name: id
+      in: path
+      description: The SSID ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: The radius server group ID to be attached to the SSID
+    content:
+      application/json:
+        schema:
+          type: integer
+          format: int64
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
