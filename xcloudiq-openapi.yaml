@@ -535,16 +535,7 @@ paths:
       operationId: listUsers
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -707,16 +698,7 @@ paths:
       operationId: listExternalUsers
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -1529,16 +1511,7 @@ paths:
       operationId: listDevices
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: locationId
           in: query
           description: Location Id
@@ -1938,16 +1911,7 @@ paths:
             type: integer
             format: int64
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -2467,16 +2431,7 @@ paths:
             type: integer
             format: int64
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: startTime
           in: query
           description: The start time for query alarm
@@ -2568,16 +2523,7 @@ paths:
       operationId: listNetworkPolices
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: policyNames
           in: query
           description: The list of policy names
@@ -2736,16 +2682,7 @@ paths:
             type: integer
             format: int64
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -2885,16 +2822,7 @@ paths:
             items:
               type: string
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: views
           in: query
           description: >-
@@ -3101,16 +3029,7 @@ paths:
       operationId: listApplications
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: name
           in: query
           description: Application Name
@@ -3269,16 +3188,7 @@ paths:
       operationId: listAuditLogs
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: categories
           in: query
           description: Audit category
@@ -3334,16 +3244,7 @@ paths:
       operationId: listSmsLogs
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: phoneNumber
           in: query
           description: The phone number
@@ -3391,16 +3292,7 @@ paths:
       operationId: listEmailLogs
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: username
           in: query
           description: The user login name
@@ -3449,16 +3341,7 @@ paths:
       operationId: listAuthLogs
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: username
           in: query
           description: The user login name
@@ -3513,16 +3396,7 @@ paths:
       operationId: listCredentialLogs
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: username
           in: query
           description: The user login name
@@ -3571,16 +3445,7 @@ paths:
       operationId: listAccountingLogs
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: username
           in: query
           description: The user login name
@@ -3797,16 +3662,7 @@ paths:
       operationId: listVlanProfiles
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -4011,16 +3867,7 @@ paths:
       operationId: listEndUsers
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: user_group_ids
           in: query
           description: The user group IDs
@@ -4182,16 +4029,7 @@ paths:
       operationId: listUserGroups
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: password_db_location
           in: query
           description: The password DB location
@@ -4703,16 +4541,7 @@ paths:
       operationId: listClassificationRules
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -4893,16 +4722,7 @@ paths:
       operationId: listRadioProfiles
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -5112,16 +4932,7 @@ paths:
       operationId: listRpMacOuiProfiles
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -5601,16 +5412,7 @@ paths:
       operationId: listUserProfiles
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -5753,16 +5555,7 @@ paths:
       operationId: listSsids
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6179,16 +5972,7 @@ paths:
       operationId: listCloudConfigGroups
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6332,16 +6116,7 @@ paths:
       operationId: listActiveDirectoryServers
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6366,16 +6141,7 @@ paths:
       operationId: listCaptiveWebPortals
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6400,16 +6166,7 @@ paths:
       operationId: listLdapServers
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6592,16 +6349,7 @@ paths:
       operationId: listRadiusClientObjects
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6741,16 +6489,7 @@ paths:
       operationId: listRadiusProxies
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6942,16 +6681,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_radius_proxy_devices
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -6976,16 +6706,7 @@ paths:
       operationId: listInternalRadiusServers
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -7129,16 +6850,7 @@ paths:
       operationId: listInternalRadiusDevices
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -7163,16 +6875,7 @@ paths:
       operationId: listExternalRadiusServers
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
       responses:
         '200':
           description: OK
@@ -7312,16 +7015,7 @@ paths:
       operationId: listCertificates
       parameters:
         - $ref: '#/components/parameters/pageParam'
-        - name: limit
-          in: query
-          description: 'Page Size, min = 1, max = 100'
-          required: false
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-            default: 10
+        - $ref: '#/components/parameters/limitParam'
         - name: certType
           in: query
           description: The certificate type
@@ -15485,6 +15179,17 @@ components:
         type: integer
         format: int32
         default: 1
+    limitParam:
+      name: limit
+      in: query
+      description: 'Page Size, min = 1, max = 100'
+      required: false
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32
+        default: 10
     orderParam:
       name: order
       in: query

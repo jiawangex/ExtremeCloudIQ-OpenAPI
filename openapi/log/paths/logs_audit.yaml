@@ -9,16 +9,7 @@ get:
   operationId: listAuditLogs
   parameters:
     - $ref: ../../common/components/parameters/pageParam.yaml
-    - name: limit
-      in: query
-      description: Page Size, min = 1, max = 100
-      required: false
-      schema:
-        maximum: 100
-        minimum: 1
-        type: integer
-        format: int32
-        default: 10
+    - $ref: ../../common/components/parameters/limitParam.yaml
     - name: categories
       in: query
       description: Audit category
