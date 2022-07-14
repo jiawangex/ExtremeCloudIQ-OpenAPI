@@ -10,24 +10,8 @@ get:
   description: Get client detailed information.
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
-    - name: views
-      in: query
-      description: >-
-        The views to return client fields (Check fields for each view at
-        XiqClientView schema)
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: ../components/schemas/XiqClientView.yaml
-    - name: fields
-      in: query
-      description: The client fields to return
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: ../components/schemas/XiqClientField.yaml
+    - $ref: ../components/parameters/query/fields.yaml
+    - $ref: ../components/parameters/query/views.yaml
   responses:
     '200':
       description: OK

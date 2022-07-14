@@ -10,6 +10,8 @@ get:
   parameters:
     - $ref: ../../common/components/parameters/query/page.yaml
     - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../components/parameters/query/fields.yaml
+    - $ref: ../components/parameters/query/views.yaml
     - $ref: ../../common/components/parameters/query/locationIds.yaml
     - $ref: ../../common/components/parameters/query/deviceIds.yaml
     - name: vlans
@@ -37,24 +39,6 @@ get:
         type: array
         items:
           type: string
-    - name: views
-      in: query
-      description: >-
-        The views to return client fields (Check fields for each view at
-        XiqClientView schema)
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: ../components/schemas/XiqClientView.yaml
-    - name: fields
-      in: query
-      description: The client fields to return
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: ../components/schemas/XiqClientField.yaml
   responses:
     '200':
       description: OK
