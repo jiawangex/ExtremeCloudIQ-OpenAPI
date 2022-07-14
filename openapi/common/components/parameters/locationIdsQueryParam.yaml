@@ -1,0 +1,9 @@
+name: locationIds
+in: query
+description: The location IDs
+required: false
+schema:
+  type: array
+  items:
+    type: integer
+    format: int64

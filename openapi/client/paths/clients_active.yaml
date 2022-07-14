@@ -8,15 +8,7 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_client_list
   operationId: listActiveClients
   parameters:
-    - name: locationIds
-      in: query
-      description: The location IDs
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int64
+    - $ref: ../../common/components/parameters/locationIdsQueryParam.yaml
     - name: deviceIds
       in: query
       description: The device IDs
