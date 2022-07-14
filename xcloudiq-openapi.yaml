@@ -534,15 +534,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_user_list'
       operationId: listUsers
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -714,15 +706,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_external_user_list
       operationId: listExternalUsers
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -1544,15 +1528,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_list
       operationId: listDevices
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -1961,15 +1937,7 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -2498,15 +2466,7 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -2607,15 +2567,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_network_policies
       operationId: listNetworkPolices
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -2783,15 +2735,7 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -2940,15 +2884,7 @@ paths:
             type: array
             items:
               type: string
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3164,15 +3100,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_applications
       operationId: listApplications
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3340,15 +3268,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_audit_log'
       operationId: listAuditLogs
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3413,15 +3333,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_sms_log'
       operationId: listSmsLogs
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3478,15 +3390,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_email_log'
       operationId: listEmailLogs
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3544,15 +3448,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_authentication_log
       operationId: listAuthLogs
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3616,15 +3512,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_credential_log
       operationId: listCredentialLogs
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3682,15 +3570,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_accounting_log
       operationId: listAccountingLogs
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -3916,15 +3796,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_vlan_profiles
       operationId: listVlanProfiles
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -4138,15 +4010,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_end_users'
       operationId: listEndUsers
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -4317,15 +4181,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_user_groups
       operationId: listUserGroups
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -4846,15 +4702,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_classification_rules
       operationId: listClassificationRules
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -5044,15 +4892,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radio_profiles
       operationId: listRadioProfiles
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -5271,15 +5111,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_mac_oui_profiles
       operationId: listRpMacOuiProfiles
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -5768,15 +5600,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_user_profiles
       operationId: listUserProfiles
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -5928,15 +5752,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_ssids'
       operationId: listSsids
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -6362,15 +6178,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_cloud_config_groups
       operationId: listCloudConfigGroups
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -6523,15 +6331,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_active_directory_server
       operationId: listActiveDirectoryServers
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -6565,15 +6365,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_captive_web_portals
       operationId: listCaptiveWebPortals
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -6607,15 +6399,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_ldap_servers
       operationId: listLdapServers
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -6807,15 +6591,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_client_objects_configuration
       operationId: listRadiusClientObjects
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -6964,15 +6740,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_proxy_configuration
       operationId: listRadiusProxies
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -7173,15 +6941,7 @@ paths:
         url: >-
           https://extremecloudiq.com/api-docs/api-reference.html#_list_radius_proxy_devices
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -7215,15 +6975,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_servers
       operationId: listInternalRadiusServers
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -7376,15 +7128,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_devices
       operationId: listInternalRadiusDevices
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -7418,15 +7162,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_servers
       operationId: listExternalRadiusServers
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -7575,15 +7311,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_certificates
       operationId: listCertificates
       parameters:
-        - name: page
-          in: query
-          description: 'Page number, min = 1'
-          required: false
-          schema:
-            minimum: 1
-            type: integer
-            format: int32
-            default: 1
+        - $ref: '#/components/parameters/pageParam'
         - name: limit
           in: query
           description: 'Page Size, min = 1, max = 100'
@@ -15747,6 +15475,16 @@ components:
       scheme: bearer
       bearerFormat: JWT
   parameters:
+    pageParam:
+      name: page
+      in: query
+      description: 'Page number, min = 1'
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        default: 1
     orderParam:
       name: order
       in: query
