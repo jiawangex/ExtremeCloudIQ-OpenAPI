@@ -9,15 +9,7 @@ get:
   operationId: listActiveClients
   parameters:
     - $ref: ../../common/components/parameters/locationIdsQueryParam.yaml
-    - name: deviceIds
-      in: query
-      description: The device IDs
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int64
+    - $ref: ../../common/components/parameters/deviceIdsQueryParam.yaml
     - name: vlans
       in: query
       description: The associate vlan IDs
