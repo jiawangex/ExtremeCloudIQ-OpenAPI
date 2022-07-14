@@ -9,7 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_device_level_ssid_status_on_each_wifi_interface
   operationId: getDeviceLevelSsidStatus
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

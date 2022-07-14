@@ -5,7 +5,7 @@ get:
   description: Get the network policy for a specific device.
   operationId: getDeviceNetworkPolicy
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -24,7 +24,7 @@ put:
   description: Assign a network policy to a specific device.
   operationId: assignDeviceNetworkPolicy
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
     - name: networkPolicyId
       in: query
       description: The network policy ID to assign
@@ -46,7 +46,7 @@ delete:
   description: Revoke the assigned network policy for a specific device.
   operationId: revokeDeviceNetworkPolicy
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

@@ -9,13 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_attach_cwp_to_an_ssid
   operationId: attachCwpToSsid
   parameters:
-    - name: id
-      in: path
-      description: The SSID ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: >-
       The CWP ID to be attached to the SSID. For CWP with only User Auth on

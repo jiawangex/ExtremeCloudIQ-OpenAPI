@@ -8,13 +8,7 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_profile_by_id
   operationId: getRadioProfile
   parameters:
-    - name: id
-      in: path
-      description: The radio profile ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -37,13 +31,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_profile_configuration
   operationId: updateRadioProfile
   parameters:
-    - name: id
-      in: path
-      description: The radio profile ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload of the update radio profile request.
     content:
@@ -73,13 +61,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_radio_profile_configuration
   operationId: deleteRadioProfile
   parameters:
-    - name: id
-      in: path
-      description: The radio profile ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

@@ -9,7 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_device_details_for_one_device
   operationId: getDevice
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
     - name: views
       in: query
       description: >-
@@ -49,7 +49,7 @@ delete:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_device
   operationId: deleteDevice
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

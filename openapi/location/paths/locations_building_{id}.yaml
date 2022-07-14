@@ -8,13 +8,7 @@ put:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_update_building
   operationId: updateBuilding
   parameters:
-    - name: id
-      in: path
-      description: The building ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: Update building request body
     content:
@@ -43,13 +37,7 @@ delete:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_building
   operationId: deleteBuilding
   parameters:
-    - name: id
-      in: path
-      description: The building ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
     - name: force_delete
       in: query
       description: Force deletion of this building and its descendants recursively

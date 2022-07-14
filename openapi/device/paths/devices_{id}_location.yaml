@@ -5,7 +5,7 @@ get:
   description: Get the location info for a specific device.
   operationId: getDeviceLocation
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -26,7 +26,7 @@ put:
     properties.
   operationId: assignDeviceLocation
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     content:
       application/json:
@@ -47,7 +47,7 @@ delete:
   description: Revoke the assigned location for a specific device.
   operationId: revokeDeviceLocation
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

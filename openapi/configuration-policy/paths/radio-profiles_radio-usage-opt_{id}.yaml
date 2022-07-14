@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_usage_optimization_by_id
   operationId: getRpRadioUsageOptimization
   parameters:
-    - name: id
-      in: path
-      description: The radio usage optimization settings ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,13 +32,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_usage_optimization_by_id
   operationId: updateRpRadioUsageOptimization
   parameters:
-    - name: id
-      in: path
-      description: The radio usage optimization settings ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload of the update radio usage optimization settings request.
     content:

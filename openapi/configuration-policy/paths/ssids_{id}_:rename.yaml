@@ -9,13 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_rename_ssidwireless_name
   operationId: renameSsid
   parameters:
-    - name: id
-      in: path
-      description: The SSID ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The new SSID name
     content:

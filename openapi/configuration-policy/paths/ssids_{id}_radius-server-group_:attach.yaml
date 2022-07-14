@@ -9,13 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_attach_radius_server_group_to_an_ssid
   operationId: attachRadiusServerGroupToSsid
   parameters:
-    - name: id
-      in: path
-      description: The SSID ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The radius server group ID to be attached to the SSID
     content:

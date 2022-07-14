@@ -9,13 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_adding_multiple_ssids_to_the_network_policy
   operationId: addSsidsToNetworkPolicy
   parameters:
-    - name: id
-      in: path
-      description: The network policy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The SSID ids to be added to the network policy
     content:

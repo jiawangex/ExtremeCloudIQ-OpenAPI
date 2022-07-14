@@ -8,7 +8,7 @@ post:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
   operationId: sendCliToDevice
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The one or multiple CLIs to send
     content:

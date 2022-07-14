@@ -9,13 +9,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_organization
   operationId: deleteOrganization
   parameters:
-    - name: id
-      in: path
-      description: Organization ID to delete
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '204':
       description: No Content

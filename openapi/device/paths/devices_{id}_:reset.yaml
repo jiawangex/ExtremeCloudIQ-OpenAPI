@@ -9,7 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_reset_device_for_once_device
   operationId: resetDevice
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
     - $ref: ../../common/components/parameters/asyncQueryParam.yaml
   responses:
     '200':

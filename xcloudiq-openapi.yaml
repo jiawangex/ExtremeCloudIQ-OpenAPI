@@ -608,13 +608,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_user'
       operationId: getUser
       parameters:
-        - name: id
-          in: path
-          description: The user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -636,13 +630,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_user'
       operationId: updateUser
       parameters:
-        - name: id
-          in: path
-          description: The user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update user request body
         content:
@@ -671,13 +659,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_user'
       operationId: deleteUser
       parameters:
-        - name: id
-          in: path
-          description: The user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -750,13 +732,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_external_user
       operationId: getExternalUser
       parameters:
-        - name: id
-          in: path
-          description: The external user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -779,13 +755,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_external_user
       operationId: updateExternalUser
       parameters:
-        - name: id
-          in: path
-          description: The external user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update external user request
         content:
@@ -816,13 +786,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_revoke_external_user
       operationId: revokeExternalUser
       parameters:
-        - name: id
-          in: path
-          description: The external user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -1087,13 +1051,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_organization
       operationId: deleteOrganization
       parameters:
-        - name: id
-          in: path
-          description: Organization ID to delete
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '204':
           description: No Content
@@ -1113,13 +1071,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_rename_organization
       operationId: renameOrganization
       parameters:
-        - name: id
-          in: path
-          description: Organization ID to rename
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The new organization name
         content:
@@ -1251,13 +1203,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_location
       operationId: updateLocation
       parameters:
-        - name: id
-          in: path
-          description: The location ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update location request body
         content:
@@ -1287,13 +1233,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_location
       operationId: deleteLocation
       parameters:
-        - name: id
-          in: path
-          description: The location ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
         - name: force_delete
           in: query
           description: Force deletion of this location and its descendants recursively
@@ -1351,13 +1291,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_update_floor'
       operationId: updateFloor
       parameters:
-        - name: id
-          in: path
-          description: The floor ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update floor request body
         content:
@@ -1386,13 +1320,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_floor'
       operationId: deleteFloor
       parameters:
-        - name: id
-          in: path
-          description: The floor ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -1441,13 +1369,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_building
       operationId: updateBuilding
       parameters:
-        - name: id
-          in: path
-          description: The building ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update building request body
         content:
@@ -1477,13 +1399,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_building
       operationId: deleteBuilding
       parameters:
-        - name: id
-          in: path
-          description: The building ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
         - name: force_delete
           in: query
           description: Force deletion of this building and its descendants recursively
@@ -2007,7 +1923,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_details_for_one_device
       operationId: getDevice
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
         - name: views
           in: query
           description: >-
@@ -2047,7 +1963,7 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_delete_device'
       operationId: deleteDevice
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2067,7 +1983,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_managed_for_one_device
       operationId: changeDeviceStatusToManage
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2087,7 +2003,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_unmanaged_for_one_device
       operationId: changeDeviceStatusToUnmanage
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2107,7 +2023,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
       operationId: sendCliToDevice
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The one or multiple CLIs to send
         content:
@@ -2140,7 +2056,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device
       operationId: rebootDevice
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2160,7 +2076,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_reset_device_for_once_device
       operationId: resetDevice
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
         - $ref: '#/components/parameters/asyncQueryParam'
       responses:
         '200':
@@ -2177,7 +2093,7 @@ paths:
       description: Change hostname for a specific device.
       operationId: changeHostname
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
         - name: hostname
           in: query
           description: The new hostname
@@ -2199,7 +2115,7 @@ paths:
       description: Change description for a specific device.
       operationId: changeDeviceDescription
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The device description
         content:
@@ -2224,7 +2140,7 @@ paths:
       description: Get the location info for a specific device.
       operationId: getDeviceLocation
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2245,7 +2161,7 @@ paths:
         properties.
       operationId: assignDeviceLocation
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       requestBody:
         content:
           application/json:
@@ -2266,7 +2182,7 @@ paths:
       description: Revoke the assigned location for a specific device.
       operationId: revokeDeviceLocation
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2282,7 +2198,7 @@ paths:
       description: Get the network policy for a specific device.
       operationId: getDeviceNetworkPolicy
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2301,7 +2217,7 @@ paths:
       description: Assign a network policy to a specific device.
       operationId: assignDeviceNetworkPolicy
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
         - name: networkPolicyId
           in: query
           description: The network policy ID to assign
@@ -2323,7 +2239,7 @@ paths:
       description: Revoke the assigned network policy for a specific device.
       operationId: revokeDeviceNetworkPolicy
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2343,7 +2259,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_device_level_ssid_override
       operationId: overrideDeviceLevelSsid
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       requestBody:
         content:
           application/json:
@@ -2369,7 +2285,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_level_ssid_status_on_each_wifi_interface
       operationId: getDeviceLevelSsidStatus
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2397,7 +2313,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_change_the_device_level_ssid_status_on_each_wifi_interface
       operationId: changeDeviceLevelSsidStatus
       parameters:
-        - $ref: '#/components/parameters/deviceIdParam'
+        - $ref: '#/components/parameters/id'
       requestBody:
         content:
           application/json:
@@ -2423,29 +2339,11 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_alarms_for_one_device
       operationId: listDeviceAlarm
       parameters:
-        - name: id
-          in: path
-          description: Device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
         - $ref: '#/components/parameters/pageQueryParam'
         - $ref: '#/components/parameters/limitQueryParam'
-        - name: startTime
-          in: query
-          description: The start time for query alarm
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: endTime
-          in: query
-          description: The end time for query alarm
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/startTimeQueryParam'
+        - $ref: '#/components/parameters/endTimeQueryParam'
       responses:
         '200':
           description: OK
@@ -2469,13 +2367,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_cpu_and_memory_usage_for_one_device
       operationId: getDeviceCpuMemoryHistory
       parameters:
-        - name: id
-          in: path
-          description: Device ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
         - $ref: '#/components/parameters/startTimeQueryParam'
         - $ref: '#/components/parameters/endTimeQueryParam'
         - name: interval
@@ -2571,13 +2463,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_network_policy
       operationId: getNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The network policy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2600,13 +2486,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_network_policy
       operationId: updateNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The network policy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The body of update network policy API
         content:
@@ -2636,13 +2516,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_network_policy
       operationId: deleteNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The network policy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -2662,13 +2536,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_ssid_list_for_the_network_policy
       operationId: listSsidsByNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The network policy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
         - $ref: '#/components/parameters/pageQueryParam'
         - $ref: '#/components/parameters/limitQueryParam'
       responses:
@@ -2694,13 +2562,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_adding_multiple_ssids_to_the_network_policy
       operationId: addSsidsToNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The network policy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The SSID ids to be added to the network policy
         content:
@@ -2730,13 +2592,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_removing_multiple_ssids_from_the_network_policy
       operationId: deleteSsidsFromNetworkPolicy
       parameters:
-        - name: id
-          in: path
-          description: The network policy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The SSID ids to be removed from the network policy
         content:
@@ -2924,13 +2780,7 @@ paths:
       operationId: getClient
       description: Get client detailed information.
       parameters:
-        - name: id
-          in: path
-          description: The client ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
         - name: views
           in: query
           description: >-
@@ -3077,13 +2927,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_top_n_clients_usage_for_one_application
       operationId: listApplicationTopClientsUsage
       parameters:
-        - name: id
-          in: path
-          description: The application ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
         - name: 'n'
           in: path
           description: The TopN number
@@ -3493,13 +3337,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_webhook_subscriptions
       operationId: deleteSubscription
       parameters:
-        - name: id
-          in: path
-          description: The webhook subscription ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '202':
           description: Accepted
@@ -3658,13 +3496,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_vlan_profile_by_id
       operationId: getVlanProfile
       parameters:
-        - name: id
-          in: path
-          description: The VLAN profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -3687,13 +3519,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_vlan_profile_configuration
       operationId: updateVlanProfile
       parameters:
-        - name: id
-          in: path
-          description: The VLAN profile ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to update VLAN profile
         content:
@@ -3723,13 +3549,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_vlan_profile_configuration
       operationId: deleteVlanProfile
       parameters:
-        - name: id
-          in: path
-          description: The VLAN profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -3880,13 +3700,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_end_user
       operationId: updateEndUser
       parameters:
-        - name: id
-          in: path
-          description: The end user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update end user request body
         content:
@@ -3916,13 +3730,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_end_user
       operationId: deleteSsidUser
       parameters:
-        - name: id
-          in: path
-          description: The end user ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -3942,13 +3750,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_regenerate_end_user_password
       operationId: regenerateEndUserPassword
       parameters:
-        - name: id
-          in: path
-          description: The enduser's ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4037,13 +3839,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_user_group
       operationId: updateUserGroup
       parameters:
-        - name: id
-          in: path
-          description: The user group ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update user-group request body
         content:
@@ -4073,13 +3869,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_user_group
       operationId: deleteUserGroup
       parameters:
-        - name: id
-          in: path
-          description: The user group ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4537,13 +4327,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_classification_rule_by_id
       operationId: getClassificationRule
       parameters:
-        - name: id
-          in: path
-          description: The classification Rule ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4566,13 +4350,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_classification_rule_configuration
       operationId: updateClassificationRule
       parameters:
-        - name: id
-          in: path
-          description: The classification rule ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to update exist classification rule
         content:
@@ -4602,13 +4380,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_classification_rule_configuration
       operationId: deleteClassificationRule
       parameters:
-        - name: id
-          in: path
-          description: The classification rule ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4718,13 +4490,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_profile_by_id
       operationId: getRadioProfile
       parameters:
-        - name: id
-          in: path
-          description: The radio profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4747,13 +4513,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_profile_configuration
       operationId: updateRadioProfile
       parameters:
-        - name: id
-          in: path
-          description: The radio profile ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update radio profile request.
         content:
@@ -4783,13 +4543,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_radio_profile_configuration
       operationId: deleteRadioProfile
       parameters:
-        - name: id
-          in: path
-          description: The radio profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4809,13 +4563,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_profile_channel_selection_by_id
       operationId: getRpChannelSelection
       parameters:
-        - name: id
-          in: path
-          description: The channel selection settings ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4838,13 +4586,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_profile_channel_selection_by_id
       operationId: updateRpChannelSelection
       parameters:
-        - name: id
-          in: path
-          description: The channel selection settings ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update channel selection settings request.
         content:
@@ -4928,13 +4670,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_mac_oui_profile_by_id
       operationId: getRpMacOuiProfile
       parameters:
-        - name: id
-          in: path
-          description: The MAC OUI profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -4957,13 +4693,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_mac_oui_profile_by_id
       operationId: updateRpMacOuiProfile
       parameters:
-        - name: id
-          in: path
-          description: The MAC OUI profile ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update MAC OUI profile request.
         content:
@@ -4993,13 +4723,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_mac_oui_profile_by_id
       operationId: deleteRpMacOuiProfile
       parameters:
-        - name: id
-          in: path
-          description: The MAC OUI profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5019,13 +4743,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_miscellaneous_settings_by_id
       operationId: getRpMiscellaneousSettings
       parameters:
-        - name: id
-          in: path
-          description: The radio miscellaneous settings ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5048,13 +4766,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_miscellaneous_settings_by_id
       operationId: updateRpMiscellaneousSettings
       parameters:
-        - name: id
-          in: path
-          description: The radio miscellaneous settings ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update radio miscellaneous settings request.
         content:
@@ -5085,13 +4797,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_profile_neighborhood_analysis_by_id
       operationId: getNeighborhoodAnalysis
       parameters:
-        - name: id
-          in: path
-          description: The neighborhood analysis settings ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5114,13 +4820,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_profile_neighborhood_analysis_by_id
       operationId: updateNeighborhoodAnalysis
       parameters:
-        - name: id
-          in: path
-          description: The neighborhood analysis settings ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update neighborhood analysis settings request.
         content:
@@ -5151,13 +4851,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_radio_usage_optimization_by_id
       operationId: getRpRadioUsageOptimization
       parameters:
-        - name: id
-          in: path
-          description: The radio usage optimization settings ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5182,13 +4876,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_radio_usage_optimization_by_id
       operationId: updateRpRadioUsageOptimization
       parameters:
-        - name: id
-          in: path
-          description: The radio usage optimization settings ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update radio usage optimization settings request.
         content:
@@ -5219,13 +4907,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_sensor_scan_settings_by_id
       operationId: getRpSensorScanSettings
       parameters:
-        - name: id
-          in: path
-          description: The sensor scan settings ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5248,13 +4930,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_sensor_scan_settings_by_id
       operationId: updateRpSensorScanSettings
       parameters:
-        - name: id
-          in: path
-          description: The sensor scan settings ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update sensor scan settings request.
         content:
@@ -5287,13 +4963,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wmm_qos_settings_by_id
       operationId: getRpWmmQosSettings
       parameters:
-        - name: id
-          in: path
-          description: The radio QoS settings ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5318,13 +4988,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_wmm_qos_settings_by_id
       operationId: updateRpWmmQosSettings
       parameters:
-        - name: id
-          in: path
-          description: The Wmm QoS settings ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of the update Wmm QoS settings request.
         content:
@@ -5408,13 +5072,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_user_profile_by_id
       operationId: getUserProfile
       parameters:
-        - name: id
-          in: path
-          description: The user profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5437,13 +5095,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_user_profile_configuration
       operationId: updateCoUserProfile
       parameters:
-        - name: id
-          in: path
-          description: The user profile ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload of user profile.
         content:
@@ -5473,13 +5125,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_user_profile_configuration
       operationId: deleteCoUserProfile
       parameters:
-        - name: id
-          in: path
-          description: The user profile ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5523,13 +5169,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_rename_ssidwireless_name
       operationId: renameSsid
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The new SSID name
         content:
@@ -5556,13 +5196,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_attach_cwp_to_an_ssid
       operationId: attachCwpToSsid
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: >-
           The CWP ID to be attached to the SSID. For CWP with only User Auth on
@@ -5593,13 +5227,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_enable_and_attach_the_cwp_on_the_ssid
       operationId: enableSsidCwp
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: >-
           The new CWP ID.  For CWP with only User Auth on Captive Web Portal
@@ -5630,13 +5258,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_disable_and_detach_the_cwp_on_the_ssid
       operationId: disableSsidCwp
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5656,13 +5278,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_dot1x
       operationId: setSsidModeDot1x
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to change the SSID mode to 802.1x
         content:
@@ -5689,13 +5305,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_open_access
       operationId: setSsidModeOpen
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5715,13 +5325,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_psk
       operationId: setSsidModePsk
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to change the SSID mode to PSK
         content:
@@ -5748,13 +5352,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_ppsk
       operationId: setSsidModePpsk
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to change the SSID mode to PPSK
         content:
@@ -5781,13 +5379,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_wep
       operationId: setSsidModeWep
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to change the SSID mode to WEP
         content:
@@ -5814,13 +5406,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_change_the_ssid_psk_password
       operationId: changePskPassword
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The new SSID PSK password
         content:
@@ -5847,13 +5433,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_attach_radius_server_group_to_an_ssid
       operationId: attachRadiusServerGroupToSsid
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The radius server group ID to be attached to the SSID
         content:
@@ -5881,13 +5461,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_attach_user_profile_to_an_ssid
       operationId: attachUserProfileToSsid
       parameters:
-        - name: id
-          in: path
-          description: The SSID ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The user profile ID to be attached to the SSID
         content:
@@ -5968,13 +5542,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_cloud_config_group
       operationId: getCloudConfigGroup
       parameters:
-        - name: id
-          in: path
-          description: The cloud config group ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -5997,13 +5565,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_cloud_config_group
       operationId: updateCloudConfigGroup
       parameters:
-        - name: id
-          in: path
-          description: The cloud config group ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: Update cloud config group request body
         content:
@@ -6033,13 +5595,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_cloud_config_group
       operationId: deleteCloudConfigGroup
       parameters:
-        - name: id
-          in: path
-          description: The cloud config group ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6182,13 +5738,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_ldap_server
       operationId: getLdapServer
       parameters:
-        - name: id
-          in: path
-          description: 'The LDAP server '
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6211,38 +5761,13 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_ldap_server
       operationId: updateLdapServer
       parameters:
-        - name: id
-          in: path
-          description: The LDAP server ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The body of update LDAP server API
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/XiqUpdateLdapServerRequest'
-            examples:
-              Update an existing LDAP server:
-                summary: Update an existing LDAP server
-                description: The payload to update an existing LDAP server
-                value:
-                  name: test-ldap-server-1
-                  description: test ldap server 1
-                  enable_tls: true
-                  bind_dn: extremenetworks.com
-                  bind_dn_password: '888888'
-                  base_dn: extremenetworks.com
-                  l3_address_profile_id: 1
-                  protocol_type: LDAPS
-                  enable_strip_realm_name: false
-                  destination_port: 20
-                  verification_mode: DEMAND
-                  ca_certificate_id: 100
-                  client_certificate_id: 200
-                  client_key_id: 300
         required: true
       responses:
         '200':
@@ -6266,13 +5791,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_ldap_server
       operationId: deleteLdapServer
       parameters:
-        - name: id
-          in: path
-          description: The LDAP server ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6345,13 +5864,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_client_object_configuration_by_id
       operationId: getRadiusClientObject
       parameters:
-        - name: id
-          in: path
-          description: The ID of RADIUS client object
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6374,13 +5887,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_radius_client_object_configuration
       operationId: updateRadiusClientObject
       parameters:
-        - name: id
-          in: path
-          description: The RADIUS client object ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to update the RADIUS client object
         content:
@@ -6406,13 +5913,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_radius_client_object_configuration
       operationId: deleteRadiusClientObject
       parameters:
-        - name: id
-          in: path
-          description: The RADIUS client object ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6510,13 +6011,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_the_radius_proxy_configuration_by_id
       operationId: getRadiusProxy
       parameters:
-        - name: id
-          in: path
-          description: The RADIUS proxy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6539,42 +6034,13 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_radius_proxy_configuration
       operationId: updateRadiusProxy
       parameters:
-        - name: id
-          in: path
-          description: The RADIUS proxy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The body of update RADIUS proxy API
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/XiqUpdateRadiusProxyRequest'
-            examples:
-              Update an existing RADIUS proxy:
-                summary: Update an existing RADIUS proxy
-                description: The payload to update an existing RADIUS proxy
-                value:
-                  name: radius-proxy-1
-                  description: Radius Proxy 1
-                  format_type: NAI
-                  retry_count: 3
-                  retry_delay: 5
-                  dead_time: 300
-                  enable_inject_operator_name_attribute: false
-                  clients:
-                    - id: 1
-                    - shared_secret: '123456'
-                      description: ''
-                      l3_address_profile_id: 1000
-                  realms:
-                    - id: 1
-                    - id: 2
-                    - name: test-realm
-                      enable_strip_realm_name: false
-                      radius_client_object_id: 3000
         required: true
       responses:
         '200':
@@ -6598,13 +6064,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_radius_proxy_configuration
       operationId: deleteRadiusProxy
       parameters:
-        - name: id
-          in: path
-          description: The RADIUS proxy ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6702,13 +6162,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_server_by_id
       operationId: getInternalRadiusServer
       parameters:
-        - name: id
-          in: path
-          description: The ID for internal RADIUS server
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6731,13 +6185,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_internal_radius_server_configuration
       operationId: updateInternalRadiusServer
       parameters:
-        - name: id
-          in: path
-          description: The internal RADIUS server ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to update the internal RADIUS server
         content:
@@ -6767,13 +6215,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_internal_radius_server_configuration
       operationId: deleteInternalRadiusServer
       parameters:
-        - name: id
-          in: path
-          description: The internal RADIUS server ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6871,13 +6313,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_server_by_id
       operationId: getExternalRadiusServer
       parameters:
-        - name: id
-          in: path
-          description: The ID for external RADIUS server
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -6900,13 +6336,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_update_external_radius_server_configuration
       operationId: updateExternalRadiusServer
       parameters:
-        - name: id
-          in: path
-          description: The external RADIUS server ID.
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       requestBody:
         description: The payload to update the external RADIUS server
         content:
@@ -6932,13 +6362,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_delete_external_radius_server_configuration
       operationId: deleteExternalRadiusServer
       parameters:
-        - name: id
-          in: path
-          description: The external RADIUS server ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/id'
       responses:
         '200':
           description: OK
@@ -15134,6 +14558,14 @@ components:
         type: integer
         format: int32
         default: 10
+    id:
+      name: id
+      in: path
+      description: The unique identifier
+      required: true
+      schema:
+        type: integer
+        format: int64
     orderQueryParam:
       name: order
       in: query
@@ -15149,14 +14581,6 @@ components:
       schema:
         type: boolean
         default: false
-    deviceIdParam:
-      name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
     startTimeQueryParam:
       name: startTime
       in: query

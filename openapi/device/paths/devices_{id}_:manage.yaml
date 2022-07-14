@@ -9,7 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_change_status_to_managed_for_one_device
   operationId: changeDeviceStatusToManage
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

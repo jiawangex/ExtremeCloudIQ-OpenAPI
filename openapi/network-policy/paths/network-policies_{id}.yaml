@@ -8,13 +8,7 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_network_policy
   operationId: getNetworkPolicy
   parameters:
-    - name: id
-      in: path
-      description: The network policy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -37,13 +31,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_network_policy
   operationId: updateNetworkPolicy
   parameters:
-    - name: id
-      in: path
-      description: The network policy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The body of update network policy API
     content:
@@ -73,13 +61,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_network_policy
   operationId: deleteNetworkPolicy
   parameters:
-    - name: id
-      in: path
-      description: The network policy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

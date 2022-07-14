@@ -9,13 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_removing_multiple_ssids_from_the_network_policy
   operationId: deleteSsidsFromNetworkPolicy
   parameters:
-    - name: id
-      in: path
-      description: The network policy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The SSID ids to be removed from the network policy
     content:

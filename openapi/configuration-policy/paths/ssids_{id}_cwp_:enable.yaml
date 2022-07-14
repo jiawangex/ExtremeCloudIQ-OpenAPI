@@ -9,13 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_enable_and_attach_the_cwp_on_the_ssid
   operationId: enableSsidCwp
   parameters:
-    - name: id
-      in: path
-      description: The SSID ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: >-
       The new CWP ID.  For CWP with only User Auth on Captive Web Portal

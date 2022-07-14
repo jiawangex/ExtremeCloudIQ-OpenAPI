@@ -8,13 +8,7 @@ put:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_update_end_user
   operationId: updateEndUser
   parameters:
-    - name: id
-      in: path
-      description: The end user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: Update end user request body
     content:
@@ -43,13 +37,7 @@ delete:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_end_user
   operationId: deleteSsidUser
   parameters:
-    - name: id
-      in: path
-      description: The end user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

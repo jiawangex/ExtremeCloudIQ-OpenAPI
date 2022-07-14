@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_wmm_qos_settings_by_id
   operationId: getRpWmmQosSettings
   parameters:
-    - name: id
-      in: path
-      description: The radio QoS settings ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,13 +32,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_wmm_qos_settings_by_id
   operationId: updateRpWmmQosSettings
   parameters:
-    - name: id
-      in: path
-      description: The Wmm QoS settings ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload of the update Wmm QoS settings request.
     content:

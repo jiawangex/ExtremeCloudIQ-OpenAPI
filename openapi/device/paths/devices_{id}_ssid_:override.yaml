@@ -9,7 +9,7 @@ post:
       https://extremecloudiq.com/api-docs/api-reference.html#_device_level_ssid_override
   operationId: overrideDeviceLevelSsid
   parameters:
-    - $ref: ../components/parameters/deviceIdParam.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     content:
       application/json:

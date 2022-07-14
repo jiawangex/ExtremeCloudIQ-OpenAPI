@@ -9,13 +9,7 @@ get:
   operationId: getClient
   description: Get client detailed information.
   parameters:
-    - name: id
-      in: path
-      description: The client ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
     - name: views
       in: query
       description: >-

@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_cloud_config_group
   operationId: getCloudConfigGroup
   parameters:
-    - name: id
-      in: path
-      description: The cloud config group ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,13 +32,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_cloud_config_group
   operationId: updateCloudConfigGroup
   parameters:
-    - name: id
-      in: path
-      description: The cloud config group ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: Update cloud config group request body
     content:
@@ -74,13 +62,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_cloud_config_group
   operationId: deleteCloudConfigGroup
   parameters:
-    - name: id
-      in: path
-      description: The cloud config group ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

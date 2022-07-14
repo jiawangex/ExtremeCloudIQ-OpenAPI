@@ -1,6 +1,6 @@
 name: id
 in: path
-description: The device ID
+description: The unique identifier
 required: true
 schema:
   type: integer

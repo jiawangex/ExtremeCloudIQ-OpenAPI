@@ -9,29 +9,11 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_device_alarms_for_one_device
   operationId: listDeviceAlarm
   parameters:
-    - name: id
-      in: path
-      description: Device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
     - $ref: ../../common/components/parameters/pageQueryParam.yaml
     - $ref: ../../common/components/parameters/limitQueryParam.yaml
-    - name: startTime
-      in: query
-      description: The start time for query alarm
-      required: true
-      schema:
-        type: integer
-        format: int64
-    - name: endTime
-      in: query
-      description: The end time for query alarm
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/startTimeQueryParam.yaml
+    - $ref: ../../common/components/parameters/endTimeQueryParam.yaml
   responses:
     '200':
       description: OK
