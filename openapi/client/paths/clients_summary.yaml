@@ -10,8 +10,8 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_client_summary
   operationId: getClientSummary
   parameters:
-    - $ref: ../../common/components/parameters/locationIdsQueryParam.yaml
-    - $ref: ../../common/components/parameters/deviceIdsQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/locationIds.yaml
+    - $ref: ../../common/components/parameters/query/deviceIds.yaml
     - name: vlans
       in: query
       description: The associate VLAN IDs

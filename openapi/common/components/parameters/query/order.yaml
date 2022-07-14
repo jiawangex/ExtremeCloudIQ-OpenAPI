@@ -3,4 +3,4 @@ in: query
 description: The sort order (ascending by default)
 required: false
 schema:
-  $ref: ../schemas/XiqSortOrder.yaml
+  $ref: ../../schemas/XiqSortOrder.yaml

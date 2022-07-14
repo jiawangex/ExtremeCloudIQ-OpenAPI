@@ -17,8 +17,8 @@ get:
         items:
           type: integer
           format: int64
-    - $ref: ../../common/components/parameters/startTimeQueryParam.yaml
-    - $ref: ../../common/components/parameters/endTimeQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
   responses:
     '200':
       description: OK

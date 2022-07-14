@@ -8,7 +8,7 @@ post:
     and the result.
   operationId: sendCliToDevices
   parameters:
-    - $ref: ../../common/components/parameters/asyncQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/async.yaml
   requestBody:
     content:
       application/json:

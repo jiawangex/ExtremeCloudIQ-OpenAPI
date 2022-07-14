@@ -10,8 +10,8 @@ get:
   operationId: getDeviceCpuMemoryHistory
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
-    - $ref: ../../common/components/parameters/startTimeQueryParam.yaml
-    - $ref: ../../common/components/parameters/endTimeQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
     - name: interval
       in: query
       description: The aggregate interval in milliseconds

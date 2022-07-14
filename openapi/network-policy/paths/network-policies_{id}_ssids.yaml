@@ -10,8 +10,8 @@ get:
   operationId: listSsidsByNetworkPolicy
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
-    - $ref: ../../common/components/parameters/pageQueryParam.yaml
-    - $ref: ../../common/components/parameters/limitQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
   responses:
     '200':
       description: OK

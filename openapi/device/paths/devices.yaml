@@ -8,8 +8,8 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_device_list
   operationId: listDevices
   parameters:
-    - $ref: ../../common/components/parameters/pageQueryParam.yaml
-    - $ref: ../../common/components/parameters/limitQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
     - name: locationId
       in: query
       description: Location Id
@@ -61,7 +61,7 @@ get:
       required: false
       schema:
         $ref: ../components/schemas/XiqDeviceSortField.yaml
-    - $ref: ../../common/components/parameters/orderQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/order.yaml
     - name: views
       in: query
       description: >-
@@ -80,7 +80,7 @@ get:
         type: array
         items:
           $ref: ../components/schemas/XiqDeviceField.yaml
-    - $ref: ../../common/components/parameters/asyncQueryParam.yaml
+    - $ref: ../../common/components/parameters/query/async.yaml
   responses:
     '200':
       description: OK
