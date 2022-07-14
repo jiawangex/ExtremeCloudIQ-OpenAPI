@@ -11,6 +11,13 @@ get:
   parameters:
     - $ref: ../../common/components/parameters/pageParam.yaml
     - $ref: ../../common/components/parameters/limitParam.yaml
+    - name: sortField
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        $ref: ../components/schemas/XiqApplicationSortField.yaml
+    - $ref: ../../common/components/parameters/orderParam.yaml
     - name: name
       in: query
       description: Application Name
@@ -36,13 +43,6 @@ get:
       schema:
         type: boolean
       example: true
-    - name: sortField
-      in: query
-      description: The sort field
-      required: false
-      schema:
-        $ref: ../components/schemas/XiqApplicationSortField.yaml
-    - $ref: ../../common/components/parameters/orderParam.yaml
   responses:
     '200':
       description: OK
