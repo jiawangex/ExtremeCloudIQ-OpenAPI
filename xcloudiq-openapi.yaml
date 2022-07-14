@@ -2928,29 +2928,9 @@ paths:
       operationId: listApplicationTopClientsUsage
       parameters:
         - $ref: '#/components/parameters/id'
-        - name: 'n'
-          in: path
-          description: The TopN number
-          required: true
-          schema:
-            maximum: 100
-            minimum: 1
-            type: integer
-            format: int32
-        - name: startTime
-          in: query
-          description: The start time for querying top client usage of application
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: endTime
-          in: query
-          description: The end time for querying top application usage of application
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/n'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
       responses:
         '200':
           description: OK
@@ -14617,3 +14597,13 @@ components:
         items:
           type: integer
           format: int64
+    'n':
+      name: 'n'
+      in: path
+      description: The TopN number
+      required: true
+      schema:
+        maximum: 100
+        minimum: 1
+        type: integer
+        format: int32

@@ -10,29 +10,9 @@ get:
   operationId: listApplicationTopClientsUsage
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
-    - name: 'n'
-      in: path
-      description: The TopN number
-      required: true
-      schema:
-        maximum: 100
-        minimum: 1
-        type: integer
-        format: int32
-    - name: startTime
-      in: query
-      description: The start time for querying top client usage of application
-      required: true
-      schema:
-        type: integer
-        format: int64
-    - name: endTime
-      in: query
-      description: The end time for querying top application usage of application
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/n.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
   responses:
     '200':
       description: OK
