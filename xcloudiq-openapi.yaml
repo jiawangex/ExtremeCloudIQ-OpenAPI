@@ -2477,13 +2477,7 @@ paths:
             type: integer
             format: int64
         - $ref: '#/components/parameters/startTimeQueryParam'
-        - name: endTime
-          in: query
-          description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/endTimeQueryParam'
         - name: interval
           in: query
           description: The aggregate interval in milliseconds
@@ -2904,13 +2898,7 @@ paths:
               type: integer
               format: int64
         - $ref: '#/components/parameters/startTimeQueryParam'
-        - name: endTime
-          in: query
-          description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/endTimeQueryParam'
       responses:
         '200':
           description: OK
@@ -15173,6 +15161,14 @@ components:
       name: startTime
       in: query
       description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
+      required: true
+      schema:
+        type: integer
+        format: int64
+    endTimeQueryParam:
+      name: endTime
+      in: query
+      description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
       required: true
       schema:
         type: integer
