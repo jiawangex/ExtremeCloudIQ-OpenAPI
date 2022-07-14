@@ -9,8 +9,8 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_list_authentication_log
   operationId: listAuthLogs
   parameters:
-    - $ref: ../../common/components/parameters/pageParam.yaml
-    - $ref: ../../common/components/parameters/limitParam.yaml
+    - $ref: ../../common/components/parameters/pageQueryParam.yaml
+    - $ref: ../../common/components/parameters/limitQueryParam.yaml
     - name: username
       in: query
       description: The user login name

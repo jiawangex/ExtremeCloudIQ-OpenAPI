@@ -534,8 +534,8 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_user_list'
       operationId: listUsers
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -697,8 +697,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_external_user_list
       operationId: listExternalUsers
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -1510,8 +1510,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_device_list
       operationId: listDevices
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: locationId
           in: query
           description: Location Id
@@ -1563,7 +1563,7 @@ paths:
           required: false
           schema:
             $ref: '#/components/schemas/XiqDeviceSortField'
-        - $ref: '#/components/parameters/orderParam'
+        - $ref: '#/components/parameters/orderQueryParam'
         - name: views
           in: query
           description: >-
@@ -1582,7 +1582,7 @@ paths:
             type: array
             items:
               $ref: '#/components/schemas/XiqDeviceField'
-        - $ref: '#/components/parameters/asyncParam'
+        - $ref: '#/components/parameters/asyncQueryParam'
       responses:
         '200':
           description: OK
@@ -1670,7 +1670,7 @@ paths:
         progress and the result.
       operationId: sendCliToDevices
       parameters:
-        - $ref: '#/components/parameters/asyncParam'
+        - $ref: '#/components/parameters/asyncQueryParam'
       requestBody:
         content:
           application/json:
@@ -1910,8 +1910,8 @@ paths:
           schema:
             type: integer
             format: int64
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -2161,7 +2161,7 @@ paths:
       operationId: resetDevice
       parameters:
         - $ref: '#/components/parameters/deviceIdParam'
-        - $ref: '#/components/parameters/asyncParam'
+        - $ref: '#/components/parameters/asyncQueryParam'
       responses:
         '200':
           description: OK
@@ -2430,8 +2430,8 @@ paths:
           schema:
             type: integer
             format: int64
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: startTime
           in: query
           description: The start time for query alarm
@@ -2522,8 +2522,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_network_policies
       operationId: listNetworkPolices
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: policyNames
           in: query
           description: The list of policy names
@@ -2681,8 +2681,8 @@ paths:
           schema:
             type: integer
             format: int64
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -2821,8 +2821,8 @@ paths:
             type: array
             items:
               type: string
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: views
           in: query
           description: >-
@@ -3028,8 +3028,15 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_applications
       operationId: listApplications
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
+        - name: sortField
+          in: query
+          description: The sort field
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqApplicationSortField'
+        - $ref: '#/components/parameters/orderQueryParam'
         - name: name
           in: query
           description: Application Name
@@ -3055,13 +3062,6 @@ paths:
           schema:
             type: boolean
           example: true
-        - name: sortField
-          in: query
-          description: The sort field
-          required: false
-          schema:
-            $ref: '#/components/schemas/XiqApplicationSortField'
-        - $ref: '#/components/parameters/orderParam'
       responses:
         '200':
           description: OK
@@ -3187,8 +3187,8 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_audit_log'
       operationId: listAuditLogs
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: categories
           in: query
           description: Audit category
@@ -3243,8 +3243,8 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_sms_log'
       operationId: listSmsLogs
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: phoneNumber
           in: query
           description: The phone number
@@ -3291,8 +3291,8 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_email_log'
       operationId: listEmailLogs
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: username
           in: query
           description: The user login name
@@ -3340,8 +3340,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_authentication_log
       operationId: listAuthLogs
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: username
           in: query
           description: The user login name
@@ -3395,8 +3395,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_credential_log
       operationId: listCredentialLogs
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: username
           in: query
           description: The user login name
@@ -3444,8 +3444,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_accounting_log
       operationId: listAccountingLogs
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: username
           in: query
           description: The user login name
@@ -3661,8 +3661,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_vlan_profiles
       operationId: listVlanProfiles
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -3866,8 +3866,8 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_end_users'
       operationId: listEndUsers
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: user_group_ids
           in: query
           description: The user group IDs
@@ -4028,8 +4028,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_user_groups
       operationId: listUserGroups
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: password_db_location
           in: query
           description: The password DB location
@@ -4540,8 +4540,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_classification_rules
       operationId: listClassificationRules
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -4721,8 +4721,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radio_profiles
       operationId: listRadioProfiles
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -4931,8 +4931,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_mac_oui_profiles
       operationId: listRpMacOuiProfiles
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -5411,8 +5411,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_user_profiles
       operationId: listUserProfiles
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -5554,8 +5554,8 @@ paths:
         url: 'https://extremecloudiq.com/api-docs/api-reference.html#_list_ssids'
       operationId: listSsids
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -5971,8 +5971,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_cloud_config_groups
       operationId: listCloudConfigGroups
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6115,8 +6115,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_active_directory_server
       operationId: listActiveDirectoryServers
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6140,8 +6140,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_captive_web_portals
       operationId: listCaptiveWebPortals
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6165,8 +6165,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_ldap_servers
       operationId: listLdapServers
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6348,8 +6348,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_client_objects_configuration
       operationId: listRadiusClientObjects
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6488,8 +6488,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_proxy_configuration
       operationId: listRadiusProxies
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6680,8 +6680,8 @@ paths:
         url: >-
           https://extremecloudiq.com/api-docs/api-reference.html#_list_radius_proxy_devices
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6705,8 +6705,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_servers
       operationId: listInternalRadiusServers
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6849,8 +6849,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_devices
       operationId: listInternalRadiusDevices
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -6874,8 +6874,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_servers
       operationId: listExternalRadiusServers
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
       responses:
         '200':
           description: OK
@@ -7014,8 +7014,8 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_list_certificates
       operationId: listCertificates
       parameters:
-        - $ref: '#/components/parameters/pageParam'
-        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - name: certType
           in: query
           description: The certificate type
@@ -9428,6 +9428,11 @@ components:
           description: The client total usage
           format: int64
       description: The client usage over the period
+    XiqApplicationSortField:
+      type: string
+      enum:
+        - NAME
+        - CATEGORY
     XiqApplicationDetectionProtocol:
       type: string
       enum:
@@ -9439,11 +9444,6 @@ components:
         - HOST_NAME
         - SERVER_IP_ADDRESS
         - PORT_NUMBER
-    XiqApplicationSortField:
-      type: string
-      enum:
-        - NAME
-        - CATEGORY
     XiqApplicationDetectionRule:
       type: object
       properties:
@@ -15169,7 +15169,7 @@ components:
       scheme: bearer
       bearerFormat: JWT
   parameters:
-    pageParam:
+    pageQueryParam:
       name: page
       in: query
       description: 'Page number, min = 1'
@@ -15179,7 +15179,7 @@ components:
         type: integer
         format: int32
         default: 1
-    limitParam:
+    limitQueryParam:
       name: limit
       in: query
       description: 'Page Size, min = 1, max = 100'
@@ -15190,14 +15190,14 @@ components:
         type: integer
         format: int32
         default: 10
-    orderParam:
+    orderQueryParam:
       name: order
       in: query
       description: The sort order (ascending by default)
       required: false
       schema:
         $ref: '#/components/schemas/XiqSortOrder'
-    asyncParam:
+    asyncQueryParam:
       name: async
       in: query
       description: Whether to enable async mode

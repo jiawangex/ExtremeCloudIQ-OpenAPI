@@ -10,7 +10,7 @@ post:
   operationId: resetDevice
   parameters:
     - $ref: ../components/parameters/deviceIdParam.yaml
-    - $ref: ../../common/components/parameters/asyncParam.yaml
+    - $ref: ../../common/components/parameters/asyncQueryParam.yaml
   responses:
     '200':
       description: OK

@@ -51,8 +51,8 @@ get:
         type: array
         items:
           type: string
-    - $ref: ../../common/components/parameters/pageParam.yaml
-    - $ref: ../../common/components/parameters/limitParam.yaml
+    - $ref: ../../common/components/parameters/pageQueryParam.yaml
+    - $ref: ../../common/components/parameters/limitQueryParam.yaml
     - name: views
       in: query
       description: >-
