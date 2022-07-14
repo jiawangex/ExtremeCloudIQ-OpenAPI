@@ -8,6 +8,8 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_client_list
   operationId: listActiveClients
   parameters:
+    - $ref: ../../common/components/parameters/pageQueryParam.yaml
+    - $ref: ../../common/components/parameters/limitQueryParam.yaml
     - $ref: ../../common/components/parameters/locationIdsQueryParam.yaml
     - $ref: ../../common/components/parameters/deviceIdsQueryParam.yaml
     - name: vlans
@@ -35,8 +37,6 @@ get:
         type: array
         items:
           type: string
-    - $ref: ../../common/components/parameters/pageQueryParam.yaml
-    - $ref: ../../common/components/parameters/limitQueryParam.yaml
     - name: views
       in: query
       description: >-
