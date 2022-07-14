@@ -2476,13 +2476,7 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: startTime
-          in: query
-          description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/startTimeQueryParam'
         - name: endTime
           in: query
           description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
@@ -2778,16 +2772,10 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_client_list
       operationId: listActiveClients
       parameters:
+        - $ref: '#/components/parameters/pageQueryParam'
+        - $ref: '#/components/parameters/limitQueryParam'
         - $ref: '#/components/parameters/locationIdsQueryParam'
-        - name: deviceIds
-          in: query
-          description: The device IDs
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int64
+        - $ref: '#/components/parameters/deviceIdsQueryParam'
         - name: vlans
           in: query
           description: The associate vlan IDs
@@ -2813,8 +2801,6 @@ paths:
             type: array
             items:
               type: string
-        - $ref: '#/components/parameters/pageQueryParam'
-        - $ref: '#/components/parameters/limitQueryParam'
         - name: views
           in: query
           description: >-
@@ -2859,15 +2845,7 @@ paths:
       operationId: getClientSummary
       parameters:
         - $ref: '#/components/parameters/locationIdsQueryParam'
-        - name: deviceIds
-          in: query
-          description: The device IDs
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-              format: int64
+        - $ref: '#/components/parameters/deviceIdsQueryParam'
         - name: vlans
           in: query
           description: The associate VLAN IDs
@@ -2925,13 +2903,7 @@ paths:
             items:
               type: integer
               format: int64
-        - name: startTime
-          in: query
-          description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/startTimeQueryParam'
         - name: endTime
           in: query
           description: 'The end time to query, epoch time in milliseconds since 1/1/1970'
@@ -15197,10 +15169,28 @@ components:
       schema:
         type: integer
         format: int64
+    startTimeQueryParam:
+      name: startTime
+      in: query
+      description: 'The start time to query, epoch time in milliseconds since 1/1/1970'
+      required: true
+      schema:
+        type: integer
+        format: int64
     locationIdsQueryParam:
       name: locationIds
       in: query
       description: The location IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+    deviceIdsQueryParam:
+      name: deviceIds
+      in: query
+      description: The device IDs
       required: false
       schema:
         type: array
