@@ -1,4 +1,5 @@
 type: object
+description: The summary for clients
 properties:
   connected_wireless_client_count:
     type: integer
@@ -8,4 +9,3 @@ properties:
     type: integer
     description: The detected wired client count
     format: int64
-description: The summary for clients

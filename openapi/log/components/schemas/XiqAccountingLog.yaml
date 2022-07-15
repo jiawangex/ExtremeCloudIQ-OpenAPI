@@ -1,6 +1,7 @@
+type: object
+description: ExtremeCloud IQ Accounting Log
 required:
   - id
-type: object
 properties:
   id:
     type: integer
@@ -110,4 +111,3 @@ properties:
     type: integer
     description: The event time
     format: int64
-description: ExtremeCloud IQ Accounting Log

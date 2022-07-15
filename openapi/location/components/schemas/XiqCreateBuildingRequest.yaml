@@ -1,8 +1,8 @@
-required:
-  - address
-  - name
-  - parent_id
 type: object
+required:
+  - parent_id
+  - name
+  - address
 properties:
   parent_id:
     type: integer

@@ -1,4 +1,5 @@
 type: object
+description: The password delivery settings
 properties:
   email_template_id:
     type: integer
@@ -6,6 +7,5 @@ properties:
     format: int64
   sms_template_id:
     type: integer
-    description: 'The SMS Template ID '
+    description: The SMS Template ID
     format: int64
-description: The password delivery settings

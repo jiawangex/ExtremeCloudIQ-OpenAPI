@@ -1,11 +1,11 @@
+type: object
 required:
-  - accounting_interim_update_interval
+  - name
   - enable_inject_operator_name_attribute
   - enable_message_authenticator_attribute
   - enable_permit_dynamic_authorization_message_change
-  - name
   - retry_interval
-type: object
+  - accounting_interim_update_interval
 properties:
   name:
     type: string

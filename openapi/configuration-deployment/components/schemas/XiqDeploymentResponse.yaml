@@ -1,6 +1,6 @@
 type: object
+description: The configuration deployment response
 properties:
   request_id:
     type: integer
     format: int64
-description: The configuration deployment response

@@ -1,6 +1,7 @@
+type: object
+description: ExtremeCloud IQ SMS Log
 required:
   - id
-type: object
 properties:
   id:
     type: integer
@@ -38,4 +39,3 @@ properties:
     type: integer
     description: The audit log timestamp
     format: int64
-description: ExtremeCloud IQ SMS Log

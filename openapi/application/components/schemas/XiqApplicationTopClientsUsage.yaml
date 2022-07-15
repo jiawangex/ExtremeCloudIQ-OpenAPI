@@ -1,4 +1,5 @@
 type: object
+description: The Top N Clients Usage per Application
 properties:
   application_id:
     type: integer
@@ -18,4 +19,3 @@ properties:
     type: integer
     description: The TOP N client usage
     format: int64
-description: The Top N Clients Usage per Application

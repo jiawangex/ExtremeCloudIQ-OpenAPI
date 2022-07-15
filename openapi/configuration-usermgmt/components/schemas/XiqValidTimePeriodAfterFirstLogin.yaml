@@ -1,9 +1,12 @@
+type: object
+description: >-
+  The settings for the valid time period after First Login option or null for
+  the other option
 required:
-  - first_login_within
-  - first_login_within_unit
   - valid_time_period
   - valid_time_period_unit
-type: object
+  - first_login_within
+  - first_login_within_unit
 properties:
   valid_time_period:
     type: integer
@@ -17,6 +20,3 @@ properties:
     format: int32
   first_login_within_unit:
     $ref: ./XiqDateTimeUnitType.yaml
-description: >-
-  The settings for the valid time period after First Login option or null for
-  the other option

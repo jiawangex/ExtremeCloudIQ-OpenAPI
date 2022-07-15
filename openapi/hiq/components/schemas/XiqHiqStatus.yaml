@@ -1,6 +1,6 @@
+type: object
 required:
   - enabled
-type: object
 properties:
   enabled:
     type: boolean

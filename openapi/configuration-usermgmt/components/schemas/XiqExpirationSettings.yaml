@@ -1,4 +1,5 @@
 type: object
+description: The password expiration settings
 properties:
   expiration_type:
     $ref: ./XiqExpirationType.yaml
@@ -12,4 +13,3 @@ properties:
     $ref: ./XiqExpirationActionType.yaml
   post_expiration_action:
     $ref: ./XiqPostExpirationAction.yaml
-description: The password expiration settings

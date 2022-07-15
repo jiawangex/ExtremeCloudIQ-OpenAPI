@@ -1,9 +1,10 @@
+type: object
+description: The settings for Valid Daily option or null for other settings.
 required:
   - daily_end_hour
   - daily_end_minute
   - daily_start_hour
   - daily_start_minute
-type: object
 properties:
   daily_start_hour:
     type: integer
@@ -21,4 +22,3 @@ properties:
     type: integer
     description: The minute of the hour
     format: int32
-description: The settings for Valid Daily option or null for other settings.

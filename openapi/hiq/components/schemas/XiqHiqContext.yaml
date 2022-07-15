@@ -1,7 +1,7 @@
-required:
-  - creating_org_id
-  - reading_org_ids
 type: object
+required:
+  - reading_org_ids
+  - creating_org_id
 properties:
   reading_org_ids:
     type: array

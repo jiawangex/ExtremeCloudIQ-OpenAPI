@@ -1,6 +1,6 @@
+type: object
 required:
   - permissions
-type: object
 properties:
   expire_time:
     type: integer

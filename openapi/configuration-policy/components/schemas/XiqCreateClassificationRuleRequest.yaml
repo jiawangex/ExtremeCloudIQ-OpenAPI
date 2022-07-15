@@ -1,7 +1,7 @@
-required:
-  - classifications
-  - name
 type: object
+required:
+  - name
+  - classifications
 properties:
   name:
     type: string

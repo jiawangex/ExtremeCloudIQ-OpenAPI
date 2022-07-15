@@ -1,11 +1,11 @@
-required:
-  - accounting_port
-  - authentication_port
-  - enable_a3
-  - ip_addr
-  - name
-  - server_type
 type: object
+required:
+  - name
+  - authentication_port
+  - accounting_port
+  - server_type
+  - ip_addr
+  - enable_a3
 properties:
   name:
     type: string

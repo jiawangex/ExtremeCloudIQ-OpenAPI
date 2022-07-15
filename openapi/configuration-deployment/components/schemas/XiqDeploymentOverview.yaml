@@ -1,7 +1,8 @@
+type: object
+description: The configuration deployment overview
 required:
   - in_progress_devices
   - total_progress
-type: object
 properties:
   in_progress_devices:
     type: integer
@@ -11,4 +12,3 @@ properties:
     type: integer
     description: The total progress, range from 0 to 100
     format: int32
-description: The configuration deployment overview

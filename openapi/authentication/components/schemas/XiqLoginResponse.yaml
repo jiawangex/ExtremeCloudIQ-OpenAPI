@@ -1,8 +1,8 @@
+type: object
 required:
   - access_token
-  - expires_in
   - token_type
-type: object
+  - expires_in
 properties:
   access_token:
     type: string
@@ -14,5 +14,3 @@ properties:
     type: integer
     format: int32
     description: The lifetime in seconds of the access token
-x-tags:
-  - Authentication

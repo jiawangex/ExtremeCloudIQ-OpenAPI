@@ -1,6 +1,12 @@
 allOf:
   - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
   - type: object
+    required:
+      - name
+      - account_type
+      - account_mode
+      - quota
+      - data_center
     properties:
       name:
         type: string
@@ -33,9 +39,3 @@ allOf:
       zipcode:
         type: string
         description: The zipcode of the address
-    required:
-      - name
-      - account_type
-      - account_mode
-      - quota
-      - data_center

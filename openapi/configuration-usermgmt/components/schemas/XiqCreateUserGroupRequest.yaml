@@ -1,11 +1,11 @@
+type: object
 required:
-  - delivery_settings
-  - expiration_settings
   - name
   - password_db_location
-  - password_settings
   - password_type
-type: object
+  - password_settings
+  - expiration_settings
+  - delivery_settings
 properties:
   name:
     type: string

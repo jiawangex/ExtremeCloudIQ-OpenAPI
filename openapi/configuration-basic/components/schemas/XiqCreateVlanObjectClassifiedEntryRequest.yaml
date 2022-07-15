@@ -1,8 +1,8 @@
 type: object
 description: The VLAN object classified entries
 required:
-  - classification_rule_id
   - vlan_id
+  - classification_rule_id
 properties:
   vlan_id:
     type: integer

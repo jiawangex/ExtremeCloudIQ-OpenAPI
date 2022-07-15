@@ -1,12 +1,12 @@
-required:
-  - data_center
-  - issued_at
-  - owner_id
-  - role
-  - scopes
-  - user_id
-  - user_name
 type: object
+required:
+  - user_name
+  - user_id
+  - role
+  - owner_id
+  - data_center
+  - scopes
+  - issued_at
 properties:
   user_name:
     type: string

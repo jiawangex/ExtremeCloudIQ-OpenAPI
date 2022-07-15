@@ -1,7 +1,8 @@
-required:
-  - encryption_method
-  - key_management
 type: object
+description: The request for setting the SSID to be WEP mode.
+required:
+  - key_management
+  - encryption_method
 properties:
   key_management:
     $ref: ./XiqSsidWepKeyManagement.yaml
@@ -46,4 +47,3 @@ properties:
     type: integer
     description: The RADIUS server group ID if using WEP_8021x as the key management
     format: int64
-description: The request for setting the SSID to be WEP mode.

@@ -1,6 +1,7 @@
+type: object
+description: ExtremeCloud IQ Auth Log
 required:
   - id
-type: object
 properties:
   id:
     type: string
@@ -56,4 +57,3 @@ properties:
     type: integer
     description: The audit log timestamp
     format: int64
-description: ExtremeCloud IQ Auth Log

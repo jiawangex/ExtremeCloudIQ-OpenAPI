@@ -1,5 +1,5 @@
 type: string
-description: 'The key management: WPA2_PSK, WPA_PSK,AUTO_PSK'
+description: 'The key management: WPA2_PSK, WPA_PSK, AUTO_PSK'
 enum:
   - WPA_PSK
   - WPA2_PSK

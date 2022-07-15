@@ -1,9 +1,10 @@
+type: object
+description: The request for setting the SSID to be PSK mode.
 required:
-  - encryption_method
   - key_management
+  - encryption_method
   - key_type
   - key_value
-type: object
 properties:
   key_management:
     $ref: ./XiqSsidPskKeyManagement.yaml
@@ -25,4 +26,3 @@ properties:
   transition_mode:
     type: boolean
     description: Indicates the transition mode if key management is WPA3
-description: The request for setting the SSID to be PSK mode.

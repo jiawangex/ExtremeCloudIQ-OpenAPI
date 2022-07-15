@@ -3,8 +3,8 @@ allOf:
   - type: object
     description: The key based PCG user detailed info
     required:
-      - email
       - name
+      - email
       - user_group_name
     properties:
       name:

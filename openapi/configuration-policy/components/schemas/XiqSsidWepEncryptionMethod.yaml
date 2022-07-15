@@ -1,6 +1,5 @@
 type: string
 description: The encryption method type, WEP104 or WEP40
-example: WEP104
 enum:
   - WEP40
   - WEP104

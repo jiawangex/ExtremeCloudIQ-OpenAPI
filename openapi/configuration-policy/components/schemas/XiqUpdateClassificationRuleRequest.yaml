@@ -1,6 +1,6 @@
 required:
-  - classifications
   - name
+  - classifications
 type: object
 properties:
   name:

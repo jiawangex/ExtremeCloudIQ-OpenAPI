@@ -1,4 +1,5 @@
 type: object
+description: Get time series of the average device cpu and memory usage
 properties:
   average_cpu:
     type: integer
@@ -12,4 +13,3 @@ properties:
     type: integer
     description: The timestamp for data aggregate
     format: int64
-description: Get time series of the average device cpu and memory usage

@@ -1,10 +1,11 @@
+type: object
+description: The metadata of Long Running Operation (LRO)
 required:
+  - status
   - cancelable
   - create_time
-  - expires_in
-  - status
   - update_time
-type: object
+  - expires_in
 properties:
   status:
     $ref: ./XiqOperationStatus.yaml
@@ -50,4 +51,3 @@ properties:
       The number of seconds remaining until the operation expires and is to be
       deleted.
     format: int64
-description: The metadata of Long Running Operation (LRO)

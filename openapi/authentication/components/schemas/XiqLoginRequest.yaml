@@ -1,7 +1,7 @@
-required:
-  - password
-  - username
 type: object
+required:
+  - username
+  - password
 properties:
   username:
     type: string
@@ -9,5 +9,3 @@ properties:
   password:
     type: string
     description: The login password
-x-tags:
-  - Authentication

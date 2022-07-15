@@ -1,8 +1,9 @@
+type: object
+description: The request to initiate Key-based Private Client Group
 required:
   - policy_name
   - ssid_name
   - users
-type: object
 properties:
   policy_name:
     type: string
@@ -15,4 +16,3 @@ properties:
     description: The Key-based PCG users
     items:
       $ref: ./XiqKeyBasedPcgUserBaseInfo.yaml
-description: The request to initiate Key-based Private Client Group

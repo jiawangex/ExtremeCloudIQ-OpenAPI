@@ -1,4 +1,5 @@
 type: object
+description: The type of action to take after the account expiration.
 properties:
   enable_credentials_renewal:
     type: boolean
@@ -12,4 +13,3 @@ properties:
     format: int32
   delete_after_unit:
     $ref: ./XiqDateTimeUnitType.yaml
-description: The type of action to take after the account expiration.

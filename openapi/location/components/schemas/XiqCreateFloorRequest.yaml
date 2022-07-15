@@ -1,12 +1,12 @@
-required:
-  - db_attenuation
-  - installation_height
-  - map_size_height
-  - map_size_width
-  - measurement_unit
-  - name
-  - parent_id
 type: object
+required:
+  - parent_id
+  - name
+  - db_attenuation
+  - measurement_unit
+  - installation_height
+  - map_size_width
+  - map_size_height
 properties:
   parent_id:
     type: integer

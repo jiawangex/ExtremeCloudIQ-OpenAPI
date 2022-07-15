@@ -1,4 +1,5 @@
 type: object
+description: The configuration deployment status
 properties:
   current_progress:
     type: integer
@@ -19,4 +20,3 @@ properties:
     format: int64
   finished:
     type: boolean
-description: The configuration deployment status

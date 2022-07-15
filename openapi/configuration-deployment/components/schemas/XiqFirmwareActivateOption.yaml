@@ -1,4 +1,5 @@
 type: object
+description: The firmware activate option (Only one of them can be enabled)
 properties:
   enable_activate_at_next_reboot:
     type: boolean
@@ -13,4 +14,3 @@ properties:
       Activate at the following time according to the system clock on the
       updated device
     format: int64
-description: The firmware activate option (Only one of them can be enabled)

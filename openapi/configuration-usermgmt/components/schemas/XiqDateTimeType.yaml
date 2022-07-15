@@ -1,10 +1,11 @@
+type: object
+description: The end date and time
 required:
   - day_of_month
-  - hour_of_day
-  - minute_of_hour
   - month
   - year
-type: object
+  - hour_of_day
+  - minute_of_hour
 properties:
   day_of_month:
     type: integer
@@ -26,4 +27,3 @@ properties:
     type: integer
     description: The minute of the hour
     format: int32
-description: The end date and time

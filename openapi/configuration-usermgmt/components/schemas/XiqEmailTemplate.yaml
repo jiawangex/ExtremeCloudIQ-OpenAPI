@@ -1,7 +1,7 @@
 allOf:
   - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
   - type: object
-    description: The password or PPSK notification template for user groups.
+    description: The password or the PPSK notification template for user groups.
     required:
       - name
       - predefined

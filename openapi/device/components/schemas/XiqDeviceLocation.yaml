@@ -1,10 +1,11 @@
+type: object
+description: Device location info
 required:
   - create_time
   - location_name
   - location_type
   - location_unique_name
   - update_time
-type: object
 properties:
   location_id:
     type: integer
@@ -54,4 +55,3 @@ properties:
     type: number
     description: The longitude in the geography
     format: double
-description: Device location info

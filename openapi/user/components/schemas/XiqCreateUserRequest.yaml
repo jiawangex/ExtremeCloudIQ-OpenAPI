@@ -1,8 +1,8 @@
-required:
-  - display_name
-  - login_name
-  - user_role
 type: object
+required:
+  - login_name
+  - display_name
+  - user_role
 properties:
   login_name:
     type: string

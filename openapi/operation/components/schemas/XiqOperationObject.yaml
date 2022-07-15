@@ -1,8 +1,9 @@
+type: object
+description: Long Running Operation (LRO) model
 required:
-  - done
   - id
   - metadata
-type: object
+  - done
 properties:
   id:
     type: string
@@ -17,4 +18,3 @@ properties:
     description: The API response of the operation if the status is SUCCEEDED
   error:
     $ref: ../../../common/components/schemas/XiqError.yaml
-description: Long Running Operation (LRO) model

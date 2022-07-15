@@ -1,25 +1,12 @@
-required:
-  - create_time
-  - id
-  - name
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  name:
-    type: string
-    description: The user profile name
-  vlan_profile:
-    $ref: ../../../configuration-basic/components/schemas/XiqVlanProfile.yaml
-description: The payload of User Profile
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The payload of User Profile
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: The user profile name
+      vlan_profile:
+        $ref: ../../../configuration-basic/components/schemas/XiqVlanProfile.yaml

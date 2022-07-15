@@ -1,8 +1,9 @@
-required:
-  - enabled
-  - if_names
-  - ssid_ids
 type: object
+description: The request for disable/enable device level ssid.
+required:
+  - ssid_ids
+  - if_names
+  - enabled
 properties:
   ssid_ids:
     type: array
@@ -25,4 +26,3 @@ properties:
   enabled:
     type: boolean
     description: To disable or enable the given device level SSIDs on the wifi interfaces.
-description: The request for disable/enable device level ssid.

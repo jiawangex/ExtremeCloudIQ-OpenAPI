@@ -1,6 +1,7 @@
+type: object
+description: Push configuration and upgrade firmware policy
 required:
   - enable_complete_configuration_update
-type: object
 properties:
   enable_complete_configuration_update:
     type: boolean
@@ -11,4 +12,3 @@ properties:
     $ref: ./XiqFirmwareUpgradePolicy.yaml
   firmware_activate_option:
     $ref: ./XiqFirmwareActivateOption.yaml
-description: Push configuration and upgrade firmware policy
