@@ -1,0 +1,10 @@
+allOf:
+  - $ref: ./XiqViqEntity.yaml
+  - type: object
+    properties:
+      location_id:
+        type: integer
+        description: The location identifier
+        format: int64
+    required:
+      - location_id

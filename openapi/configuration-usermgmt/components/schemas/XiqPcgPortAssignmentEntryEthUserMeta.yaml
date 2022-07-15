@@ -1,46 +1,29 @@
-required:
-  - create_time
-  - id
-  - name
-  - password
-  - ssids
-  - update_time
-  - user_group_name
-  - user_type
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  name:
-    type: string
-    description: The user name
-  password:
-    type: string
-    description: The user password
-  user_type:
-    type: string
-    description: The user type
-  user_group_name:
-    type: string
-    description: The user group name
-  ssids:
-    type: array
-    description: The SSIDs
-    items:
-      type: string
-      description: The SSIDs
-description: The PCG port assignment entry of eth user info
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The PCG port assignment entry of eth user info
+    required:
+      - name
+      - password
+      - user_type
+      - user_group_name
+      - ssids
+    properties:
+      name:
+        type: string
+        description: The user name
+      password:
+        type: string
+        description: The user password
+      user_type:
+        type: string
+        description: The user type
+      user_group_name:
+        type: string
+        description: The user group name
+      ssids:
+        type: array
+        description: The SSIDs
+        items:
+          type: string
+          description: The SSIDs

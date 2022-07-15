@@ -1,56 +1,38 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  name:
-    type: string
-    description: The RADIUS proxy name
-  description:
-    type: string
-    description: The RADIUS proxy description
-  format_type:
-    $ref: ./XiqRadiusProxyFormatType.yaml
-  retry_count:
-    type: integer
-    description: The retry count of RADIUS proxy
-    format: int32
-  retry_delay:
-    type: integer
-    description: The retry delay of RADIUS proxy
-    format: int32
-  dead_time:
-    type: integer
-    description: The dead time of RADIUS proxy
-    format: int32
-  enable_inject_operator_name_attribute:
-    type: boolean
-    description: The flag for enable inject operator name attribute
-  clients:
-    type: array
-    description: The RADIUS clients of RADIUS proxy
-    items:
-      $ref: ./XiqRadiusClient.yaml
-  realms:
-    type: array
-    description: The RADIUS realms of RADIUS proxy
-    items:
-      $ref: ./XiqRadiusProxyRealm.yaml
-description: The configuration of RADIUS proxy
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The configuration of RADIUS proxy
+    properties:
+      name:
+        type: string
+        description: The RADIUS proxy name
+      description:
+        type: string
+        description: The RADIUS proxy description
+      format_type:
+        $ref: ./XiqRadiusProxyFormatType.yaml
+      retry_count:
+        type: integer
+        description: The retry count of RADIUS proxy
+        format: int32
+      retry_delay:
+        type: integer
+        description: The retry delay of RADIUS proxy
+        format: int32
+      dead_time:
+        type: integer
+        description: The dead time of RADIUS proxy
+        format: int32
+      enable_inject_operator_name_attribute:
+        type: boolean
+        description: The flag for enable inject operator name attribute
+      clients:
+        type: array
+        description: The RADIUS clients of RADIUS proxy
+        items:
+          $ref: ./XiqRadiusClient.yaml
+      realms:
+        type: array
+        description: The RADIUS realms of RADIUS proxy
+        items:
+          $ref: ./XiqRadiusProxyRealm.yaml

@@ -1,37 +1,20 @@
-required:
-  - create_time
-  - email
-  - id
-  - name
-  - update_time
-  - user_group_name
-type: object
-properties:
-  name:
-    type: string
-    description: >-
-      The user name of key based PCG, which could not share with other exist key
-      based PCG
-  email:
-    type: string
-    description: The email for deliver key based PCG user password
-  user_group_name:
-    type: string
-    description: The user group name
-  id:
-    type: integer
-    description: The user ID
-    format: int64
-  create_time:
-    type: string
-    description: The create timestamp
-    format: date-time
-  update_time:
-    type: string
-    description: The create timestamp
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization ID
-    format: int64
-description: The key based PCG user detailed info
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The key based PCG user detailed info
+    required:
+      - email
+      - name
+      - user_group_name
+    properties:
+      name:
+        type: string
+        description: >-
+          The user name of key based PCG, which could not share with other exist key
+          based PCG
+      email:
+        type: string
+        description: The email for deliver key based PCG user password
+      user_group_name:
+        type: string
+        description: The user group name

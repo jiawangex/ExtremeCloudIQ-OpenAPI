@@ -1,68 +1,55 @@
-required:
-  - create_time
-  - id
-  - name
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  name:
-    type: string
-    description: The LDAP server name
-  description:
-    type: string
-    description: The LDAP server description
-  enable_tls:
-    type: boolean
-    description: The LDAP server is enabled TLS or not
-  bind_dn:
-    type: string
-    description: The LDAP server bind DN name
-  bind_dn_password:
-    type: string
-    description: The LDAP server bind DN password
-  base_dn:
-    type: string
-    description: The RADIUS user base DN
-  l3_address_profile_id:
-    type: integer
-    description: The L3 address profile ID
-    format: int64
-  protocol_type:
-    $ref: ./XiqLdapProtocolType.yaml
-  enable_strip_realm_name:
-    type: boolean
-    description: Enable strip realm name or not
-  destination_port:
-    type: integer
-    description: The LDAP server destination port
-    format: int32
-  verification_mode:
-    $ref: ./XiqLdapServerVerificationMode.yaml
-  ca_certificate_id:
-    type: integer
-    description: The CA certificate ID
-    format: int64
-  client_certificate_id:
-    type: integer
-    description: The client certificate ID
-    format: int64
-  client_key_id:
-    type: integer
-    description: The client key ID
-    format: int64
-  client_key_password:
-    type: string
-    description: The LDAP server client key password
-description: The common object - LDAP server
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The common object - LDAP server
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: The LDAP server name
+      description:
+        type: string
+        description: The LDAP server description
+      enable_tls:
+        type: boolean
+        description: The LDAP server is enabled TLS or not
+      bind_dn:
+        type: string
+        description: The LDAP server bind DN name
+      bind_dn_password:
+        type: string
+        description: The LDAP server bind DN password
+      base_dn:
+        type: string
+        description: The RADIUS user base DN
+      l3_address_profile_id:
+        type: integer
+        description: The L3 address profile ID
+        format: int64
+      protocol_type:
+        $ref: ./XiqLdapProtocolType.yaml
+      enable_strip_realm_name:
+        type: boolean
+        description: Enable strip realm name or not
+      destination_port:
+        type: integer
+        description: The LDAP server destination port
+        format: int32
+      verification_mode:
+        $ref: ./XiqLdapServerVerificationMode.yaml
+      ca_certificate_id:
+        type: integer
+        description: The CA certificate ID
+        format: int64
+      client_certificate_id:
+        type: integer
+        description: The client certificate ID
+        format: int64
+      client_key_id:
+        type: integer
+        description: The client key ID
+        format: int64
+      client_key_password:
+        type: string
+        description: The LDAP server client key password

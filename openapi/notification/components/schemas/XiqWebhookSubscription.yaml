@@ -1,40 +1,27 @@
-required:
-  - application
-  - create_time
-  - data_type
-  - id
-  - message_type
-  - secret
-  - status
-  - update_time
-  - url
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  application:
-    type: string
-    description: The external application name.
-  url:
-    type: string
-    description: The webhook endpoint URL.
-  secret:
-    type: string
-    description: The basic auth secret for the webhook endpoint.
-  data_type:
-    $ref: ./XiqSubscriptionDataType.yaml
-  message_type:
-    $ref: ./XiqSubscriptionMessageType.yaml
-  status:
-    $ref: ./XiqSubscriptionStatus.yaml
-description: The webhook subscription data model
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The webhook subscription data model
+    required:
+      - application
+      - url
+      - secret
+      - data_type
+      - message_type
+      - status
+    properties:
+      application:
+        type: string
+        description: The external application name.
+      url:
+        type: string
+        description: The webhook endpoint URL.
+      secret:
+        type: string
+        description: The basic auth secret for the webhook endpoint.
+      data_type:
+        $ref: ./XiqSubscriptionDataType.yaml
+      message_type:
+        $ref: ./XiqSubscriptionMessageType.yaml
+      status:
+        $ref: ./XiqSubscriptionStatus.yaml

@@ -1,72 +1,54 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  name:
-    type: string
-    description: The active directory server name
-  description:
-    type: string
-    description: The description for active directory server
-  base_dn:
-    type: string
-    description: The base DN of active directory server
-  enable_tls:
-    type: boolean
-    description: Flag to enable TLS
-  bind_dn:
-    type: string
-    description: The bind DN of active directory server
-  bind_dn_password:
-    type: string
-    description: The bind DN password of active directory server
-  domain:
-    type: string
-    description: The domain of active directory server
-  computer_ou:
-    type: string
-    description: The compute OU of active directory server
-  domain_admin:
-    type: string
-    description: The domain admin of active directory server
-  domain_admin_password:
-    type: string
-    description: The domain admin password of active directory server
-  enable_save_domain_admin_credentials:
-    type: boolean
-    description: Flag to enable save domain admin credentials
-  short_domain:
-    type: string
-    description: The short domain of active directory server
-  realm:
-    type: string
-    description: The realm of active directory server
-  base_dn_fetch_mode:
-    $ref: ./XiqActiveDirectoryServerBaseDnFetchMode.yaml
-  connection_setup_device_id:
-    type: integer
-    description: The connection setup device ID for active directory server
-    format: int64
-  l3_address_profile_id:
-    type: integer
-    description: The associate L3 address profile ID for active directory server
-    format: int64
-description: The configuration of Active Directory Server
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The configuration of Active Directory Server
+    properties:
+      name:
+        type: string
+        description: The active directory server name
+      description:
+        type: string
+        description: The description for active directory server
+      base_dn:
+        type: string
+        description: The base DN of active directory server
+      enable_tls:
+        type: boolean
+        description: Flag to enable TLS
+      bind_dn:
+        type: string
+        description: The bind DN of active directory server
+      bind_dn_password:
+        type: string
+        description: The bind DN password of active directory server
+      domain:
+        type: string
+        description: The domain of active directory server
+      computer_ou:
+        type: string
+        description: The compute OU of active directory server
+      domain_admin:
+        type: string
+        description: The domain admin of active directory server
+      domain_admin_password:
+        type: string
+        description: The domain admin password of active directory server
+      enable_save_domain_admin_credentials:
+        type: boolean
+        description: Flag to enable save domain admin credentials
+      short_domain:
+        type: string
+        description: The short domain of active directory server
+      realm:
+        type: string
+        description: The realm of active directory server
+      base_dn_fetch_mode:
+        $ref: ./XiqActiveDirectoryServerBaseDnFetchMode.yaml
+      connection_setup_device_id:
+        type: integer
+        description: The connection setup device ID for active directory server
+        format: int64
+      l3_address_profile_id:
+        type: integer
+        description: The associate L3 address profile ID for active directory server
+        format: int64

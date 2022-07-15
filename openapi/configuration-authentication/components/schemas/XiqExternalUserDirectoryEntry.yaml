@@ -1,7 +1,8 @@
+type: object
+description: The payload of common object - External User Directory Entry
 required:
   - default_server_id
   - server_role
-type: object
 properties:
   default_server_id:
     type: integer
@@ -13,4 +14,3 @@ properties:
     format: int64
   server_role:
     $ref: ./XiqServerRole.yaml
-description: The payload of common object - External User Directory Entry

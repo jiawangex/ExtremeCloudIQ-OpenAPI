@@ -1,8 +1,8 @@
+type: object
 required:
   - default_vlan_id
   - enable_classification
   - name
-type: object
 properties:
   name:
     type: string

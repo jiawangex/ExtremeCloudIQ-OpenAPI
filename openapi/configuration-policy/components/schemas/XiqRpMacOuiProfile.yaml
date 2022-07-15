@@ -1,40 +1,26 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  name:
-    type: string
-    description: The product model
-  description:
-    type: string
-    description: The product description
-  predefined:
-    type: boolean
-    description: Whether the MAC Oui is predefined.
-  value:
-    type: string
-    description: The MAC octets
-  mac_type:
-    type: string
-    description: The type or "MAC_OUI"
-  defender_defined:
-    type: boolean
-    description: Whether defender is defined
-  extreme_iot_defined:
-    type: boolean
-    description: Whether is the Extreme Iot Defined
-description: The payload of config for the radio profile
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The MAC OUI profile for radio profile
+    properties:
+      name:
+        type: string
+        description: The product model
+      description:
+        type: string
+        description: The product description
+      predefined:
+        type: boolean
+        description: Whether the MAC Oui is predefined.
+      value:
+        type: string
+        description: The MAC octets
+      mac_type:
+        type: string
+        description: The type or "MAC_OUI"
+      defender_defined:
+        type: boolean
+        description: Whether defender is defined
+      extreme_iot_defined:
+        type: boolean
+        description: Whether is the Extreme Iot Defined

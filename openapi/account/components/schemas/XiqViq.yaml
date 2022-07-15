@@ -2,7 +2,7 @@ type: object
 properties:
   devices:
     type: integer
-    description: 'Total # of all licensed devices'
+    description: Total number of all licensed devices
     format: int32
   standalone:
     type: boolean

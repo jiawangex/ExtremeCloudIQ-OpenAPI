@@ -1,46 +1,29 @@
-required:
-  - create_time
-  - device_id
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  device_id:
-    type: integer
-    description: The device ID of AP150W
-    format: int64
-  eth1_user_id:
-    type: integer
-    description: >-
-      The eth1 user ID, get available users from
-      "/pcgs/key-based/network-policy-{policyId}/users"
-    format: int64
-  eth2_user_id:
-    type: integer
-    description: >-
-      The eth2 user ID, get available users from
-      "/pcgs/key-based/network-policy-{policyId}/users"
-    format: int64
-  eth3_user_id:
-    type: integer
-    description: >-
-      The eth3 user ID, get available users from
-      "/pcgs/key-based/network-policy-{policyId}/users"
-    format: int64
-description: The PCG port assignment entry
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The PCG port assignment entry
+    required:
+      - device_id
+    properties:
+      device_id:
+        type: integer
+        description: The device ID of AP150W
+        format: int64
+      eth1_user_id:
+        type: integer
+        description: >-
+          The eth1 user ID, get available users from
+          "/pcgs/key-based/network-policy-{policyId}/users"
+        format: int64
+      eth2_user_id:
+        type: integer
+        description: >-
+          The eth2 user ID, get available users from
+          "/pcgs/key-based/network-policy-{policyId}/users"
+        format: int64
+      eth3_user_id:
+        type: integer
+        description: >-
+          The eth3 user ID, get available users from
+          "/pcgs/key-based/network-policy-{policyId}/users"
+        format: int64

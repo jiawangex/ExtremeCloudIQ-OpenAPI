@@ -1,13 +1,14 @@
+type: object
+description: The setting for external user directory, AD or LDAP
 required:
-  - cache_lifetime
-  - enable_radius_server_credential_caching
-  - entries
-  - external_user_directory_type
   - ldap_retry_interval
   - local_check_interval
   - remote_check_interval
+  - enable_radius_server_credential_caching
+  - cache_lifetime
   - user_group_attribute
-type: object
+  - external_user_directory_type
+  - entries
 properties:
   ldap_retry_interval:
     maximum: 200000000
@@ -59,4 +60,3 @@ properties:
     description: The external user directory server entries
     items:
       $ref: ./XiqExternalUserDirectoryEntry.yaml
-description: The setting for external user directory, AD or LDAP

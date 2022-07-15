@@ -1,47 +1,30 @@
-required:
-  - create_time
-  - id
-  - name
-  - type
-  - unique_name
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  parent_id:
-    type: integer
-    description: The parent location ID
-    format: int64
-  name:
-    type: string
-    description: The location name
-  unique_name:
-    type: string
-    description: The unique location name
-  type:
-    type: string
-    description: The location type
-  address:
-    type: string
-    description: The address for the location
-  children:
-    type: array
-    description: The child locations
-    items:
-      $ref: ./XiqLocation.yaml
-description: The hierarchical location for Generic/Building/Floor
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The hierarchical location for Generic/Building/Floor
+    required:
+      - name
+      - type
+      - unique_name
+    properties:
+      parent_id:
+        type: integer
+        description: The parent location ID
+        format: int64
+      name:
+        type: string
+        description: The location name
+      unique_name:
+        type: string
+        description: The unique location name
+      type:
+        type: string
+        description: The location type
+      address:
+        type: string
+        description: The address for the location
+      children:
+        type: array
+        description: The child locations
+        items:
+          $ref: ./XiqLocation.yaml

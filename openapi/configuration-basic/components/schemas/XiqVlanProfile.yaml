@@ -1,37 +1,24 @@
-required:
-  - create_time
-  - default_vlan_id
-  - enable_classification
-  - id
-  - name
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  name:
-    type: string
-    description: The VLAN profile name
-  default_vlan_id:
-    type: integer
-    description: The default VLAN ID
-    format: int32
-  enable_classification:
-    type: boolean
-    description: If apply VLANs to devices using classification
-  classified_entries:
-    type: array
-    description: The VLAN object classified entries
-    items:
-      $ref: ./XiqVlanObjectClassifiedEntry.yaml
-description: The payload of common object - VLAN profile
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The payload of common object - VLAN profile
+    required:
+      - name
+      - default_vlan_id
+      - enable_classification
+    properties:
+      name:
+        type: string
+        description: The VLAN profile name
+      default_vlan_id:
+        type: integer
+        description: The default VLAN ID
+        format: int32
+      enable_classification:
+        type: boolean
+        description: If apply VLANs to devices using classification
+      classified_entries:
+        type: array
+        description: The VLAN object classified entries
+        items:
+          $ref: ./XiqVlanObjectClassifiedEntry.yaml

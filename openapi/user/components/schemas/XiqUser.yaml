@@ -1,56 +1,43 @@
-required:
-  - create_time
-  - id
-  - login_name
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  login_name:
-    type: string
-    description: Login name, i.e. username or login Email
-  first_name:
-    type: string
-    description: The first name
-  last_name:
-    type: string
-    description: The last name, i.e. family name
-  display_name:
-    type: string
-    description: The name to display
-  phone:
-    type: string
-    description: The Phone Number
-  job_title:
-    type: string
-    description: The job title
-  locale:
-    type: string
-    description: The locale
-  user_role:
-    $ref: ./XiqUserRole.yaml
-  idle_timeout:
-    type: integer
-    description: >-
-      The idle timeout in minutes, the minimum value is 5 minutes and the
-      maximum value is 4 hours
-    format: int32
-  last_login_time:
-    type: string
-    description: The last login time
-    format: date-time
-  org_id:
-    type: integer
-    description: The HIQ organization ID if it is HIQ user
-    format: int64
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    required:
+      - login_name
+    properties:
+      login_name:
+        type: string
+        description: Login name, i.e. username or login Email
+      first_name:
+        type: string
+        description: The first name
+      last_name:
+        type: string
+        description: The last name, i.e. family name
+      display_name:
+        type: string
+        description: The name to display
+      phone:
+        type: string
+        description: The Phone Number
+      job_title:
+        type: string
+        description: The job title
+      locale:
+        type: string
+        description: The locale
+      user_role:
+        $ref: ./XiqUserRole.yaml
+      idle_timeout:
+        type: integer
+        description: >-
+          The idle timeout in minutes, the minimum value is 5 minutes and the
+          maximum value is 4 hours
+        format: int32
+      last_login_time:
+        type: string
+        description: The last login time
+        format: date-time
+      org_id:
+        type: integer
+        description: The HIQ organization ID if it is HIQ user
+        format: int64
