@@ -1,4 +1,5 @@
 type: object
+description: The simple location information
 properties:
   id:
     type: integer
@@ -7,4 +8,3 @@ properties:
   name:
     type: string
     description: The location name
-description: The simple location information

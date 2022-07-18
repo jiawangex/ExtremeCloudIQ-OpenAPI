@@ -1,4 +1,5 @@
 type: object
+description: The associate RADIUS proxy realm for RADIUS proxy
 properties:
   name:
     type: string
@@ -10,4 +11,3 @@ properties:
     type: integer
     description: The associate RADIUS client object ID
     format: int64
-description: The associate RADIUS proxy realm for RADIUS proxy

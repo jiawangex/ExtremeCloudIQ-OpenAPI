@@ -9,25 +9,8 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_list_the_internal_radius_devices
   operationId: listInternalRadiusDevices
   parameters:
-    - name: page
-      in: query
-      description: Page number, min = 1
-      required: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        default: 1
-    - name: limit
-      in: query
-      description: Page Size, min = 1, max = 100
-      required: false
-      schema:
-        maximum: 100
-        minimum: 1
-        type: integer
-        format: int32
-        default: 10
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
   responses:
     '200':
       description: OK

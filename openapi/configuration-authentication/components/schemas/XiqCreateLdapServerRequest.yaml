@@ -1,15 +1,15 @@
-required:
-  - base_dn
-  - bind_dn
-  - bind_dn_password
-  - destination_port
-  - enable_strip_realm_name
-  - enable_tls
-  - l3_address_profile_id
-  - name
-  - protocol_type
-  - verification_mode
 type: object
+required:
+  - name
+  - enable_tls
+  - bind_dn_password
+  - bind_dn
+  - base_dn
+  - l3_address_profile_id
+  - protocol_type
+  - enable_strip_realm_name
+  - destination_port
+  - verification_mode
 properties:
   name:
     type: string

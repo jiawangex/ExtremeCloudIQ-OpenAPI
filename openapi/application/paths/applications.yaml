@@ -9,25 +9,15 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_list_the_applications
   operationId: listApplications
   parameters:
-    - name: page
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - name: sortField
       in: query
-      description: Page number, min = 1
+      description: The sort field
       required: false
       schema:
-        minimum: 1
-        type: integer
-        format: int32
-        default: 1
-    - name: limit
-      in: query
-      description: Page Size, min = 1, max = 100
-      required: false
-      schema:
-        maximum: 100
-        minimum: 1
-        type: integer
-        format: int32
-        default: 10
+        $ref: ../components/schemas/XiqApplicationSortField.yaml
+    - $ref: ../../common/components/parameters/query/order.yaml
     - name: name
       in: query
       description: Application Name
@@ -53,18 +43,6 @@ get:
       schema:
         type: boolean
       example: true
-    - name: sortField
-      in: query
-      description: The sort field
-      required: false
-      schema:
-        $ref: ../components/schemas/XiqApplicationSortField.yaml
-    - name: order
-      in: query
-      description: The sort order (ascending by default)
-      required: false
-      schema:
-        $ref: ../../common/components/schemas/XiqSortOrder.yaml
   responses:
     '200':
       description: OK

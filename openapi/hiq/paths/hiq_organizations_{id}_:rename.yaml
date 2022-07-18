@@ -5,16 +5,10 @@ post:
   description: Rename an existing organization (Available when HIQ is enabled).
   externalDocs:
     description: API Reference
-    url: http://localhost:8081/api-docs/api-reference.html#_rename_organization
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_rename_organization
   operationId: renameOrganization
   parameters:
-    - name: id
-      in: path
-      description: Organization ID to rename
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The new organization name
     content:

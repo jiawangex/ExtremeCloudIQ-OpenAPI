@@ -1,32 +1,19 @@
-required:
-  - create_time
-  - id
-  - login_name
-  - update_time
-  - user_role
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  login_name:
-    type: string
-    description: Login name, i.e. username or login Email
-  user_role:
-    $ref: ./XiqUserRole.yaml
-  org_id:
-    type: integer
-    description: The HIQ organization ID if it is HIQ user.
-    format: int64
-  enable_api_access:
-    type: boolean
-    description: Whether to enable API access.
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    required:
+      - login_name
+      - user_role
+    properties:
+      login_name:
+        type: string
+        description: Login name, i.e. username or login Email
+      user_role:
+        $ref: ./XiqUserRole.yaml
+      org_id:
+        type: integer
+        description: The HIQ organization ID if it is HIQ user.
+        format: int64
+      enable_api_access:
+        type: boolean
+        description: Whether to enable API access.

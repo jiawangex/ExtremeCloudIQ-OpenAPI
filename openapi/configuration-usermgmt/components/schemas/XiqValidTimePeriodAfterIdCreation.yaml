@@ -1,7 +1,10 @@
+type: object
+description: >-
+  The settings for the valid time period after ID Creation option or null for
+  the other option
 required:
   - valid_time_period
   - valid_time_period_unit
-type: object
 properties:
   valid_time_period:
     type: integer
@@ -9,6 +12,3 @@ properties:
     format: int32
   valid_time_period_unit:
     $ref: ./XiqDateTimeUnitType.yaml
-description: >-
-  The settings for the valid time period after ID Creation option or null for
-  the other option

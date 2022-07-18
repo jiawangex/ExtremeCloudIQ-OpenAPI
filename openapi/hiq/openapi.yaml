@@ -20,6 +20,8 @@ tags:
   - name: HIQ
     description: Hierarchical ExtremeCloud IQ
 paths:
+  /hiq/status:
+    $ref: paths/hiq_status.yaml
   /hiq/context:
     $ref: paths/hiq_context.yaml
   /hiq/context/reading:
@@ -28,6 +30,8 @@ paths:
     $ref: paths/hiq_context_creating.yaml
   /hiq/organizations:
     $ref: paths/hiq_organizations.yaml
+  /hiq/organizations/{id}:
+    $ref: paths/hiq_organizations_{id}.yaml
   /hiq/organizations/{id}/:rename:
     $ref: paths/hiq_organizations_{id}_:rename.yaml
 components:

@@ -1,54 +1,41 @@
-required:
-  - account_mode
-  - account_type
-  - create_time
-  - data_center
-  - id
-  - name
-  - quota
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  name:
-    type: string
-    description: Account name
-  account_type:
-    $ref: ./XiqAccountType.yaml
-  account_mode:
-    $ref: ./XiqAccountMode.yaml
-  quota:
-    type: string
-    description: The API quota policy
-  data_center:
-    type: string
-    description: The default Regional Data Center (RDC) to hold data from customer network
-  industry:
-    type: string
-    description: The industry of the account belongs to
-  country:
-    type: string
-    description: The country for the account
-  state:
-    type: string
-    description: The state for the account (if any)
-  city:
-    type: string
-    description: The city for the account
-  address:
-    type: string
-    description: The address for the account
-  zipcode:
-    type: string
-    description: The zipcode of the address
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    required:
+      - name
+      - account_type
+      - account_mode
+      - quota
+      - data_center
+    properties:
+      name:
+        type: string
+        description: Account name
+      account_type:
+        $ref: ./XiqAccountType.yaml
+      account_mode:
+        $ref: ./XiqAccountMode.yaml
+      quota:
+        type: string
+        description: The API quota policy
+      data_center:
+        type: string
+        description: The default Regional Data Center (RDC) to hold data from customer network
+      industry:
+        type: string
+        description: The industry of the account belongs to
+      country:
+        type: string
+        description: The country for the account
+      state:
+        type: string
+        description: The state for the account (if any)
+      city:
+        type: string
+        description: The city for the account
+      address:
+        type: string
+        description: The address for the account
+      zipcode:
+        type: string
+        description: The zipcode of the address

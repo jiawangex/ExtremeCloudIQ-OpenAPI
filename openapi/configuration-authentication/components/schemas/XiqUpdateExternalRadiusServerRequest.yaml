@@ -1,10 +1,10 @@
-required:
-  - accounting_port
-  - authentication_port
-  - ip_addr
-  - name
-  - server_type
 type: object
+required:
+  - name
+  - authentication_port
+  - accounting_port
+  - server_type
+  - ip_addr
 properties:
   name:
     type: string

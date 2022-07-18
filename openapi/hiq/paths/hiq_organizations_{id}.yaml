@@ -1,0 +1,19 @@
+delete:
+  tags:
+    - HIQ
+  summary: Delete an existing organization
+  description: Delete an existing organization (Available when HIQ is enabled).
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_organization
+  operationId: deleteOrganization
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  responses:
+    '204':
+      description: No Content
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

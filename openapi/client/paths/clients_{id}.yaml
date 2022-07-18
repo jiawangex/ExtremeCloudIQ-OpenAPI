@@ -9,31 +9,9 @@ get:
   operationId: getClient
   description: Get client detailed information.
   parameters:
-    - name: id
-      in: path
-      description: The client ID
-      required: true
-      schema:
-        type: integer
-        format: int64
-    - name: views
-      in: query
-      description: >-
-        The views to return client fields (Check fields for each view at
-        XiqClientView schema)
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: ../components/schemas/XiqClientView.yaml
-    - name: fields
-      in: query
-      description: The client fields to return
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: ../components/schemas/XiqClientField.yaml
+    - $ref: ../../common/components/parameters/path/id.yaml
+    - $ref: ../components/parameters/query/fields.yaml
+    - $ref: ../components/parameters/query/views.yaml
   responses:
     '200':
       description: OK

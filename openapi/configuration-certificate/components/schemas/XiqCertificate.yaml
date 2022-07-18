@@ -1,25 +1,12 @@
-required:
-  - create_time
-  - id
-  - name
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  cert_type:
-    $ref: ./XiqCertificateType.yaml
-  name:
-    type: string
-    description: The certificate file name
-description: The data in the current page
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The certificate
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: The certificate file name
+      cert_type:
+        $ref: ./XiqCertificateType.yaml

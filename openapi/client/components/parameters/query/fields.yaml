@@ -1,0 +1,8 @@
+name: fields
+in: query
+description: The client fields to return
+required: false
+schema:
+  type: array
+  items:
+    $ref: ../../schemas/XiqClientField.yaml

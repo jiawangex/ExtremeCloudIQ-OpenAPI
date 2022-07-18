@@ -6,16 +6,10 @@ get:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_get_sensor_scan_settings_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_sensor_scan_settings_by_id
   operationId: getRpSensorScanSettings
   parameters:
-    - name: id
-      in: path
-      description: The sensor scan settings ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -35,16 +29,10 @@ put:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_update_sensor_scan_settings_by_id
+      https://extremecloudiq.com/api-docs/api-reference.html#_update_sensor_scan_settings_by_id
   operationId: updateRpSensorScanSettings
   parameters:
-    - name: id
-      in: path
-      description: The sensor scan settings ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload of the update sensor scan settings request.
     content:

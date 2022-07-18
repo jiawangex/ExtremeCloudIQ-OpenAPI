@@ -1,0 +1,7 @@
+name: startTime
+in: query
+description: The start time to query, epoch time in milliseconds since 1/1/1970
+required: true
+schema:
+  type: integer
+  format: int64

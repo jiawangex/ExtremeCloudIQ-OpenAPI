@@ -1,0 +1,54 @@
+get:
+  tags:
+    - Operation
+  summary: Get Long-Running Operation (LRO) status and result
+  description: |-
+    Get the Long-Running Operation (LRO) status and result.
+    The response will include either result or error if the operation is done.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_operation
+  operationId: getOperation
+  parameters:
+    - name: operationId
+      in: path
+      description: The operation ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqOperationObject.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Operation
+  summary: Delete Long-Running Operation (LRO)
+  description: >-
+    The Long-Running Operation (LRO) can be deleted when the operation is done
+    or in PENDING status.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_operation
+  operationId: deleteOperation
+  parameters:
+    - name: operationId
+      in: path
+      description: The operation ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

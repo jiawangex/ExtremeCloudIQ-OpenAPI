@@ -1,18 +1,18 @@
+type: object
 required:
+  - name
   - authentication_method_group
-  - ca_certificate_id
   - default_authentication_method
-  - device_ids
-  - enable_authentication_server
+  - enable_verify_server_cert
   - enable_check_cert_common_name
   - enable_check_user_for_tls_auth
+  - enable_authentication_server
   - enable_radius_accounting_settings
-  - enable_verify_server_cert
   - external_user_directory
-  - name
+  - ca_certificate_id
   - server_certificate_id
   - server_key_id
-type: object
+  - device_ids
 properties:
   name:
     type: string

@@ -20,8 +20,16 @@ tags:
   - name: Network Policy
     description: Unified configuration management for wireless and wired network devices
 paths:
+  /network-policies:
+    $ref: paths/network-policies.yaml
   /network-policies/{id}:
     $ref: paths/network-policies_{id}.yaml
+  /network-policies/{id}/ssids:
+    $ref: paths/network-policies_{id}_ssids.yaml
+  /network-policies/{id}/ssids/:add:
+    $ref: paths/network-policies_{id}_ssids_:add.yaml
+  /network-policies/{id}/ssids/:remove:
+    $ref: paths/network-policies_{id}_ssids_:remove.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml

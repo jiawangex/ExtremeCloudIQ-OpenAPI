@@ -5,13 +5,7 @@ get:
   description: Get the location info for a specific device.
   operationId: getDeviceLocation
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -32,13 +26,7 @@ put:
     properties.
   operationId: assignDeviceLocation
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     content:
       application/json:
@@ -59,13 +47,7 @@ delete:
   description: Revoke the assigned location for a specific device.
   operationId: revokeDeviceLocation
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

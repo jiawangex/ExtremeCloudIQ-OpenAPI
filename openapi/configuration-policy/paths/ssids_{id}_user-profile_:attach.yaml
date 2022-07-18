@@ -1,0 +1,27 @@
+post:
+  tags:
+    - Configuration - Policy
+  summary: Attach user profile to an SSID
+  description: Attach user profile to an SSID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_attach_user_profile_to_an_ssid
+  operationId: attachUserProfileToSsid
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  requestBody:
+    description: The user profile ID to be attached to the SSID
+    content:
+      application/json:
+        schema:
+          type: integer
+          format: int64
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

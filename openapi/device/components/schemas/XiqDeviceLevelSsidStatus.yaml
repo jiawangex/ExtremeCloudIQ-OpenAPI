@@ -1,7 +1,8 @@
+type: object
+description: The SSID status
 required:
   - wifi0_enabled
   - wifi1_enabled
-type: object
 properties:
   wifi0_enabled:
     type: boolean
@@ -9,4 +10,3 @@ properties:
   wifi1_enabled:
     type: boolean
     description: The SSID is enabled or not on wifi1 interface
-description: The SSID status

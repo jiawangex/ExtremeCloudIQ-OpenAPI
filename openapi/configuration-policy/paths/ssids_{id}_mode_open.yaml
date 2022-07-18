@@ -9,13 +9,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_open_access
   operationId: setSsidModeOpen
   parameters:
-    - name: id
-      in: path
-      description: The SSID ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

@@ -1,0 +1,31 @@
+post:
+  tags:
+    - Location
+  summary: Upload floorplan
+  description: Upload the floorplan map for the VIQ.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_upload_floor_plan
+  operationId: uploadFloorplan
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          required:
+            - file
+          type: object
+          properties:
+            file:
+              type: string
+              description: |-
+                The floorplan image file to upload. 
+                 For better performance, Extreme Networks recommends that the image file (.png .jpeg) be less than 500 KB.
+              format: binary
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

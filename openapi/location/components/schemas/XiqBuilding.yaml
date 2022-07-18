@@ -1,36 +1,19 @@
-required:
-  - address
-  - create_time
-  - id
-  - name
-  - parent_id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  parent_id:
-    type: integer
-    description: The parent location ID
-    format: int64
-  name:
-    type: string
-    description: The building name
-  address:
-    type: string
-    description: The building street address
-description: The Building information on the floorplan.
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The building information
+    required:
+      - name
+      - parent_id
+      - address
+    properties:
+      name:
+        type: string
+        description: The building name
+      parent_id:
+        type: integer
+        description: The parent location ID
+        format: int64
+      address:
+        type: string
+        description: The building street address

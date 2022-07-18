@@ -1,35 +1,22 @@
-required:
-  - classification_id
-  - classification_type
-  - create_time
-  - id
-  - match
-  - update_time
-  - value
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  classification_type:
-    $ref: ./XiqClassificationType.yaml
-  match:
-    type: boolean
-    description: Contains or not contains)
-  classification_id:
-    type: integer
-    description: The ID of location, cloud config group, IP address, IP subnet or IP range.
-    format: int64
-  value:
-    type: string
-    description: The value of classification
-description: The payload of common object - classification
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The payload of common object - classification
+    required:
+      - classification_type
+      - match
+      - classification_id
+      - value
+    properties:
+      classification_type:
+        $ref: ./XiqClassificationType.yaml
+      match:
+        type: boolean
+        description: Contains or not contains)
+      classification_id:
+        type: integer
+        description: The ID of location, cloud config group, IP address, IP subnet or IP range.
+        format: int64
+      value:
+        type: string
+        description: The value of classification

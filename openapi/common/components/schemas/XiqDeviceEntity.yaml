@@ -1,0 +1,10 @@
+allOf:
+  - $ref: ./XiqLocationEntity.yaml
+  - type: object
+    properties:
+      device_id:
+        type: integer
+        description: The device identifier
+        format: int64
+    required:
+      - device_id

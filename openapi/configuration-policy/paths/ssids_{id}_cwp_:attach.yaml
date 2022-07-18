@@ -1,0 +1,30 @@
+post:
+  tags:
+    - Configuration - Policy
+  summary: Attach CWP to an SSID
+  description: Attach CWP to an SSID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_attach_cwp_to_an_ssid
+  operationId: attachCwpToSsid
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  requestBody:
+    description: >-
+      The CWP ID to be attached to the SSID. For CWP with only User Auth on
+      Captive Web Portal enabled, please also attach a RADIUS server group or
+      enable ExtremeCloud IQ Authentication Service.
+    content:
+      application/json:
+        schema:
+          type: integer
+          format: int64
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

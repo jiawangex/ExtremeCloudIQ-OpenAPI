@@ -1,4 +1,5 @@
 type: object
+description: The associate RADIUS client for RADIUS proxy
 properties:
   shared_secret:
     type: string
@@ -10,4 +11,3 @@ properties:
     type: integer
     description: The associate L3 address profile ID
     format: int64
-description: The associate RADIUS client for RADIUS proxy

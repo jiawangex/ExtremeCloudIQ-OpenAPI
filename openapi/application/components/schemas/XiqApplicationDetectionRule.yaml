@@ -1,4 +1,5 @@
 type: object
+description: The Application Detection Rule
 properties:
   value:
     type: string
@@ -7,4 +8,3 @@ properties:
     $ref: ./XiqApplicationDetectionProtocol.yaml
   type:
     $ref: ./XiqApplicationDetectionType.yaml
-description: The Application Detection Rule

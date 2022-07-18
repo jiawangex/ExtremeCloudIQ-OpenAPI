@@ -5,16 +5,10 @@ post:
   description: Send CLI commands to a specific device.
   externalDocs:
     description: API Reference
-    url: http://localhost:8081/api-docs/api-reference.html#_send_cli_to_one_device
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_send_cli_to_one_device
   operationId: sendCliToDevice
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The one or multiple CLIs to send
     content:

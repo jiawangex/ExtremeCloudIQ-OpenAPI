@@ -1,4 +1,5 @@
 type: object
+description: The payload to onboard devices
 properties:
   extreme:
     $ref: ./XiqExtremeDevices.yaml
@@ -10,4 +11,3 @@ properties:
     $ref: ./XiqWingDevices.yaml
   dell:
     $ref: ./XiqDellDevices.yaml
-description: The payload to onboard devices

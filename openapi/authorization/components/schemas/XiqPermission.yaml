@@ -1,8 +1,9 @@
-required:
-  - category
-  - description
-  - name
 type: object
+description: The permission
+required:
+  - name
+  - description
+  - category
 properties:
   name:
     type: string
@@ -13,4 +14,3 @@ properties:
   category:
     type: string
     description: The category for the permission
-description: The permission list

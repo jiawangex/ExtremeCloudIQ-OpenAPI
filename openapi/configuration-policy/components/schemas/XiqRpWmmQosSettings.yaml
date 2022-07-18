@@ -1,43 +1,29 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  access_category:
-    type: string
-    description: >-
-      The media categories, including "VOICE", "VIDEO", "BEST_EFFORT", and
-      "BACKGROUND"
-  arbitration_interframe_space:
-    type: integer
-    description: The Arbitration Interframe space from 1 up to 15.
-    format: int32
-  min_contention_window:
-    type: integer
-    description: The Minimum Contention window from 1 up to 15.
-    format: int32
-  max_contention_window:
-    type: integer
-    description: The Maximum Contention window from 1 up to 15.
-    format: int32
-  transmission_opportunity_limit:
-    type: integer
-    description: The Transmission Opportunity limit from 0 up to 8192.
-    format: int32
-  enable_no_ack:
-    type: boolean
-    description: Whether to enable No Acknowledgment
-description: The payload of config for the radio profile
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The WMM QoS settings for the radio profile
+    properties:
+      access_category:
+        type: string
+        description: >-
+          The media categories, including "VOICE", "VIDEO", "BEST_EFFORT", and
+          "BACKGROUND"
+      arbitration_interframe_space:
+        type: integer
+        description: The Arbitration Interframe space from 1 up to 15.
+        format: int32
+      min_contention_window:
+        type: integer
+        description: The Minimum Contention window from 1 up to 15.
+        format: int32
+      max_contention_window:
+        type: integer
+        description: The Maximum Contention window from 1 up to 15.
+        format: int32
+      transmission_opportunity_limit:
+        type: integer
+        description: The Transmission Opportunity limit from 0 up to 8192.
+        format: int32
+      enable_no_ack:
+        type: boolean
+        description: Whether to enable No Acknowledgment

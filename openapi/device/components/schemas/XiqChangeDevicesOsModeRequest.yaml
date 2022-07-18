@@ -1,7 +1,8 @@
+type: object
+description: The request for change the device(s) OS mode.
 required:
   - device_ids
   - target_os
-type: object
 properties:
   device_ids:
     maxItems: 2147483647
@@ -28,4 +29,3 @@ properties:
       The target OS mode to change to, for AP: only WiNG is supported, for
       Switch: EXOS or VOSS
     example: WiNG
-description: The request for change the device(s) OS mode.

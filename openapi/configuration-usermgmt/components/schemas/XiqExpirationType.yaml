@@ -1,5 +1,5 @@
 type: string
-description: The for one of the account experation types.
+description: The for one of the account expiration types.
 enum:
   - NEVER_EXPIRE
   - VALID_DURING_DATES

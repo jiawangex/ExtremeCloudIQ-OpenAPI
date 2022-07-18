@@ -1,86 +1,72 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  name:
-    type: string
-    description: The radio profile name
-  predefined:
-    type: boolean
-    description: Whether the radio profile is predefined or user-customized.
-  description:
-    type: string
-    description: The radio profile description.
-  transmission_power:
-    type: integer
-    description: The transmission power floor from 1 up to 20 dBm or null for Auto.
-    format: int32
-  max_transmit_power:
-    type: integer
-    description: The maximum transmit power from 10 up to 20 dBm.
-    format: int32
-  transmission_power_floor:
-    type: integer
-    description: The transmission power floor from 2 up to 20 dBm.
-    format: int32
-  transmission_power_max_drop:
-    type: integer
-    description: The transmission power max drop from 0 up to 18 dB.
-    format: int32
-  max_clients:
-    type: integer
-    description: The maximum number of clients from 1 up to 255.
-    format: int32
-  enable_client_transmission_power:
-    type: boolean
-    description: Whether or not client transmission power control (802.11h) is enabled.
-  client_transmission_power:
-    type: integer
-    description: The client transmission power from 1 up to 20 dBm if it is enabled.
-    format: int32
-  enable_ofdma:
-    type: boolean
-    description: >-
-      Whether to enable Orthogonal Frequency Division Multiple Access (802.11ax)
-      for multiple-user access by subdividing a channel.
-  radio_mode:
-    $ref: ./XiqRadioMode.yaml
-  neighborhood_analysis_id:
-    type: integer
-    description: The neighborhood analysis Id.
-    format: int64
-  channel_selection_id:
-    type: integer
-    description: The channel selection Id.
-    format: int64
-  radio_usage_optimization_id:
-    type: integer
-    description: The radio usage optimization Id.
-    format: int64
-  miscellaneous_settings_id:
-    type: integer
-    description: The miscellaneous settings Id
-    format: int64
-  presence_server_settings_id:
-    type: integer
-    description: The presence server settings Id.
-    format: int64
-  sensor_scan_settings_id:
-    type: integer
-    description: The sensor scan settings Id.
-    format: int64
-description: The payload of Radio Profile
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The payload of Radio Profile
+    properties:
+      name:
+        type: string
+        description: The radio profile name
+      predefined:
+        type: boolean
+        description: Whether the radio profile is predefined or user-customized.
+      description:
+        type: string
+        description: The radio profile description.
+      transmission_power:
+        type: integer
+        description: The transmission power floor from 1 up to 20 dBm or null for Auto.
+        format: int32
+      max_transmit_power:
+        type: integer
+        description: The maximum transmit power from 10 up to 20 dBm.
+        format: int32
+      transmission_power_floor:
+        type: integer
+        description: The transmission power floor from 2 up to 20 dBm.
+        format: int32
+      transmission_power_max_drop:
+        type: integer
+        description: The transmission power max drop from 0 up to 18 dB.
+        format: int32
+      max_clients:
+        type: integer
+        description: The maximum number of clients from 1 up to 255.
+        format: int32
+      enable_client_transmission_power:
+        type: boolean
+        description: Whether or not client transmission power control (802.11h) is enabled.
+      client_transmission_power:
+        type: integer
+        description: The client transmission power from 1 up to 20 dBm if it is enabled.
+        format: int32
+      enable_ofdma:
+        type: boolean
+        description: >-
+          Whether to enable Orthogonal Frequency Division Multiple Access (802.11ax)
+          for multiple-user access by subdividing a channel.
+      radio_mode:
+        $ref: ./XiqRadioMode.yaml
+      neighborhood_analysis_id:
+        type: integer
+        description: The neighborhood analysis Id.
+        format: int64
+      channel_selection_id:
+        type: integer
+        description: The channel selection Id.
+        format: int64
+      radio_usage_optimization_id:
+        type: integer
+        description: The radio usage optimization Id.
+        format: int64
+      miscellaneous_settings_id:
+        type: integer
+        description: The miscellaneous settings Id
+        format: int64
+      presence_server_settings_id:
+        type: integer
+        description: The presence server settings Id.
+        format: int64
+      sensor_scan_settings_id:
+        type: integer
+        description: The sensor scan settings Id.
+        format: int64

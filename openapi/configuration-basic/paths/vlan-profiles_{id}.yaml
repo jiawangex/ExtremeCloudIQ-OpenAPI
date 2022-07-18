@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_vlan_profile_by_id
   operationId: getVlanProfile
   parameters:
-    - name: id
-      in: path
-      description: The VLAN profile ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,13 +32,7 @@ patch:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_vlan_profile_configuration
   operationId: updateVlanProfile
   parameters:
-    - name: id
-      in: path
-      description: The VLAN profile ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload to update VLAN profile
     content:
@@ -74,13 +62,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_vlan_profile_configuration
   operationId: deleteVlanProfile
   parameters:
-    - name: id
-      in: path
-      description: The VLAN profile ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

@@ -1,8 +1,9 @@
+type: object
+description: The details of rule Rules
 required:
   - classification_type
-  - classification_type_id
   - match
-type: object
+  - classification_type_id
 properties:
   classification_type:
     type: string
@@ -22,4 +23,3 @@ properties:
     type: integer
     description: The ID of location, cloud config group, IP address, IP subnet or IP range.
     format: int64
-description: The details of rule Rules

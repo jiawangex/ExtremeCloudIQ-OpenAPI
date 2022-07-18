@@ -9,13 +9,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_webhook_subscriptions
   operationId: deleteSubscription
   parameters:
-    - name: id
-      in: path
-      description: The webhook subscription ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '202':
       description: Accepted

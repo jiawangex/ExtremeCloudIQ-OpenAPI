@@ -1,26 +1,8 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  name:
-    type: string
-    description: The CWP name
-description: The Captive Web Portal Entity.
+allOf:
+  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
+  - type: object
+    description: The Captive Web Portal Entity
+    properties:
+      name:
+        type: string
+        description: The CWP name

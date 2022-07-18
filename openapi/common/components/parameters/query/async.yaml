@@ -1,0 +1,7 @@
+name: async
+in: query
+description: Whether to enable async mode
+required: false
+schema:
+  type: boolean
+  default: false

@@ -6,23 +6,11 @@ post:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_reset_device_for_once_device
+      https://extremecloudiq.com/api-docs/api-reference.html#_reset_device_for_once_device
   operationId: resetDevice
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
-    - name: async
-      in: query
-      description: Whether to enable async mode
-      required: false
-      schema:
-        type: boolean
-        default: false
+    - $ref: ../../common/components/parameters/path/id.yaml
+    - $ref: ../../common/components/parameters/query/async.yaml
   responses:
     '200':
       description: OK

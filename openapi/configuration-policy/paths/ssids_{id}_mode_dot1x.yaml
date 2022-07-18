@@ -9,13 +9,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_set_ssid_mode_to_dot1x
   operationId: setSsidModeDot1x
   parameters:
-    - name: id
-      in: path
-      description: The SSID ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload to change the SSID mode to 802.1x
     content:

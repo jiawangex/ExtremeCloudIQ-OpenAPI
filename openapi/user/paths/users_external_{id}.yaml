@@ -8,13 +8,7 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_external_user
   operationId: getExternalUser
   parameters:
-    - name: id
-      in: path
-      description: The external user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -37,13 +31,7 @@ patch:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_external_user
   operationId: updateExternalUser
   parameters:
-    - name: id
-      in: path
-      description: The external user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: Update external user request
     content:
@@ -74,13 +62,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_revoke_external_user
   operationId: revokeExternalUser
   parameters:
-    - name: id
-      in: path
-      description: The external user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

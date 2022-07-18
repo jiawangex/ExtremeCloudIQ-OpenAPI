@@ -1,6 +1,7 @@
+type: object
+description: The ssid/passphrase for device level ssid to override
 required:
   - ssid_id
-type: object
 properties:
   ssid_id:
     type: integer
@@ -16,4 +17,3 @@ properties:
     description: >-
       The ssid passphrase to override. Can only override if the SSID profile is
       in PSK mode.
-description: The ssid/passphrase for device level ssid to override

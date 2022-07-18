@@ -1,0 +1,60 @@
+get:
+  tags:
+    - Network Policy
+  summary: List network policies
+  description: List a page of network policies.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_list_network_policies
+  operationId: listNetworkPolices
+  parameters:
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - name: policyNames
+      in: query
+      description: The list of policy names
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PagedXiqNetworkPolicy.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+post:
+  tags:
+    - Network Policy
+  summary: Create network policy
+  description: Create a new network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_create_network_policy
+  operationId: createNetworkPolicy
+  requestBody:
+    description: The body of create network policy API
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqCreateNetworkPolicyRequest.yaml
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqNetworkPolicy.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

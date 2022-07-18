@@ -1,28 +1,14 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  enable_scan_all_channels:
-    type: boolean
-    description: Whether to enable scanning all channels
-  dwell_time:
-    type: string
-    description: The dwell time in ms
-  scan_channels:
-    type: string
-    description: The comma separated list of scan channels
-description: The payload of config for the radio profile
+allOf:
+  - $ref: ../../../common/components/schemas/XiqBaseEntity.yaml
+  - type: object
+    description: The sensor scan settings for the radio profile
+    properties:
+      enable_scan_all_channels:
+        type: boolean
+        description: Whether to enable scanning all channels
+      dwell_time:
+        type: string
+        description: The dwell time in ms
+      scan_channels:
+        type: string
+        description: The comma separated list of scan channels

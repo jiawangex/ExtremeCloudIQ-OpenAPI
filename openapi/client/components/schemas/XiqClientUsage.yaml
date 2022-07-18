@@ -1,4 +1,5 @@
 type: object
+description: The client usage over the period
 properties:
   client_id:
     type: integer
@@ -8,4 +9,3 @@ properties:
     type: integer
     description: The client total usage
     format: int64
-description: The client usage over the period

@@ -1,6 +1,7 @@
+type: object
+description: ExtremeCloud IQ Email Log
 required:
   - id
-type: object
 properties:
   id:
     type: integer
@@ -30,4 +31,3 @@ properties:
   status:
     type: string
     description: The email log status
-description: ExtremeCloud IQ Email Log

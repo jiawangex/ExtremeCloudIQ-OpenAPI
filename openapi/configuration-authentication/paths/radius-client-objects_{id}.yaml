@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_list_the_radius_client_object_configuration_by_id
   operationId: getRadiusClientObject
   parameters:
-    - name: id
-      in: path
-      description: The ID of RADIUS client object
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,13 +32,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_radius_client_object_configuration
   operationId: updateRadiusClientObject
   parameters:
-    - name: id
-      in: path
-      description: The RADIUS client object ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload to update the RADIUS client object
     content:
@@ -70,13 +58,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_radius_client_object_configuration
   operationId: deleteRadiusClientObject
   parameters:
-    - name: id
-      in: path
-      description: The RADIUS client object ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

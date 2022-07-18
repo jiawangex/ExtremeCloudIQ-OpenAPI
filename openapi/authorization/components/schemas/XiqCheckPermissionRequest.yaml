@@ -1,7 +1,7 @@
-required:
-  - method
-  - uri
 type: object
+required:
+  - uri
+  - method
 properties:
   uri:
     type: string

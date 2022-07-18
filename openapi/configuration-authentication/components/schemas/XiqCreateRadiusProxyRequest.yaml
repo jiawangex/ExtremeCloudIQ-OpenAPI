@@ -1,12 +1,13 @@
+type: object
+description: The payload to create a new RADIUS proxy
 required:
-  - dead_time
-  - device_ids
-  - format_type
   - name
-  - realms
+  - format_type
   - retry_count
   - retry_delay
-type: object
+  - dead_time
+  - realms
+  - device_ids
 properties:
   name:
     type: string
@@ -52,4 +53,3 @@ properties:
       type: integer
       description: The device IDS to assign RADIUS proxy
       format: int64
-description: The payload to create a new RADIUS proxy

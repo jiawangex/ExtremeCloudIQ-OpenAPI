@@ -1,0 +1,27 @@
+post:
+  tags:
+    - Location
+  summary: Create building
+  description: Create a new building under the parent location.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_create_building
+  operationId: createBuilding
+  requestBody:
+    description: Create building request body
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqCreateBuildingRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqBuilding.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

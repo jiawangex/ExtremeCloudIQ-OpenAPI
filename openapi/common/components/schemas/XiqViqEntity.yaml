@@ -1,0 +1,10 @@
+allOf:
+  - $ref: ./XiqBaseEntity.yaml
+  - type: object
+    properties:
+      org_id:
+        type: integer
+        description: The organization identifier, valid when enabling HIQ feature
+        format: int64
+    required:
+      - org_id

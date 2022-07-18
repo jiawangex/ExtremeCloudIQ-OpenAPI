@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_list_the_external_radius_server_by_id
   operationId: getExternalRadiusServer
   parameters:
-    - name: id
-      in: path
-      description: The ID for external RADIUS server
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,13 +32,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_external_radius_server_configuration
   operationId: updateExternalRadiusServer
   parameters:
-    - name: id
-      in: path
-      description: The external RADIUS server ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload to update the external RADIUS server
     content:
@@ -70,13 +58,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_external_radius_server_configuration
   operationId: deleteExternalRadiusServer
   parameters:
-    - name: id
-      in: path
-      description: The external RADIUS server ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

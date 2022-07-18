@@ -1,6 +1,7 @@
+type: object
+description: The settings for Valid For Time Period option or null for other settings.
 required:
   - valid_time_period_after
-type: object
 properties:
   valid_time_period_after:
     $ref: ./XiqValidTimePeriodAfterType.yaml
@@ -8,4 +9,3 @@ properties:
     $ref: ./XiqValidTimePeriodAfterIdCreation.yaml
   after_first_login_settings:
     $ref: ./XiqValidTimePeriodAfterFirstLogin.yaml
-description: The settings for Valid For Time Period option or null for other settings.

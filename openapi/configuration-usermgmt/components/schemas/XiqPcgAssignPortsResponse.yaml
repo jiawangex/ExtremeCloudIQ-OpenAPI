@@ -1,8 +1,9 @@
+type: object
+description: The response of assign ports for AP150W
 required:
-  - pcg_port_assignment_entries
   - policy_id
   - policy_name
-type: object
+  - pcg_port_assignment_entries
 properties:
   policy_id:
     type: integer
@@ -16,4 +17,3 @@ properties:
     description: The port assignment entry list
     items:
       $ref: ./XiqPcgPortAssignmentEntry.yaml
-description: The response of assign ports for AP150W

@@ -1,6 +1,7 @@
+type: object
+description: Device location assignment
 required:
   - location_id
-type: object
 properties:
   location_id:
     type: integer
@@ -22,4 +23,3 @@ properties:
     type: number
     description: The longitude in the geography
     format: double
-description: Device location assignment

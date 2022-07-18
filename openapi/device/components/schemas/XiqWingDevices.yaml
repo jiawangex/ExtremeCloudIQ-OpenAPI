@@ -1,11 +1,11 @@
+type: object
+description: ExtremeWireless (WiNG) devices to onboard
 required:
   - sn_to_mac
-type: object
 properties:
   sn_to_mac:
     type: object
+    description: Serial number -> MAC address
     additionalProperties:
       type: string
       description: Serial number -> MAC address
-    description: Serial number -> MAC address
-description: ExtremeWireless (WiNG) devices to onboard

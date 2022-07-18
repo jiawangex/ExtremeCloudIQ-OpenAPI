@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_the_radius_proxy_configuration_by_id
   operationId: getRadiusProxy
   parameters:
-    - name: id
-      in: path
-      description: The RADIUS proxy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,42 +32,13 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_radius_proxy_configuration
   operationId: updateRadiusProxy
   parameters:
-    - name: id
-      in: path
-      description: The RADIUS proxy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The body of update RADIUS proxy API
     content:
       application/json:
         schema:
           $ref: ../components/schemas/XiqUpdateRadiusProxyRequest.yaml
-        examples:
-          Update an existing RADIUS proxy:
-            summary: Update an existing RADIUS proxy
-            description: The payload to update an existing RADIUS proxy
-            value:
-              name: radius-proxy-1
-              description: Radius Proxy 1
-              format_type: NAI
-              retry_count: 3
-              retry_delay: 5
-              dead_time: 300
-              enable_inject_operator_name_attribute: false
-              clients:
-                - id: 1
-                - shared_secret: '123456'
-                  description: ''
-                  l3_address_profile_id: 1000
-              realms:
-                - id: 1
-                - id: 2
-                - name: test-realm
-                  enable_strip_realm_name: false
-                  radius_client_object_id: 3000
     required: true
   responses:
     '200':
@@ -97,13 +62,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_radius_proxy_configuration
   operationId: deleteRadiusProxy
   parameters:
-    - name: id
-      in: path
-      description: The RADIUS proxy ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

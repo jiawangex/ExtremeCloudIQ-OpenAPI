@@ -10,24 +10,8 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_client_summary
   operationId: getClientSummary
   parameters:
-    - name: locationIds
-      in: query
-      description: The location IDs
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int64
-    - name: deviceIds
-      in: query
-      description: The device IDs
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int64
+    - $ref: ../../common/components/parameters/query/locationIds.yaml
+    - $ref: ../../common/components/parameters/query/deviceIds.yaml
     - name: vlans
       in: query
       description: The associate VLAN IDs

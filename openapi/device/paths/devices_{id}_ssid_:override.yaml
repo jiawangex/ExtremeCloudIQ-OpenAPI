@@ -6,16 +6,10 @@ post:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_device_level_ssid_override
+      https://extremecloudiq.com/api-docs/api-reference.html#_device_level_ssid_override
   operationId: overrideDeviceLevelSsid
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     content:
       application/json:

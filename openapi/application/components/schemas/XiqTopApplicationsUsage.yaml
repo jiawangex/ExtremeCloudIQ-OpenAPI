@@ -1,4 +1,5 @@
 type: object
+description: The Top N Applications Usage
 properties:
   id:
     type: integer
@@ -19,4 +20,3 @@ properties:
     type: integer
     description: The application usage
     format: int64
-description: The Top N Applications Usage

@@ -1,0 +1,7 @@
+type: object
+required:
+  - enabled
+properties:
+  enabled:
+    type: boolean
+    description: HIQ is enabled or not

@@ -1,0 +1,26 @@
+post:
+  tags:
+    - Configuration - Policy
+  summary: Rename SSID (Wireless name)
+  description: Change SSID broadcast name (Wireless name).
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_rename_ssidwireless_name
+  operationId: renameSsid
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  requestBody:
+    description: The new SSID name
+    content:
+      application/json:
+        schema:
+          type: string
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

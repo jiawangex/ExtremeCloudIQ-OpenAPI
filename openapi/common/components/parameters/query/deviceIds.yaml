@@ -1,0 +1,9 @@
+name: deviceIds
+in: query
+description: The device IDs
+required: false
+schema:
+  type: array
+  items:
+    type: integer
+    format: int64

@@ -1,4 +1,5 @@
 type: object
+description: The payload to update RADIUS proxy
 properties:
   name:
     type: string
@@ -37,4 +38,3 @@ properties:
       realms with name 'DEFAULT' and 'NULL'
     items:
       $ref: ./XiqUpdateRadiusProxyRealm.yaml
-description: The payload to update RADIUS proxy

@@ -1,0 +1,9 @@
+name: page
+in: query
+description: Page number, min = 1
+required: false
+schema:
+  minimum: 1
+  type: integer
+  format: int32
+  default: 1

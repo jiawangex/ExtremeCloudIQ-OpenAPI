@@ -1,0 +1,6 @@
+name: predefined
+in: query
+description: Flag to filter predefined object
+required: false
+schema:
+  type: boolean

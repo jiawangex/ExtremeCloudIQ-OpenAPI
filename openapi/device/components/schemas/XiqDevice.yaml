@@ -1,107 +1,85 @@
-required:
-  - create_time
-  - id
-  - update_time
-type: object
-properties:
-  id:
-    type: integer
-    description: The unique identifier
-    format: int64
-  create_time:
-    type: string
-    description: The create time
-    format: date-time
-  update_time:
-    type: string
-    description: The last update time
-    format: date-time
-  org_id:
-    type: integer
-    description: The organization identifier, valid when enabling HIQ feature
-    format: int64
-  serial_number:
-    type: string
-    description: The device serial number, valid for all non-HAC devices
-  service_tag:
-    type: string
-    description: The device service tag, valid for all HAC devices
-  mac_address:
-    type: string
-    description: The device MAC address
-  device_function:
-    $ref: ./XiqDeviceFunction.yaml
-  product_type:
-    type: string
-    description: 'The product type, such as: AP_230, BR_100, NX9600, etc.'
-  hostname:
-    type: string
-    description: The device hostname
-  ip_address:
-    type: string
-    description: The device IPv4 address
-  software_version:
-    type: string
-    description: The device OS software version
-  device_admin_state:
-    $ref: ./XiqDeviceAdminState.yaml
-  connected:
-    type: boolean
-    description: The device connection status
-  last_connect_time:
-    type: string
-    description: The device last connect time
-    format: date-time
-  network_policy_name:
-    type: string
-    description: The network policy name for the device
-  network_policy_id:
-    type: integer
-    description: The network policy ID for the device
-    format: int64
-  primary_ntp_server_address:
-    type: string
-    description: The primary NTP server address for the device
-  primary_dns_server_address:
-    type: string
-    description: The primary DNS server address for the device
-  subnet_mask:
-    type: string
-    description: The subnet mask for the device
-  default_gateway:
-    type: string
-    description: The default gateway for the device
-  ipv6_address:
-    type: string
-    description: The ipv6 address for the device
-  ipv6_netmask:
-    type: integer
-    description: The ipv6 netmask for the device
-    format: int32
-  simulated:
-    type: boolean
-    description: The device is simulated or not
-  display_version:
-    type: string
-    description: The display version for the device
-  active_clients:
-    type: integer
-    description: The active client count for the device
-    format: int32
-  location_id:
-    type: integer
-    description: The location ID for the device
-    format: int64
-  locations:
-    type: array
-    description: The detailed location
-    items:
-      $ref: ./XiqLocationLegend.yaml
-  country_code:
-    type: integer
-    description: The assigned country code on the device
-    format: int32
-  description:
-    type: string
-    description: The device description
-description: Generic ExtremeCloud IQ Device model
+allOf:
+  - $ref: ../../../common/components/schemas/XiqLocationEntity.yaml
+  - type: object
+    description: Generic ExtremeCloud IQ Device model
+    properties:
+      serial_number:
+        type: string
+        description: The device serial number, valid for all non-HAC devices
+      service_tag:
+        type: string
+        description: The device service tag, valid for all HAC devices
+      mac_address:
+        type: string
+        description: The device MAC address
+      device_function:
+        $ref: ./XiqDeviceFunction.yaml
+      product_type:
+        type: string
+        description: 'The product type, such as: AP_230, BR_100, NX9600, etc.'
+      hostname:
+        type: string
+        description: The device hostname
+      ip_address:
+        type: string
+        description: The device IPv4 address
+      software_version:
+        type: string
+        description: The device OS software version
+      device_admin_state:
+        $ref: ./XiqDeviceAdminState.yaml
+      connected:
+        type: boolean
+        description: The device connection status
+      last_connect_time:
+        type: string
+        description: The device last connect time
+        format: date-time
+      network_policy_name:
+        type: string
+        description: The network policy name for the device
+      network_policy_id:
+        type: integer
+        description: The network policy ID for the device
+        format: int64
+      primary_ntp_server_address:
+        type: string
+        description: The primary NTP server address for the device
+      primary_dns_server_address:
+        type: string
+        description: The primary DNS server address for the device
+      subnet_mask:
+        type: string
+        description: The subnet mask for the device
+      default_gateway:
+        type: string
+        description: The default gateway for the device
+      ipv6_address:
+        type: string
+        description: The ipv6 address for the device
+      ipv6_netmask:
+        type: integer
+        description: The ipv6 netmask for the device
+        format: int32
+      simulated:
+        type: boolean
+        description: The device is simulated or not
+      display_version:
+        type: string
+        description: The display version for the device
+      active_clients:
+        type: integer
+        description: The active client count for the device
+        format: int32
+      locations:
+        type: array
+        description: The detailed location
+        items:
+          $ref: ./XiqLocationLegend.yaml
+      country_code:
+        type: integer
+        description: The assigned country code on the device
+        format: int32
+      description:
+        type: string
+        description: The device description

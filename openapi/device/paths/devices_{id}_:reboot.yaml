@@ -5,16 +5,10 @@ post:
   description: Reboot a specific device.
   externalDocs:
     description: API Reference
-    url: http://localhost:8081/api-docs/api-reference.html#_reboot_one_device
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_reboot_one_device
   operationId: rebootDevice
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

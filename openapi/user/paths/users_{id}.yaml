@@ -8,13 +8,7 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_user
   operationId: getUser
   parameters:
-    - name: id
-      in: path
-      description: The user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -36,13 +30,7 @@ patch:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_update_user
   operationId: updateUser
   parameters:
-    - name: id
-      in: path
-      description: The user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: Update user request body
     content:
@@ -71,13 +59,7 @@ delete:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_delete_user
   operationId: deleteUser
   parameters:
-    - name: id
-      in: path
-      description: The user ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

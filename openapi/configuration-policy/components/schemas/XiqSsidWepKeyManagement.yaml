@@ -1,6 +1,5 @@
 type: string
 description: The key management type, WEP or WEP_8021X
-example: WEP_8021X
 enum:
   - WEP
   - WEP_8021X

@@ -9,27 +9,9 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_device_cpu_and_memory_usage_for_one_device
   operationId: getDeviceCpuMemoryHistory
   parameters:
-    - name: id
-      in: path
-      description: Device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
-    - name: startTime
-      in: query
-      description: The start time to query, epoch time in milliseconds since 1/1/1970
-      required: true
-      schema:
-        type: integer
-        format: int64
-    - name: endTime
-      in: query
-      description: The end time to query, epoch time in milliseconds since 1/1/1970
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
     - name: interval
       in: query
       description: The aggregate interval in milliseconds

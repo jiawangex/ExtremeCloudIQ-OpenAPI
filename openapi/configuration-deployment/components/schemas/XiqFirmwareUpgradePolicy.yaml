@@ -1,7 +1,8 @@
-required:
-  - enable_distributed_upgrade
-  - enable_enforce_upgrade
 type: object
+description: The firmware upgrade policy
+required:
+  - enable_enforce_upgrade
+  - enable_distributed_upgrade
 properties:
   enable_enforce_upgrade:
     type: boolean
@@ -9,4 +10,3 @@ properties:
   enable_distributed_upgrade:
     type: boolean
     description: Whether enable distributed firmware upgrade (Only applicable to APs)
-description: The firmware upgrade policy

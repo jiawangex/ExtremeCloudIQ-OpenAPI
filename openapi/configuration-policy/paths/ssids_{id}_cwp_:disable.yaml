@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Configuration - Policy
+  summary: Disable the CWP on the SSID
+  description: Disable the CWP on the SSID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_disable_and_detach_the_cwp_on_the_ssid
+  operationId: disableSsidCwp
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

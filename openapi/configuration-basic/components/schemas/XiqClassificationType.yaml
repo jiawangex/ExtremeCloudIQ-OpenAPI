@@ -1,8 +1,0 @@
-type: string
-description: Classification type
-enum:
-  - LOCATION
-  - CLOUD_CONFIG_GROUP
-  - IP_ADDRESS
-  - IP_SUBNET
-  - IP_RANGE

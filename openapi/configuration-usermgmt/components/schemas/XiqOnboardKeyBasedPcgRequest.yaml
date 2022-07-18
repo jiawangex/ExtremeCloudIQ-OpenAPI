@@ -1,8 +1,9 @@
-required:
-  - enabled
-  - ssid_name
-  - user_ids
 type: object
+description: The payload to create Key Based PCG data(from exist network policy and SSID)
+required:
+  - ssid_name
+  - enabled
+  - user_ids
 properties:
   ssid_name:
     type: string
@@ -16,4 +17,3 @@ properties:
       type: integer
       description: The request user IDs
       format: int64
-description: The payload to create Key Based PCG data(from exist network policy and SSID)

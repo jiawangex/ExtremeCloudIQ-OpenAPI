@@ -1,0 +1,10 @@
+name: views
+in: query
+description: >-
+  The views to return client fields (Check fields for each view at
+  XiqClientView schema)
+required: false
+schema:
+  type: array
+  items:
+    $ref: ../../schemas/XiqClientView.yaml

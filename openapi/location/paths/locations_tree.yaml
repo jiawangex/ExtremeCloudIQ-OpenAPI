@@ -5,7 +5,7 @@ get:
   description: Get location hierarchical tree.
   externalDocs:
     description: API Reference
-    url: http://localhost:8081/api-docs/api-reference.html#_get_location_tree
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_location_tree
   operationId: getLocationTree
   parameters:
     - name: parentId

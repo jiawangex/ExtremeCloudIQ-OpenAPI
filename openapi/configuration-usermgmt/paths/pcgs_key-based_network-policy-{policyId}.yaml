@@ -1,0 +1,34 @@
+delete:
+  tags:
+    - Configuration - User Management
+  summary: Delete Private Client Group from a network policy
+  description: Delete Private Client Group settings from a network policy.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_key_based_pcg
+  operationId: deletePcg
+  parameters:
+    - name: policyId
+      in: path
+      description: The network policy ID
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: ids
+      in: query
+      description: The IDs of the Key-based PCG entity to be deleted from network policy
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+  responses:
+    '202':
+      description: Accepted
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

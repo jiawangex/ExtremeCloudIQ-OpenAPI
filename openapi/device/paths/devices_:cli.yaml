@@ -8,13 +8,7 @@ post:
     and the result.
   operationId: sendCliToDevices
   parameters:
-    - name: async
-      in: query
-      description: Whether to enable async mode
-      required: false
-      schema:
-        type: boolean
-        default: false
+    - $ref: ../../common/components/parameters/query/async.yaml
   requestBody:
     content:
       application/json:

@@ -5,28 +5,11 @@ get:
   description: List a page of MAC OUI profiles.
   externalDocs:
     description: API Reference
-    url: http://localhost:8081/api-docs/api-reference.html#_list_mac_oui_profiles
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_list_mac_oui_profiles
   operationId: listRpMacOuiProfiles
   parameters:
-    - name: page
-      in: query
-      description: Page number, min = 1
-      required: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        default: 1
-    - name: limit
-      in: query
-      description: Page Size, min = 1, max = 100
-      required: false
-      schema:
-        maximum: 100
-        minimum: 1
-        type: integer
-        format: int32
-        default: 10
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
   responses:
     '200':
       description: OK
@@ -46,7 +29,7 @@ post:
   externalDocs:
     description: API Reference
     url: >-
-      http://localhost:8081/api-docs/api-reference.html#_create_mac_oui_profile_configuration
+      https://extremecloudiq.com/api-docs/api-reference.html#_create_mac_oui_profile_configuration
   operationId: createMacOuiProfile
   requestBody:
     description: The request body to create new user profile.

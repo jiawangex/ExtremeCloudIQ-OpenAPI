@@ -9,13 +9,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_get_user_profile_by_id
   operationId: getUserProfile
   parameters:
-    - name: id
-      in: path
-      description: The user profile ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK
@@ -38,13 +32,7 @@ put:
       https://extremecloudiq.com/api-docs/api-reference.html#_update_user_profile_configuration
   operationId: updateCoUserProfile
   parameters:
-    - name: id
-      in: path
-      description: The user profile ID.
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The payload of user profile.
     content:
@@ -74,13 +62,7 @@ delete:
       https://extremecloudiq.com/api-docs/api-reference.html#_delete_user_profile_configuration
   operationId: deleteCoUserProfile
   parameters:
-    - name: id
-      in: path
-      description: The user profile ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   responses:
     '200':
       description: OK

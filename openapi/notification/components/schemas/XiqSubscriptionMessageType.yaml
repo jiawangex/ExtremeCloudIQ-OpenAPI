@@ -1,6 +1,5 @@
 type: string
 description: The subscription message type.
-example: LOCATION_AP_CENTRIC
 enum:
   - LOCATION_AP_CENTRIC
   - LOCATION_CLIENT_CENTRIC

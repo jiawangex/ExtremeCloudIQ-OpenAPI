@@ -5,13 +5,7 @@ put:
   description: Change description for a specific device.
   operationId: changeDeviceDescription
   parameters:
-    - name: id
-      in: path
-      description: The device ID
-      required: true
-      schema:
-        type: integer
-        format: int64
+    - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
     description: The device description
     content:
