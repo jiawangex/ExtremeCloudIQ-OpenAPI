@@ -1,0 +1,29 @@
+type: object
+description: The device iBeacon settings.
+properties:
+  id:
+    type: integer
+    description: The device iBeacon ID.
+    format: int64
+  enabled:
+    type: boolean
+    description: Whether the device iBeacon is enabled.
+  major:
+    type: integer
+    description: Identification of a subset of beacons in a venue.  Valid values are 0 to 65635.
+    format: int32
+  minor:
+    type: integer
+    description: Identification of a beacon in a specific location.  Valid values are 0 to 65635.
+    format: int32
+  power:
+    type: integer
+    description: The transmission power in dBm.  Valid values are 0 to 65635.
+    format: int32
+  enable_monitoring:
+    type: boolean
+    description: Whether the device iBeacon monitoring is enabled.
+  nwk_plcy_ibeacon_id:
+    type: integer
+    description: The beacon network policy ID.
+    format: int64

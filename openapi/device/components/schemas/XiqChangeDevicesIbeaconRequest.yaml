@@ -1,0 +1,53 @@
+type: object
+description: 'The request to update the existing device iBeacon settings profile or 
+  create a new one if there isn''t one already created.'
+required:
+- device_ids
+- enable_monitoring
+- enabled
+- major
+- minor
+- power
+properties:
+  device_ids:
+    maxItems: 2147483647
+    minItems: 1
+    type: array
+    description: 'The one or multiple device IDs to change the iBeacon settings.  You
+      can configure the embedded iBeacon transmitter in the following APs: AP122,
+      AP122X, AP150W, AP245X, AP250, and AP550.'
+    items:
+      type: integer
+      description: 'The one or multiple device IDs to change the iBeacon settings.  You
+        can configure the embedded iBeacon transmitter in the following APs:
+        AP122, AP122X, AP150W, AP245X, AP250, and AP550.'
+      format: int64
+  enabled:
+    type: boolean
+    description: Whether to enable the device iBeacon
+  major:
+    maximum: 65635
+    minimum: 0
+    type: integer
+    description: Identification of a subset of beacons in a venue.
+    format: int32
+  minor:
+    maximum: 65635
+    minimum: 0
+    type: integer
+    description: Identification of a beacon in a specific location.
+    format: int32
+  power:
+    maximum: 127
+    minimum: -128
+    type: integer
+    description: The transmission power in dBm.
+    format: int32
+  enable_monitoring:
+    type: boolean
+    description: Whether to enable iBeacon monitoring
+  nwk_plcy_ibeacon_id:
+    type: integer
+    description: The beacon network policy ID
+    format: int64
+      
