@@ -1,5 +1,11 @@
 type: object
 description: The device iBeacon settings.
+required:
+- enabled
+- major
+- minor
+- power
+- enable_monitoring
 properties:
   id:
     type: integer
@@ -23,7 +29,7 @@ properties:
   enable_monitoring:
     type: boolean
     description: Whether the device iBeacon monitoring is enabled.
-  nwk_plcy_ibeacon_id:
+  network_policy_ibeacon_id:
     type: integer
     description: The beacon network policy ID.
     format: int64

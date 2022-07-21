@@ -54,8 +54,8 @@ paths:
     $ref: paths/devices_country-code_:assign.yaml
   /devices/os/:change:
     $ref: paths/devices_os_:change.yaml
-  /devices/ibeacon/:change:
-    $ref: paths/devices_ibeacon_:change.yaml
+  /devices/ibeacon:
+    $ref: paths/devices_ibeacon.yaml
   /devices/stats:
     $ref: paths/devices_stats.yaml
   /devices/{id}:

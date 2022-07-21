@@ -1,8 +1,8 @@
-post:
+put:
   tags:
     - Device
   summary: Change iBeacon settings for devices
-  description: Change the iBeacon settings for multiple devices.
+  description: Update the existing or create new iBeacon settings for multiple devices. 
   externalDocs:
     description: API Reference
     url: http://extremecloudiq.com/api-docs/api-reference.html#_change_devices_ibeacon

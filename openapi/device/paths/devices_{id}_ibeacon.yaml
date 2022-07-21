@@ -1,8 +1,8 @@
 get:
   tags:
     - Device
-  summary: Get the device iBeacon settings
-  description: Get the device iBeacon settings by device ID.
+  summary: Get the device iBeacon setting
+  description: Get the device iBeacon setting by device ID.
   externalDocs:
     description: API Reference
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_device_ibeacon
