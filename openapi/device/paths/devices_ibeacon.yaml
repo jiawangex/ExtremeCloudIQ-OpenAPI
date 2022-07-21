@@ -1,0 +1,23 @@
+put:
+  tags:
+    - Device
+  summary: Change iBeacon settings for devices
+  description: Update the existing or create new iBeacon settings for multiple devices. 
+  externalDocs:
+    description: API Reference
+    url: http://extremecloudiq.com/api-docs/api-reference.html#_change_devices_ibeacon
+  operationId: changeDevicesIBeaconSettings
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqChangeDevicesIbeaconRequest.yaml
+    required: true
+  responses:
+    "200":
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+
+  security:
+    - BearerAuth: []

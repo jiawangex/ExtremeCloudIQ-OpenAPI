@@ -54,6 +54,8 @@ paths:
     $ref: paths/devices_country-code_:assign.yaml
   /devices/os/:change:
     $ref: paths/devices_os_:change.yaml
+  /devices/ibeacon:
+    $ref: paths/devices_ibeacon.yaml
   /devices/stats:
     $ref: paths/devices_stats.yaml
   /devices/{id}:
@@ -86,6 +88,8 @@ paths:
     $ref: paths/devices_{id}_alarms.yaml
   /devices/{id}/history/cpu-mem:
     $ref: paths/devices_{id}_history_cpu-mem.yaml
+  /devices/{id}/ibeacon:
+    $ref: paths/devices_{id}_ibeacon.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml
