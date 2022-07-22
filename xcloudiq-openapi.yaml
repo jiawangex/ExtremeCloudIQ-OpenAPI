@@ -1879,6 +1879,30 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /devices/ibeacon:
+    put:
+      tags:
+        - Device
+      summary: Change iBeacon settings for devices
+      description: Update the existing or create new iBeacon settings for multiple devices.
+      externalDocs:
+        description: API Reference
+        url: >-
+          http://extremecloudiq.com/api-docs/api-reference.html#_change_devices_ibeacon
+      operationId: changeDevicesIbeacon
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqChangeDevicesIbeaconRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /devices/stats:
     get:
       tags:
@@ -2386,6 +2410,30 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/XiqDeviceCpuMemoryUsage'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/ibeacon':
+    get:
+      tags:
+        - Device
+      summary: Get the device iBeacon setting
+      description: Get the device iBeacon setting by device ID.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_device_ibeacon
+      operationId: getDeviceIbeacon
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDeviceIbeacon'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -7977,6 +8025,67 @@ components:
             The target OS mode to change to, for AP: only WiNG is supported, for
             Switch: EXOS or VOSS
           example: WiNG
+    XiqChangeDevicesIbeaconRequest:
+      type: object
+      description: >-
+        The request to update the existing devices' iBeacon settings or  create
+        the settings if they have not already been created.
+      required:
+        - device_ids
+      properties:
+        device_ids:
+          maxItems: 2147483647
+          minItems: 1
+          type: array
+          description: >-
+            The one or multiple device IDs to change the iBeacon settings.  You
+            can configure the embedded iBeacon transmitter in the following APs:
+            AP122, AP122X, AP150W, AP245X, AP250, and AP550.
+          items:
+            type: integer
+            description: >-
+              The one or multiple device IDs to change the iBeacon settings. 
+              You can configure the embedded iBeacon transmitter in the
+              following APs: AP122, AP122X, AP150W, AP245X, AP250, and AP550.
+            format: int64
+        enabled:
+          type: boolean
+          description: >-
+            Whether to enable the device beacon.  Default to True on new device
+            iBeacon setting.
+        major:
+          maximum: 65635
+          minimum: 0
+          type: integer
+          description: >-
+            Identification of a subset of beacons in a venue.  Default to 1 on
+            new device iBeacon setting.
+          format: int32
+        minor:
+          maximum: 65635
+          minimum: 0
+          type: integer
+          description: >-
+            Identification of a beacon in a specific location.  Default to 1 on
+            new device iBeacon setting.
+          format: int32
+        power:
+          maximum: 127
+          minimum: -128
+          type: integer
+          description: >-
+            The transmission power in dBm. Default to -59 on new device iBeacon
+            setting.
+          format: int32
+        enable_monitoring:
+          type: boolean
+          description: >-
+            Whether to enable iBeacon monitoring.  Default to True on new device
+            iBeacon setting.
+        network_policy_ibeacon_id:
+          type: integer
+          description: The beacon network policy ID
+          format: int64
     XiqDeviceStats:
       type: object
       properties:
@@ -8115,6 +8224,46 @@ components:
         timestamp:
           type: integer
           description: The timestamp for data aggregate
+          format: int64
+    XiqDeviceIbeacon:
+      type: object
+      description: The device iBeacon settings.
+      required:
+        - enabled
+        - major
+        - minor
+        - power
+        - enable_monitoring
+      properties:
+        id:
+          type: integer
+          description: The device iBeacon ID.
+          format: int64
+        enabled:
+          type: boolean
+          description: Whether the device iBeacon is enabled.
+        major:
+          type: integer
+          description: >-
+            Identification of a subset of beacons in a venue.  Valid values are
+            0 to 65635.
+          format: int32
+        minor:
+          type: integer
+          description: >-
+            Identification of a beacon in a specific location.  Valid values are
+            0 to 65635.
+          format: int32
+        power:
+          type: integer
+          description: The transmission power in dBm.  Valid values are 0 to 65635.
+          format: int32
+        enable_monitoring:
+          type: boolean
+          description: Whether the device iBeacon monitoring is enabled.
+        network_policy_ibeacon_id:
+          type: integer
+          description: The beacon network policy ID.
           format: int64
     PagedXiqNetworkPolicy:
       allOf:
