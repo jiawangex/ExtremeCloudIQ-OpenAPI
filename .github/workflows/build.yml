@@ -1,0 +1,24 @@
+name: Auto build and commit OpenAPI definition
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          # If specified, run `pnpm install`
+          run_install: pnpm install
+      - run: pnpm build
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4.14.1
+        with:
+          commit_message: Update OpenAPI definition
+          file_pattern: xcloudiq-openapi.yaml
+          commit_user_email: github-actions[bot]@extremenetworks.com
