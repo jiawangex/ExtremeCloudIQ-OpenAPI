@@ -6,7 +6,7 @@ put:
   externalDocs:
     description: API Reference
     url: http://extremecloudiq.com/api-docs/api-reference.html#_change_devices_ibeacon
-  operationId: changeDevicesIBeaconSettings
+  operationId: changeDevicesIbeaconSettings
   requestBody:
     content:
       application/json:
