@@ -70,6 +70,8 @@ tags:
     description: The clients associate to the devices of ExtremeCloud IQ
   - name: Application
     description: Application management and application metrics
+  - name: Alert
+    description: ExtremeCloud IQ generated alerts and events
   - name: Log
     description: Access all kinds of logs in ExtremeCloud IQ
   - name: Notification
@@ -2940,6 +2942,87 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /alerts:
+    get:
+      tags:
+        - Alert
+      summary: List the alerts
+      description: List a page of alerts by filter.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_list_the_alerts
+      operationId: listAlerts
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - name: severity
+          in: query
+          description: The alert severity to filter
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqAlertSeverity'
+        - name: category
+          in: query
+          description: The alert category to filter
+          required: false
+          schema:
+            $ref: '#/components/schemas/XiqAlertCategory'
+        - name: alertType
+          in: query
+          description: The alert type to filter
+          required: false
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          description: The keyword to filter, such as device SN or MAC address
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedXiqAlert'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: [ ]
+  /alerts/count-by-{group}:
+    get:
+      tags:
+        - Alert
+      summary: Count the alerts by different grouping
+      description: Count the number of alerts and events based on Severity, Category,
+        and Alert Type
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_count_the_alerts_by_group
+      operationId: countAlertsByGroup
+      parameters:
+        - $ref: '#/components/parameters/group'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: [ ]
   /logs/audit:
     get:
       tags:
@@ -8706,6 +8789,62 @@ components:
           type: integer
           description: The TOP N client usage
           format: int64
+    PagedXiqAlert:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqAlert'
+    XiqAlert:
+      allOf:
+        - $ref: '#/components/schemas/XiqViqEntity'
+        - type: object
+          properties:
+            type:
+              type: string
+              description: The alert type
+            summary:
+              type: string
+              description: A high-level, text summary message of the event. Will be used
+                to construct an alert's description.
+            severity:
+              $ref: '#/components/schemas/XiqAlertSeverity'
+            category:
+              $ref: '#/components/schemas/XiqAlertCategory'
+            source_name:
+              type: string
+              description: The alert source name
+            tags:
+              type: object
+              additionalProperties:
+                type: string
+                description: Additional information for the alert
+              description: Additional information for the alert
+    XiqAlertCategory:
+      type: string
+      enum:
+        - DEVICE
+        - XIQ
+        - SECURITY
+        - PERFORMANCE
+        - CLIENT
+        - ANOMALY
+    XiqAlertGroup:
+      type: string
+      enum:
+        - SEVERITY
+        - CATEGORY
+        - ALERT_TYPE
+    XiqAlertSeverity:
+      type: string
+      enum:
+        - CRITICAL
+        - INFO
+        - WARNING
     XiqAuditLogCategory:
       type: string
       enum:
@@ -13448,3 +13587,10 @@ components:
         minimum: 1
         type: integer
         format: int32
+    'group':
+      name: 'group'
+      in: path
+      description: The group to count from
+      required: true
+      schema:
+        $ref: '#/components/schemas/XiqAlertGroup'

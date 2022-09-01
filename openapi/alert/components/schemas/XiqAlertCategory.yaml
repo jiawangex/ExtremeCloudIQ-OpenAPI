@@ -1,0 +1,8 @@
+type: string
+enum:
+  - DEVICE
+  - XIQ
+  - SECURITY
+  - PERFORMANCE
+  - CLIENT
+  - ANOMALY
