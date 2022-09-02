@@ -3,5 +3,4 @@ in: path
 description: The group to count from
 required: true
 schema:
-  type: enum
   $ref: '#/components/schemas/XiqAlertGroup'

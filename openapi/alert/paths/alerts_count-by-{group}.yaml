@@ -3,7 +3,7 @@ get:
     - Alert
   summary: Count the alerts by different grouping
   description: Count the number of alerts and events based on Severity, Category,
-    and Alert Type
+    and Alert Type.
   externalDocs:
     description: API Reference
     url: >-
