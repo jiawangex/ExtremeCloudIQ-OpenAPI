@@ -10,7 +10,7 @@ get:
       https://extremecloudiq.com/api-docs/api-reference.html#_count_the_alerts_by_group
   operationId: countAlertsByGroup
   parameters:
-    - $ref: ../components/schemas/XiqAlertGroup.yaml
+    - $ref: ../components/schemas/group.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
   responses:
