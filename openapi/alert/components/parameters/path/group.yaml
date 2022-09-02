@@ -3,4 +3,4 @@ in: path
 description: The group to count from
 required: true
 schema:
-  $ref: '#/components/schemas/XiqAlertGroup'
+  $ref: ../../schemas/XiqAlertGroup.yaml
