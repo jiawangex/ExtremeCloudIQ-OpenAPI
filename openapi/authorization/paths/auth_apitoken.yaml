@@ -36,3 +36,5 @@ post:
             $ref: ../components/schemas/XiqGenerateApiTokenResponse.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: [ ]

@@ -1,0 +1,24 @@
+post:
+  tags:
+    - Authorization
+  summary: Validate API token
+  description: Validate JWT format API token.
+  operationId: apiTokenValidation
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_api_token_validation
+  requestBody:
+    content:
+      text/plain:
+        schema:
+          type: string
+          description: The API token to be validated
+    required: true
+  responses:
+    '200':
+      description: OK
+    '401':
+      description: Unauthorized
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml

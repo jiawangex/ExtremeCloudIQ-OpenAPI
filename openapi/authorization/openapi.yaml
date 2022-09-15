@@ -24,6 +24,8 @@ paths:
     $ref: paths/auth_apitoken.yaml
   /auth/apitoken/info:
     $ref: paths/auth_apitoken_info.yaml
+  /auth/apitoken/validation:
+    $ref: paths/auth_apitoken_validation.yaml
   /auth/permissions:
     $ref: paths/auth_permissions.yaml
   /auth/permissions/:check:
