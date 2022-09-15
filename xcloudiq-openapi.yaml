@@ -86,6 +86,8 @@ tags:
     description: AD/LDAP/RADIUS/CWP/...
   - name: Configuration - Certificate
     description: Certificate
+  - name: Copilot
+    description: Wired Connectivity Experience
 paths:
   /login:
     post:
@@ -6373,6 +6375,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedXiqCertificate'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wired:
+    post:
+      tags:
+        - Copilot
+      summary: Get Wired Connectivity Experience
+      description: Get Wired Connectivity Experience by OwnerId.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_connectivity_experience
+      operationId: getWiredConnectivityExperience
+      parameters:
+        - name: view
+          in: query
+          description: The unique view identifier
+          required: true
+          schema:
+            type: string
+            enum:
+              - location
+              - ssid
+              - osTypes
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqWiredConnectivityExperienceResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -13324,6 +13363,59 @@ components:
               description: The data in the current page
               items:
                 $ref: '#/components/schemas/XiqCertificate'
+    XiqConnectivityExperience:
+      type: object
+      description: Connectivity experience entity
+      required:
+        - id
+        - name
+        - qualityIndex
+        - trendIndicator
+        - connectScore
+        - graph
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        qualityIndex:
+          type: integer
+          minimum: 1
+          maximum: 10
+        trendIndicator:
+          type: string
+        connectScore:
+          type: integer
+          minimum: 1
+          maximum: 10
+        graph:
+          type: array
+          description: The data in the current page
+          items:
+            type: object
+            description: Connectivity experience sequence value
+            required:
+              - timestamp
+              - data
+            properties:
+              timestamp:
+                type: integer
+                format: int64
+              data:
+                type: integer
+                minimum: 1
+                maximum: 10
+    XiqWiredConnectivityExperienceResponse:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqConnectivityExperience'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response
