@@ -1,6 +1,7 @@
 allOf:
   - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
   - type: object
+    description: The Alert model
     properties:
       type:
         type: string
