@@ -137,8 +137,7 @@ paths:
                     expires_in: 86400
         default:
           $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
+      security: []
   /logout:
     post:
       tags:
@@ -200,8 +199,7 @@ paths:
                 $ref: '#/components/schemas/XiqGenerateApiTokenResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
+      security: []
   /auth/apitoken/info:
     get:
       tags:

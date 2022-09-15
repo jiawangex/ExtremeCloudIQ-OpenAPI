@@ -45,5 +45,4 @@ post:
                 expires_in: 86400
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
-  security:
-    - BearerAuth: []
+  security: []
