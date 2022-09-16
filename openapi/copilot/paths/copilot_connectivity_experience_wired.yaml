@@ -27,7 +27,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqConnectivityExperienceWired.yaml
+            $ref: ../components/schemas/XiqConnectivityExperiences.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

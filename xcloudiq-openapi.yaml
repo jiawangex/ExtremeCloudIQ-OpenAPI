@@ -6410,7 +6410,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqConnectivityExperienceWired'
+                $ref: '#/components/schemas/XiqConnectivityExperiences'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -13374,8 +13374,7 @@ components:
         - graph
       properties:
         id:
-          type: integer
-          format: int64
+          type: string
         name:
           type: string
         qualityIndex:
@@ -13384,6 +13383,11 @@ components:
           maximum: 10
         trendIndicator:
           type: string
+          enum:
+            - unspecified
+            - up
+            - down
+            - equal
         connectScore:
           type: integer
           minimum: 1
@@ -13393,7 +13397,7 @@ components:
           description: The data in the current page
           items:
             type: object
-            description: Connectivity experience sequence value
+            description: Connectivity experience quality sequence
             required:
               - timestamp
               - data
@@ -13405,7 +13409,7 @@ components:
                 type: integer
                 minimum: 1
                 maximum: 10
-    XiqConnectivityExperienceWired:
+    XiqConnectivityExperiences:
       type: object
       properties:
         total:
