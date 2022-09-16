@@ -199,7 +199,8 @@ paths:
                 $ref: '#/components/schemas/XiqGenerateApiTokenResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-      security: []
+      security:
+        - BearerAuth: []
   /auth/apitoken/info:
     get:
       tags:
