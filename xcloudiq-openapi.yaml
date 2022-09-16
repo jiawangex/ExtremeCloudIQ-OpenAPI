@@ -6401,7 +6401,6 @@ paths:
               - location
               - ssid
               - osTypes
-        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
@@ -6411,7 +6410,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqWiredConnectivityExperienceResponse'
+                $ref: '#/components/schemas/XiqConnectivityExperienceWired'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -13406,16 +13405,17 @@ components:
                 type: integer
                 minimum: 1
                 maximum: 10
-    XiqWiredConnectivityExperienceResponse:
-      allOf:
-        - $ref: '#/components/schemas/XiqPage'
-        - type: object
-          properties:
-            data:
-              type: array
-              description: The data in the current page
-              items:
-                $ref: '#/components/schemas/XiqConnectivityExperience'
+    XiqConnectivityExperienceWired:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+        data:
+          type: array
+          description: The connectivity experience entity list
+          items:
+            $ref: '#/components/schemas/XiqConnectivityExperience'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response

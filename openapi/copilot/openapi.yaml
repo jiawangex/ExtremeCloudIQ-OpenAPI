@@ -21,7 +21,7 @@ tags:
     description: 'Wired Connectivity Experience'
 paths:
   /copilot/connectivity/wired:
-    $ref: paths/copilot_connectivity_wired.yaml
+    $ref: paths/copilot_connectivity_experience_wired.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml

@@ -18,7 +18,6 @@ post:
           - location
           - ssid
           - osTypes
-    - $ref: ../../common/components/parameters/query/page.yaml
     - $ref: ../../common/components/parameters/query/limit.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
@@ -28,7 +27,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqWiredConnectivityExperienceResponse.yaml
+            $ref: ../components/schemas/XiqConnectivityExperienceWired.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

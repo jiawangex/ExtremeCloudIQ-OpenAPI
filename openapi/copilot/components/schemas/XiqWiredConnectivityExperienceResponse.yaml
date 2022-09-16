@@ -1,9 +1,0 @@
-allOf:
-  - $ref: ../../../common/components/schemas/XiqPage.yaml
-  - type: object
-    properties:
-      data:
-        type: array
-        description: The data in the current page
-        items:
-          $ref: ./XiqConnectivityExperience.yaml

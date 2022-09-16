@@ -1,0 +1,10 @@
+type: object
+properties:
+  total:
+    type: integer
+    format: int32
+  data:
+    type: array
+    description: The connectivity experience entity list
+    items:
+      $ref: ./XiqConnectivityExperience.yaml
