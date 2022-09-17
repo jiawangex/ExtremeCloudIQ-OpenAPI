@@ -17,7 +17,7 @@ post:
         enum:
           - location
           - ssid
-          - osTypes
+          - osType
     - $ref: ../../common/components/parameters/query/limit.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
