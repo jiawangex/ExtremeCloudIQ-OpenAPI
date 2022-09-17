@@ -6400,7 +6400,7 @@ paths:
             enum:
               - location
               - ssid
-              - osTypes
+              - osType
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
