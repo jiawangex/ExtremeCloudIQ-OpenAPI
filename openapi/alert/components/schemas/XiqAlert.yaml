@@ -1,25 +1,41 @@
-allOf:
-  - $ref: ../../../common/components/schemas/XiqViqEntity.yaml
-  - type: object
-    description: The Alert model
-    properties:
-      type:
-        type: string
-        description: The alert type
-      summary:
-        type: string
-        description: A high-level, text summary message of the event. Will be used
-          to construct an alert's description.
-      severity:
-        $ref: ./XiqAlertSeverity.yaml
-      category:
-        $ref: ./XiqAlertCategory.yaml
-      source_name:
-        type: string
-        description: The alert source name
-      tags:
-        type: object
-        additionalProperties:
-          type: string
-          description: Additional information for the alert
-        description: Additional information for the alert
+type: object
+properties:
+  id:
+    type: string
+    description: The unique identifier
+  owner_id:
+    type: integer
+    description: The owner ID
+    format: int64
+  timestamp:
+    type: string
+    description: The alert create time
+    format: date-time
+  org_id:
+    type: integer
+    description: The organization identifier, valid when enabling HIQ feature
+    format: int64
+  type:
+    type: string
+    description: The alert type
+  summary:
+    type: string
+    description: A high-level, text summary message of the event. Will be used
+      to construct an alert's description.
+  severity:
+    $ref: ./XiqAlertSeverity.yaml
+  category:
+    $ref: ./XiqAlertCategory.yaml
+  source:
+    $ref: ./XiqAlertSource.yaml
+  tags:
+    type: object
+    additionalProperties:
+      type: string
+      description: Additional information for the alert
+    description: Additional information for the alert
+description: The Alert Model
+required:
+  - id
+  - tags
+  - timestamp
