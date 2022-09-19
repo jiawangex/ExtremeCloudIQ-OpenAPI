@@ -196,6 +196,8 @@ paths:
                 $ref: '#/components/schemas/XiqGenerateApiTokenResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /auth/apitoken/info:
     get:
       tags:
@@ -218,6 +220,31 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  '/auth/apitoken/:validate':
+    post:
+      tags:
+        - Authorization
+      summary: Validate API token
+      description: Validate JWT format API token.
+      operationId: validateApiToken
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_validate_api_token
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+              description: The API token to be validated
+        required: true
+      responses:
+        '200':
+          description: The API token is valid
+        '401':
+          description: The API token is invalid or revoked
+        default:
+          $ref: '#/components/responses/ErrorResponse'
   /auth/permissions:
     get:
       tags:
