@@ -8878,7 +8878,7 @@ components:
               description: The data in the current page
               items:
                 $ref: '#/components/schemas/XiqAlert'
-    XiqAlertGroup:
+    XiqAlertGroupQuery:
       type: string
       enum:
         - SEVERITY
@@ -13632,4 +13632,4 @@ components:
       description: The group to count from
       required: true
       schema:
-        $ref: '#/components/schemas/XiqAlertGroup'
+        $ref: '#/components/schemas/XiqAlertGroupQuery'
