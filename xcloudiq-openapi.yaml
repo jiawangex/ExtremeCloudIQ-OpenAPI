@@ -1517,7 +1517,7 @@ paths:
       summary: Onboard Devices
       description: >-
         Onboard devices for all devices, such as Extreme/Aerohive, EXOS, VOSS,
-        WiNG, and Dell.
+        WiNG, Dell, and Digital Twin.
 
         This is asynchronized operation to support massive device onboarding.
       operationId: onboardDevices
@@ -7634,6 +7634,27 @@ components:
             type: string
             description: Serial number -> Service tag
           description: Serial number -> Service tag
+    XiqDTDevices:
+      type: object
+      description: Extreme Digital Twin devices to onboard
+      required:
+        - make
+        - model
+        - os_type
+        - os_version
+      properties:
+        make:
+          type: string
+          description: The make of digital twin device to be onboarded
+        model:
+          type: string
+          description: The model of digital twin device to be onboarded
+        os_type:
+          type: string
+          description: The OS Type of digital twin device to be onboarded
+        os_version:
+          type: string
+          description: The OS Version of digital twin device to be onboarded
     XiqOnboardDeviceRequest:
       type: object
       description: The payload to onboard devices
@@ -7648,6 +7669,8 @@ components:
           $ref: '#/components/schemas/XiqWingDevices'
         dell:
           $ref: '#/components/schemas/XiqDellDevices'
+        digitaltwin:
+          $ref: '#/components/schemas/XiqDTDevices'
     XiqDeviceFilter:
       type: object
       description: The filter to get matched devices

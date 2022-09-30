@@ -4,7 +4,7 @@ post:
   summary: Onboard Devices
   description: >-
     Onboard devices for all devices, such as Extreme/Aerohive, EXOS, VOSS, WiNG,
-    and Dell.
+    Dell, and Digital Twin.
 
     This is asynchronized operation to support massive device onboarding.
   operationId: onboardDevices

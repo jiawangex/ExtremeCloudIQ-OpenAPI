@@ -1,0 +1,20 @@
+type: object
+description: Extreme Digital Twin devices to onboard
+required:
+  - make
+  - model
+  - os_type
+  - os_version
+properties:
+  make:
+    type: string
+    description: The make of digital twin device to be onboarded
+  model:
+    type: string
+    description: The model of digital twin device to be onboarded
+  os_type:
+    type: string
+    description: The OS Type of digital twin device to be onboarded
+  os_version:
+    type: string
+    description: The OS Version of digital twin device to be onboarded

@@ -11,3 +11,5 @@ properties:
     $ref: ./XiqWingDevices.yaml
   dell:
     $ref: ./XiqDellDevices.yaml
+  digitaltwin:
+    $ref: ./XiqDTDevices.yaml
