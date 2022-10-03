@@ -90,6 +90,8 @@ paths:
     $ref: paths/devices_{id}_history_cpu-mem.yaml
   /devices/{id}/ibeacon:
     $ref: paths/devices_{id}_ibeacon.yaml
+  /devices/{id}/config/dns:
+    $ref: paths/devices_{id}_config_dns.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml
