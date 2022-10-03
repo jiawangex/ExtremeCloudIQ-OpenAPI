@@ -1,0 +1,18 @@
+type: object
+description: The device level DNS configuration
+properties:
+  domain_name:
+    type: string
+    description: The domain name for DNS.
+  description:
+    type: string
+    description: The description for DNS.
+  ip_address:
+    type: array
+    description: The IP addresses of DNS in the order based on priority
+    items:
+      type: string
+      description: The IP address in CIDR format
+required:
+  - domain_name
+  - ip_address

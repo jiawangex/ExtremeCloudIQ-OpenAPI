@@ -2438,6 +2438,87 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  '/devices/{id}/dns':
+    get:
+      tags:
+        - Device
+      summary: Get DNS configuration for a device
+      description: Get the DNS configuration for a specific device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_device_level_config_dns
+      operationId: getDeviceLevelConfigDns
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/XiqDeviceDns'
+              examples:
+                success:
+                  value:
+                    domain_name: a.localhost.com
+                    ip_address:
+                      - 1.1.1.1
+                      - 2.2.2.2
+                      - 3.3.3.3
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    put:
+      tags:
+        - Device
+      summary: Override DNS configuration for a device
+      description: Override DNS configuration for a specific device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_post_device_level_config_dns
+      operationId: postDeviceLevelConfigDns
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XiqDeviceDns'
+            examples:
+              basic:
+                value:
+                  domain_name: a.localhost.com
+                  ip_address:
+                    - 1.1.1.1
+                    - 2.2.2.2
+                    - 3.3.3.3
+        required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+    delete:
+      tags:
+        - Device
+      summary: Delete device level DNS configuration
+      description: Delete device level DNS configuratione.
+      operationId: deleteDeviceLevelConfigDns
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /network-policies:
     get:
       tags:
@@ -8265,6 +8346,25 @@ components:
           type: integer
           description: The beacon network policy ID.
           format: int64
+    XiqDeviceDns:
+      type: object
+      description: The device level DNS configuration
+      properties:
+        domain_name:
+          type: string
+          description: The domain name for DNS.
+        description:
+          type: string
+          description: The description for DNS.
+        ip_address:
+          type: array
+          description: The IP addresses of DNS in the order based on priority
+          items:
+            type: string
+            description: The IP address in CIDR format
+      required:
+        - domain_name
+        - ip_address
     PagedXiqNetworkPolicy:
       allOf:
         - $ref: '#/components/schemas/XiqPage'

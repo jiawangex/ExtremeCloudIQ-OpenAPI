@@ -32,6 +32,7 @@ Hyphens is much readable than underscores in URLs.
 
 ### Mapping CRUD operations to standard HTTP verbs
 Use standard HTTP verbs for CRUD operations to achieve simple and consistent APIs.
+
 | HTTP Verb | Description                                                             |
 | --------- | ----------------------------------------------------------------------- |
 | `GET`     | Retrieving resources.                                                   |

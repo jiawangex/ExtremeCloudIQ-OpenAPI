@@ -1,0 +1,90 @@
+get:
+  tags:
+    - Device
+  summary: Get DNS configuration for a device
+  description: Get the DNS configuration for a specific device.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_device_dns
+  operationId: getDeviceDns
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: ../components/schemas/XiqDeviceDns.yaml
+          examples:
+            success:
+              value:
+                {
+                  "domain_name": "a.localhost.com",
+                  "ip_address": [
+                      "1.1.1.1",
+                      "2.2.2.2",
+                      "3.3.3.3"
+                  ]
+                }
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+put:
+  tags:
+    - Device
+  summary: Override DNS configuration for a device
+  description: Override DNS configuration for a specific device.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_put_device_dns
+  operationId: postDeviceDns
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/XiqDeviceDns.yaml
+        examples:
+          basic:
+            value:
+              {
+                "domain_name": "a.localhost.com",
+                "ip_address": [
+                    "1.1.1.1",
+                    "2.2.2.2",
+                    "3.3.3.3"
+                ]
+              }
+    required: true
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
+delete:
+  tags:
+    - Device
+  summary: Delete device level DNS configuration
+  description: Delete device level DNS configuratione.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_device_dns
+  operationId: deleteDeviceDns
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+  responses:
+    '200':
+      description: OK
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []
