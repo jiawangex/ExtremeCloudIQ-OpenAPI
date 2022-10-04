@@ -17,7 +17,7 @@ get:
         application/json:
           schema:
             type: object
-            $ref: ../components/schemas/XiqDeviceLevelConfigDns.yaml
+            $ref: ../components/schemas/XiqDeviceDns.yaml
           examples:
             success:
               value:
@@ -33,7 +33,7 @@ get:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:
     - BearerAuth: []
-post:
+put:
   tags:
     - Device
   summary: Override DNS configuration for a device
@@ -49,7 +49,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/XiqDeviceLevelConfigDns.yaml
+          $ref: ../components/schemas/XiqDeviceDns.yaml
         examples:
           basic:
             value:

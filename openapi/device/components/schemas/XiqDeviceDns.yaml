@@ -1,9 +1,6 @@
 type: object
 description: The device level DNS configuration
 properties:
-  name:
-    type: string
-    description: The name for device level configuration
   domain_name:
     type: string
     description: The domain name for DNS.

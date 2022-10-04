@@ -2438,7 +2438,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  '/devices/{id}/config/dns':
+  '/devices/{id}/dns':
     get:
       tags:
         - Device
@@ -2458,7 +2458,7 @@ paths:
             application/json:
               schema:
                 type: object
-                $ref: '#/components/schemas/XiqDeviceLevelConfigDns'
+                $ref: '#/components/schemas/XiqDeviceDns'
               examples:
                 success:
                   value:
@@ -2471,7 +2471,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-    post:
+    put:
       tags:
         - Device
       summary: Override DNS configuration for a device
@@ -2487,7 +2487,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/XiqDeviceLevelConfigDns'
+              $ref: '#/components/schemas/XiqDeviceDns'
             examples:
               basic:
                 value:
@@ -8346,13 +8346,10 @@ components:
           type: integer
           description: The beacon network policy ID.
           format: int64
-    XiqDeviceLevelConfigDns:
+    XiqDeviceDns:
       type: object
       description: The device level DNS configuration
       properties:
-        name:
-          type: string
-          description: The name for device level configuration
         domain_name:
           type: string
           description: The domain name for DNS.
