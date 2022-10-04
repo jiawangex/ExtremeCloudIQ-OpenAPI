@@ -91,7 +91,7 @@ paths:
   /devices/{id}/ibeacon:
     $ref: paths/devices_{id}_ibeacon.yaml
   /devices/{id}/dns:
-    $ref: paths/devices_{id}_config_dns.yaml
+    $ref: paths/devices_{id}_dns.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml
