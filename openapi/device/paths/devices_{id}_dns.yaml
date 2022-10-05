@@ -6,8 +6,8 @@ get:
   externalDocs:
     description: API Reference
     url: >-
-      https://extremecloudiq.com/api-docs/api-reference.html#_get_device_level_config_dns
-  operationId: getDeviceLevelConfigDns
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_device_dns
+  operationId: getDeviceDns
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
   responses:
@@ -41,8 +41,8 @@ put:
   externalDocs:
     description: API Reference
     url: >-
-      https://extremecloudiq.com/api-docs/api-reference.html#_post_device_level_config_dns
-  operationId: postDeviceLevelConfigDns
+      https://extremecloudiq.com/api-docs/api-reference.html#_put_device_dns
+  operationId: postDeviceDns
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
@@ -74,7 +74,11 @@ delete:
     - Device
   summary: Delete device level DNS configuration
   description: Delete device level DNS configuratione.
-  operationId: deleteDeviceLevelConfigDns
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_delete_device_dns
+  operationId: deleteDeviceDns
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
   responses:
