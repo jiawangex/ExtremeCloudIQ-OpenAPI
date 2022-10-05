@@ -2462,7 +2462,7 @@ paths:
                 success:
                   value:
                     domain_name: a.localhost.com
-                    ip_address:
+                    ip_addresses:
                       - 1.1.1.1
                       - 2.2.2.2
                       - 3.3.3.3
@@ -2477,8 +2477,9 @@ paths:
       description: Override DNS configuration for a specific device.
       externalDocs:
         description: API Reference
-        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_put_device_dns'
-      operationId: postDeviceDns
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_assign_device_dns
+      operationId: assignDeviceDns
       parameters:
         - $ref: '#/components/parameters/id'
       requestBody:
@@ -2490,7 +2491,7 @@ paths:
               basic:
                 value:
                   domain_name: a.localhost.com
-                  ip_address:
+                  ip_addresses:
                     - 1.1.1.1
                     - 2.2.2.2
                     - 3.3.3.3
@@ -2510,8 +2511,8 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_delete_device_dns
-      operationId: deleteDeviceDns
+          https://extremecloudiq.com/api-docs/api-reference.html#_revoke_device_dns
+      operationId: revokeDeviceDns
       parameters:
         - $ref: '#/components/parameters/id'
       responses:
@@ -8358,7 +8359,7 @@ components:
         description:
           type: string
           description: The description for DNS.
-        ip_address:
+        ip_addresses:
           type: array
           description: The IP addresses of DNS in the order based on priority
           items:
@@ -8366,7 +8367,7 @@ components:
             description: The IP address in CIDR format
       required:
         - domain_name
-        - ip_address
+        - ip_addresses
     PagedXiqNetworkPolicy:
       allOf:
         - $ref: '#/components/schemas/XiqPage'

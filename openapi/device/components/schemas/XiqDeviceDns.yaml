@@ -7,7 +7,7 @@ properties:
   description:
     type: string
     description: The description for DNS.
-  ip_address:
+  ip_addresses:
     type: array
     description: The IP addresses of DNS in the order based on priority
     items:
@@ -15,4 +15,4 @@ properties:
       description: The IP address in CIDR format
 required:
   - domain_name
-  - ip_address
+  - ip_addresses

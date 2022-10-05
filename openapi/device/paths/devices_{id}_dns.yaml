@@ -23,7 +23,7 @@ get:
               value:
                 {
                   "domain_name": "a.localhost.com",
-                  "ip_address": [
+                  "ip_addresses": [
                       "1.1.1.1",
                       "2.2.2.2",
                       "3.3.3.3"
@@ -41,8 +41,8 @@ put:
   externalDocs:
     description: API Reference
     url: >-
-      https://extremecloudiq.com/api-docs/api-reference.html#_put_device_dns
-  operationId: postDeviceDns
+      https://extremecloudiq.com/api-docs/api-reference.html#_assign_device_dns
+  operationId: assignDeviceDns
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
   requestBody:
@@ -55,7 +55,7 @@ put:
             value:
               {
                 "domain_name": "a.localhost.com",
-                "ip_address": [
+                "ip_addresses": [
                     "1.1.1.1",
                     "2.2.2.2",
                     "3.3.3.3"
@@ -77,8 +77,8 @@ delete:
   externalDocs:
     description: API Reference
     url: >-
-      https://extremecloudiq.com/api-docs/api-reference.html#_delete_device_dns
-  operationId: deleteDeviceDns
+      https://extremecloudiq.com/api-docs/api-reference.html#_revoke_device_dns
+  operationId: revokeDeviceDns
   parameters:
     - $ref: ../../common/components/parameters/path/id.yaml
   responses:
