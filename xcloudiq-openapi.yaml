@@ -2446,9 +2446,8 @@ paths:
       description: Get the DNS configuration for a specific device.
       externalDocs:
         description: API Reference
-        url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_get_device_level_config_dns
-      operationId: getDeviceLevelConfigDns
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_get_device_dns'
+      operationId: getDeviceDns
       parameters:
         - $ref: '#/components/parameters/id'
       responses:
@@ -2478,9 +2477,14 @@ paths:
       description: Override DNS configuration for a specific device.
       externalDocs:
         description: API Reference
+<<<<<<< HEAD
         url: >-
           https://extremecloudiq.com/api-docs/api-reference.html#_post_device_level_config_dns
       operationId: postDeviceLevelConfigDns
+=======
+        url: 'https://extremecloudiq.com/api-docs/api-reference.html#_put_device_dns'
+      operationId: postDeviceDns
+>>>>>>> 61460a4cb577002a1ce3d4c175792f63b5b86878
       parameters:
         - $ref: '#/components/parameters/id'
       requestBody:
@@ -2509,7 +2513,15 @@ paths:
         - Device
       summary: Delete device level DNS configuration
       description: Delete device level DNS configuratione.
+<<<<<<< HEAD
       operationId: deleteDeviceLevelConfigDns
+=======
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_delete_device_dns
+      operationId: deleteDeviceDns
+>>>>>>> 61460a4cb577002a1ce3d4c175792f63b5b86878
       parameters:
         - $ref: '#/components/parameters/id'
       responses:
