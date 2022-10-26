@@ -1,0 +1,26 @@
+get:
+  tags:
+    - Copilot
+  summary: Get Wireless Connectivity Performance
+  description: Get Wireless Connectivity Performance by location / ssid / os-type.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_performance
+  operationId: getWirelessPerformance
+  parameters:
+    - $ref: ../components/schemas/XIQWirelessViewBy.yaml
+    - $ref: ../components/schemas/XIQWirelessViewIdentifier.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotPerformanceForensics.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

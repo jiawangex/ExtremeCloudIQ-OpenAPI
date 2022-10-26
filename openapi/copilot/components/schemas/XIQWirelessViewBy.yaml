@@ -1,0 +1,10 @@
+in: query
+description: View Experience By
+name: viewBy
+required: true
+schema:
+  type: string
+  enum:
+    - LOCATION
+    - SSID
+    - OS-TYPE

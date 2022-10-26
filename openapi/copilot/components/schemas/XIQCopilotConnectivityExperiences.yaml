@@ -1,0 +1,7 @@
+type: object
+properties:
+  wired_experiences_list:
+    type: array
+    description: The connectivity experience entity list
+    items:
+      $ref: ./XiqCopilotConnectivityExperience.yaml

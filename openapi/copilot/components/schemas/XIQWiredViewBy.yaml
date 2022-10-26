@@ -1,0 +1,8 @@
+in: query
+description: View Wired Experience By
+name: viewBy
+required: true
+schema:
+  type: string
+  enum:
+    - LOCATION

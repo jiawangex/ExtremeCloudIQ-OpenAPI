@@ -1,0 +1,11 @@
+in: query
+description: At least one view identifier required based on viewBy parameter
+name: 'View Identifier'
+required: true
+schema:
+  type: object
+  properties:
+    locationId:
+      type: string
+  additionalProperties: false
+  minProperties: 1

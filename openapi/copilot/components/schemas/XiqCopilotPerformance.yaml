@@ -1,0 +1,34 @@
+type: object
+description: Connectivity Experience Performance Entity
+required:
+  - timestamp
+  - quality_index
+  - total_clients
+  - time_to_connect_score
+  - performance_score
+  - SNR
+  - retries
+properties:
+  timestamp:
+    type: integer
+    format: int64
+  quality_index:
+    type: integer
+    minimum: 1
+    maximum: 10
+  time_to_connect_score:
+    type: integer
+    minimum: 1
+    maximum: 10
+  total_clients:
+    type: integer
+  performance_score:
+    type: integer
+    minimum: 1
+    maximum: 10
+  SNR:
+    type: integer
+    minimum: 1
+    maximum: 100
+  retries:
+    type: integer

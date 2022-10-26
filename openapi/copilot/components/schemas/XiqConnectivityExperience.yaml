@@ -1,0 +1,44 @@
+type: object
+description: Connectivity experience entity
+required:
+  - qualityIndex
+  - trendIndicator
+  - connectScore
+  - graph
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  qualityIndex:
+    type: integer
+    minimum: 1
+    maximum: 10
+  trendIndicator:
+    type: string
+    enum:
+      - unspecified
+      - up
+      - down
+      - equal
+  connectScore:
+    type: integer
+    minimum: 1
+    maximum: 10
+  graph:
+    type: array
+    description: The data in the current page
+    items:
+      type: object
+      description: Connectivity experience quality sequence
+      required:
+        - timestamp
+        - data
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        data:
+          type: integer
+          minimum: 1
+          maximum: 10

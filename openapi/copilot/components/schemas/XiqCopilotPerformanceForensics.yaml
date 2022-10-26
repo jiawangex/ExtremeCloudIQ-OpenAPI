@@ -1,0 +1,7 @@
+type: object
+properties:
+  performance_list:
+    type: array
+    description: The performance list
+    items:
+      $ref: ./XiqCopilotPerformance.yaml
