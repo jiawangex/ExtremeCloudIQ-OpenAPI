@@ -8,7 +8,7 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_experience
   operationId: getWiredExperience
   parameters:
-    - $ref: ../components/schemas/XIQWiredViewBy.yaml
+    - $ref: ../components/schemas/XiqWiredViewBy.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
     - $ref: ../../common/components/parameters/query/limit.yaml
