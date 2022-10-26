@@ -1,7 +1,0 @@
-type: object
-properties:
-  quality_index_list:
-    type: array
-    description: The experience list
-    items:
-      $ref: ./XiqCopilotQualityIndex.yaml
