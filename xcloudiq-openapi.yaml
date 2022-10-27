@@ -13731,7 +13731,7 @@ components:
         - total_clients
         - time_to_connect_score
         - performance_score
-        - SNR
+        - snr
         - retries
       properties:
         timestamp:
@@ -13751,7 +13751,7 @@ components:
           type: integer
           minimum: 1
           maximum: 10
-        SNR:
+        snr:
           type: integer
           minimum: 1
           maximum: 100
