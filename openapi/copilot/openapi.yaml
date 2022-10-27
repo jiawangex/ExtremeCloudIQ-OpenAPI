@@ -18,7 +18,7 @@ servers:
   - $ref: ../server-default.yaml
 tags:
   - name: Copilot
-    description: 'Wired Connectivity Experience'
+    description: 'Connectivity Experience'
 paths:
   /copilot/connectivity/wireless/experience:
     $ref: paths/copilot_wireless_experience.yaml
