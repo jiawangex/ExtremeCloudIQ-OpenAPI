@@ -6532,6 +6532,58 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
+  /copilot/connectivity/wireless/apps:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wireless Connectivity Apps Info
+      description: Get app statistics for a specific view type.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_apps
+      operationId: getWirelessApps
+      parameters:
+        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotWirelessApps'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wireless/views:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wireless Connectivity Views
+      description: List all the views for a selected view type.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_views
+      operationId: getWirelessViews
+      parameters:
+        - $ref: '#/components/parameters/XiqWirelessViewBy'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /copilot/connectivity/wired/experience:
     get:
       tags:
@@ -13800,6 +13852,26 @@ components:
               description: The data in the current page
               items:
                 $ref: '#/components/schemas/XiqCopilotWirelessEvent'
+    XiqCopilotWirelessApps:
+      type: object
+      description: Wireless Connectivity Experience Apps
+      required:
+        - total_clients
+        - most_active_app
+        - most_active_user
+        - total_apps
+        - total_users
+      properties:
+        total_clients:
+          type: integer
+        most_active_app:
+          type: string
+        most_active_user:
+          type: string
+        total_apps:
+          type: integer
+        total_users:
+          type: integer
     XiqCopilotWiredQualityIndex:
       type: object
       description: Wired Connectivity Experience QualityIndex

@@ -30,6 +30,10 @@ paths:
     $ref: paths/copilot_wireless_performance.yaml
   /copilot/connectivity/wireless/events:
     $ref: paths/copilot_wireless_events.yaml
+  /copilot/connectivity/wireless/apps:
+    $ref: paths/copilot_wireless_apps.yaml
+  /copilot/connectivity/wireless/views:
+    $ref: paths/copilot_wireless_views.yaml
   /copilot/connectivity/wired/experience:
     $ref: paths/copilot_wired_experience.yaml
   /copilot/connectivity/wired/quality-index:
