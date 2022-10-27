@@ -87,7 +87,7 @@ tags:
   - name: Configuration - Certificate
     description: Certificate
   - name: Copilot
-    description: Wired Connectivity Experience
+    description: Connectivity Experience
 paths:
   /login:
     post:
