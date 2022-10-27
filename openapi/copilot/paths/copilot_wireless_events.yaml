@@ -1,0 +1,31 @@
+get:
+  tags:
+    - Copilot
+  summary: Get Wireless Connectivity Events
+  description: List a page of wireless events over a selected period of time.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_events
+  operationId: getWirelessEvents
+  parameters:
+    - $ref: ../components/schemas/XiqWirelessViewBy.yaml
+    - $ref: ../components/schemas/XiqWirelessViewIdentifier.yaml
+    - $ref: ../components/schemas/XiqWirelessScoreType.yaml
+    - $ref: ../components/schemas/XiqForensicView.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../components/schemas/XiqCopilotWirelessSortBy.yaml
+    - $ref: ../../common/components/parameters/query/order.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotWirelessEvents.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

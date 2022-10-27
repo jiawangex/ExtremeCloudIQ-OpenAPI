@@ -1,0 +1,22 @@
+type: object
+description: Wireless Event Entity
+required:
+  - average_value
+  - maximum_value
+  - mac
+  - ssid
+  - threshold
+properties:
+  average_value:
+    type: number
+    format: double
+  maximum_value:
+    type: number
+    format: double
+  mac:
+    type: string
+  ssid:
+    type: string
+  threshold:
+    type: number
+    format: double

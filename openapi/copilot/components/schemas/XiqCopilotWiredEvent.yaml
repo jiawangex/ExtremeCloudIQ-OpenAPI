@@ -1,0 +1,27 @@
+type: object
+description: Wired Event Entity
+required:
+  - device_id
+  - hostname
+  - interface_errors
+  - maximum_errors
+  - mgmt_ip
+  - port
+  - serial_number
+properties:
+  device_id:
+    type: string
+  hostname:
+    type: string
+  interface_errors:
+    type: number
+    format: double
+  maximum_errors:
+    type: number
+    format: double
+  mgmt_ip:
+    type: string
+  port:
+    type: string
+  serial_number:
+    type: string

@@ -1,0 +1,8 @@
+in: query
+description: View Event By
+name: scoreType
+required: true
+schema:
+  type: string
+  enum:
+    - PORT_ERRORS
