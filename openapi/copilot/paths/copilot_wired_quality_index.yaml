@@ -2,7 +2,7 @@ get:
   tags:
     - Copilot
   summary: Get Wired Connectivity QualityIndex
-  description: Get Wired Connectivity QualityIndex.
+  description: Get Quality-Index for a specific view type.
   externalDocs:
     description: API Reference
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_quality_index
@@ -11,7 +11,6 @@ get:
     - $ref: ../components/schemas/XiqWiredViewBy.yaml
     - $ref: ../components/schemas/XiqWiredViewIdentifier.yaml
     - $ref: ../components/schemas/XiqForensicView.yaml
-    - $ref: ../../common/components/parameters/query/limit.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
   responses:

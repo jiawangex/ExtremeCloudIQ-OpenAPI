@@ -28,12 +28,16 @@ paths:
     $ref: paths/copilot_wireless_time_to_connect.yaml
   /copilot/connectivity/wireless/performance:
     $ref: paths/copilot_wireless_performance.yaml
+  /copilot/connectivity/wireless/events:
+    $ref: paths/copilot_wireless_events.yaml
   /copilot/connectivity/wired/experience:
     $ref: paths/copilot_wired_experience.yaml
   /copilot/connectivity/wired/quality-index:
     $ref: paths/copilot_wired_quality_index.yaml
   /copilot/connectivity/wired/hardware:
     $ref: paths/copilot_wired_hardware.yaml
+  /copilot/connectivity/wired/events:
+    $ref: paths/copilot_wired_events.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml

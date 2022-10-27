@@ -86,6 +86,8 @@ tags:
     description: AD/LDAP/RADIUS/CWP/...
   - name: Configuration - Certificate
     description: Certificate
+  - name: Copilot
+    description: Wired Connectivity Experience
 paths:
   /login:
     post:
@@ -6373,6 +6375,280 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedXiqCertificate'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wireless/experience:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wireless Connectivity Experience
+      description: List a page of Quality-Index trends by selected view type.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_experience
+      operationId: getWirelessExperience
+      parameters:
+        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/XiqCopilotSortBy'
+        - $ref: '#/components/parameters/order'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotConnectivityExperiences'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wireless/quality-index:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wireless Connectivity QualityIndex
+      description: Get Quality-Index for a specific view type.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_quality_index
+      operationId: getWirelessQualityIndex
+      parameters:
+        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotWirelessQualityIndex'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wireless/time-to-connect:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wireless Connectivity Time-To-Connect
+      description: >-
+        List a page of Time-To-Connect score data over a selected period of
+        time.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_time_to_connect
+      operationId: getWirelessTimeToConnect
+      parameters:
+        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotTimeToConnectForensics'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wireless/performance:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wireless Connectivity Performance
+      description: List a page of Performance score data over a selected period of time.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_performance
+      operationId: getWirelessPerformance
+      parameters:
+        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotPerformanceForensics'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wireless/events:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wireless Connectivity Events
+      description: List a page of wireless events over a selected period of time.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_events
+      operationId: getWirelessEvents
+      parameters:
+        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
+        - $ref: '#/components/parameters/XiqWirelessScoreType'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/XiqCopilotWirelessSortBy'
+        - $ref: '#/components/parameters/order'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotWirelessEvents'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wired/experience:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wired Connectivity Experience
+      description: List a page of Quality-Index trends by selected view type.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_experience
+      operationId: getWiredExperience
+      parameters:
+        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/XiqCopilotSortBy'
+        - $ref: '#/components/parameters/order'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotConnectivityExperiences'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wired/quality-index:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wired Connectivity QualityIndex
+      description: Get Quality-Index for a specific view type.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_quality_index
+      operationId: getWiredQualityIndex
+      parameters:
+        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/XiqWiredViewIdentifier'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotWiredQualityIndex'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wired/hardware:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wired Connectivity Experience - Hardware
+      description: List a page of hardware score data over a selected period of time.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_hardware
+      operationId: getWiredHardware
+      parameters:
+        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/XiqWiredViewIdentifier'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotHardwareForensics'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/connectivity/wired/events:
+    get:
+      tags:
+        - Copilot
+      summary: Get Wired Connectivity Events
+      description: List a page of wired events over a selected period of time.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_events
+      operationId: getWiredEvents
+      parameters:
+        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/XiqWiredViewIdentifier'
+        - $ref: '#/components/parameters/XiqWiredScoreType'
+        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/XiqCopilotWiredSortBy'
+        - $ref: '#/components/parameters/order'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotWiredEvents'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -13324,6 +13600,291 @@ components:
               description: The data in the current page
               items:
                 $ref: '#/components/schemas/XiqCertificate'
+    XiqCopilotConnectivityExperience:
+      type: object
+      description: Experience Entity
+      required:
+        - id
+        - name
+        - quality_index
+        - trend_indicator
+        - quality_index_graph
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quality_index:
+          type: integer
+          minimum: 1
+          maximum: 10
+        trend_indicator:
+          type: string
+          enum:
+            - TREND_UNSPECIFIED
+            - TREND_UP
+            - TREND_DOWN
+            - TREND_EQUAL
+        quality_index_graph:
+          type: array
+          description: The data in the current page
+          items:
+            type: object
+            description: Connectivity experience quality sequence
+            required:
+              - timestamp
+              - quality_index
+            properties:
+              timestamp:
+                type: integer
+                format: int64
+              quality_index:
+                type: integer
+                minimum: 1
+                maximum: 10
+    XiqCopilotConnectivityExperiences:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotConnectivityExperience'
+    XiqCopilotWirelessQualityIndex:
+      type: object
+      description: Wireless Connectivity Experience QualityIndex
+      required:
+        - quality_index
+        - time_to_connect_score
+        - performance_score
+      properties:
+        quality_index:
+          type: integer
+          minimum: 1
+          maximum: 10
+        time_to_connect_score:
+          type: integer
+          minimum: 1
+          maximum: 10
+        performance_score:
+          type: integer
+          minimum: 1
+          maximum: 10
+    XiqCopilotTimeToConnect:
+      type: object
+      description: Connectivity experience Time-To-Connect entity
+      required:
+        - timestamp
+        - quality_index
+        - total_clients
+        - time_to_connect_score
+        - above_assoc_threshold
+        - above_auth_threshold
+        - above_dhcp_threshold
+        - time_to_assoc
+        - time_to_auth
+        - time_to_dhcp
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        quality_index:
+          type: integer
+          minimum: 1
+          maximum: 10
+        total_clients:
+          type: integer
+        time_to_connect_score:
+          type: integer
+          minimum: 1
+          maximum: 10
+        above_assoc_threshold:
+          type: integer
+        above_auth_threshold:
+          type: integer
+        above_dhcp_threshold:
+          type: integer
+        time_to_assoc:
+          type: integer
+        time_to_auth:
+          type: integer
+        time_to_dhcp:
+          type: integer
+    XiqCopilotTimeToConnectForensics:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotTimeToConnect'
+    XiqCopilotPerformance:
+      type: object
+      description: Connectivity Experience Performance Entity
+      required:
+        - timestamp
+        - quality_index
+        - total_clients
+        - time_to_connect_score
+        - performance_score
+        - SNR
+        - retries
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        quality_index:
+          type: integer
+          minimum: 1
+          maximum: 10
+        time_to_connect_score:
+          type: integer
+          minimum: 1
+          maximum: 10
+        total_clients:
+          type: integer
+        performance_score:
+          type: integer
+          minimum: 1
+          maximum: 10
+        SNR:
+          type: integer
+          minimum: 1
+          maximum: 100
+        retries:
+          type: integer
+    XiqCopilotPerformanceForensics:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotPerformance'
+    XiqCopilotWirelessEvent:
+      type: object
+      description: Wireless Event Entity
+      required:
+        - average_value
+        - maximum_value
+        - mac
+        - ssid
+        - threshold
+      properties:
+        average_value:
+          type: number
+          format: double
+        maximum_value:
+          type: number
+          format: double
+        mac:
+          type: string
+        ssid:
+          type: string
+        threshold:
+          type: number
+          format: double
+    XiqCopilotWirelessEvents:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotWirelessEvent'
+    XiqCopilotWiredQualityIndex:
+      type: object
+      description: Wired Connectivity Experience QualityIndex
+      required:
+        - quality_index
+        - hardware_score
+      properties:
+        quality_index:
+          type: integer
+          minimum: 1
+          maximum: 10
+        hardware_score:
+          type: integer
+          minimum: 1
+          maximum: 10
+    XiqCopilotHardware:
+      type: object
+      description: Connectivity Experience Hardware entity
+      required:
+        - timestamp
+        - quality_index
+        - total_switches
+        - affected_ratio
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        quality_index:
+          type: integer
+          minimum: 1
+          maximum: 10
+        total_switches:
+          type: integer
+        affected_ratio:
+          type: integer
+          minimum: 1
+          maximum: 100
+    XiqCopilotHardwareForensics:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotHardware'
+    XiqCopilotWiredEvent:
+      type: object
+      description: Wired Event Entity
+      required:
+        - device_id
+        - hostname
+        - interface_errors
+        - maximum_errors
+        - mgmt_ip
+        - port
+        - serial_number
+      properties:
+        device_id:
+          type: string
+        hostname:
+          type: string
+        interface_errors:
+          type: number
+          format: double
+        maximum_errors:
+          type: number
+          format: double
+        mgmt_ip:
+          type: string
+        port:
+          type: string
+        serial_number:
+          type: string
+    XiqCopilotWiredEvents:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotWiredEvent'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response
@@ -13448,3 +14009,114 @@ components:
         minimum: 1
         type: integer
         format: int32
+    XiqWirelessViewBy:
+      in: query
+      description: View Experience By
+      name: viewBy
+      required: true
+      schema:
+        type: string
+        enum:
+          - LOCATION
+          - SSID
+          - OS-TYPE
+    XiqCopilotSortBy:
+      name: sortBy
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        type: string
+        enum:
+          - NAME
+          - QUALITY_INDEX
+    XiqWirelessViewIdentifier:
+      in: query
+      description: At least one view identifier required based on viewBy parameter
+      name: View Identifier
+      required: true
+      schema:
+        type: object
+        properties:
+          locationId:
+            type: string
+          ssid:
+            type: string
+          osType:
+            type: string
+        additionalProperties: false
+        minProperties: 1
+    XiqForensicView:
+      in: query
+      description: forensicView to select historical period
+      name: forensicView
+      required: true
+      schema:
+        type: string
+        enum:
+          - TWENTY_FOUR_HOURS
+          - ONE_HOUR
+          - ONE_DAY
+          - ONE_WEEK
+          - SEVEN_DAYS
+          - THIRTY_DAYS
+          - NINETY_DAYS
+    XiqWirelessScoreType:
+      in: query
+      description: View Event By
+      name: scoreType
+      required: true
+      schema:
+        type: string
+        enum:
+          - TIME_TO_AUTHENTICATE
+          - TIME_TO_ASSOCIATE
+          - TIME_TO_DHCP
+    XiqCopilotWirelessSortBy:
+      name: sortBy
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        type: string
+        enum:
+          - AVERAGE
+    XiqWiredViewBy:
+      in: query
+      description: View Wired Experience By
+      name: viewBy
+      required: true
+      schema:
+        type: string
+        enum:
+          - LOCATION
+    XiqWiredViewIdentifier:
+      in: query
+      description: At least one view identifier required based on viewBy parameter
+      name: View Identifier
+      required: true
+      schema:
+        type: object
+        properties:
+          locationId:
+            type: string
+        additionalProperties: false
+        minProperties: 1
+    XiqWiredScoreType:
+      in: query
+      description: View Event By
+      name: scoreType
+      required: true
+      schema:
+        type: string
+        enum:
+          - PORT_ERRORS
+    XiqCopilotWiredSortBy:
+      name: sortBy
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        type: string
+        enum:
+          - IN_ERRORS

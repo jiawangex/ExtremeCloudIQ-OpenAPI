@@ -1,7 +1,9 @@
-type: object
-properties:
-  wired_hardware_list:
-    type: array
-    description: The Hardware list
-    items:
-      $ref: ./XiqCopilotHardware.yaml
+allOf:
+  - $ref: ../../../common/components/schemas/XiqPage.yaml
+  - type: object
+    properties:
+      data:
+        type: array
+        description: The data in the current page
+        items:
+          $ref: ./XiqCopilotHardware.yaml

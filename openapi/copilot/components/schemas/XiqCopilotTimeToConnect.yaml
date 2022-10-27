@@ -11,9 +11,6 @@ required:
   - time_to_assoc
   - time_to_auth
   - time_to_dhcp
-  - performance_score
-  - SNR
-  - retries
 properties:
   timestamp:
     type: integer
@@ -39,14 +36,4 @@ properties:
   time_to_auth:
     type: integer
   time_to_dhcp:
-    type: integer
-  performance_score:
-    type: integer
-    minimum: 1
-    maximum: 10
-  SNR:
-    type: integer
-    minimum: 1
-    maximum: 100
-  retries:
     type: integer

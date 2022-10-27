@@ -1,7 +1,9 @@
-type: object
-properties:
-  wired_experiences_list:
-    type: array
-    description: The connectivity experience entity list
-    items:
-      $ref: ./XiqCopilotConnectivityExperience.yaml
+allOf:
+  - $ref: ../../../common/components/schemas/XiqPage.yaml
+  - type: object
+    properties:
+      data:
+        type: array
+        description: The data in the current page
+        items:
+          $ref: ./XiqCopilotConnectivityExperience.yaml

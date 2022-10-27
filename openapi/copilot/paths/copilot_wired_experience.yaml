@@ -2,7 +2,7 @@ get:
   tags:
     - Copilot
   summary: Get Wired Connectivity Experience
-  description: Get Wired Connectivity Experience by location / ssid / os-type.
+  description: List a page of Quality-Index trends by selected view type.
   externalDocs:
     description: API Reference
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_experience
@@ -11,7 +11,10 @@ get:
     - $ref: ../components/schemas/XiqWiredViewBy.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
     - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../components/schemas/XiqCopilotSortBy.yaml
+    - $ref: ../../common/components/parameters/query/order.yaml
   responses:
     '200':
       description: OK

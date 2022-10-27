@@ -1,7 +1,9 @@
-type: object
-properties:
-  time_to_connect_list:
-    type: array
-    description: The Time-To-Connect list
-    items:
-      $ref: ./XiqCopilotTimeToConnect.yaml
+allOf:
+  - $ref: ../../../common/components/schemas/XiqPage.yaml
+  - type: object
+    properties:
+      data:
+        type: array
+        description: The data in the current page
+        items:
+          $ref: ./XiqCopilotTimeToConnect.yaml
