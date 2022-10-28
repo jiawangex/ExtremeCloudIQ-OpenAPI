@@ -1,0 +1,41 @@
+type: object
+description: Experience Entity
+required:
+  - id
+  - name
+  - quality_index
+  - trend_indicator
+  - quality_index_graph
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  quality_index:
+    type: integer
+    minimum: 1
+    maximum: 10
+  trend_indicator:
+    type: string
+    enum:
+      - TREND_UNSPECIFIED
+      - TREND_UP
+      - TREND_DOWN
+      - TREND_EQUAL
+  quality_index_graph:
+    type: array
+    description: The data in the current page
+    items:
+      type: object
+      description: Connectivity experience quality sequence
+      required:
+        - timestamp
+        - quality_index
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        quality_index:
+          type: integer
+          minimum: 1
+          maximum: 10

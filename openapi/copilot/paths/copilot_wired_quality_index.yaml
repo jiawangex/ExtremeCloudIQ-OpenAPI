@@ -8,9 +8,9 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_quality_index
   operationId: getWiredQualityIndex
   parameters:
-    - $ref: ../components/schemas/XiqWiredViewBy.yaml
+    - $ref: ../components/schemas/XiqWiredViewType.yaml
     - $ref: ../components/schemas/XiqWiredViewIdentifier.yaml
-    - $ref: ../components/schemas/XiqForensicView.yaml
+    - $ref: ../components/schemas/XiqForensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
   responses:

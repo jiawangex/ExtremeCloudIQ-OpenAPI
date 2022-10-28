@@ -8,7 +8,7 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_views
   operationId: getWirelessViews
   parameters:
-    - $ref: ../components/schemas/XiqWirelessViewBy.yaml
+    - $ref: ../components/schemas/XiqWirelessViewType.yaml
   responses:
     '200':
       description: OK

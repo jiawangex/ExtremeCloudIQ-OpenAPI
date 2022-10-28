@@ -1,6 +1,6 @@
 in: query
 description: View Experience By
-name: viewBy
+name: viewType
 required: true
 schema:
   type: string

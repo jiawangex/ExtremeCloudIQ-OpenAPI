@@ -6391,7 +6391,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_experience
       operationId: getWirelessExperience
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewType'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
@@ -6404,7 +6404,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotConnectivityExperiences'
+                $ref: '#/components/schemas/XiqCopilotConnectivityExperience'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -6421,9 +6421,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_quality_index
       operationId: getWirelessQualityIndex
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewType'
         - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6451,9 +6451,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_time_to_connect
       operationId: getWirelessTimeToConnect
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewType'
         - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
@@ -6481,9 +6481,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_performance
       operationId: getWirelessPerformance
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewType'
         - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
@@ -6511,10 +6511,10 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_events
       operationId: getWirelessEvents
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewType'
         - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
         - $ref: '#/components/parameters/XiqWirelessScoreType'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
@@ -6544,9 +6544,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_apps
       operationId: getWirelessApps
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewType'
         - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6572,7 +6572,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_views
       operationId: getWirelessViews
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewBy'
+        - $ref: '#/components/parameters/XiqWirelessViewType'
       responses:
         '200':
           description: OK
@@ -6596,7 +6596,7 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_experience
       operationId: getWiredExperience
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/XiqWiredViewType'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
@@ -6609,7 +6609,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotConnectivityExperiences'
+                $ref: '#/components/schemas/XiqCopilotConnectivityExperience'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -6626,9 +6626,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_quality_index
       operationId: getWiredQualityIndex
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/XiqWiredViewType'
         - $ref: '#/components/parameters/XiqWiredViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6654,9 +6654,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_hardware
       operationId: getWiredHardware
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/XiqWiredViewType'
         - $ref: '#/components/parameters/XiqWiredViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
@@ -6667,7 +6667,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotHardwareForensics'
+                $ref: '#/components/schemas/XiqCopilotHardware'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -6684,10 +6684,10 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_events
       operationId: getWiredEvents
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewBy'
+        - $ref: '#/components/parameters/XiqWiredViewType'
         - $ref: '#/components/parameters/XiqWiredViewIdentifier'
         - $ref: '#/components/parameters/XiqWiredScoreType'
-        - $ref: '#/components/parameters/XiqForensicView'
+        - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
@@ -13652,7 +13652,7 @@ components:
               description: The data in the current page
               items:
                 $ref: '#/components/schemas/XiqCertificate'
-    XiqCopilotConnectivityExperience:
+    XiqCopilotConnectivityExperienceEntity:
       type: object
       description: Experience Entity
       required:
@@ -13694,7 +13694,7 @@ components:
                 type: integer
                 minimum: 1
                 maximum: 10
-    XiqCopilotConnectivityExperiences:
+    XiqCopilotConnectivityExperience:
       allOf:
         - $ref: '#/components/schemas/XiqPage'
         - type: object
@@ -13703,7 +13703,7 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotConnectivityExperience'
+                $ref: '#/components/schemas/XiqCopilotConnectivityExperienceEntity'
     XiqCopilotWirelessQualityIndex:
       type: object
       description: Wireless Connectivity Experience QualityIndex
@@ -13887,7 +13887,7 @@ components:
           type: integer
           minimum: 1
           maximum: 10
-    XiqCopilotHardware:
+    XiqCopilotHardwareEntity:
       type: object
       description: Connectivity Experience Hardware entity
       required:
@@ -13909,7 +13909,7 @@ components:
           type: integer
           minimum: 1
           maximum: 100
-    XiqCopilotHardwareForensics:
+    XiqCopilotHardware:
       allOf:
         - $ref: '#/components/schemas/XiqPage'
         - type: object
@@ -13918,8 +13918,8 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotHardware'
-    XiqCopilotWiredEvent:
+                $ref: '#/components/schemas/XiqCopilotHardwareEntity'
+    XiqCopilotWiredEventEntity:
       type: object
       description: Wired Event Entity
       required:
@@ -13956,7 +13956,7 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotWiredEvent'
+                $ref: '#/components/schemas/XiqCopilotWiredEventEntity'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response
@@ -14081,10 +14081,10 @@ components:
         minimum: 1
         type: integer
         format: int32
-    XiqWirelessViewBy:
+    XiqWirelessViewType:
       in: query
       description: View Experience By
-      name: viewBy
+      name: viewType
       required: true
       schema:
         type: string
@@ -14118,10 +14118,10 @@ components:
             type: string
         additionalProperties: false
         minProperties: 1
-    XiqForensicView:
+    XiqForensicBucket:
       in: query
       description: forensicView to select historical period
-      name: forensicView
+      name: forensicBucket
       required: true
       schema:
         type: string
@@ -14153,10 +14153,10 @@ components:
         type: string
         enum:
           - AVERAGE
-    XiqWiredViewBy:
+    XiqWiredViewType:
       in: query
       description: View Wired Experience By
-      name: viewBy
+      name: viewType
       required: true
       schema:
         type: string
@@ -14165,15 +14165,10 @@ components:
     XiqWiredViewIdentifier:
       in: query
       description: At least one view identifier required based on viewBy parameter
-      name: View Identifier
+      name: viewId
       required: true
       schema:
-        type: object
-        properties:
-          locationId:
-            type: string
-        additionalProperties: false
-        minProperties: 1
+        type: string
     XiqWiredScoreType:
       in: query
       description: View Event By

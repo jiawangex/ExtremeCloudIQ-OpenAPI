@@ -1,6 +1,6 @@
 in: query
 description: View Wired Experience By
-name: viewBy
+name: viewType
 required: true
 schema:
   type: string

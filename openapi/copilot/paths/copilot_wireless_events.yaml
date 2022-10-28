@@ -8,10 +8,10 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_events
   operationId: getWirelessEvents
   parameters:
-    - $ref: ../components/schemas/XiqWirelessViewBy.yaml
+    - $ref: ../components/schemas/XiqWirelessViewType.yaml
     - $ref: ../components/schemas/XiqWirelessViewIdentifier.yaml
     - $ref: ../components/schemas/XiqWirelessScoreType.yaml
-    - $ref: ../components/schemas/XiqForensicView.yaml
+    - $ref: ../components/schemas/XiqForensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
     - $ref: ../../common/components/parameters/query/page.yaml

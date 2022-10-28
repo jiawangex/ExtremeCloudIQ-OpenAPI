@@ -1,6 +1,6 @@
 in: query
 description: forensicView to select historical period
-name: forensicView
+name: forensicBucket
 required: true
 schema:
   type: string
