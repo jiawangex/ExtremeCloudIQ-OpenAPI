@@ -18,10 +18,9 @@ properties:
   trend_indicator:
     type: string
     enum:
-      - TREND_UNSPECIFIED
-      - TREND_UP
-      - TREND_DOWN
-      - TREND_EQUAL
+      - UP
+      - DOWN
+      - EQUAL
   quality_index_graph:
     type: array
     description: The data in the current page
