@@ -13659,6 +13659,7 @@ components:
       required:
         - id
         - name
+        - type
         - quality_index
         - trend_indicator
         - quality_index_graph
@@ -13666,6 +13667,8 @@ components:
         id:
           type: string
         name:
+          type: string
+        type:
           type: string
         quality_index:
           type: integer
