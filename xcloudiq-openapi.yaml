@@ -6693,6 +6693,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/XiqCopilotWiredSortBy'
+        - $ref: '#/components/parameters/XiqSearchKey'
         - $ref: '#/components/parameters/order'
       responses:
         '200':
@@ -14104,20 +14105,11 @@ components:
           - QUALITY_INDEX
     XiqWirelessViewIdentifier:
       in: query
-      description: At least one view identifier required based on viewBy parameter
-      name: View Identifier
+      description: viewId required based on selected view type
+      name: viewId
       required: true
       schema:
-        type: object
-        properties:
-          locationId:
-            type: string
-          ssid:
-            type: string
-          osType:
-            type: string
-        additionalProperties: false
-        minProperties: 1
+        type: string
     XiqForensicBucket:
       in: query
       description: forensicView to select historical period
@@ -14187,3 +14179,10 @@ components:
         type: string
         enum:
           - IN_ERRORS
+    XiqSearchKey:
+      in: query
+      description: Search keyword
+      name: searchKey
+      required: false
+      schema:
+        type: string
