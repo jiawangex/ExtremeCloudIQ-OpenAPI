@@ -1,5 +1,5 @@
 in: query
-description: View Event By
+description: The wired score type
 name: scoreType
 required: true
 schema:

@@ -13655,7 +13655,7 @@ components:
                 $ref: '#/components/schemas/XiqCertificate'
     XiqCopilotConnectivityExperienceEntity:
       type: object
-      description: Experience Entity
+      description: Copilot Experience Entity
       required:
         - id
         - name
@@ -14086,7 +14086,7 @@ components:
         format: int32
     XiqWirelessViewType:
       in: query
-      description: View Experience By
+      description: The wireless experience view type
       name: viewType
       required: true
       schema:
@@ -14107,14 +14107,14 @@ components:
           - QUALITY_INDEX
     XiqWirelessViewIdentifier:
       in: query
-      description: viewId required based on selected view type
+      description: The view identifier based on selected view type
       name: viewId
       required: true
       schema:
         type: string
     XiqForensicBucket:
       in: query
-      description: forensicView to select historical period
+      description: The historical period bucket
       name: forensicBucket
       required: true
       schema:
@@ -14129,7 +14129,7 @@ components:
           - NINETY_DAYS
     XiqWirelessScoreType:
       in: query
-      description: View Event By
+      description: The wireless score type
       name: scoreType
       required: true
       schema:
@@ -14149,7 +14149,7 @@ components:
           - AVERAGE
     XiqWiredViewType:
       in: query
-      description: View Wired Experience By
+      description: The wired experience view type
       name: viewType
       required: true
       schema:
@@ -14158,14 +14158,14 @@ components:
           - LOCATION
     XiqWiredViewIdentifier:
       in: query
-      description: At least one view identifier required based on viewBy parameter
+      description: The view identifier based on selected view type
       name: viewId
       required: true
       schema:
         type: string
     XiqWiredScoreType:
       in: query
-      description: View Event By
+      description: The wired score type
       name: scoreType
       required: true
       schema:
@@ -14183,7 +14183,7 @@ components:
           - IN_ERRORS
     XiqSearchKey:
       in: query
-      description: Search keyword
+      description: The search keyword
       name: searchKey
       required: false
       schema:

@@ -1,5 +1,5 @@
 in: query
-description: View Experience By
+description: The wireless experience view type
 name: viewType
 required: true
 schema:

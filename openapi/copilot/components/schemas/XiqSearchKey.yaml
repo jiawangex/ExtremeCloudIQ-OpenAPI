@@ -1,5 +1,5 @@
 in: query
-description: Search keyword
+description: The search keyword
 name: searchKey
 required: false
 schema:

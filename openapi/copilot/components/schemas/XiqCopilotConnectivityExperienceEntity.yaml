@@ -1,5 +1,5 @@
 type: object
-description: Experience Entity
+description: Copilot Experience Entity
 required:
   - id
   - name

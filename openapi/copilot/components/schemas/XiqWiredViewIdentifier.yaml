@@ -1,5 +1,5 @@
 in: query
-description: At least one view identifier required based on viewBy parameter
+description: The view identifier based on selected view type
 name: viewId
 required: true
 schema:

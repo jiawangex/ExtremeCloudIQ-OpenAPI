@@ -1,5 +1,5 @@
 in: query
-description: View Wired Experience By
+description: The wired experience view type
 name: viewType
 required: true
 schema:
