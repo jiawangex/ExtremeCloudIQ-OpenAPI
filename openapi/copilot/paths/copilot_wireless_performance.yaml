@@ -21,7 +21,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotPerformanceForensics.yaml
+            $ref: ../components/schemas/XiqCopilotPerformance.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

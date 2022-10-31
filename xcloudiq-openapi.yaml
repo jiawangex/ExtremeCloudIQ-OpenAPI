@@ -6464,7 +6464,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotTimeToConnectForensics'
+                $ref: '#/components/schemas/XiqCopilotTimeToConnect'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -6494,7 +6494,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotPerformanceForensics'
+                $ref: '#/components/schemas/XiqCopilotPerformance'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -13727,7 +13727,7 @@ components:
           type: integer
           minimum: 1
           maximum: 10
-    XiqCopilotTimeToConnect:
+    XiqCopilotTimeToConnectEntity:
       type: object
       description: Connectivity experience Time-To-Connect entity
       required:
@@ -13767,7 +13767,7 @@ components:
           type: integer
         time_to_dhcp:
           type: integer
-    XiqCopilotTimeToConnectForensics:
+    XiqCopilotTimeToConnect:
       allOf:
         - $ref: '#/components/schemas/XiqPage'
         - type: object
@@ -13776,8 +13776,8 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotTimeToConnect'
-    XiqCopilotPerformance:
+                $ref: '#/components/schemas/XiqCopilotTimeToConnectEntity'
+    XiqCopilotPerformanceEntity:
       type: object
       description: Connectivity Experience Performance Entity
       required:
@@ -13812,7 +13812,7 @@ components:
           maximum: 100
         retries:
           type: integer
-    XiqCopilotPerformanceForensics:
+    XiqCopilotPerformance:
       allOf:
         - $ref: '#/components/schemas/XiqPage'
         - type: object
@@ -13821,7 +13821,7 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotPerformance'
+                $ref: '#/components/schemas/XiqCopilotPerformanceEntity'
     XiqCopilotWirelessEvent:
       type: object
       description: Wireless Event Entity

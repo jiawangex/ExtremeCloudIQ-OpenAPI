@@ -21,7 +21,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotTimeToConnectForensics.yaml
+            $ref: ../components/schemas/XiqCopilotTimeToConnect.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:
