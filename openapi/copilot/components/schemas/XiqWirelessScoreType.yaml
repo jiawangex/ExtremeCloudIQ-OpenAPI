@@ -8,3 +8,4 @@ schema:
     - TIME_TO_AUTHENTICATE
     - TIME_TO_ASSOCIATE
     - TIME_TO_DHCP
+    - RETRIES

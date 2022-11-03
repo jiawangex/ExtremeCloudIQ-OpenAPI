@@ -13679,7 +13679,7 @@ components:
           enum:
             - UP
             - DOWN
-            - FLAT
+            - EQUAL
         quality_index_graph:
           type: array
           description: The data in the current page
@@ -14094,7 +14094,7 @@ components:
         enum:
           - LOCATION
           - SSID
-          - OS-TYPE
+          - OS
     XiqCopilotSortBy:
       name: sortBy
       in: query
@@ -14138,6 +14138,7 @@ components:
           - TIME_TO_AUTHENTICATE
           - TIME_TO_ASSOCIATE
           - TIME_TO_DHCP
+          - RETRIES
     XiqCopilotWirelessSortBy:
       name: sortBy
       in: query
