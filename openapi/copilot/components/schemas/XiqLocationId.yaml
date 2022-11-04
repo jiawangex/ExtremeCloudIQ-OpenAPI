@@ -1,0 +1,6 @@
+in: query
+description: The location id
+name: locationId
+required: false
+schema:
+  type: string

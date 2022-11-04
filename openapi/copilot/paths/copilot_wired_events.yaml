@@ -17,9 +17,10 @@ get:
     - $ref: ../../common/components/parameters/query/page.yaml
     - $ref: ../../common/components/parameters/query/limit.yaml
     - $ref: ../components/schemas/XiqCopilotWiredSortBy.yaml
-    - $ref: ../components/schemas/XiqSearchKey.yaml
     - $ref: ../../common/components/parameters/query/order.yaml
-
+    - $ref: ../components/schemas/XiqSearchKey.yaml
+    - $ref: ../components/schemas/XiqLocationType.yaml
+    - $ref: ../components/schemas/XiqLocationId.yaml
   responses:
     '200':
       description: OK

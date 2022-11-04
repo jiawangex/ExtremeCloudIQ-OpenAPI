@@ -6456,8 +6456,6 @@ paths:
         - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/limit'
       responses:
         '200':
           description: OK
@@ -6486,8 +6484,6 @@ paths:
         - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/limit'
       responses:
         '200':
           description: OK
@@ -6521,6 +6517,9 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/XiqCopilotWirelessSortBy'
         - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/XiqSearchKey'
+        - $ref: '#/components/parameters/XiqLocationType'
+        - $ref: '#/components/parameters/XiqLocationId'
       responses:
         '200':
           description: OK
@@ -6659,8 +6658,6 @@ paths:
         - $ref: '#/components/parameters/XiqForensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/limit'
       responses:
         '200':
           description: OK
@@ -6693,8 +6690,10 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/XiqCopilotWiredSortBy'
-        - $ref: '#/components/parameters/XiqSearchKey'
         - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/XiqSearchKey'
+        - $ref: '#/components/parameters/XiqLocationType'
+        - $ref: '#/components/parameters/XiqLocationId'
       responses:
         '200':
           description: OK
@@ -13741,6 +13740,7 @@ components:
         - time_to_assoc
         - time_to_auth
         - time_to_dhcp
+        - performance_score
       properties:
         timestamp:
           type: integer
@@ -13768,15 +13768,13 @@ components:
         time_to_dhcp:
           type: integer
     XiqCopilotTimeToConnect:
-      allOf:
-        - $ref: '#/components/schemas/XiqPage'
-        - type: object
-          properties:
-            data:
-              type: array
-              description: The data in the current page
-              items:
-                $ref: '#/components/schemas/XiqCopilotTimeToConnectEntity'
+      type: object
+      properties:
+        quality_index_graph:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqCopilotTimeToConnectEntity'
     XiqCopilotPerformanceEntity:
       type: object
       description: Connectivity Experience Performance Entity
@@ -13813,15 +13811,13 @@ components:
         retries:
           type: integer
     XiqCopilotPerformance:
-      allOf:
-        - $ref: '#/components/schemas/XiqPage'
-        - type: object
-          properties:
-            data:
-              type: array
-              description: The data in the current page
-              items:
-                $ref: '#/components/schemas/XiqCopilotPerformanceEntity'
+      type: object
+      properties:
+        quality_index_graph:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqCopilotPerformanceEntity'
     XiqCopilotWirelessEvent:
       type: object
       description: Wireless Event Entity
@@ -13829,7 +13825,7 @@ components:
         - average_value
         - maximum_value
         - mac
-        - ssid
+        - info
         - threshold
       properties:
         average_value:
@@ -13840,7 +13836,7 @@ components:
           format: double
         mac:
           type: string
-        ssid:
+        info:
           type: string
         threshold:
           type: number
@@ -13913,15 +13909,13 @@ components:
           minimum: 1
           maximum: 100
     XiqCopilotHardware:
-      allOf:
-        - $ref: '#/components/schemas/XiqPage'
-        - type: object
-          properties:
-            data:
-              type: array
-              description: The data in the current page
-              items:
-                $ref: '#/components/schemas/XiqCopilotHardwareEntity'
+      type: object
+      properties:
+        quality_index_graph:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqCopilotHardwareEntity'
     XiqCopilotWiredEventEntity:
       type: object
       description: Wired Event Entity
@@ -14148,6 +14142,27 @@ components:
         type: string
         enum:
           - AVERAGE
+    XiqSearchKey:
+      in: query
+      description: The search keyword
+      name: searchKey
+      required: false
+      schema:
+        type: string
+    XiqLocationType:
+      in: query
+      description: The location type
+      name: locationType
+      required: false
+      schema:
+        type: string
+    XiqLocationId:
+      in: query
+      description: The location id
+      name: locationId
+      required: false
+      schema:
+        type: string
     XiqWiredViewType:
       in: query
       description: The wired experience view type
@@ -14182,10 +14197,3 @@ components:
         type: string
         enum:
           - IN_ERRORS
-    XiqSearchKey:
-      in: query
-      description: The search keyword
-      name: searchKey
-      required: false
-      schema:
-        type: string

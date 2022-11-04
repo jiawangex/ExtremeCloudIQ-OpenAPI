@@ -4,7 +4,7 @@ required:
   - average_value
   - maximum_value
   - mac
-  - ssid
+  - info
   - threshold
 properties:
   average_value:
@@ -15,7 +15,7 @@ properties:
     format: double
   mac:
     type: string
-  ssid:
+  info:
     type: string
   threshold:
     type: number

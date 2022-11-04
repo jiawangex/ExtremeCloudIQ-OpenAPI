@@ -13,8 +13,6 @@ get:
     - $ref: ../components/schemas/XiqForensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
-    - $ref: ../../common/components/parameters/query/page.yaml
-    - $ref: ../../common/components/parameters/query/limit.yaml
   responses:
     '200':
       description: OK
