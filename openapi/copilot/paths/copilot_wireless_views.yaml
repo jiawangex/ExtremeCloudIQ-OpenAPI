@@ -8,14 +8,16 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_views
   operationId: getWirelessViews
   parameters:
-    - $ref: ../components/schemas/XiqWirelessViewType.yaml
+    - $ref: ../components/query/wirelessViewType.yaml
   responses:
     '200':
       description: OK
       content:
         application/json:
           schema:
-            type: string
+            type: array
+            items:
+              type: string
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

@@ -8,9 +8,9 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_hardware
   operationId: getWiredHardware
   parameters:
-    - $ref: ../components/schemas/XiqWiredViewType.yaml
-    - $ref: ../components/schemas/XiqWiredViewIdentifier.yaml
-    - $ref: ../components/schemas/XiqForensicBucket.yaml
+    - $ref: ../components/query/wiredViewType.yaml
+    - $ref: ../components/query/wiredViewIdentifier.yaml
+    - $ref: ../components/query/forensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
   responses:

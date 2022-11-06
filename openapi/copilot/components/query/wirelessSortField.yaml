@@ -1,4 +1,4 @@
-name: sortBy
+name: sortField
 in: query
 description: The sort field
 required: false

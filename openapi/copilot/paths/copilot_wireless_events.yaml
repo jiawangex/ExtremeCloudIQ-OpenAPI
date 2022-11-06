@@ -8,19 +8,19 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_events
   operationId: getWirelessEvents
   parameters:
-    - $ref: ../components/schemas/XiqWirelessViewType.yaml
-    - $ref: ../components/schemas/XiqWirelessViewIdentifier.yaml
-    - $ref: ../components/schemas/XiqWirelessScoreType.yaml
-    - $ref: ../components/schemas/XiqForensicBucket.yaml
+    - $ref: ../components/query/wirelessViewType.yaml
+    - $ref: ../components/query/wirelessViewIdentifier.yaml
+    - $ref: ../components/query/wirelessScoreType.yaml
+    - $ref: ../components/query/forensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
     - $ref: ../../common/components/parameters/query/page.yaml
     - $ref: ../../common/components/parameters/query/limit.yaml
-    - $ref: ../components/schemas/XiqCopilotWirelessSortBy.yaml
-    - $ref: ../../common/components/parameters/query/order.yaml
-    - $ref: ../components/schemas/XiqSearchKey.yaml
-    - $ref: ../components/schemas/XiqLocationType.yaml
-    - $ref: ../components/schemas/XiqLocationId.yaml
+    - $ref: ../components/query/wirelessSortField.yaml
+    - $ref: ../components/query/sortOrder.yaml
+    - $ref: ../components/query/searchKey.yaml
+    - $ref: ../components/query/locationType.yaml
+    - $ref: ../components/query/locationId.yaml
   responses:
     '200':
       description: OK

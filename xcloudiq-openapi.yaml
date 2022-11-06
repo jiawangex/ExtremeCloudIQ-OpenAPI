@@ -6391,13 +6391,13 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_experience
       operationId: getWirelessExperience
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewType'
+        - $ref: '#/components/parameters/wirelessViewType'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/XiqCopilotSortBy'
-        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/wirelessSortField'
+        - $ref: '#/components/parameters/sortOrder'
       responses:
         '200':
           description: OK
@@ -6421,9 +6421,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_quality_index
       operationId: getWirelessQualityIndex
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewType'
-        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wirelessViewType'
+        - $ref: '#/components/parameters/wirelessViewIdentifier'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6451,9 +6451,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_time_to_connect
       operationId: getWirelessTimeToConnect
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewType'
-        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wirelessViewType'
+        - $ref: '#/components/parameters/wirelessViewIdentifier'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6479,9 +6479,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_performance
       operationId: getWirelessPerformance
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewType'
-        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wirelessViewType'
+        - $ref: '#/components/parameters/wirelessViewIdentifier'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6507,19 +6507,19 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_events
       operationId: getWirelessEvents
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewType'
-        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqWirelessScoreType'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wirelessViewType'
+        - $ref: '#/components/parameters/wirelessViewIdentifier'
+        - $ref: '#/components/parameters/wirelessScoreType'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/XiqCopilotWirelessSortBy'
-        - $ref: '#/components/parameters/order'
-        - $ref: '#/components/parameters/XiqSearchKey'
-        - $ref: '#/components/parameters/XiqLocationType'
-        - $ref: '#/components/parameters/XiqLocationId'
+        - $ref: '#/components/parameters/wirelessSortField'
+        - $ref: '#/components/parameters/sortOrder'
+        - $ref: '#/components/parameters/searchKey'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6543,9 +6543,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_apps
       operationId: getWirelessApps
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewType'
-        - $ref: '#/components/parameters/XiqWirelessViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wirelessViewType'
+        - $ref: '#/components/parameters/wirelessViewIdentifier'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6571,14 +6571,16 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_views
       operationId: getWirelessViews
       parameters:
-        - $ref: '#/components/parameters/XiqWirelessViewType'
+        - $ref: '#/components/parameters/wirelessViewType'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: string
+                type: array
+                items:
+                  type: string
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -6595,13 +6597,13 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_experience
       operationId: getWiredExperience
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewType'
+        - $ref: '#/components/parameters/wiredViewType'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/XiqCopilotSortBy'
-        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/wiredSortField'
+        - $ref: '#/components/parameters/sortOrder'
       responses:
         '200':
           description: OK
@@ -6625,9 +6627,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_quality_index
       operationId: getWiredQualityIndex
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewType'
-        - $ref: '#/components/parameters/XiqWiredViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wiredViewType'
+        - $ref: '#/components/parameters/wiredViewIdentifier'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6653,9 +6655,9 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_hardware
       operationId: getWiredHardware
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewType'
-        - $ref: '#/components/parameters/XiqWiredViewIdentifier'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wiredViewType'
+        - $ref: '#/components/parameters/wiredViewIdentifier'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
       responses:
@@ -6681,19 +6683,19 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_events
       operationId: getWiredEvents
       parameters:
-        - $ref: '#/components/parameters/XiqWiredViewType'
-        - $ref: '#/components/parameters/XiqWiredViewIdentifier'
-        - $ref: '#/components/parameters/XiqWiredScoreType'
-        - $ref: '#/components/parameters/XiqForensicBucket'
+        - $ref: '#/components/parameters/wiredViewType'
+        - $ref: '#/components/parameters/wiredViewIdentifier'
+        - $ref: '#/components/parameters/wiredScoreType'
+        - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/XiqCopilotWiredSortBy'
-        - $ref: '#/components/parameters/order'
-        - $ref: '#/components/parameters/XiqSearchKey'
-        - $ref: '#/components/parameters/XiqLocationType'
-        - $ref: '#/components/parameters/XiqLocationId'
+        - $ref: '#/components/parameters/wiredSortField'
+        - $ref: '#/components/parameters/sortOrder'
+        - $ref: '#/components/parameters/searchKey'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -14078,7 +14080,7 @@ components:
         minimum: 1
         type: integer
         format: int32
-    XiqWirelessViewType:
+    wirelessViewType:
       in: query
       description: The wireless experience view type
       name: viewType
@@ -14089,24 +14091,30 @@ components:
           - LOCATION
           - SSID
           - OS
-    XiqCopilotSortBy:
-      name: sortBy
+    wirelessSortField:
+      name: sortField
       in: query
       description: The sort field
       required: false
       schema:
         type: string
         enum:
-          - NAME
-          - QUALITY_INDEX
-    XiqWirelessViewIdentifier:
+          - AVERAGE
+    sortOrder:
+      name: sortOrder
+      in: query
+      description: The sort order (ascending by default)
+      required: false
+      schema:
+        $ref: '#/components/schemas/XiqSortOrder'
+    wirelessViewIdentifier:
       in: query
       description: The view identifier based on selected view type
       name: viewId
       required: true
       schema:
         type: string
-    XiqForensicBucket:
+    forensicBucket:
       in: query
       description: The historical period bucket
       name: forensicBucket
@@ -14121,7 +14129,7 @@ components:
           - SEVEN_DAYS
           - THIRTY_DAYS
           - NINETY_DAYS
-    XiqWirelessScoreType:
+    wirelessScoreType:
       in: query
       description: The wireless score type
       name: scoreType
@@ -14133,37 +14141,28 @@ components:
           - TIME_TO_ASSOCIATE
           - TIME_TO_DHCP
           - RETRIES
-    XiqCopilotWirelessSortBy:
-      name: sortBy
-      in: query
-      description: The sort field
-      required: false
-      schema:
-        type: string
-        enum:
-          - AVERAGE
-    XiqSearchKey:
+    searchKey:
       in: query
       description: The search keyword
       name: searchKey
       required: false
       schema:
         type: string
-    XiqLocationType:
+    locationType:
       in: query
       description: The location type
       name: locationType
       required: false
       schema:
         type: string
-    XiqLocationId:
+    locationId:
       in: query
       description: The location id
       name: locationId
       required: false
       schema:
         type: string
-    XiqWiredViewType:
+    wiredViewType:
       in: query
       description: The wired experience view type
       name: viewType
@@ -14172,14 +14171,23 @@ components:
         type: string
         enum:
           - LOCATION
-    XiqWiredViewIdentifier:
+    wiredSortField:
+      name: sortField
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        type: string
+        enum:
+          - IN_ERRORS
+    wiredViewIdentifier:
       in: query
       description: The view identifier based on selected view type
       name: viewId
       required: true
       schema:
         type: string
-    XiqWiredScoreType:
+    wiredScoreType:
       in: query
       description: The wired score type
       name: scoreType
@@ -14188,12 +14196,3 @@ components:
         type: string
         enum:
           - PORT_ERRORS
-    XiqCopilotWiredSortBy:
-      name: sortBy
-      in: query
-      description: The sort field
-      required: false
-      schema:
-        type: string
-        enum:
-          - IN_ERRORS
