@@ -1,7 +1,7 @@
 get:
   tags:
     - Copilot
-  summary: Get Wired Connectivity Events
+  summary: List Wired Connectivity Events
   description: List a page of wired events over a selected period of time.
   externalDocs:
     description: API Reference

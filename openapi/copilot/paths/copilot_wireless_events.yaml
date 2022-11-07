@@ -1,7 +1,7 @@
 get:
   tags:
     - Copilot
-  summary: Get Wireless Connectivity Events
+  summary: List Wireless Connectivity Events
   description: List a page of wireless events over a selected period of time.
   externalDocs:
     description: API Reference

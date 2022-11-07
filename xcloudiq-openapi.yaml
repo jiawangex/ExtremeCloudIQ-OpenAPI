@@ -6383,7 +6383,7 @@ paths:
     get:
       tags:
         - Copilot
-      summary: Get Wireless Connectivity Experience
+      summary: List Wireless Connectivity Experiences
       description: List a page of Quality-Index trends by selected view type.
       externalDocs:
         description: API Reference
@@ -6505,7 +6505,7 @@ paths:
     get:
       tags:
         - Copilot
-      summary: Get Wireless Connectivity Events
+      summary: List Wireless Connectivity Events
       description: List a page of wireless events over a selected period of time.
       externalDocs:
         description: API Reference
@@ -6597,7 +6597,7 @@ paths:
     get:
       tags:
         - Copilot
-      summary: Get Wired Connectivity Experience
+      summary: List Wired Connectivity Experiences
       description: List a page of Quality-Index trends by selected view type.
       externalDocs:
         description: API Reference
@@ -6687,7 +6687,7 @@ paths:
     get:
       tags:
         - Copilot
-      summary: Get Wired Connectivity Events
+      summary: List Wired Connectivity Events
       description: List a page of wired events over a selected period of time.
       externalDocs:
         description: API Reference
