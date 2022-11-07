@@ -17,8 +17,8 @@ externalDocs:
 servers:
   - $ref: ../server-default.yaml
 tags:
-  - name: Copilot
-    description: 'Connectivity Experience'
+  - name: Copilot - Connectivity Experience
+    description: 'The Copilot Connectivity Experience API'
 paths:
   /copilot/connectivity/wireless/experience:
     $ref: paths/copilot_wireless_experience.yaml

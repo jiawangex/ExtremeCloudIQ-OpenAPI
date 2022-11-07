@@ -1,18 +1,24 @@
 get:
   tags:
-    - Copilot
-  summary: Get Wireless Connectivity QualityIndex
-  description: Get Quality-Index for a specific view type.
+    - Copilot - Connectivity Experience
+  summary: List Wireless Connectivity Events
+  description: List a page of wireless events over a selected period of time.
   externalDocs:
     description: API Reference
-    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_quality_index
-  operationId: getWirelessQualityIndex
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_events
+  operationId: getWirelessEvents
   parameters:
     - $ref: ../components/query/wirelessViewType.yaml
     - $ref: ../components/query/wirelessViewIdentifier.yaml
+    - $ref: ../components/query/wirelessScoreType.yaml
     - $ref: ../components/query/forensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../components/query/wirelessSortField.yaml
+    - $ref: ../components/query/sortOrder.yaml
+    - $ref: ../components/query/searchKey.yaml
     - $ref: ../components/query/locationType.yaml
     - $ref: ../components/query/locationId.yaml
   responses:
@@ -21,7 +27,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotWirelessQualityIndex.yaml
+            $ref: ../components/schemas/XiqCopilotWirelessEvents.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

@@ -1,8 +1,8 @@
 get:
   tags:
-    - Copilot
+    - Copilot - Connectivity Experience
   summary: Get Wireless Connectivity Views
-  description: List all the views for a selected view type.
+  description: Get all the views for a selected view type.
   externalDocs:
     description: API Reference
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_views

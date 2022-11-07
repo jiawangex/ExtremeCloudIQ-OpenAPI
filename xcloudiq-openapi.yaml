@@ -86,8 +86,8 @@ tags:
     description: AD/LDAP/RADIUS/CWP/...
   - name: Configuration - Certificate
     description: Certificate
-  - name: Copilot
-    description: Connectivity Experience
+  - name: Copilot - Connectivity Experience
+    description: The Copilot Connectivity Experience API
 paths:
   /login:
     post:
@@ -6382,7 +6382,7 @@ paths:
   /copilot/connectivity/wireless/experience:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: List Wireless Connectivity Experiences
       description: List a page of Quality-Index trends by selected view type.
       externalDocs:
@@ -6412,7 +6412,7 @@ paths:
   /copilot/connectivity/wireless/quality-index:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: Get Wireless Connectivity QualityIndex
       description: Get Quality-Index for a specific view type.
       externalDocs:
@@ -6442,7 +6442,7 @@ paths:
   /copilot/connectivity/wireless/time-to-connect:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: Get Wireless Connectivity Time-To-Connect
       description: >-
         List a page of Time-To-Connect score data over a selected period of
@@ -6474,7 +6474,7 @@ paths:
   /copilot/connectivity/wireless/performance:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: Get Wireless Connectivity Performance
       description: List a page of Performance score data over a selected period of time.
       externalDocs:
@@ -6504,7 +6504,7 @@ paths:
   /copilot/connectivity/wireless/events:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: List Wireless Connectivity Events
       description: List a page of wireless events over a selected period of time.
       externalDocs:
@@ -6540,7 +6540,7 @@ paths:
   /copilot/connectivity/wireless/apps:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: Get Wireless Connectivity Apps Info
       description: Get app statistics for a specific view type.
       externalDocs:
@@ -6570,9 +6570,9 @@ paths:
   /copilot/connectivity/wireless/views:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: Get Wireless Connectivity Views
-      description: List all the views for a selected view type.
+      description: Get all the views for a selected view type.
       externalDocs:
         description: API Reference
         url: >-
@@ -6596,7 +6596,7 @@ paths:
   /copilot/connectivity/wired/experience:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: List Wired Connectivity Experiences
       description: List a page of Quality-Index trends by selected view type.
       externalDocs:
@@ -6626,7 +6626,7 @@ paths:
   /copilot/connectivity/wired/quality-index:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: Get Wired Connectivity QualityIndex
       description: Get Quality-Index for a specific view type.
       externalDocs:
@@ -6656,7 +6656,7 @@ paths:
   /copilot/connectivity/wired/hardware:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: Get Wired Connectivity Experience - Hardware
       description: List a page of hardware score data over a selected period of time.
       externalDocs:
@@ -6686,7 +6686,7 @@ paths:
   /copilot/connectivity/wired/events:
     get:
       tags:
-        - Copilot
+        - Copilot - Connectivity Experience
       summary: List Wired Connectivity Events
       description: List a page of wired events over a selected period of time.
       externalDocs:

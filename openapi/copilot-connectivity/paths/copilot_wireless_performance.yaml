@@ -1,12 +1,12 @@
 get:
   tags:
-    - Copilot
-  summary: Get Wireless Connectivity Apps Info
-  description: Get app statistics for a specific view type.
+    - Copilot - Connectivity Experience
+  summary: Get Wireless Connectivity Performance
+  description: List a page of Performance score data over a selected period of time.
   externalDocs:
     description: API Reference
-    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_apps
-  operationId: getWirelessApps
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_performance
+  operationId: getWirelessPerformance
   parameters:
     - $ref: ../components/query/wirelessViewType.yaml
     - $ref: ../components/query/wirelessViewIdentifier.yaml
@@ -21,7 +21,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotWirelessApps.yaml
+            $ref: ../components/schemas/XiqCopilotPerformance.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

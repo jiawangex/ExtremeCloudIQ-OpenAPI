@@ -1,15 +1,15 @@
 get:
   tags:
-    - Copilot
-  summary: Get Wireless Connectivity Time-To-Connect
-  description: List a page of Time-To-Connect score data over a selected period of time.
+    - Copilot - Connectivity Experience
+  summary: Get Wired Connectivity QualityIndex
+  description: Get Quality-Index for a specific view type.
   externalDocs:
     description: API Reference
-    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_time_to_connect
-  operationId: getWirelessTimeToConnect
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_quality_index
+  operationId: getWiredQualityIndex
   parameters:
-    - $ref: ../components/query/wirelessViewType.yaml
-    - $ref: ../components/query/wirelessViewIdentifier.yaml
+    - $ref: ../components/query/wiredViewType.yaml
+    - $ref: ../components/query/wiredViewIdentifier.yaml
     - $ref: ../components/query/forensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
@@ -21,7 +21,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotTimeToConnect.yaml
+            $ref: ../components/schemas/XiqCopilotWiredQualityIndex.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:
