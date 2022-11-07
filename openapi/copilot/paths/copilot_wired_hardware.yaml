@@ -13,6 +13,8 @@ get:
     - $ref: ../components/query/forensicBucket.yaml
     - $ref: ../../common/components/parameters/query/startTime.yaml
     - $ref: ../../common/components/parameters/query/endTime.yaml
+    - $ref: ../components/query/locationType.yaml
+    - $ref: ../components/query/locationId.yaml
   responses:
     '200':
       description: OK

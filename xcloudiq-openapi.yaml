@@ -6426,6 +6426,8 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6456,6 +6458,8 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6484,6 +6488,8 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6548,6 +6554,8 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6632,6 +6640,8 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6660,6 +6670,8 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/locationType'
+        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -14129,6 +14141,20 @@ components:
           - SEVEN_DAYS
           - THIRTY_DAYS
           - NINETY_DAYS
+    locationType:
+      in: query
+      description: The location type
+      name: locationType
+      required: false
+      schema:
+        type: string
+    locationId:
+      in: query
+      description: The location id
+      name: locationId
+      required: false
+      schema:
+        type: string
     wirelessScoreType:
       in: query
       description: The wireless score type
@@ -14145,20 +14171,6 @@ components:
       in: query
       description: The search keyword
       name: searchKey
-      required: false
-      schema:
-        type: string
-    locationType:
-      in: query
-      description: The location type
-      name: locationType
-      required: false
-      schema:
-        type: string
-    locationId:
-      in: query
-      description: The location id
-      name: locationId
       required: false
       schema:
         type: string
