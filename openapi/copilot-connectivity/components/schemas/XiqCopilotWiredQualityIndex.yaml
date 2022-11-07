@@ -1,0 +1,14 @@
+type: object
+description: Wired Connectivity Experience QualityIndex
+required:
+  - quality_index
+  - hardware_score
+properties:
+  quality_index:
+    type: integer
+    minimum: 1
+    maximum: 10
+  hardware_score:
+    type: integer
+    minimum: 1
+    maximum: 10

@@ -1,0 +1,21 @@
+type: object
+description: Connectivity Experience Hardware entity
+required:
+  - timestamp
+  - quality_index
+  - total_switches
+  - affected_ratio
+properties:
+  timestamp:
+    type: integer
+    format: int64
+  quality_index:
+    type: integer
+    minimum: 1
+    maximum: 10
+  total_switches:
+    type: integer
+  affected_ratio:
+    type: integer
+    minimum: 1
+    maximum: 100

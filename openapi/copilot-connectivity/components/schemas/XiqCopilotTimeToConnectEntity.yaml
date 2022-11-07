@@ -1,0 +1,40 @@
+type: object
+description: Connectivity experience Time-To-Connect entity
+required:
+  - timestamp
+  - quality_index
+  - total_clients
+  - time_to_connect_score
+  - above_assoc_threshold
+  - above_auth_threshold
+  - above_dhcp_threshold
+  - time_to_assoc
+  - time_to_auth
+  - time_to_dhcp
+  - performance_score
+properties:
+  timestamp:
+    type: integer
+    format: int64
+  quality_index:
+    type: integer
+    minimum: 1
+    maximum: 10
+  total_clients:
+    type: integer
+  time_to_connect_score:
+    type: integer
+    minimum: 1
+    maximum: 10
+  above_assoc_threshold:
+    type: integer
+  above_auth_threshold:
+    type: integer
+  above_dhcp_threshold:
+    type: integer
+  time_to_assoc:
+    type: integer
+  time_to_auth:
+    type: integer
+  time_to_dhcp:
+    type: integer

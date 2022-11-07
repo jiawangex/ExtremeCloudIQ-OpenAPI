@@ -1,0 +1,28 @@
+get:
+  tags:
+    - Copilot - Connectivity Experience
+  summary: List Wired Connectivity Experiences
+  description: List a page of Quality-Index trends by selected view type.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_experience
+  operationId: getWiredExperience
+  parameters:
+    - $ref: ../components/query/wiredViewType.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../components/query/wiredSortField.yaml
+    - $ref: ../components/query/sortOrder.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotConnectivityExperience.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

@@ -1,0 +1,7 @@
+type: object
+properties:
+  quality_index_graph:
+    type: array
+    description: The data in the current page
+    items:
+      $ref: ./XiqCopilotHardwareEntity.yaml

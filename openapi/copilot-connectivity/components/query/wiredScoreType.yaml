@@ -1,0 +1,8 @@
+in: query
+description: The wired score type
+name: scoreType
+required: true
+schema:
+  type: string
+  enum:
+    - PORT_ERRORS

@@ -1,0 +1,9 @@
+name: sortField
+in: query
+description: The sort field
+required: false
+schema:
+  type: string
+  enum:
+    - NAME
+    - QUALITY_INDEX

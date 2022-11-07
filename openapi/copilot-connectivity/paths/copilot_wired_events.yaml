@@ -1,0 +1,34 @@
+get:
+  tags:
+    - Copilot - Connectivity Experience
+  summary: List Wired Connectivity Events
+  description: List a page of wired events over a selected period of time.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wired_events
+  operationId: getWiredEvents
+  parameters:
+    - $ref: ../components/query/wiredViewType.yaml
+    - $ref: ../components/query/wiredViewIdentifier.yaml
+    - $ref: ../components/query/wiredScoreType.yaml
+    - $ref: ../components/query/forensicBucket.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../components/query/wiredSortField.yaml
+    - $ref: ../components/query/sortOrder.yaml
+    - $ref: ../components/query/searchKey.yaml
+    - $ref: ../components/query/locationType.yaml
+    - $ref: ../components/query/locationId.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotWiredEvents.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

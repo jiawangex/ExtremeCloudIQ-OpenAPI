@@ -1,0 +1,6 @@
+in: query
+description: The search keyword
+name: searchKey
+required: false
+schema:
+  type: string
