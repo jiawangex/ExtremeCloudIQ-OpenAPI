@@ -1,7 +1,7 @@
 type: object
 description: Wireless Event Entity
 required:
-  - device_id
+  - client_id
   - hostname
   - mac
   - average_value
@@ -10,7 +10,7 @@ required:
   - threshold
   - ssid
 properties:
-  device_id:
+  client_id:
     type: string
   hostname:
     type: string

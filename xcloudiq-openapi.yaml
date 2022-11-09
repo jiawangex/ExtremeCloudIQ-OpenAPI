@@ -13832,11 +13832,11 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqCopilotPerformanceEntity'
-    XiqCopilotWirelessEvent:
+    XiqCopilotWirelessEventEntity:
       type: object
       description: Wireless Event Entity
       required:
-        - device_id
+        - client_id
         - hostname
         - mac
         - average_value
@@ -13845,7 +13845,7 @@ components:
         - threshold
         - ssid
       properties:
-        device_id:
+        client_id:
           type: string
         hostname:
           type: string
@@ -13873,7 +13873,7 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotWirelessEvent'
+                $ref: '#/components/schemas/XiqCopilotWirelessEventEntity'
     XiqCopilotWirelessApps:
       type: object
       description: Wireless Connectivity Experience Apps
