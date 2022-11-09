@@ -8,9 +8,9 @@ properties:
     description: The owner ID
     format: int64
   timestamp:
-    type: string
+    type: integer
     description: The alert create time
-    format: date-time
+    format: int64
   org_id:
     type: integer
     description: The organization identifier, valid when enabling HIQ feature
