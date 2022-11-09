@@ -32,12 +32,12 @@ properties:
       description: Connectivity experience quality sequence
       required:
         - timestamp
-        - quality_index
+        - value
       properties:
         timestamp:
           type: integer
           format: int64
-        quality_index:
+        value:
           type: integer
           minimum: 1
           maximum: 10
