@@ -6,4 +6,4 @@ allOf:
         type: array
         description: The data in the current page
         items:
-          $ref: ./XiqCopilotWirelessEvent.yaml
+          $ref: ./XiqCopilotWirelessEventEntity.yaml
