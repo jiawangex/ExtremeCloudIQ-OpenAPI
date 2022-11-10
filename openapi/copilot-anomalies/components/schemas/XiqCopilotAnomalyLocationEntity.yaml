@@ -1,8 +1,8 @@
 type: object
 description: Anomaly Location Entity
 required:
-  - id
-  - name
+  - location_id
+  - location_name
   - pinned
   - muted
   - severity
@@ -12,9 +12,9 @@ required:
   - affected_device_count
   - last_detected_time
 properties:
-  id:
+  location_id:
     type: string
-  name:
+  location_name:
     type: string
   pinned:
     type: boolean
