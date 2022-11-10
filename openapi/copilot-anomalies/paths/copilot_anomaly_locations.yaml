@@ -1,0 +1,27 @@
+get:
+  tags:
+    - Copilot - Anomalies
+  summary: List Anomaly Locations
+  description: List a page of Anomaly Locations.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_anomaly_locations
+  operationId: getCopilotAnomalyLocations
+  parameters:
+    - $ref: ../components/query/anomalyType.yaml
+    - $ref: ../../common/components/parameters/query/page.yaml
+    - $ref: ../../common/components/parameters/query/limit.yaml
+    - $ref: ../components/query/sortField.yaml
+    - $ref: ../components/query/sortOrder.yaml
+    - $ref: ../components/query/muted.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotAnomalyLocations.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

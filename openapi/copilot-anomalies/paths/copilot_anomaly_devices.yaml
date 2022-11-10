@@ -1,0 +1,23 @@
+get:
+  tags:
+    - Copilot - Anomalies
+  summary: Get Anomaly Devices for a given location
+  description: Get all anomaly devices for a given location.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_anomaly_devices
+  operationId: getCopilotAnomalyDevices
+  parameters:
+    - $ref: ../components/query/anomalyType.yaml
+    - $ref: ../components/query/locationId.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotAnomalyDevices.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

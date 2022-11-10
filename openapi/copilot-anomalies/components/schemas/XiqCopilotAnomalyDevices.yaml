@@ -1,0 +1,11 @@
+allOf:
+  - $ref: ./XiqCopilotAnomalyLocationEntity.yaml
+  - type: object
+    properties:
+      description:
+        type: string
+      data:
+        type: array
+        description: The data in the current page
+        items:
+          $ref: ./XiqCopilotAnomalyDeviceEntity.yaml
