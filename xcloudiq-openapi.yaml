@@ -6750,7 +6750,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /copilot/anomaly/devices:
+  /copilot/anomaly-devices:
     get:
       tags:
         - Copilot - Anomalies
@@ -6775,7 +6775,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /copilot/anomaly/device/stats:
+  /copilot/anomaly-device/stats:
     get:
       tags:
         - Copilot - Anomalies

@@ -22,9 +22,9 @@ tags:
 paths:
   /copilot/anomaly-locations:
     $ref: paths/copilot_anomaly_locations.yaml
-  /copilot/anomaly/devices:
+  /copilot/anomaly-devices:
     $ref: paths/copilot_anomaly_devices.yaml
-  /copilot/anomaly/device/stats:
+  /copilot/anomaly-device/stats:
     $ref: paths/copilot_anomaly_device_stats.yaml
 components:
   securitySchemes:
