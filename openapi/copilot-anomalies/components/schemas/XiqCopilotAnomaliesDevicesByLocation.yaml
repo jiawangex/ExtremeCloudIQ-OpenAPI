@@ -1,5 +1,5 @@
 allOf:
-  - $ref: ./XiqCopilotAnomalyLocationEntity.yaml
+  - $ref: ./XiqCopilotAnomaliesLocationEntity.yaml
   - type: object
     properties:
       description:
@@ -8,4 +8,4 @@ allOf:
         type: array
         description: The data in the current page
         items:
-          $ref: ./XiqCopilotAnomalyDeviceEntity.yaml
+          $ref: ./XiqCopilotAnomaliesDeviceEntity.yaml
