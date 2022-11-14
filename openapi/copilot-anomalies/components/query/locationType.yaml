@@ -1,6 +1,6 @@
+name: locationType
 in: query
 description: The location type
-name: locationType
-required: false
+required: true
 schema:
-  type: string
+  $ref: ./../schemas/XiqLocationType.yaml

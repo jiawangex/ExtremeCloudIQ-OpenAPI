@@ -20,7 +20,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotAnomalyLocations.yaml
+            $ref: ../components/schemas/XiqCopilotAnomaliesLocations.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

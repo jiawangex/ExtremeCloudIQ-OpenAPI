@@ -6721,7 +6721,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /copilot/anomaly-locations:
+  /copilot/anomalies/locations:
     get:
       tags:
         - Copilot - Anomalies
@@ -6745,12 +6745,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotAnomalyLocations'
+                $ref: '#/components/schemas/XiqCopilotAnomaliesLocations'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /copilot/anomaly-devices:
+  /copilot/anomalies/devices-by-location:
     get:
       tags:
         - Copilot - Anomalies
@@ -6770,12 +6770,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotAnomalyDevices'
+                $ref: '#/components/schemas/XiqCopilotAnomaliesDevicesByLocation'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /copilot/anomaly-device/stats:
+  /copilot/anomalies/poeflapping/stats:
     get:
       tags:
         - Copilot - Anomalies
@@ -6787,16 +6787,14 @@ paths:
           https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_anomaly_device_stats
       operationId: getCopilotAnomalyDeviceStats
       parameters:
-        - $ref: '#/components/parameters/anomalyType'
         - $ref: '#/components/parameters/anomalyId'
-        - $ref: '#/components/parameters/locationId1'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/XiqCopilotAnomalyDeviceStats'
+                $ref: '#/components/schemas/XiqCopilotPoeFlappingStats'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -14068,16 +14066,23 @@ components:
         - UPLINK_EFFICIENCY
         - WIFI_CAPACITY
         - WIFI_EFFICIENCY
+    XiqLocationType:
+      type: string
+      enum:
+        - SITE
+        - BUILDING
+        - FLOOR
     XiqAnomalySeverity:
       type: string
       enum:
         - LOW
         - MEDIUM
         - HIGH
-    XiqCopilotAnomalyLocationEntity:
+    XiqCopilotAnomaliesLocationEntity:
       type: object
       description: Anomaly Location Entity
       required:
+        - location_type
         - location_id
         - location_name
         - pinned
@@ -14089,6 +14094,8 @@ components:
         - affected_device_count
         - last_detected_time
       properties:
+        location_type:
+          $ref: '#/components/schemas/XiqLocationType'
         location_id:
           type: string
         location_name:
@@ -14112,7 +14119,7 @@ components:
         last_detected_time:
           type: integer
           format: int64
-    XiqCopilotAnomalyLocations:
+    XiqCopilotAnomaliesLocations:
       allOf:
         - $ref: '#/components/schemas/XiqPage'
         - type: object
@@ -14123,8 +14130,8 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotAnomalyLocationEntity'
-    XiqCopilotAnomalyDeviceEntity:
+                $ref: '#/components/schemas/XiqCopilotAnomaliesLocationEntity'
+    XiqCopilotAnomaliesDeviceEntity:
       type: object
       description: Anomaly Device Entity
       required:
@@ -14157,9 +14164,9 @@ components:
           format: int64
         recommended_action:
           type: string
-    XiqCopilotAnomalyDevices:
+    XiqCopilotAnomaliesDevicesByLocation:
       allOf:
-        - $ref: '#/components/schemas/XiqCopilotAnomalyLocationEntity'
+        - $ref: '#/components/schemas/XiqCopilotAnomaliesLocationEntity'
         - type: object
           properties:
             description:
@@ -14168,20 +14175,20 @@ components:
               type: array
               description: The data in the current page
               items:
-                $ref: '#/components/schemas/XiqCopilotAnomalyDeviceEntity'
-    XiqDataPoint:
+                $ref: '#/components/schemas/XiqCopilotAnomaliesDeviceEntity'
+    XiqFlapCountDataPoint:
       type: object
       description: data sequence
       required:
         - timestamp
-        - value
+        - flap_count
       properties:
         timestamp:
           type: integer
           format: int64
-        value:
+        flap_count:
           type: integer
-    XiqCopilotAnomalyDeviceStats:
+    XiqCopilotPoeFlappingStats:
       type: object
       properties:
         description:
@@ -14190,7 +14197,7 @@ components:
           type: array
           description: The data in the current page
           items:
-            $ref: '#/components/schemas/XiqDataPoint'
+            $ref: '#/components/schemas/XiqFlapCountDataPoint'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response

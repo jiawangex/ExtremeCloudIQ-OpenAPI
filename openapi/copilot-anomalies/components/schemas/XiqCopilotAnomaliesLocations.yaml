@@ -8,4 +8,4 @@ allOf:
         type: array
         description: The data in the current page
         items:
-          $ref: ./XiqCopilotAnomalyLocationEntity.yaml
+          $ref: ./XiqCopilotAnomaliesLocationEntity.yaml

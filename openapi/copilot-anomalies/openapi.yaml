@@ -20,12 +20,12 @@ tags:
   - name: Copilot - Anomalies
     description: 'The Copilot Anomalies API'
 paths:
-  /copilot/anomaly-locations:
-    $ref: paths/copilot_anomaly_locations.yaml
-  /copilot/anomaly-devices:
-    $ref: paths/copilot_anomaly_devices.yaml
-  /copilot/anomaly-device/stats:
-    $ref: paths/copilot_anomaly_device_stats.yaml
+  /copilot/anomalies/locations:
+    $ref: paths/copilot_anomalies_locations.yaml
+  /copilot/anomalies/devices-by-location:
+    $ref: paths/copilot_anomalies_devices-by-location.yaml
+  /copilot/anomalies/poeflapping/stats:
+    $ref: paths/copilot_anomalies_poeflapping_stats.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml

@@ -16,7 +16,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotAnomaliesDevices.yaml
+            $ref: ../components/schemas/XiqCopilotAnomaliesDevicesByLocation.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

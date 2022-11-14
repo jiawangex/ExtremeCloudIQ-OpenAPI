@@ -8,16 +8,14 @@ get:
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_anomaly_device_stats
   operationId: getCopilotAnomalyDeviceStats
   parameters:
-    - $ref: ../components/query/anomalyType.yaml
     - $ref: ../components/query/anomalyId.yaml
-    - $ref: ../components/query/locationId.yaml
   responses:
     '200':
       description: OK
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/XiqCopilotPoeAnomalyStats.yaml
+            $ref: ../components/schemas/XiqCopilotPoeFlappingStats.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:

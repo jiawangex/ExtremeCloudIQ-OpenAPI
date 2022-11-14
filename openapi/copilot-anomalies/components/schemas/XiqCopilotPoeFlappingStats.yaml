@@ -6,4 +6,4 @@ properties:
     type: array
     description: The data in the current page
     items:
-      $ref: ./XiqDataPoint.yaml
+      $ref: ./XiqFlapCountDataPoint.yaml

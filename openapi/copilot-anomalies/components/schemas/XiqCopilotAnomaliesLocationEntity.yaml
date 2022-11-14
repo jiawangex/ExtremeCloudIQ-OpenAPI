@@ -1,6 +1,7 @@
 type: object
 description: Anomaly Location Entity
 required:
+  - location_type
   - location_id
   - location_name
   - pinned
@@ -12,6 +13,8 @@ required:
   - affected_device_count
   - last_detected_time
 properties:
+  location_type:
+    $ref: ./XiqLocationType.yaml
   location_id:
     type: string
   location_name:
