@@ -6640,8 +6640,6 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
-        - $ref: '#/components/parameters/locationType'
-        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6670,8 +6668,6 @@ paths:
         - $ref: '#/components/parameters/forensicBucket'
         - $ref: '#/components/parameters/startTime'
         - $ref: '#/components/parameters/endTime'
-        - $ref: '#/components/parameters/locationType'
-        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK
@@ -6706,8 +6702,6 @@ paths:
         - $ref: '#/components/parameters/wiredSortField'
         - $ref: '#/components/parameters/sortOrder'
         - $ref: '#/components/parameters/searchKey'
-        - $ref: '#/components/parameters/locationType'
-        - $ref: '#/components/parameters/locationId'
       responses:
         '200':
           description: OK

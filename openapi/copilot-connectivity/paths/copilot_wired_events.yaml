@@ -19,8 +19,6 @@ get:
     - $ref: ../components/query/wiredSortField.yaml
     - $ref: ../components/query/sortOrder.yaml
     - $ref: ../components/query/searchKey.yaml
-    - $ref: ../components/query/locationType.yaml
-    - $ref: ../components/query/locationId.yaml
   responses:
     '200':
       description: OK
