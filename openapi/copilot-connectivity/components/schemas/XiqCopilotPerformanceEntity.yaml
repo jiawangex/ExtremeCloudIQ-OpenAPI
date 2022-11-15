@@ -8,6 +8,7 @@ required:
   - performance_score
   - snr
   - retries
+  - above_retry_threshold
 properties:
   timestamp:
     type: integer
@@ -31,4 +32,6 @@ properties:
     minimum: 1
     maximum: 100
   retries:
+    type: integer
+  above_retry_threshold:
     type: integer

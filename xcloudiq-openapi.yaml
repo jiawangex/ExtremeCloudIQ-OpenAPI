@@ -13804,6 +13804,7 @@ components:
         - performance_score
         - snr
         - retries
+        - above_retry_threshold
       properties:
         timestamp:
           type: integer
@@ -13827,6 +13828,8 @@ components:
           minimum: 1
           maximum: 100
         retries:
+          type: integer
+        above_retry_threshold:
           type: integer
     XiqCopilotPerformance:
       type: object
