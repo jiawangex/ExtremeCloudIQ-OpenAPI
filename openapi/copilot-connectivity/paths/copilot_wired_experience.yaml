@@ -13,7 +13,7 @@ get:
     - $ref: ../../common/components/parameters/query/endTime.yaml
     - $ref: ../../common/components/parameters/query/page.yaml
     - $ref: ../../common/components/parameters/query/limit.yaml
-    - $ref: ../components/query/wiredSortField.yaml
+    - $ref: ../components/query/sortField.yaml
     - $ref: ../components/query/sortOrder.yaml
   responses:
     '200':

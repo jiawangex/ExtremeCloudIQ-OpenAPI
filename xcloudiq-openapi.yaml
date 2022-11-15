@@ -6396,7 +6396,7 @@ paths:
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/wirelessSortField'
+        - $ref: '#/components/parameters/sortField'
         - $ref: '#/components/parameters/sortOrder'
       responses:
         '200':
@@ -6610,7 +6610,7 @@ paths:
         - $ref: '#/components/parameters/endTime'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/wiredSortField'
+        - $ref: '#/components/parameters/sortField'
         - $ref: '#/components/parameters/sortOrder'
       responses:
         '200':
@@ -14116,10 +14116,9 @@ components:
       schema:
         type: string
         enum:
-          - LOCATION
           - SSID
           - OS
-    wirelessSortField:
+    sortField:
       name: sortField
       in: query
       description: The sort field
@@ -14127,7 +14126,8 @@ components:
       schema:
         type: string
         enum:
-          - AVERAGE
+          - NAME
+          - QUALITY_INDEX
     sortOrder:
       name: sortOrder
       in: query
@@ -14183,6 +14183,15 @@ components:
           - TIME_TO_ASSOCIATE
           - TIME_TO_DHCP
           - RETRIES
+    wirelessSortField:
+      name: sortField
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        type: string
+        enum:
+          - AVERAGE
     searchKey:
       in: query
       description: The search keyword
@@ -14199,15 +14208,6 @@ components:
         type: string
         enum:
           - LOCATION
-    wiredSortField:
-      name: sortField
-      in: query
-      description: The sort field
-      required: false
-      schema:
-        type: string
-        enum:
-          - IN_ERRORS
     wiredViewIdentifier:
       in: query
       description: The view identifier based on selected view type
@@ -14224,3 +14224,12 @@ components:
         type: string
         enum:
           - PORT_ERRORS
+    wiredSortField:
+      name: sortField
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        type: string
+        enum:
+          - IN_ERRORS
