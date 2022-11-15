@@ -5,6 +5,5 @@ required: true
 schema:
   type: string
   enum:
-    - LOCATION
     - SSID
     - OS
