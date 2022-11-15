@@ -13861,6 +13861,10 @@ components:
           type: integer
         time_to_dhcp:
           type: integer
+        performance_score:
+          type: integer
+          minimum: 1
+          maximum: 10
     XiqCopilotTimeToConnect:
       type: object
       properties:
