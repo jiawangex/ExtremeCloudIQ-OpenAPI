@@ -7,7 +7,7 @@ required:
   - wired
   - anomaly_id
   - severity
-  - anomaly_description
+  - summary
   - last_detected_time
   - recommended_action
 properties:
@@ -23,7 +23,7 @@ properties:
     type: string
   severity:
     $ref: ./XiqAnomalySeverity.yaml
-  anomaly_description:
+  summary:
     type: string
   last_detected_time:
     type: integer

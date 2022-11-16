@@ -14095,7 +14095,7 @@ components:
         - muted
         - severity
         - severity_id
-        - description
+        - summary
         - anomaly_type
         - affected_device_count
         - last_detected_time
@@ -14117,7 +14117,7 @@ components:
           maximum: 3
         severity:
           $ref: '#/components/schemas/XiqAnomalySeverity'
-        description:
+        summary:
           type: string
         anomaly_type:
           $ref: '#/components/schemas/XiqAnomalyType'
@@ -14131,9 +14131,9 @@ components:
         - $ref: '#/components/schemas/XiqPage'
         - type: object
           properties:
-            description:
+            summary:
               type: string
-            data:
+            locations:
               type: array
               description: The data in the current page
               items:
@@ -14148,7 +14148,7 @@ components:
         - wired
         - anomaly_id
         - severity
-        - anomaly_description
+        - summary
         - last_detected_time
         - recommended_action
       properties:
@@ -14164,7 +14164,7 @@ components:
           type: string
         severity:
           $ref: '#/components/schemas/XiqAnomalySeverity'
-        anomaly_description:
+        summary:
           type: string
         last_detected_time:
           type: integer
@@ -14176,9 +14176,7 @@ components:
         - $ref: '#/components/schemas/XiqCopilotAnomaliesLocationEntity'
         - type: object
           properties:
-            description:
-              type: string
-            data:
+            devices:
               type: array
               description: The data in the current page
               items:
@@ -14198,7 +14196,7 @@ components:
     XiqCopilotPoeFlappingStats:
       type: object
       properties:
-        description:
+        summary:
           type: string
         data:
           type: array
