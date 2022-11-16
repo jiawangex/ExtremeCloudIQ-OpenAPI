@@ -14103,7 +14103,8 @@ components:
         location_type:
           $ref: '#/components/schemas/XiqLocationType'
         location_id:
-          type: string
+          type: integer
+          format: int64
         location_name:
           type: string
         pinned:
@@ -14485,7 +14486,8 @@ components:
       name: locationId
       required: true
       schema:
-        type: string
+        type: integer
+        format: int64
     anomalyId:
       in: query
       description: The anomaly id
