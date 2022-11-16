@@ -6780,6 +6780,7 @@ paths:
       operationId: getCopilotAnomalyDeviceStats
       parameters:
         - $ref: '#/components/parameters/anomalyId'
+        - $ref: '#/components/parameters/locationId1'
       responses:
         '200':
           description: OK
@@ -14181,7 +14182,7 @@ components:
               description: The data in the current page
               items:
                 $ref: '#/components/schemas/XiqCopilotAnomaliesDeviceEntity'
-    XiqFlapCountDataPoint:
+    XiqFlapCountEntity:
       type: object
       description: data sequence
       required:
@@ -14196,13 +14197,11 @@ components:
     XiqCopilotPoeFlappingStats:
       type: object
       properties:
-        summary:
-          type: string
-        data:
+        flap_count_entities:
           type: array
           description: The data in the current page
           items:
-            $ref: '#/components/schemas/XiqFlapCountDataPoint'
+            $ref: '#/components/schemas/XiqFlapCountEntity'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response

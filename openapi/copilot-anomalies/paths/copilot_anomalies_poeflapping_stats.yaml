@@ -9,6 +9,7 @@ get:
   operationId: getCopilotAnomalyDeviceStats
   parameters:
     - $ref: ../components/query/anomalyId.yaml
+    - $ref: ../components/query/locationId.yaml
   responses:
     '200':
       description: OK
