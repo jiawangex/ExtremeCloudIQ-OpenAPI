@@ -6588,9 +6588,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
+                $ref: '#/components/schemas/XiqCopilotWirelessViewsList'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -13975,6 +13973,13 @@ components:
           type: integer
         total_users:
           type: integer
+    XiqCopilotWirelessViewsList:
+      type: object
+      properties:
+        views_list_entities:
+          type: array
+          items:
+            type: string
     XiqCopilotWiredQualityIndex:
       type: object
       description: Wired Connectivity Experience QualityIndex
