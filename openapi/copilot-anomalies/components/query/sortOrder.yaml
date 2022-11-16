@@ -1,0 +1,6 @@
+name: sortOrder
+in: query
+description: The sort order (ascending by default)
+required: false
+schema:
+  $ref: ../../../common/components/schemas/XiqSortOrder.yaml

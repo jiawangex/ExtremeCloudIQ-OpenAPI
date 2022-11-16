@@ -1,0 +1,5 @@
+type: string
+enum:
+  - SITE
+  - BUILDING
+  - FLOOR

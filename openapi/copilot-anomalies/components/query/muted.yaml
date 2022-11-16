@@ -1,0 +1,7 @@
+in: query
+name: exclude_muted
+description: To filter muted anomalies
+required: false
+schema:
+  type: boolean
+  default: false

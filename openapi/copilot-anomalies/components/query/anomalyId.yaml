@@ -1,0 +1,6 @@
+in: query
+description: The anomaly id
+name: anomalyId
+required: true
+schema:
+  type: string

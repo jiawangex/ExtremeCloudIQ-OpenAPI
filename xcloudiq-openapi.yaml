@@ -88,6 +88,8 @@ tags:
     description: Certificate
   - name: Copilot - Connectivity Experience
     description: The Copilot Connectivity Experience API
+  - name: Copilot - Anomalies
+    description: The Copilot Anomalies API
 paths:
   /login:
     post:
@@ -6586,9 +6588,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
+                $ref: '#/components/schemas/XiqCopilotWirelessViewsList'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -6709,6 +6709,84 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqCopilotWiredEvents'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/anomalies/locations:
+    get:
+      tags:
+        - Copilot - Anomalies
+      summary: List Anomaly Locations
+      description: List a page of Anomaly Locations.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_anomaly_locations
+      operationId: getCopilotAnomalyLocations
+      parameters:
+        - $ref: '#/components/parameters/anomalyType'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/sortField1'
+        - $ref: '#/components/parameters/sortOrder'
+        - $ref: '#/components/parameters/muted'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotAnomaliesLocations'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/anomalies/devices-by-location:
+    get:
+      tags:
+        - Copilot - Anomalies
+      summary: Get Anomaly Devices for a given location
+      description: Get all anomaly devices for a given location.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_anomaly_devices
+      operationId: getCopilotAnomalyDevices
+      parameters:
+        - $ref: '#/components/parameters/anomalyType'
+        - $ref: '#/components/parameters/locationId1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotAnomaliesDevicesByLocation'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/anomalies/poeflapping/stats:
+    get:
+      tags:
+        - Copilot - Anomalies
+      summary: Get Anomaly Device Stats
+      description: Get all the stats for anomaly device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_anomaly_device_stats
+      operationId: getCopilotAnomalyDeviceStats
+      parameters:
+        - $ref: '#/components/parameters/anomalyId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotPoeFlappingStats'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -13895,6 +13973,13 @@ components:
           type: integer
         total_users:
           type: integer
+    XiqCopilotWirelessViewsList:
+      type: object
+      properties:
+        views_list_entities:
+          type: array
+          items:
+            type: string
     XiqCopilotWiredQualityIndex:
       type: object
       description: Wired Connectivity Experience QualityIndex
@@ -13978,6 +14063,147 @@ components:
               description: The data in the current page
               items:
                 $ref: '#/components/schemas/XiqCopilotWiredEventEntity'
+    XiqAnomalyType:
+      type: string
+      enum:
+        - POE_FLAPPING
+        - DFS_RECURRENCE
+        - MULTI_BROADCAST
+        - UPLINK_EFFICIENCY
+        - WIFI_CAPACITY
+        - WIFI_EFFICIENCY
+    XiqLocationType:
+      type: string
+      enum:
+        - SITE
+        - BUILDING
+        - FLOOR
+    XiqAnomalySeverity:
+      type: string
+      enum:
+        - LOW
+        - MEDIUM
+        - HIGH
+    XiqCopilotAnomaliesLocationEntity:
+      type: object
+      description: Anomaly Location Entity
+      required:
+        - location_type
+        - location_id
+        - location_name
+        - pinned
+        - muted
+        - severity
+        - severity_id
+        - description
+        - anomaly_type
+        - affected_device_count
+        - last_detected_time
+      properties:
+        location_type:
+          $ref: '#/components/schemas/XiqLocationType'
+        location_id:
+          type: string
+        location_name:
+          type: string
+        pinned:
+          type: boolean
+        muted:
+          type: boolean
+        severity_id:
+          type: integer
+          minimum: 1
+          maximum: 3
+        severity:
+          $ref: '#/components/schemas/XiqAnomalySeverity'
+        description:
+          type: string
+        anomaly_type:
+          $ref: '#/components/schemas/XiqAnomalyType'
+        affected_device_count:
+          type: integer
+        last_detected_time:
+          type: integer
+          format: int64
+    XiqCopilotAnomaliesLocations:
+      allOf:
+        - $ref: '#/components/schemas/XiqPage'
+        - type: object
+          properties:
+            description:
+              type: string
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotAnomaliesLocationEntity'
+    XiqCopilotAnomaliesDeviceEntity:
+      type: object
+      description: Anomaly Device Entity
+      required:
+        - device_id
+        - device_name
+        - pinned
+        - wired
+        - anomaly_id
+        - severity
+        - anomaly_description
+        - last_detected_time
+        - recommended_action
+      properties:
+        device_id:
+          type: string
+        device_name:
+          type: string
+        pinned:
+          type: boolean
+        wired:
+          type: boolean
+        anomaly_id:
+          type: string
+        severity:
+          $ref: '#/components/schemas/XiqAnomalySeverity'
+        anomaly_description:
+          type: string
+        last_detected_time:
+          type: integer
+          format: int64
+        recommended_action:
+          type: string
+    XiqCopilotAnomaliesDevicesByLocation:
+      allOf:
+        - $ref: '#/components/schemas/XiqCopilotAnomaliesLocationEntity'
+        - type: object
+          properties:
+            description:
+              type: string
+            data:
+              type: array
+              description: The data in the current page
+              items:
+                $ref: '#/components/schemas/XiqCopilotAnomaliesDeviceEntity'
+    XiqFlapCountDataPoint:
+      type: object
+      description: data sequence
+      required:
+        - timestamp
+        - flap_count
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        flap_count:
+          type: integer
+    XiqCopilotPoeFlappingStats:
+      type: object
+      properties:
+        description:
+          type: string
+        data:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqFlapCountDataPoint'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response
@@ -14227,3 +14453,43 @@ components:
         type: string
         enum:
           - IN_ERRORS
+    anomalyType:
+      name: anomalyType
+      in: query
+      description: The anomaly type
+      required: true
+      schema:
+        $ref: '#/components/schemas/XiqAnomalyType'
+    sortField1:
+      name: sortField
+      in: query
+      description: The sort field
+      required: false
+      schema:
+        type: string
+        enum:
+          - LOCATION
+          - SEVERITY
+          - TIME
+    muted:
+      in: query
+      name: exclude_muted
+      description: To filter muted anomalies
+      required: false
+      schema:
+        type: boolean
+        default: false
+    locationId1:
+      in: query
+      description: The location id
+      name: locationId
+      required: true
+      schema:
+        type: string
+    anomalyId:
+      in: query
+      description: The anomaly id
+      name: anomalyId
+      required: true
+      schema:
+        type: string

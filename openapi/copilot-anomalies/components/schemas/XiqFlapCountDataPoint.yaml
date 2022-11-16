@@ -1,0 +1,11 @@
+type: object
+description: data sequence
+required:
+  - timestamp
+  - flap_count
+properties:
+  timestamp:
+    type: integer
+    format: int64
+  flap_count:
+    type: integer

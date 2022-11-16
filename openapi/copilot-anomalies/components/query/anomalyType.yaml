@@ -1,0 +1,6 @@
+name: anomalyType
+in: query
+description: The anomaly type
+required: true
+schema:
+  $ref: ./../schemas/XiqAnomalyType.yaml

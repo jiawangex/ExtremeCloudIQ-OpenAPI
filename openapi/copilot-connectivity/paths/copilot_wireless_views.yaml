@@ -15,9 +15,7 @@ get:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              type: string
+            $ref: ../components/schemas/XiqCopilotWirelessViewsList.yaml
     default:
       $ref: ../../common/components/responses/ErrorResponse.yaml
   security:
