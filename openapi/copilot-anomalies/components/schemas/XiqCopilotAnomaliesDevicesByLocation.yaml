@@ -2,9 +2,7 @@ allOf:
   - $ref: ./XiqCopilotAnomaliesLocationEntity.yaml
   - type: object
     properties:
-      description:
-        type: string
-      data:
+      devices:
         type: array
         description: The data in the current page
         items:

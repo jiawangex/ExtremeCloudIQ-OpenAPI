@@ -8,7 +8,7 @@ required:
   - muted
   - severity
   - severity_id
-  - description
+  - summary
   - anomaly_type
   - affected_device_count
   - last_detected_time
@@ -30,7 +30,7 @@ properties:
     maximum: 3
   severity:
     $ref: ./XiqAnomalySeverity.yaml
-  description:
+  summary:
     type: string
   anomaly_type:
     $ref: ./XiqAnomalyType.yaml

@@ -1,6 +1,6 @@
 type: object
 properties:
-  description:
+  summary:
     type: string
   data:
     type: array

@@ -2,9 +2,9 @@ allOf:
   - $ref: ../../../common/components/schemas/XiqPage.yaml
   - type: object
     properties:
-      description:
+      summary:
         type: string
-      data:
+      locations:
         type: array
         description: The data in the current page
         items:
