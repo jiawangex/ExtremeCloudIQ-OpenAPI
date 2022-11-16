@@ -1,9 +1,7 @@
 type: object
 properties:
-  summary:
-    type: string
-  data:
+  flap_count_entities:
     type: array
     description: The data in the current page
     items:
-      $ref: ./XiqFlapCountDataPoint.yaml
+      $ref: ./XiqFlapCountEntity.yaml
