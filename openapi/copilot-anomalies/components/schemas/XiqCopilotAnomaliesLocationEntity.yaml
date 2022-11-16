@@ -16,7 +16,8 @@ properties:
   location_type:
     $ref: ./XiqLocationType.yaml
   location_id:
-    type: string
+    type: integer
+    format: int64
   location_name:
     type: string
   pinned:

@@ -3,4 +3,5 @@ description: The location id
 name: locationId
 required: true
 schema:
-  type: string
+  type: integer
+  format: int64
