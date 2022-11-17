@@ -14152,6 +14152,7 @@ components:
         - summary
         - last_detected_time
         - recommended_action
+        - anomaly_group
       properties:
         device_id:
           type: string
@@ -14171,6 +14172,8 @@ components:
           type: integer
           format: int64
         recommended_action:
+          type: string
+        anomaly_group:
           type: string
     XiqCopilotAnomaliesDevicesByLocation:
       allOf:
