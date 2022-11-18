@@ -14152,7 +14152,7 @@ components:
         - summary
         - last_detected_time
         - recommended_action
-        - anomaly_group
+        - anomaly_subtypes
       properties:
         device_id:
           type: string
@@ -14173,7 +14173,7 @@ components:
           format: int64
         recommended_action:
           type: string
-        anomaly_group:
+        anomaly_subtypes:
           type: string
     XiqCopilotAnomaliesDevicesByLocation:
       allOf:
@@ -14191,12 +14191,19 @@ components:
       required:
         - timestamp
         - flap_count
+        - sub_optimal_count
+        - optimal_time_spent
       properties:
         timestamp:
           type: integer
           format: int64
         flap_count:
           type: integer
+        sub_optimal_count:
+          type: integer
+        optimal_time_spent:
+          type: number
+          format: double
     XiqCopilotPoeFlappingStats:
       type: object
       properties:

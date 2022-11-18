@@ -10,7 +10,7 @@ required:
   - summary
   - last_detected_time
   - recommended_action
-  - anomaly_group
+  - anomaly_subtypes
 properties:
   device_id:
     type: string
@@ -31,5 +31,5 @@ properties:
     format: int64
   recommended_action:
     type: string
-  anomaly_group:
+  anomaly_subtypes:
     type: string
