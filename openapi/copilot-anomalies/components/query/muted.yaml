@@ -1,5 +1,5 @@
 in: query
-name: exclude_muted
+name: excludeMuted
 description: To filter muted anomalies
 required: false
 schema:
