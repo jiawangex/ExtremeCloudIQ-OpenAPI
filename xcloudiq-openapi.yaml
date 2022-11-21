@@ -14153,6 +14153,7 @@ components:
         - last_detected_time
         - recommended_action
         - anomaly_subtypes
+        - interface_name
       properties:
         device_id:
           type: string
@@ -14174,6 +14175,8 @@ components:
         recommended_action:
           type: string
         anomaly_subtypes:
+          type: string
+        interface_name:
           type: string
     XiqCopilotAnomaliesDevicesByLocation:
       allOf:
