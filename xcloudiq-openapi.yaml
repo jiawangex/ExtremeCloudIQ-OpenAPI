@@ -6528,6 +6528,7 @@ paths:
         - $ref: '#/components/parameters/searchKey'
         - $ref: '#/components/parameters/locationType'
         - $ref: '#/components/parameters/locationId'
+        - $ref: '#/components/parameters/timestamp'
       responses:
         '200':
           description: OK
@@ -6702,6 +6703,7 @@ paths:
         - $ref: '#/components/parameters/wiredSortField'
         - $ref: '#/components/parameters/sortOrder'
         - $ref: '#/components/parameters/searchKey'
+        - $ref: '#/components/parameters/timestamp'
       responses:
         '200':
           description: OK
@@ -14430,6 +14432,14 @@ components:
       required: false
       schema:
         type: string
+    timestamp:
+      name: timestamp
+      in: query
+      description: 'The timestamp to query, epoch time in milliseconds since 1/1/1970'
+      required: false
+      schema:
+        type: integer
+        format: int64
     wiredViewType:
       in: query
       description: The wired experience view type

@@ -1,0 +1,7 @@
+name: timestamp
+in: query
+description: The timestamp to query, epoch time in milliseconds since 1/1/1970
+required: false
+schema:
+  type: integer
+  format: int64

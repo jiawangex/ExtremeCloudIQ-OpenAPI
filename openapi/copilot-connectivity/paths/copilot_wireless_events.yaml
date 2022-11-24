@@ -21,6 +21,7 @@ get:
     - $ref: ../components/query/searchKey.yaml
     - $ref: ../components/query/locationType.yaml
     - $ref: ../components/query/locationId.yaml
+    - $ref: ../components/query/timestamp.yaml
   responses:
     '200':
       description: OK
