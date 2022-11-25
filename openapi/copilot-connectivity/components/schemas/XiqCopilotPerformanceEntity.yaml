@@ -7,8 +7,7 @@ required:
   - time_to_connect_score
   - performance_score
   - snr
-  - retries
-  - above_retry_threshold
+  - retries_data
 properties:
   timestamp:
     type: integer
@@ -31,7 +30,20 @@ properties:
     type: integer
     minimum: 1
     maximum: 100
-  retries:
-    type: integer
-  above_retry_threshold:
-    type: integer
+  retries_data:
+    type: object
+    description: retry related data 
+    required:
+      - rx_retry
+      - tx_retry
+      - above_retry_threshold
+    properties:
+      rx_retry:
+        type: number
+        format: double
+      tx_retry:
+        type: number
+        format: double
+      above_retry_threshold:
+        type: number
+        format: double
