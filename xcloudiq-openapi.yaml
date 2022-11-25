@@ -13845,11 +13845,14 @@ components:
           minimum: 1
           maximum: 10
         above_assoc_threshold:
-          type: integer
+          type: number
+          format: double
         above_auth_threshold:
-          type: integer
+          type: number
+          format: double
         above_dhcp_threshold:
-          type: integer
+          type: number
+          format: double
         time_to_assoc:
           type: integer
         time_to_auth:
@@ -13878,8 +13881,7 @@ components:
         - time_to_connect_score
         - performance_score
         - snr
-        - retries
-        - above_retry_threshold
+        - retries_data
       properties:
         timestamp:
           type: integer
@@ -13902,10 +13904,23 @@ components:
           type: integer
           minimum: 1
           maximum: 100
-        retries:
-          type: integer
-        above_retry_threshold:
-          type: integer
+        retries_data:
+          type: object
+          description: retry related data
+          required:
+            - rx_retry
+            - tx_retry
+            - above_retry_threshold
+          properties:
+            rx_retry:
+              type: number
+              format: double
+            tx_retry:
+              type: number
+              format: double
+            above_retry_threshold:
+              type: number
+              format: double
     XiqCopilotPerformance:
       type: object
       properties:
@@ -13926,6 +13941,7 @@ components:
         - os_type
         - threshold
         - ssid
+        - retries_data
       properties:
         client_id:
           type: string
@@ -13946,6 +13962,35 @@ components:
           format: double
         ssid:
           type: string
+        retries_data:
+          type: object
+          description: retry related data
+          required:
+            - avg_rx_retry
+            - max_rx_retry
+            - avg_tx_retry
+            - max_tx_retry
+            - rx_retry_threshold
+            - tx_retry_threshold
+          properties:
+            avg_rx_retry:
+              type: number
+              format: double
+            max_rx_retry:
+              type: number
+              format: double
+            avg_tx_retry:
+              type: number
+              format: double
+            max_tx_retry:
+              type: number
+              format: double
+            rx_retry_threshold:
+              type: number
+              format: double
+            tx_retry_threshold:
+              type: number
+              format: double
     XiqCopilotWirelessEvents:
       allOf:
         - $ref: '#/components/schemas/XiqPage'

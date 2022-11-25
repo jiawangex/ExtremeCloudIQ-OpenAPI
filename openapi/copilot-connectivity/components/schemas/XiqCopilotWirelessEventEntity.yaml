@@ -9,6 +9,7 @@ required:
   - os_type
   - threshold
   - ssid
+  - retries_data
 properties:
   client_id:
     type: string
@@ -29,3 +30,32 @@ properties:
     format: double
   ssid:
     type: string
+  retries_data:
+    type: object
+    description: retry related data 
+    required:
+      - avg_rx_retry
+      - max_rx_retry
+      - avg_tx_retry
+      - max_tx_retry
+      - rx_retry_threshold
+      - tx_retry_threshold
+    properties:
+      avg_rx_retry:
+        type: number
+        format: double
+      max_rx_retry:
+        type: number
+        format: double
+      avg_tx_retry:
+        type: number
+        format: double
+      max_tx_retry:
+        type: number
+        format: double
+      rx_retry_threshold:
+        type: number
+        format: double
+      tx_retry_threshold:
+        type: number
+        format: double

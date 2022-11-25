@@ -27,11 +27,14 @@ properties:
     minimum: 1
     maximum: 10
   above_assoc_threshold:
-    type: integer
+    type: number
+    format: double
   above_auth_threshold:
-    type: integer
+    type: number
+    format: double
   above_dhcp_threshold:
-    type: integer
+    type: number
+    format: double
   time_to_assoc:
     type: integer
   time_to_auth:
