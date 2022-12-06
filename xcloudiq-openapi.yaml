@@ -14394,6 +14394,7 @@ components:
       schema:
         type: string
         enum:
+          - LOCATION
           - SSID
           - OS
     sortField:
