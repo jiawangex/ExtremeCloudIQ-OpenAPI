@@ -1,0 +1,6 @@
+name: 'group'
+in: path
+description: The group to count from
+required: true
+schema:
+  $ref: ../../schemas/XiqAlertGroupQuery.yaml
