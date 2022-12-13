@@ -10,6 +10,7 @@ inputs:
   - inputFile: bundled/network-policy.yaml
   - inputFile: bundled/client.yaml
   - inputFile: bundled/application.yaml
+  - inputFile: bundled/alert.yaml
   - inputFile: bundled/log.yaml
   - inputFile: bundled/notification.yaml
   - inputFile: bundled/configuration-deployment.yaml

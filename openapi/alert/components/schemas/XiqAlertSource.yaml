@@ -1,0 +1,11 @@
+type: object
+description: The alert source info
+properties:
+  source_name:
+    type: string
+    description: The alert source name
+  source_type:
+    $ref: ./XiqAlertSourceType.yaml
+  source_id:
+    type: string
+    description: The alert source ID
