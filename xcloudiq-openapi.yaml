@@ -6793,6 +6793,107 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
+        - BearerAuth: []    
+  /copilot/anomalies/uplinkEfficiency/stats:
+    get:
+      tags:
+        - Copilot - Anomalies
+      summary: Get UplinkEfficiency Device Stats
+      description: Get all the stats for uplinkEfficiency device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_uplinkEfficiency_device_stats
+      operationId: getCopilotUplinkEfficiencyDeviceStats
+      parameters:
+        - $ref: '#/components/parameters/anomalyId'
+        - $ref: '#/components/parameters/locationId1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotUplinkEfficiencyStats'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/anomalies/uplinkEfficiency/speedDuplexStats:
+    get:
+      tags:
+        - Copilot - Anomalies
+      summary: Get UplinkEfficiency Device Speed and Duplex Stats
+      description: Get all the speed and duplex for uplinkEfficiency device.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_uplinkEfficiency_device_speed_duplex
+      operationId: getCopilotUplinkEfficiencyDeviceSpeedDuplex
+      parameters:
+        - $ref: '#/components/parameters/anomalyId'
+        - $ref: '#/components/parameters/locationId1'        
+        - $ref: '#/components/parameters/chartType'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotUplinkEfficiencySpeedDuplex'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []    
+  /copilot/anomalies/dfsRecurrence/countStats:
+    get:
+      tags:
+        - Copilot - Anomalies
+      summary: Get DFSRecurrence Device Channel Count Stats 
+      description: Get DFS Recurrence anomaly radar event count stats.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsRecurrence_count_stats
+      operationId: getCopilotDFSRecurrenceCountStats
+      parameters:
+        - $ref: '#/components/parameters/anomalyId'
+        - $ref: '#/components/parameters/locationId1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotDfsRecurrenceCountStats'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  /copilot/anomalies/dfsRecurrence/channelStats:
+    get:
+      tags:
+        - Copilot - Anomalies
+      summary: Get DFSRecurrence Device Channel Change Stats  
+      description: Get DFS Recurrence anomaly device channel change stats.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsRecurrence_channel_stats
+      operationId: getCopilotDFSRecurrenceChannelStats
+      parameters:
+        - $ref: '#/components/parameters/anomalyId'
+        - $ref: '#/components/parameters/locationId1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqCopilotDFSRecurrenceChannelStats'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
         - BearerAuth: []
 components:
   schemas:
@@ -14132,6 +14233,11 @@ components:
         - LOW
         - MEDIUM
         - HIGH
+    XiqChartType:
+      type: string
+      enum:
+        - SPEED
+        - DUPLEX
     XiqCopilotAnomaliesLocationEntity:
       type: object
       description: Anomaly Location Entity
@@ -14261,7 +14367,121 @@ components:
           type: array
           description: The data in the current page
           items:
-            $ref: '#/components/schemas/XiqFlapCountEntity'
+            $ref: '#/components/schemas/XiqFlapCountEntity'    
+    XiqDuplexDataRateEntity:
+      type: object
+      description: data sequence
+      required:
+        - timestamp
+        - duplex_mode
+        - datarate_mode
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        duplex_mode:
+          type: integer
+        data_rate_mode:
+          type: integer
+    XiqCopilotUplinkEfficiencyStats:
+      type: object
+      properties:
+        duplex_data_rate_entities:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqDuplexDataRateEntity'
+    XiqSpeedDuplexEntity:
+      type: object
+      description: data sequence
+      required:
+        - timestamp
+        - value
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        value:
+          type: integer
+    XiqCopilotUplinkEfficiencySpeedDuplex:
+      type: object
+      properties:
+        speed_duplex_entities:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqSpeedDuplexEntity' 
+    XiqDfsRecurrenceCountStats:
+      type: object
+      description: data sequence
+      required:
+        - timestamp
+        - count
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        count:
+          type: integer
+    XiqDfsRecurrenceCountStatsEntity:
+      type: object
+      description: data sequence
+      required:
+        - dfs_channel_count_stats
+        - normal
+      properties:
+        dfs_channel_count_stats:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqDfsRecurrenceCountStats'
+        normal:
+          type: integer
+    XiqCopilotDfsRecurrenceCountStats:
+      type: object
+      properties:
+        dfsRecurrence_stats_entities:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqDfsRecurrenceCountStatsEntity'
+    XiqDfsRecurrenceChannelStats:
+      type: object
+      description: data sequence
+      required:
+        - timestamp
+        - channel_number
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        channel_number:
+          type: integer
+    XiqDfsRecurrenceChannelStatsEntity:
+      type: object
+      description: data sequence
+      required:
+        - dfs_channel_stats
+        - min_channel
+        - max_channel
+      properties:
+        dfs_channel_stats:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqDfsRecurrenceChannelStats'
+        min_channel:
+          type: integer
+        max_channel:
+          type: integer
+    XiqCopilotDFSRecurrenceChannelStats:
+      type: object
+      properties:
+        dfsRecurrence_channel_stats_entities:
+          type: array
+          description: The data in the current page
+          items:
+            $ref: '#/components/schemas/XiqDfsRecurrenceChannelStatsEntity'
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response
@@ -14470,7 +14690,9 @@ components:
       schema:
         type: string
         enum:
-          - AVERAGE
+          - AVERAGE_VALUE
+          - AVG_RX_RETRY
+          - AVG_TX_RETRY
     searchKey:
       in: query
       description: The search keyword
@@ -14519,7 +14741,7 @@ components:
       schema:
         type: string
         enum:
-          - IN_ERRORS
+          - INTERFACE_ERRORS
     anomalyType:
       name: anomalyType
       in: query
@@ -14561,3 +14783,10 @@ components:
       required: true
       schema:
         type: string
+    chartType:
+      name: chartType
+      in: query
+      description: The chart type
+      required: true
+      schema:
+        $ref: '#/components/schemas/XiqChartType'
