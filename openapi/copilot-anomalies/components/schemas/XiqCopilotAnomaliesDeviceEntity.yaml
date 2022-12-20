@@ -1,0 +1,38 @@
+type: object
+description: Anomaly Device Entity
+required:
+  - device_id
+  - device_name
+  - pinned
+  - wired
+  - anomaly_id
+  - severity
+  - summary
+  - last_detected_time
+  - recommended_action
+  - anomaly_subtypes
+  - interface_name
+properties:
+  device_id:
+    type: string
+  device_name:
+    type: string
+  pinned:
+    type: boolean
+  wired:
+    type: boolean
+  anomaly_id:
+    type: string
+  severity:
+    $ref: ./XiqAnomalySeverity.yaml
+  summary:
+    type: string
+  last_detected_time:
+    type: integer
+    format: int64
+  recommended_action:
+    type: string
+  anomaly_subtypes:
+    type: string
+  interface_name:
+    type: string

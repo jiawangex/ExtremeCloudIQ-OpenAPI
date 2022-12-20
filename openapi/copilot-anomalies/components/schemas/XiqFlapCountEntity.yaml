@@ -1,0 +1,18 @@
+type: object
+description: data sequence
+required:
+  - timestamp
+  - flap_count
+  - sub_optimal_count
+  - optimal_time_spent
+properties:
+  timestamp:
+    type: integer
+    format: int64
+  flap_count:
+    type: integer
+  sub_optimal_count:
+    type: integer
+  optimal_time_spent:
+    type: number
+    format: double

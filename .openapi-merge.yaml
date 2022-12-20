@@ -18,4 +18,6 @@ inputs:
   - inputFile: bundled/configuration-policy.yaml
   - inputFile: bundled/configuration-authentication.yaml
   - inputFile: bundled/configuration-certificate.yaml
+  - inputFile: bundled/copilot-connectivity.yaml
+  - inputFile: bundled/copilot-anomalies.yaml
 output: xcloudiq-openapi.yaml

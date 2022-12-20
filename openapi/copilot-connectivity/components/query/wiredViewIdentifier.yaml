@@ -1,0 +1,6 @@
+in: query
+description: The view identifier based on selected view type
+name: viewId
+required: true
+schema:
+  type: string

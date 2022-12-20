@@ -1,0 +1,10 @@
+in: query
+description: The wireless experience view type
+name: viewType
+required: true
+schema:
+  type: string
+  enum:
+    - LOCATION
+    - SSID
+    - OS

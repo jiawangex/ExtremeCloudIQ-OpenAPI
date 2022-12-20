@@ -1,0 +1,28 @@
+get:
+  tags:
+    - Copilot - Connectivity Experience
+  summary: Get Wireless Connectivity Performance
+  description: List a page of Performance score data over a selected period of time.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_wireless_performance
+  operationId: getWirelessPerformance
+  parameters:
+    - $ref: ../components/query/wirelessViewType.yaml
+    - $ref: ../components/query/wirelessViewIdentifier.yaml
+    - $ref: ../components/query/forensicBucket.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
+    - $ref: ../components/query/locationType.yaml
+    - $ref: ../components/query/locationId.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotPerformance.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

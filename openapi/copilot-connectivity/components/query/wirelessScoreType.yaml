@@ -1,0 +1,11 @@
+in: query
+description: The wireless score type
+name: scoreType
+required: true
+schema:
+  type: string
+  enum:
+    - TIME_TO_AUTHENTICATE
+    - TIME_TO_ASSOCIATE
+    - TIME_TO_DHCP
+    - RETRIES

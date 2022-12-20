@@ -1,0 +1,14 @@
+in: query
+description: The historical period bucket
+name: forensicBucket
+required: true
+schema:
+  type: string
+  enum:
+    - TWENTY_FOUR_HOURS
+    - ONE_HOUR
+    - ONE_DAY
+    - ONE_WEEK
+    - SEVEN_DAYS
+    - THIRTY_DAYS
+    - NINETY_DAYS

@@ -1,0 +1,49 @@
+type: object
+description: Connectivity Experience Performance Entity
+required:
+  - timestamp
+  - quality_index
+  - total_clients
+  - time_to_connect_score
+  - performance_score
+  - snr
+  - retries_data
+properties:
+  timestamp:
+    type: integer
+    format: int64
+  quality_index:
+    type: integer
+    minimum: 1
+    maximum: 10
+  time_to_connect_score:
+    type: integer
+    minimum: 1
+    maximum: 10
+  total_clients:
+    type: integer
+  performance_score:
+    type: integer
+    minimum: 1
+    maximum: 10
+  snr:
+    type: integer
+    minimum: 1
+    maximum: 100
+  retries_data:
+    type: object
+    description: retry related data 
+    required:
+      - rx_retry
+      - tx_retry
+      - above_retry_threshold
+    properties:
+      rx_retry:
+        type: number
+        format: double
+      tx_retry:
+        type: number
+        format: double
+      above_retry_threshold:
+        type: number
+        format: double

@@ -1,0 +1,41 @@
+type: object
+description: Anomaly Location Entity
+required:
+  - location_type
+  - location_id
+  - location_name
+  - pinned
+  - muted
+  - severity
+  - severity_id
+  - summary
+  - anomaly_type
+  - affected_device_count
+  - last_detected_time
+properties:
+  location_type:
+    $ref: ./XiqLocationType.yaml
+  location_id:
+    type: integer
+    format: int64
+  location_name:
+    type: string
+  pinned:
+    type: boolean
+  muted:
+    type: boolean
+  severity_id:
+    type: integer
+    minimum: 1
+    maximum: 3
+  severity:
+    $ref: ./XiqAnomalySeverity.yaml
+  summary:
+    type: string
+  anomaly_type:
+    $ref: ./XiqAnomalyType.yaml
+  affected_device_count:
+    type: integer
+  last_detected_time:
+    type: integer
+    format: int64

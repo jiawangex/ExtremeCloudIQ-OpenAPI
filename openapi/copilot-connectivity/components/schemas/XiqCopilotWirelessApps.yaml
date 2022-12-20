@@ -1,0 +1,19 @@
+type: object
+description: Wireless Connectivity Experience Apps
+required:
+  - total_clients
+  - most_active_app
+  - most_active_user
+  - total_apps
+  - total_users
+properties:
+  total_clients:
+    type: integer
+  most_active_app:
+    type: string
+  most_active_user:
+    type: string
+  total_apps:
+    type: integer
+  total_users:
+    type: integer

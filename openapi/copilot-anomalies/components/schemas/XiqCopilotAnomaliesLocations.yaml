@@ -1,0 +1,11 @@
+allOf:
+  - $ref: ../../../common/components/schemas/XiqPage.yaml
+  - type: object
+    properties:
+      summary:
+        type: string
+      locations:
+        type: array
+        description: The data in the current page
+        items:
+          $ref: ./XiqCopilotAnomaliesLocationEntity.yaml
