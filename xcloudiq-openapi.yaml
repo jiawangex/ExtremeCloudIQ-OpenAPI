@@ -6773,7 +6773,7 @@ paths:
     get:
       tags:
         - Copilot - Anomalies
-      summary: Get Anomaly Device Stats
+      summary: Get PoeAnomaly Device Stats
       description: Get all the stats for anomaly device.
       externalDocs:
         description: API Reference
@@ -6794,7 +6794,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []    
-  /copilot/anomalies/uplinkEfficiency/stats:
+  /copilot/anomalies/port-efficiency/stats:
     get:
       tags:
         - Copilot - Anomalies
@@ -6803,7 +6803,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_uplinkEfficiency_device_stats
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_uplinkefficiency_device_stats
       operationId: getCopilotUplinkEfficiencyDeviceStats
       parameters:
         - $ref: '#/components/parameters/anomalyId'
@@ -6819,7 +6819,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /copilot/anomalies/uplinkEfficiency/speedDuplexStats:
+  /copilot/anomalies/port-efficiency/speed-duplex-stats:
     get:
       tags:
         - Copilot - Anomalies
@@ -6828,7 +6828,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_uplinkEfficiency_device_speed_duplex
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_uplinkefficiency_device_speed_duplex
       operationId: getCopilotUplinkEfficiencyDeviceSpeedDuplex
       parameters:
         - $ref: '#/components/parameters/anomalyId'
@@ -6845,7 +6845,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []    
-  /copilot/anomalies/dfsRecurrence/countStats:
+  /copilot/anomalies/dfs-recurrence/count-stats:
     get:
       tags:
         - Copilot - Anomalies
@@ -6854,7 +6854,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsRecurrence_count_stats
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsrecurrence_countstats
       operationId: getCopilotDFSRecurrenceCountStats
       parameters:
         - $ref: '#/components/parameters/anomalyId'
@@ -6870,7 +6870,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  /copilot/anomalies/dfsRecurrence/channelStats:
+  /copilot/anomalies/dfs-recurrence/channel-stats:
     get:
       tags:
         - Copilot - Anomalies
@@ -6879,7 +6879,7 @@ paths:
       externalDocs:
         description: API Reference
         url: >-
-          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsRecurrence_channel_stats
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsrecurrence_channelstats
       operationId: getCopilotDFSRecurrenceChannelStats
       parameters:
         - $ref: '#/components/parameters/anomalyId'
