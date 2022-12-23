@@ -1,0 +1,7 @@
+type: object
+properties:
+  speed_duplex_entities:
+    type: array
+    description: The data in the current page
+    items:
+      $ref: ./XiqSpeedDuplexEntity.yaml
