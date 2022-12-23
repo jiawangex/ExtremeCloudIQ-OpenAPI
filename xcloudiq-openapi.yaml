@@ -6855,7 +6855,7 @@ paths:
         description: API Reference
         url: >-
           https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsrecurrence_countstats
-      operationId: getCopilotDFSRecurrenceCountStats
+      operationId: getCopilotDfsRecurrenceCountStats
       parameters:
         - $ref: '#/components/parameters/anomalyId'
         - $ref: '#/components/parameters/locationId1'
@@ -6880,7 +6880,7 @@ paths:
         description: API Reference
         url: >-
           https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsrecurrence_channelstats
-      operationId: getCopilotDFSRecurrenceChannelStats
+      operationId: getCopilotDfsRecurrenceChannelStats
       parameters:
         - $ref: '#/components/parameters/anomalyId'
         - $ref: '#/components/parameters/locationId1'

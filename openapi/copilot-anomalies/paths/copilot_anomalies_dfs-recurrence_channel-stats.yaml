@@ -6,7 +6,7 @@ get:
   externalDocs:
     description: API Reference
     url: https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsrecurrence_channelstats
-  operationId: getCopilotDFSRecurrenceChannelStats
+  operationId: getCopilotDfsRecurrenceChannelStats
   parameters:
     - $ref: ../components/query/anomalyId.yaml
     - $ref: ../components/query/locationId.yaml
