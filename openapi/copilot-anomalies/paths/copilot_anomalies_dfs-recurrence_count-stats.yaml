@@ -1,0 +1,23 @@
+get:
+  tags:
+    - Copilot - Anomalies
+  summary: Get DFSRecurrence Device Channel Count Stats 
+  description: Get DFS Recurrence anomaly radar event count stats.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_dfsrecurrence_countstats
+  operationId: getCopilotDfsRecurrenceCountStats
+  parameters:
+    - $ref: ../components/query/anomalyId.yaml
+    - $ref: ../components/query/locationId.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotDfsRecurrenceCountStats.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

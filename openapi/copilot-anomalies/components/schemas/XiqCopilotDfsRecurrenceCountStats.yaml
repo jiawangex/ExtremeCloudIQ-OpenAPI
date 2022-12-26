@@ -1,0 +1,7 @@
+type: object
+properties:
+  dfsRecurrence_stats_entities:
+    type: array
+    description: The data in the current page
+    items:
+      $ref: ./XiqCountStatsEntity.yaml

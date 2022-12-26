@@ -1,0 +1,24 @@
+get:
+  tags:
+    - Copilot - Anomalies
+  summary: Get PortEfficiency Device Speed and Duplex Stats
+  description: Get all the speed and duplex for PortEfficiency device.
+  externalDocs:
+    description: API Reference
+    url: https://extremecloudiq.com/api-docs/api-reference.html#_get_copilot_portefficiency_device_speed_duplex
+  operationId: getCopilotPortEfficiencyDeviceSpeedDuplex
+  parameters:
+    - $ref: ../components/query/anomalyId.yaml
+    - $ref: ../components/query/locationId.yaml
+    - $ref: ../components/query/chartType.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqCopilotPortEfficiencySpeedDuplex.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

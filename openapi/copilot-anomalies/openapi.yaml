@@ -26,6 +26,14 @@ paths:
     $ref: paths/copilot_anomalies_devices-by-location.yaml
   /copilot/anomalies/poeflapping/stats:
     $ref: paths/copilot_anomalies_poeflapping_stats.yaml
+  /copilot/anomalies/port-efficiency/stats:
+    $ref: paths/copilot_anomalies_port-efficiency_stats.yaml
+  /copilot/anomalies/port-efficiency/speed-duplex-stats:
+    $ref: paths/copilot_anomalies_port-efficiency_speed-duplex-stats.yaml
+  /copilot/anomalies/dfs-recurrence/count-stats:
+    $ref: paths/copilot_anomalies_dfs-recurrence_count-stats.yaml
+  /copilot/anomalies/dfs-recurrence/channel-stats:
+    $ref: paths/copilot_anomalies_dfs-recurrence_channel-stats.yaml
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml

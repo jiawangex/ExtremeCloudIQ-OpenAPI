@@ -1,0 +1,11 @@
+type: object
+description: data sequence
+required:
+  - timestamp
+  - value
+properties:
+  timestamp:
+    type: integer
+    format: int64
+  value:
+    type: integer

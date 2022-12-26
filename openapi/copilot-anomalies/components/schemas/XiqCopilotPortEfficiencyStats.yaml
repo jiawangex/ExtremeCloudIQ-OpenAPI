@@ -1,0 +1,7 @@
+type: object
+properties:
+  duplex_data_rate_entities:
+    type: array
+    description: The data in the current page
+    items:
+      $ref: ./XiqDuplexDataRateEntity.yaml
