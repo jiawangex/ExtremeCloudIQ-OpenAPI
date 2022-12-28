@@ -1,13 +1,11 @@
 type: object
 description: data sequence
 required:
-  - dfs_channel_count_stats
-  - normal
+  - timestamp
+  - count
 properties:
-  dfs_channel_count_stats:
-    type: array
-    description: The data in the current page
-    items:
-      $ref: ./XiqCountStats.yaml
-  normal:
+  timestamp:
+    type: integer
+    format: int64
+  count:
     type: integer

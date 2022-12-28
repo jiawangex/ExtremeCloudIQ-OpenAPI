@@ -1,16 +1,11 @@
 type: object
 description: data sequence
 required:
-  - dfs_channel_stats
-  - min_channel
-  - max_channel
+  - timestamp
+  - channel_number
 properties:
-  dfs_channel_stats:
-    type: array
-    description: The data in the current page
-    items:
-      $ref: ./XiqChannelStats.yaml
-  min_channel:
+  timestamp:
     type: integer
-  max_channel:
+    format: int64
+  channel_number:
     type: integer

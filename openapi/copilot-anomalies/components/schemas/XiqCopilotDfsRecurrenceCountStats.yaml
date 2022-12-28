@@ -1,7 +1,13 @@
 type: object
+description: data sequence
+required:
+  - dfs_channel_changes_entity
+  - normal
 properties:
-  dfsRecurrence_stats_entities:
+  dfs_channel_changes_entity:
     type: array
     description: The data in the current page
     items:
       $ref: ./XiqCountStatsEntity.yaml
+  normal:
+    type: integer
