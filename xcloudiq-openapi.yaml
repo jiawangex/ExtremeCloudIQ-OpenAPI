@@ -14411,7 +14411,7 @@ components:
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqSpeedDuplexEntity'
-    XiqCountStats:
+    XiqCountStatsEntity:
       type: object
       description: data sequence
       required:
@@ -14423,29 +14423,21 @@ components:
           format: int64
         count:
           type: integer
-    XiqCountStatsEntity:
+    XiqCopilotDfsRecurrenceCountStats:
       type: object
       description: data sequence
       required:
-        - dfs_channel_count_stats
+        - dfs_channel_changes_entity
         - normal
       properties:
-        dfs_channel_count_stats:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqCountStats'
-        normal:
-          type: integer
-    XiqCopilotDfsRecurrenceCountStats:
-      type: object
-      properties:
-        dfsRecurrence_stats_entities:
+        dfs_channel_changes_entity:
           type: array
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqCountStatsEntity'
-    XiqChannelStats:
+        normal:
+          type: integer
+    XiqChannelStatsEntity:
       type: object
       description: data sequence
       required:
@@ -14457,31 +14449,23 @@ components:
           format: int64
         channel_number:
           type: integer
-    XiqChannelStatsEntity:
+    XiqCopilotDFSRecurrenceChannelStats:
       type: object
       description: data sequence
       required:
-        - dfs_channel_stats
+        - dfs_channel_stats_entity
         - min_channel
         - max_channel
       properties:
-        dfs_channel_stats:
-          type: array
-          description: The data in the current page
-          items:
-            $ref: '#/components/schemas/XiqChannelStats'
-        min_channel:
-          type: integer
-        max_channel:
-          type: integer
-    XiqCopilotDFSRecurrenceChannelStats:
-      type: object
-      properties:
-        dfsRecurrence_channel_stats_entities:
+        dfs_channel_stats_entity:
           type: array
           description: The data in the current page
           items:
             $ref: '#/components/schemas/XiqChannelStatsEntity'
+        min_channel:
+          type: integer
+        max_channel:
+          type: integer
   responses:
     ErrorResponse:
       description: The generic ExtremeCloud IQ API error response

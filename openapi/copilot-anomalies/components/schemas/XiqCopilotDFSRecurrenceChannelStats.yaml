@@ -1,7 +1,16 @@
 type: object
+description: data sequence
+required:
+  - dfs_channel_stats_entity
+  - min_channel
+  - max_channel
 properties:
-  dfsRecurrence_channel_stats_entities:
+  dfs_channel_stats_entity:
     type: array
     description: The data in the current page
     items:
       $ref: ./XiqChannelStatsEntity.yaml
+  min_channel:
+    type: integer
+  max_channel:
+    type: integer
