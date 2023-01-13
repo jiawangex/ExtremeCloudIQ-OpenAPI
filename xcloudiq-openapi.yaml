@@ -2991,7 +2991,7 @@ paths:
             format: int64
         - name: keyword
           in: query
-          description: The keyword (case insensitive) to search in description
+          description: The case-insensitive keyword to search in description
           required: false
           schema:
             type: string
