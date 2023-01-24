@@ -137,7 +137,6 @@ paths:
                     expires_in: 86400
         default:
           $ref: '#/components/responses/ErrorResponse'
-      security: []
   /logout:
     post:
       tags:
@@ -199,8 +198,6 @@ paths:
                 $ref: '#/components/schemas/XiqGenerateApiTokenResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-      security:
-        - BearerAuth: []
   /auth/apitoken/info:
     get:
       tags:
@@ -2439,6 +2436,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XiqDeviceIbeacon'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
+  '/devices/{id}/wifi-interface':
+    get:
+      tags:
+        - Device
+      summary: Get the device WiFi interfaces stats
+      description: Get the device WiFi interfaces stats by device ID.
+      externalDocs:
+        description: API Reference
+        url: >-
+          https://extremecloudiq.com/api-docs/api-reference.html#_get_device_wifi_interface
+      operationId: getDeviceWifiInterface
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XiqDeviceWifiInterface'
         default:
           $ref: '#/components/responses/ErrorResponse'
       security:
@@ -7530,6 +7553,7 @@ components:
         - LOCATIONS
         - DESCRIPTION
         - COUNTRY_CODE
+        - LLDP_CDP_INFO
     XiqLocationEntity:
       allOf:
         - $ref: '#/components/schemas/XiqViqEntity'
@@ -7565,6 +7589,26 @@ components:
         name:
           type: string
           description: The location name
+    XiqDeviceLldpCdpInfo:
+      type: object
+      properties:
+        port_id:
+          type: string
+          description: The port ID.
+        system_id:
+          type: string
+          description: The system ID.
+        system_name:
+          type: string
+          description: The system name.
+        poe_power:
+          type: integer
+          description: The POE power.
+          format: int32
+        interface_name:
+          type: string
+          description: The interface name.
+      description: The LLDP/CDP information
     XiqDevice:
       allOf:
         - $ref: '#/components/schemas/XiqLocationEntity'
@@ -7651,6 +7695,11 @@ components:
             description:
               type: string
               description: The device description
+            lldp_cdp_infos:
+              type: array
+              description: The device LLDP/CDP information
+              items:
+                $ref: '#/components/schemas/XiqDeviceLldpCdpInfo'
     PagedXiqDevice:
       allOf:
         - $ref: '#/components/schemas/XiqPage'
@@ -8352,6 +8401,122 @@ components:
           type: integer
           description: The beacon network policy ID.
           format: int64
+    XiqDeviceWifiInterface:
+      type: object
+      properties:
+        frequency:
+          type: string
+          description: The WiFi frequency.
+        ssid_count:
+          type: integer
+          description: The number of SSID assigned on this wireless interface.
+          format: int32
+        client_count:
+          type: integer
+          description: The number of clients associated to this wireless interface.
+          format: int64
+        neighbor_clients:
+          type: integer
+          description: The number of neighboring clients.
+          format: int64
+        channel_util:
+          type: integer
+          description: The channel utilization.
+          format: int32
+        channel:
+          type: integer
+          description: The channel associated.
+          format: int32
+        channel_width:
+          type: integer
+          description: The channel width.
+          format: int32
+        tx_utilization:
+          type: integer
+          description: The total tx utilization.
+          format: int64
+        rx_utilization:
+          type: integer
+          description: The total rx utilization.
+          format: int64
+        tx_byte_count:
+          type: integer
+          description: The total tx byte count.
+          format: int64
+        rx_byte_count:
+          type: integer
+          description: The total rx byte count.
+          format: int64
+        noise_floor:
+          type: integer
+          description: The noise floor.
+          format: int64
+        crc_error_frame:
+          type: integer
+          description: The crc error frame count.
+          format: int64
+        tx_retry_frame:
+          type: integer
+          description: The tx retry frame
+          format: int64
+        rx_retry_frame:
+          type: integer
+          description: The rx retry fram.
+          format: int64
+        unicast_tx_packet_count:
+          type: integer
+          description: The unicast tx packet count.
+          format: int64
+        unicast_rx_packet_count:
+          type: integer
+          description: The unicast rx packet count.
+          format: int64
+        broadcast_tx_packet_count:
+          type: integer
+          description: The broadcast tx packet count.
+          format: int64
+        broadcast_rx_packet_count:
+          type: integer
+          description: The broadcast rx packet count.
+          format: int64
+        tx_air_time:
+          type: integer
+          description: The tx air time.
+          format: int64
+        rx_air_time:
+          type: integer
+          description: The rx air time.
+          format: int64
+        total_utilization:
+          type: integer
+          description: The total utilization.
+          format: int64
+        scan_avg_interference:
+          type: integer
+          description: The average interference.
+          format: int32
+        mac_address:
+          type: string
+          description: The bssid.
+        power:
+          type: integer
+          description: The radio power.
+          format: int32
+        rx_errors:
+          type: integer
+          description: The rx errors.
+          format: int64
+        tx_errors:
+          type: integer
+          description: The tx errors.
+          format: int64
+        interface_name:
+          type: string
+          description: The interface name.
+        radio_profile_name:
+          type: string
+          description: The ExtremecloudIQ radio profile name.
+      description: Get the device WiFi interface stats
     PagedXiqNetworkPolicy:
       allOf:
         - $ref: '#/components/schemas/XiqPage'
