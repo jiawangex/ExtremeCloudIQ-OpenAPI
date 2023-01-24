@@ -83,3 +83,8 @@ allOf:
       description:
         type: string
         description: The device description
+      lldp_cdp_infos:
+        type: array
+        description: The device LLDP/CDP information
+        items:
+          $ref: ./XiqDeviceLldpCdpInfo.yaml

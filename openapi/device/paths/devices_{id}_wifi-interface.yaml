@@ -1,0 +1,25 @@
+get:
+  tags:
+    - Device
+  summary: Get the device WiFi interfaces stats
+  description: Get the device WiFi interfaces stats by device ID.
+  externalDocs:
+    description: API Reference
+    url: >-
+      https://extremecloudiq.com/api-docs/api-reference.html#_get_device_wifi_interface
+  operationId: getDeviceWifiInterface
+  parameters:
+    - $ref: ../../common/components/parameters/path/id.yaml
+    - $ref: ../../common/components/parameters/query/startTime.yaml
+    - $ref: ../../common/components/parameters/query/endTime.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/XiqDeviceWifiInterface.yaml
+    default:
+      $ref: ../../common/components/responses/ErrorResponse.yaml
+  security:
+    - BearerAuth: []

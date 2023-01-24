@@ -1,0 +1,19 @@
+type: object
+properties:
+  port_id:
+    type: string
+    description: The port ID.
+  system_id:
+    type: string
+    description: The system ID.
+  system_name:
+    type: string
+    description: The system name.
+  poe_power:
+    type: integer
+    description: The POE power.
+    format: int32
+  interface_name:
+    type: string
+    description: The interface name.
+description: The LLDP/CDP information
