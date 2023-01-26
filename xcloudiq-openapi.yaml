@@ -198,6 +198,8 @@ paths:
                 $ref: '#/components/schemas/XiqGenerateApiTokenResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
+      security:
+        - BearerAuth: []
   /auth/apitoken/info:
     get:
       tags:
@@ -2440,7 +2442,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       security:
         - BearerAuth: []
-  '/devices/{id}/wifi-interface':
+  '/devices/{id}/interfaces/wifi':
     get:
       tags:
         - Device

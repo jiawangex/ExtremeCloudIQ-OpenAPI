@@ -90,8 +90,8 @@ paths:
     $ref: paths/devices_{id}_history_cpu-mem.yaml
   /devices/{id}/ibeacon:
     $ref: paths/devices_{id}_ibeacon.yaml
-  /devices/{id}/wifi-interface:
-    $ref: paths/devices_{id}_wifi-interface.yaml
+  /devices/{id}/interfaces/wifi:
+    $ref: "paths/devices_{id}_interfaces_wifi.yaml"
 components:
   securitySchemes:
     $ref: ../common/components/securitySchemes/index.yaml
