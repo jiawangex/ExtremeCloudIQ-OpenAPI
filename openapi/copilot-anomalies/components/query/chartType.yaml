@@ -1,6 +1,0 @@
-name: chartType
-in: query
-description: The chart type
-required: true
-schema:
-  $ref: ./../schemas/XiqChartType.yaml
